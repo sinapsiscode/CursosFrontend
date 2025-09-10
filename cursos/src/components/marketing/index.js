@@ -1,0 +1,1 @@
+export { default as LeadMagnet } from './LeadMagnet'

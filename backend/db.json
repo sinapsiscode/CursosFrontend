@@ -1,0 +1,420 @@
+{
+  "areas": [
+    {
+      "id": 1,
+      "name": "Metalurgia",
+      "slug": "metalurgia", 
+      "description": "Especialización en procesos metalúrgicos y tratamiento de metales",
+      "color": "#ff6b6b",
+      "icon": "⚙️",
+      "isActive": true,
+      "createdAt": "2024-01-01T00:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "name": "Minería",
+      "slug": "mineria",
+      "description": "Técnicas de extracción y procesamiento de minerales", 
+      "color": "#4ecdc4",
+      "icon": "⛏️",
+      "isActive": true,
+      "createdAt": "2024-01-01T00:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "name": "Geología",
+      "slug": "geologia", 
+      "description": "Estudio de la estructura terrestre y formación de yacimientos",
+      "color": "#45b7d1",
+      "icon": "🗻",
+      "isActive": true,
+      "createdAt": "2024-01-01T00:00:00.000Z"
+    }
+  ],
+
+  "courses": [
+    {
+      "id": 1,
+      "title": "Fundamentos de Metalurgia",
+      "slug": "fundamentos-metalurgia",
+      "description": "Aprende los conceptos fundamentales de la metalurgia desde cero",
+      "area": "metalurgia",
+      "areaId": 1,
+      "level": "básico",
+      "duration": 180,
+      "price": 0,
+      "points": 100,
+      "thumbnail": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400",
+      "instructor": "Dr. Carlos Rodriguez",
+      "rating": 4.8,
+      "studentsCount": 1250,
+      "isActive": true,
+      "isFeatured": true,
+      "isPopular": true,
+      "createdAt": "2024-01-01T00:00:00.000Z"
+    },
+    {
+      "id": 2, 
+      "title": "Introducción a la Minería",
+      "slug": "introduccion-mineria",
+      "description": "Fundamentos de técnicas de extracción mineral",
+      "area": "mineria", 
+      "areaId": 2,
+      "level": "básico",
+      "duration": 240,
+      "price": 50,
+      "points": 150,
+      "thumbnail": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400",
+      "instructor": "Ing. María González",
+      "rating": 4.6,
+      "studentsCount": 890,
+      "isActive": true,
+      "isFeatured": false,
+      "isPopular": true,
+      "createdAt": "2024-01-01T00:00:00.000Z"
+    }
+  ],
+
+  "config": {
+    "general": {
+      "siteName": "MetSel Academy",
+      "siteDescription": "Academia especializada en Metalurgia, Minería y Geología",
+      "supportEmail": "soporte@metsel.edu",
+      "contactPhone": "+57 300 123 4567",
+      "maxCoursesPerUser": 10,
+      "defaultLanguage": "es",
+      "timezone": "America/Bogota",
+      "maintenanceMode": false,
+      "registrationEnabled": true,
+      "guestModeEnabled": true
+    },
+    "branding": {
+      "primaryColor": "#98d932",
+      "secondaryColor": "#4ecdc4", 
+      "accentColor": "#45b7d1",
+      "logoUrl": "/logo.png",
+      "faviconUrl": "/favicon.ico",
+      "socialMediaLinks": {
+        "facebook": "https://facebook.com/metselacademy",
+        "instagram": "https://instagram.com/metselacademy",
+        "linkedin": "https://linkedin.com/company/metselacademy",
+        "youtube": "https://youtube.com/metselacademy"
+      }
+    },
+    "loyalty": {
+      "enabled": true,
+      "pointsPerCourse": 100,
+      "pointsPerCertificate": 50,
+      "pointsPerReview": 10,
+      "pointsPerReferral": 200,
+      "levels": {
+        "bronce": {
+          "name": "Bronce",
+          "minPoints": 0,
+          "maxPoints": 299,
+          "color": "#CD7F32",
+          "discountPercentage": 5,
+          "benefits": ["5% descuento", "Soporte email", "Acceso a comunidad básica"]
+        },
+        "plata": {
+          "name": "Plata", 
+          "minPoints": 300,
+          "maxPoints": 599,
+          "color": "#C0C0C0",
+          "discountPercentage": 10,
+          "benefits": ["10% descuento", "Acceso anticipado", "Soporte prioritario", "Webinars exclusivos"]
+        },
+        "oro": {
+          "name": "Oro",
+          "minPoints": 600,
+          "maxPoints": 999999,
+          "color": "#FFD700", 
+          "discountPercentage": 15,
+          "benefits": ["15% descuento", "Contenido exclusivo", "Consultoría 1:1", "Acceso VIP", "Certificados premium"]
+        }
+      }
+    },
+    "payments": {
+      "currency": "USD",
+      "taxRate": 0.19,
+      "freeTrialDays": 7,
+      "refundPolicy": "30 días",
+      "paymentMethods": {
+        "stripe": {
+          "enabled": true,
+          "publicKey": "pk_test_...",
+          "webhookSecret": "whsec_..."
+        },
+        "paypal": {
+          "enabled": true,
+          "clientId": "paypal_client_id"
+        },
+        "mercadopago": {
+          "enabled": false,
+          "publicKey": ""
+        }
+      },
+      "discountCodes": [
+        {
+          "code": "WELCOME20",
+          "discount": 20,
+          "type": "percentage",
+          "validUntil": "2024-12-31T23:59:59.000Z",
+          "maxUses": 100,
+          "currentUses": 0,
+          "isActive": true
+        }
+      ]
+    },
+    "notifications": {
+      "email": {
+        "enabled": true,
+        "smtpHost": "smtp.gmail.com",
+        "smtpPort": 587,
+        "smtpUser": "noreply@metsel.edu",
+        "smtpPass": "app_password_here",
+        "fromName": "MetSel Academy",
+        "fromEmail": "noreply@metsel.edu",
+        "templates": {
+          "welcome": {
+            "subject": "¡Bienvenido a MetSel Academy! 🎓",
+            "body": "Hola {{name}}, gracias por unirte a nuestra comunidad..."
+          },
+          "courseEnrollment": {
+            "subject": "Te inscribiste en: {{courseTitle}}",
+            "body": "¡Felicidades! Ya puedes acceder a {{courseTitle}}..."
+          },
+          "leadCapture": {
+            "subject": "Gracias por tu interés - {{area}}",
+            "body": "Hola {{name}}, te contactaremos pronto sobre {{interestedIn}}..."
+          }
+        }
+      },
+      "sms": {
+        "enabled": false,
+        "provider": "twilio",
+        "accountSid": "",
+        "authToken": "",
+        "fromNumber": ""
+      }
+    },
+    "whatsapp": {
+      "enabled": true,
+      "phoneNumber": "+57 300 123 4567",
+      "autoSend": true,
+      "welcomeMessage": "¡Hola! 👋 Gracias por tu interés en nuestros cursos de {{area}}",
+      "businessHours": {
+        "start": "08:00",
+        "end": "18:00",
+        "timezone": "America/Bogota",
+        "workDays": ["monday", "tuesday", "wednesday", "thursday", "friday"]
+      },
+      "templates": {
+        "courseInterest": "Hola {{name}}! 👋\n\nVeo que te interesa {{area}}. \n\nTe recomiendo estos cursos:\n{{courses}}\n\n¿Te gustaría más información?",
+        "newLead": "🎯 *Nuevo Lead*\n\n👤 {{name}}\n📧 {{email}}\n📱 {{phone}}\n🎯 Interés: {{interestedIn}}\n🏷️ Área: {{area}}\n📍 Origen: {{source}}",
+        "followUp": "Hola {{name}}! 😊\n\n¿Cómo estás? Te escribo para saber si necesitas más información sobre {{courseTitle}}.\n\n¿Hay algo específico en lo que te pueda ayudar?",
+        "promotion": "🎉 *Oferta Especial*\n\nHola {{name}}!\n\n{{discountPercentage}}% de descuento en {{courseTitle}}\n\n⏰ Válido hasta: {{validUntil}}\n💰 Precio especial: ${{finalPrice}}\n\n¿Te interesa? 🤔"
+      }
+    },
+    "integrations": {
+      "googleAnalytics": {
+        "enabled": false,
+        "trackingId": "GA_TRACKING_ID"
+      },
+      "facebookPixel": {
+        "enabled": false,
+        "pixelId": "FB_PIXEL_ID"
+      },
+      "googleTagManager": {
+        "enabled": false,
+        "containerId": "GTM_CONTAINER_ID"
+      },
+      "hotjar": {
+        "enabled": false,
+        "siteId": "HOTJAR_SITE_ID"
+      },
+      "intercom": {
+        "enabled": false,
+        "appId": "INTERCOM_APP_ID"
+      }
+    },
+    "security": {
+      "maxLoginAttempts": 5,
+      "lockoutDuration": 900,
+      "passwordMinLength": 8,
+      "requireSpecialChars": true,
+      "sessionTimeout": 3600,
+      "twoFactorAuth": false
+    },
+    "features": {
+      "reviewsEnabled": true,
+      "chatEnabled": true,
+      "forumsEnabled": false,
+      "certificatesEnabled": true,
+      "progressTrackingEnabled": true,
+      "achievementsEnabled": true,
+      "referralProgramEnabled": true,
+      "affiliateProgramEnabled": false
+    }
+  },
+
+  "leads": [],
+
+  "examResults": [],
+
+  "reviews": [
+    {
+      "id": 1,
+      "courseId": 1,
+      "courseTitle": "Fundamentos de Metalurgia",
+      "userId": "user1",
+      "userName": "Carlos García",
+      "rating": 5,
+      "title": "Excelente curso para principiantes",
+      "comment": "Este curso superó mis expectativas. Los conceptos están muy bien explicados y los ejemplos prácticos son muy útiles. El instructor tiene mucha experiencia y se nota en cada clase.",
+      "pros": "Explicaciones claras, ejemplos prácticos, instructor experimentado",
+      "cons": "Me hubiera gustado más ejercicios prácticos",
+      "wouldRecommend": true,
+      "helpful": 12,
+      "verified": true,
+      "status": "approved",
+      "createdAt": "2024-01-15T10:30:00.000Z",
+      "moderatedAt": "2024-01-15T14:20:00.000Z"
+    },
+    {
+      "id": 2,
+      "courseId": 1,
+      "courseTitle": "Fundamentos de Metalurgia",
+      "userId": "user2",
+      "userName": "María López",
+      "rating": 4,
+      "title": "Muy buen contenido",
+      "comment": "El curso cubre todos los temas fundamentales de metalurgia. La información es actualizada y relevante para la industria actual.",
+      "pros": "Contenido actualizado, buena estructura",
+      "cons": "Algunos videos podrían tener mejor calidad de audio",
+      "wouldRecommend": true,
+      "helpful": 8,
+      "verified": true,
+      "status": "approved",
+      "createdAt": "2024-01-20T16:45:00.000Z",
+      "moderatedAt": "2024-01-21T09:15:00.000Z"
+    },
+    {
+      "id": 3,
+      "courseId": 2,
+      "courseTitle": "Introducción a la Minería",
+      "userId": "user3",
+      "userName": "Roberto Silva",
+      "rating": 5,
+      "title": "Perfecto para comenzar en minería",
+      "comment": "Como alguien nuevo en el sector minero, este curso me dio una base sólida. Los conceptos están bien explicados y hay buenos ejemplos de casos reales.",
+      "pros": "Perfecto para principiantes, casos reales, instructor conocedor",
+      "cons": "",
+      "wouldRecommend": true,
+      "helpful": 15,
+      "verified": true,
+      "status": "approved",
+      "createdAt": "2024-01-25T11:20:00.000Z",
+      "moderatedAt": "2024-01-25T15:30:00.000Z"
+    },
+    {
+      "id": 4,
+      "courseId": 1,
+      "courseTitle": "Fundamentos de Metalurgia",
+      "userId": "user4",
+      "userName": "Ana Torres",
+      "rating": 2,
+      "title": "Contenido desactualizado",
+      "comment": "El contenido parece un poco desactualizado y algunos enlaces no funcionan. Esperaba más material interactivo.",
+      "pros": "El instructor conoce del tema",
+      "cons": "Material desactualizado, enlaces rotos, falta interactividad",
+      "wouldRecommend": false,
+      "helpful": 3,
+      "verified": false,
+      "status": "pending",
+      "createdAt": "2024-01-28T14:10:00.000Z"
+    },
+    {
+      "id": 5,
+      "courseId": 2,
+      "courseTitle": "Introducción a la Minería",
+      "userId": "user5",
+      "userName": "Pedro Ramírez",
+      "rating": 1,
+      "title": "Spam review - ofertas de cursos externos",
+      "comment": "Este curso está bien pero recomiendo mejor ir a mi sitio web donde tengo mejores cursos de minería por solo $29. Contacto: pedro.cursos@email.com",
+      "pros": "",
+      "cons": "Prefiero otros cursos que vendo en mi sitio",
+      "wouldRecommend": false,
+      "helpful": 0,
+      "verified": false,
+      "status": "rejected",
+      "createdAt": "2024-01-30T09:25:00.000Z",
+      "moderatedAt": "2024-01-30T10:45:00.000Z",
+      "moderationReason": "Esta reseña contiene spam promocionando servicios externos, lo cual viola nuestras políticas de comunidad."
+    }
+  ],
+
+  "exams": {
+    "initial": {
+      "id": "initial-exam",
+      "title": "Examen de Diagnóstico Inicial",
+      "description": "Evalúa tus conocimientos y obtén un descuento personalizado",
+      "questions": [
+        {
+          "id": 1,
+          "question": "¿Cuál es tu nivel de experiencia en el área seleccionada?",
+          "type": "single",
+          "options": [
+            { "id": "a", "text": "Ninguna experiencia", "points": 10 },
+            { "id": "b", "text": "Conocimientos básicos", "points": 20 },
+            { "id": "c", "text": "Experiencia intermedia", "points": 15 },
+            { "id": "d", "text": "Experiencia avanzada", "points": 5 }
+          ]
+        },
+        {
+          "id": 2,
+          "question": "¿Qué te motiva a estudiar esta especialidad?", 
+          "type": "single",
+          "options": [
+            { "id": "a", "text": "Desarrollo profesional", "points": 15 },
+            { "id": "b", "text": "Cambio de carrera", "points": 20 },
+            { "id": "c", "text": "Actualización de conocimientos", "points": 10 },
+            { "id": "d", "text": "Curiosidad personal", "points": 5 }
+          ]
+        }
+      ],
+      "discountRules": [
+        { "minPoints": 0, "maxPoints": 15, "discount": 30, "message": "¡30% de descuento para principiantes!" },
+        { "minPoints": 16, "maxPoints": 30, "discount": 20, "message": "¡20% de descuento por tu motivación!" },
+        { "minPoints": 31, "maxPoints": 40, "discount": 15, "message": "¡15% de descuento por tu experiencia!" }
+      ]
+    }
+  },
+
+  "analytics": {
+    "dashboard": {
+      "totalLeads": 0,
+      "totalCourses": 2,
+      "totalAreas": 3,
+      "conversionRate": 0,
+      "lastUpdated": "2024-01-01T00:00:00.000Z"
+    }
+  },
+  "users": [
+    {
+      "id": 1,
+      "name": "Admin",
+      "email": "admin@metsel.com",
+      "password": "admin123",
+      "phone": "1234567890",
+      "role": "admin",
+      "avatar": null,
+      "points": 1000,
+      "area": "metalurgia",
+      "interests": ["metalurgia", "mineria"],
+      "acceptMarketing": false,
+      "createdAt": "2024-01-01T00:00:00.000Z"
+    }
+  ]
+}

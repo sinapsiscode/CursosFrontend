@@ -1,0 +1,1 @@
+const AdminDashboard = () => <div className="max-w-6xl mx-auto px-4 py-8"><h1 className="text-2xl font-bold mb-4">Dashboard Admin</h1></div>; export default AdminDashboard
