@@ -30,7 +30,7 @@ const WhatsAppWidget = () => {
   const loadConfig = async () => {
     try {
       const configData = await apiClient.get('/config')
-      setConfig(configData.whatsapp)
+      setConfig(configData.whatsapp) // configData ya contiene todo el objeto config
     } catch (error) {
       console.error('Error loading WhatsApp config:', error)
     }

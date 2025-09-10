@@ -85,9 +85,10 @@ const Register = () => {
         newErrors.area = 'Selecciona un área de interés'
       }
       
-      if (!formData.acceptTerms) {
-        newErrors.acceptTerms = 'Debes aceptar los términos y condiciones'
-      }
+      // Términos opcionales para testing
+      // if (!formData.acceptTerms) {
+      //   newErrors.acceptTerms = 'Debes aceptar los términos y condiciones'
+      // }
     }
     
     setErrors(newErrors)

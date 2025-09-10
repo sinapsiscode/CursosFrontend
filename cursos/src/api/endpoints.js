@@ -13,9 +13,9 @@ export const API_ENDPOINTS = {
 
   // Content management (configurable por admin)
   CONTENT: {
-    AREAS: '/content/areas',
+    AREAS: '/areas',
     AREA_BY_ID: (id) => `/content/areas/${id}`,
-    COURSES: '/content/courses',
+    COURSES: '/courses',
     COURSE_BY_ID: (id) => `/content/courses/${id}`,
     COURSE_BY_AREA: (area) => `/content/courses/area/${area}`,
   },
@@ -26,7 +26,7 @@ export const API_ENDPOINTS = {
     POINTS: '/config/points',
     DISCOUNTS: '/config/discounts',
     WHATSAPP: '/config/whatsapp',
-    GENERAL: '/config/general',
+    GENERAL: '/config',
   },
 
   // Lead management

@@ -21,7 +21,7 @@ const AreaSelection = () => {
   useEffect(() => {
     const fetchAreas = async () => {
       try {
-        const areasData = await apiClient.get('/content/areas')
+        const areasData = await apiClient.get('/areas')
         console.log('Areas loaded from API:', areasData)
         setAreas(areasData.filter(area => area.isActive)) // Solo áreas activas
       } catch (error) {

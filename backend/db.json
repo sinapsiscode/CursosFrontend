@@ -3,7 +3,7 @@
     {
       "id": 1,
       "name": "Metalurgia",
-      "slug": "metalurgia", 
+      "slug": "metalurgia",
       "description": "Especialización en procesos metalúrgicos y tratamiento de metales",
       "color": "#ff6b6b",
       "icon": "⚙️",
@@ -14,7 +14,7 @@
       "id": 2,
       "name": "Minería",
       "slug": "mineria",
-      "description": "Técnicas de extracción y procesamiento de minerales", 
+      "description": "Técnicas de extracción y procesamiento de minerales",
       "color": "#4ecdc4",
       "icon": "⛏️",
       "isActive": true,
@@ -23,7 +23,7 @@
     {
       "id": 3,
       "name": "Geología",
-      "slug": "geologia", 
+      "slug": "geologia",
       "description": "Estudio de la estructura terrestre y formación de yacimientos",
       "color": "#45b7d1",
       "icon": "🗻",
@@ -31,7 +31,6 @@
       "createdAt": "2024-01-01T00:00:00.000Z"
     }
   ],
-
   "courses": [
     {
       "id": 1,
@@ -54,11 +53,11 @@
       "createdAt": "2024-01-01T00:00:00.000Z"
     },
     {
-      "id": 2, 
+      "id": 2,
       "title": "Introducción a la Minería",
       "slug": "introduccion-mineria",
       "description": "Fundamentos de técnicas de extracción mineral",
-      "area": "mineria", 
+      "area": "mineria",
       "areaId": 2,
       "level": "básico",
       "duration": 240,
@@ -74,7 +73,6 @@
       "createdAt": "2024-01-01T00:00:00.000Z"
     }
   ],
-
   "config": {
     "general": {
       "siteName": "MetSel Academy",
@@ -90,7 +88,7 @@
     },
     "branding": {
       "primaryColor": "#98d932",
-      "secondaryColor": "#4ecdc4", 
+      "secondaryColor": "#4ecdc4",
       "accentColor": "#45b7d1",
       "logoUrl": "/logo.png",
       "faviconUrl": "/favicon.ico",
@@ -114,23 +112,38 @@
           "maxPoints": 299,
           "color": "#CD7F32",
           "discountPercentage": 5,
-          "benefits": ["5% descuento", "Soporte email", "Acceso a comunidad básica"]
+          "benefits": [
+            "5% descuento",
+            "Soporte email",
+            "Acceso a comunidad básica"
+          ]
         },
         "plata": {
-          "name": "Plata", 
+          "name": "Plata",
           "minPoints": 300,
           "maxPoints": 599,
           "color": "#C0C0C0",
           "discountPercentage": 10,
-          "benefits": ["10% descuento", "Acceso anticipado", "Soporte prioritario", "Webinars exclusivos"]
+          "benefits": [
+            "10% descuento",
+            "Acceso anticipado",
+            "Soporte prioritario",
+            "Webinars exclusivos"
+          ]
         },
         "oro": {
           "name": "Oro",
           "minPoints": 600,
           "maxPoints": 999999,
-          "color": "#FFD700", 
+          "color": "#FFD700",
           "discountPercentage": 15,
-          "benefits": ["15% descuento", "Contenido exclusivo", "Consultoría 1:1", "Acceso VIP", "Certificados premium"]
+          "benefits": [
+            "15% descuento",
+            "Contenido exclusivo",
+            "Consultoría 1:1",
+            "Acceso VIP",
+            "Certificados premium"
+          ]
         }
       }
     },
@@ -207,7 +220,13 @@
         "start": "08:00",
         "end": "18:00",
         "timezone": "America/Bogota",
-        "workDays": ["monday", "tuesday", "wednesday", "thursday", "friday"]
+        "workDays": [
+          "monday",
+          "tuesday",
+          "wednesday",
+          "thursday",
+          "friday"
+        ]
       },
       "templates": {
         "courseInterest": "Hola {{name}}! 👋\n\nVeo que te interesa {{area}}. \n\nTe recomiendo estos cursos:\n{{courses}}\n\n¿Te gustaría más información?",
@@ -257,11 +276,8 @@
       "affiliateProgramEnabled": false
     }
   },
-
   "leads": [],
-
   "examResults": [],
-
   "reviews": [
     {
       "id": 1,
@@ -354,7 +370,6 @@
       "moderationReason": "Esta reseña contiene spam promocionando servicios externos, lo cual viola nuestras políticas de comunidad."
     }
   ],
-
   "exams": {
     "initial": {
       "id": "initial-exam",
@@ -366,32 +381,78 @@
           "question": "¿Cuál es tu nivel de experiencia en el área seleccionada?",
           "type": "single",
           "options": [
-            { "id": "a", "text": "Ninguna experiencia", "points": 10 },
-            { "id": "b", "text": "Conocimientos básicos", "points": 20 },
-            { "id": "c", "text": "Experiencia intermedia", "points": 15 },
-            { "id": "d", "text": "Experiencia avanzada", "points": 5 }
+            {
+              "id": "a",
+              "text": "Ninguna experiencia",
+              "points": 10
+            },
+            {
+              "id": "b",
+              "text": "Conocimientos básicos",
+              "points": 20
+            },
+            {
+              "id": "c",
+              "text": "Experiencia intermedia",
+              "points": 15
+            },
+            {
+              "id": "d",
+              "text": "Experiencia avanzada",
+              "points": 5
+            }
           ]
         },
         {
           "id": 2,
-          "question": "¿Qué te motiva a estudiar esta especialidad?", 
+          "question": "¿Qué te motiva a estudiar esta especialidad?",
           "type": "single",
           "options": [
-            { "id": "a", "text": "Desarrollo profesional", "points": 15 },
-            { "id": "b", "text": "Cambio de carrera", "points": 20 },
-            { "id": "c", "text": "Actualización de conocimientos", "points": 10 },
-            { "id": "d", "text": "Curiosidad personal", "points": 5 }
+            {
+              "id": "a",
+              "text": "Desarrollo profesional",
+              "points": 15
+            },
+            {
+              "id": "b",
+              "text": "Cambio de carrera",
+              "points": 20
+            },
+            {
+              "id": "c",
+              "text": "Actualización de conocimientos",
+              "points": 10
+            },
+            {
+              "id": "d",
+              "text": "Curiosidad personal",
+              "points": 5
+            }
           ]
         }
       ],
       "discountRules": [
-        { "minPoints": 0, "maxPoints": 15, "discount": 30, "message": "¡30% de descuento para principiantes!" },
-        { "minPoints": 16, "maxPoints": 30, "discount": 20, "message": "¡20% de descuento por tu motivación!" },
-        { "minPoints": 31, "maxPoints": 40, "discount": 15, "message": "¡15% de descuento por tu experiencia!" }
+        {
+          "minPoints": 0,
+          "maxPoints": 15,
+          "discount": 30,
+          "message": "¡30% de descuento para principiantes!"
+        },
+        {
+          "minPoints": 16,
+          "maxPoints": 30,
+          "discount": 20,
+          "message": "¡20% de descuento por tu motivación!"
+        },
+        {
+          "minPoints": 31,
+          "maxPoints": 40,
+          "discount": 15,
+          "message": "¡15% de descuento por tu experiencia!"
+        }
       ]
     }
   },
-
   "analytics": {
     "dashboard": {
       "totalLeads": 0,
@@ -412,9 +473,31 @@
       "avatar": null,
       "points": 1000,
       "area": "metalurgia",
-      "interests": ["metalurgia", "mineria"],
+      "interests": [
+        "metalurgia",
+        "mineria"
+      ],
       "acceptMarketing": false,
       "createdAt": "2024-01-01T00:00:00.000Z"
+    },
+    {
+      "name": "Test User",
+      "email": "test@example.com",
+      "phone": "12345678",
+      "password": "Test123",
+      "role": "user",
+      "id": 2
+    },
+    {
+      "name": "Usuario Test",
+      "email": "test@test.com",
+      "phone": "123456789",
+      "password": "Password123",
+      "role": "user",
+      "area": "metalurgia",
+      "points": 100,
+      "createdAt": "2025-01-01T00:00:00.000Z",
+      "id": 3
     }
   ]
 }

@@ -16,7 +16,7 @@ class WhatsAppService {
    */
   async initialize() {
     try {
-      const config = await apiClient.get('/config/1')
+      const config = await apiClient.get('/config')
       this.config = config.whatsapp
       this.isInitialized = true
       
@@ -49,7 +49,7 @@ class WhatsAppService {
     
     const now = new Date()
     const currentHour = now.getHours()
-    const currentDay = now.toLocaleLowerCase()
+    const currentDay = now.toLocaleDateString('en-US', { weekday: 'long' }).toLowerCase()
     
     const startHour = parseInt(this.config.businessHours.start.split(':')[0])
     const endHour = parseInt(this.config.businessHours.end.split(':')[0])

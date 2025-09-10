@@ -12,8 +12,8 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const [areasData, coursesData] = await Promise.all([
-          apiClient.get('/content/areas'),
-          apiClient.get('/content/courses')
+          apiClient.get('/areas'),
+          apiClient.get('/courses')
         ])
         
         setAreas(areasData)

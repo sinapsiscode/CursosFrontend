@@ -29,8 +29,8 @@ export const endpoints = {
 
   // Config
   config: {
-    get: '/config/1',
-    update: '/config/1',
+    get: '/config',
+    update: '/config',
   },
 
   // Leads

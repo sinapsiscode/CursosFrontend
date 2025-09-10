@@ -31,7 +31,7 @@ const ContentManager = () => {
 
   const loadAreas = async () => {
     try {
-      const areasData = await apiClient.get('/content/areas')
+      const areasData = await apiClient.get('/areas')
       setAreas(areasData)
     } catch (error) {
       console.error('Error loading areas:', error)
