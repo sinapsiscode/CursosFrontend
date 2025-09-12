@@ -1,14 +1,29 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { useAuthStore, useUIStore } from '../../store'
 import { Button, Input } from '../../components/ui'
 import { validateEmail, validatePhone } from '../../utils/testUtils'
 import apiClient from '../../api/client'
+import hardcodedValuesService from '../../services/hardcodedValuesService'
 
 const Register = () => {
   const navigate = useNavigate()
   const { login, setSelectedArea } = useAuthStore()
-  const { showSuccess, showError, loading, setLoading } = useUIStore()
+  const { showSuccess, showError } = useUIStore()
+  const [loading, setLoading] = useState(false)
+  const [hardcodedValues, setHardcodedValues] = useState(null)
+
+  useEffect(() => {
+    const loadHardcodedValues = async () => {
+      try {
+        const values = await hardcodedValuesService.getValues()
+        setHardcodedValues(values)
+      } catch (error) {
+        console.error('Error loading hardcoded values:', error)
+      }
+    }
+    loadHardcodedValues()
+  }, [])
   
   const [step, setStep] = useState(1)
   const [formData, setFormData] = useState({
@@ -108,7 +123,13 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     
-    if (!validateStep(3)) return
+    console.log('=== INICIANDO REGISTRO ===')
+    console.log('Datos del formulario:', formData)
+    
+    if (!validateStep(3)) {
+      console.log('Validación del paso 3 falló')
+      return
+    }
     
     setLoading(true)
     try {
@@ -127,8 +148,12 @@ const Register = () => {
         createdAt: new Date().toISOString()
       }
       
+      console.log('Usuario a crear:', newUser)
+      console.log('Enviando a:', '/users')
+      
       // Guardar usuario en JSON Server
       const savedUser = await apiClient.post('/users', newUser)
+      console.log('Usuario guardado:', savedUser)
       
       // Guardar lead si acepta marketing
       if (formData.acceptMarketing) {
@@ -152,7 +177,8 @@ const Register = () => {
       navigate('/dashboard')
       
     } catch (error) {
-      showError('Error al crear la cuenta. Intenta nuevamente.')
+      console.error('Error al registrar:', error)
+      showError(error.message || 'Error al crear la cuenta. Intenta nuevamente.')
     } finally {
       setLoading(false)
     }
@@ -281,7 +307,7 @@ const Register = () => {
                 value={formData.phone}
                 onChange={(e) => handleInputChange('phone', e.target.value)}
                 error={errors.phone}
-                placeholder="+51 999 999 999"
+                placeholder={hardcodedValues?.placeholders?.phone || "+51 999 999 999"}
                 required
               />
 

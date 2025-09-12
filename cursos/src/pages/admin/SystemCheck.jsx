@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { useAuthStore, useUIStore } from '../../store'
 import { Button, Card } from '../../components/ui'
 import apiClient from '../../api/client'
-import whatsappService from '../../services/whatsappService'
+import { whatsappService } from '../../services/whatsappService'
 import analyticsService from '../../services/analyticsService'
+import hardcodedValuesService from '../../services/hardcodedValuesService'
 
 const SystemCheck = () => {
   const { user } = useAuthStore()
@@ -20,8 +21,18 @@ const SystemCheck = () => {
   
   const [isRunning, setIsRunning] = useState(false)
   const [report, setReport] = useState(null)
+  const [hardcodedValues, setHardcodedValues] = useState(null)
 
   useEffect(() => {
+    const loadHardcodedValues = async () => {
+      try {
+        const values = await hardcodedValuesService.getValues()
+        setHardcodedValues(values)
+      } catch (error) {
+        console.error('Error loading hardcoded values:', error)
+      }
+    }
+    loadHardcodedValues()
     runSystemCheck()
   }, [])
 
@@ -43,7 +54,7 @@ const SystemCheck = () => {
         details: {
           responseTime,
           configLoaded: !!config,
-          endpoint: 'http://localhost:4002'
+          endpoint: hardcodedValues?.urls?.apiUrl || 'http://localhost:4002'
         }
       }
     } catch (error) {
@@ -264,7 +275,7 @@ const SystemCheck = () => {
       recommendations.push({
         priority: 'high',
         area: 'API',
-        message: 'Verificar que el servidor backend esté ejecutándose en el puerto 4002'
+        message: `Verificar que el servidor backend esté ejecutándose en ${hardcodedValues?.urls?.apiUrl || 'http://localhost:4002'}`
       })
     }
     

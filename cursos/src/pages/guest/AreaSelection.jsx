@@ -43,7 +43,7 @@ const AreaSelection = () => {
   const handleContinue = () => {
     if (selectedAreaState) {
       // Generar ID único para sesión de invitado
-      const deviceId = crypto.randomUUID()
+      const deviceId = `guest-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`
       
       // Configurar usuario como invitado con área seleccionada
       setGuest(selectedAreaState, deviceId)

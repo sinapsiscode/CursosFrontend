@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useUIStore, useConfigStore } from '../../store'
 import { Button, Input, Modal } from '../../components/ui'
-import whatsappService from '../../services/whatsappService'
+import { whatsappService } from '../../services/whatsappService'
 import apiClient from '../../api/client'
 
 const WhatsAppManager = () => {

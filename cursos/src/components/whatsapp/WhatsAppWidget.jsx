@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useAuthStore, useUIStore } from '../../store'
-import whatsappService from '../../services/whatsappService'
+import { whatsappService } from '../../services/whatsappService'
 import apiClient from '../../api/client'
 
 const WhatsAppWidget = () => {

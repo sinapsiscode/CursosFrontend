@@ -69,7 +69,7 @@ export const useAuthStore = create(
         set({
           isGuest: true,
           selectedArea: area,
-          deviceId: deviceId || crypto.randomUUID(),
+          deviceId: deviceId || `guest-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
           sessionStartTime: Date.now(),
         })
       },

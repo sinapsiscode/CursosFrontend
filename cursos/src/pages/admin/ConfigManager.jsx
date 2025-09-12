@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useUIStore } from '../../store'
 import { Button, Input } from '../../components/ui'
 import apiClient from '../../api/client'
+import hardcodedValuesService from '../../services/hardcodedValuesService'
 
 const ConfigManager = () => {
   const { showSuccess, showError } = useUIStore()
@@ -11,6 +12,7 @@ const ConfigManager = () => {
   const [saving, setSaving] = useState(false)
   const [activeTab, setActiveTab] = useState('general')
   const [hasChanges, setHasChanges] = useState(false)
+  const [hardcodedValues, setHardcodedValues] = useState(null)
 
   const tabs = [
     { id: 'general', name: 'General', icon: '⚙️' },
@@ -25,6 +27,15 @@ const ConfigManager = () => {
   ]
 
   useEffect(() => {
+    const loadHardcodedValues = async () => {
+      try {
+        const values = await hardcodedValuesService.getValues()
+        setHardcodedValues(values)
+      } catch (error) {
+        console.error('Error loading hardcoded values:', error)
+      }
+    }
+    loadHardcodedValues()
     loadConfig()
   }, [])
 
@@ -109,7 +120,7 @@ const ConfigManager = () => {
           label="Teléfono de contacto"
           value={config.general.contactPhone}
           onChange={(e) => handleConfigChange('general', 'contactPhone', e.target.value)}
-          placeholder="+57 300 123 4567"
+          placeholder={hardcodedValues?.contacts?.whatsappNumber || "+57 300 123 4567"}
         />
         <Input
           label="Máximo cursos por usuario"
@@ -375,7 +386,7 @@ const ConfigManager = () => {
               label="Número de WhatsApp"
               value={config.whatsapp.phoneNumber}
               onChange={(e) => handleConfigChange('whatsapp', 'phoneNumber', e.target.value)}
-              placeholder="+57 300 123 4567"
+              placeholder={hardcodedValues?.contacts?.whatsappNumber || "+57 300 123 4567"}
             />
             <div className="flex items-center space-x-2">
               <input

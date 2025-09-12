@@ -460,6 +460,870 @@
       "totalAreas": 3,
       "conversionRate": 0,
       "lastUpdated": "2024-01-01T00:00:00.000Z"
+    },
+    "growth": {
+      "userGrowth": 12,
+      "courseGrowth": 8,
+      "enrollmentGrowth": 15,
+      "areaGrowth": 0,
+      "period": "month",
+      "lastCalculated": "2025-01-11T00:00:00.000Z"
+    },
+    "trends": {
+      "userTrend": [
+        {"month": "Nov", "value": 245},
+        {"month": "Dec", "value": 267},
+        {"month": "Jan", "value": 298}
+      ],
+      "courseTrend": [
+        {"month": "Nov", "value": 18},
+        {"month": "Dec", "value": 22},
+        {"month": "Jan", "value": 24}
+      ],
+      "enrollmentTrend": [
+        {"month": "Nov", "value": 1180},
+        {"month": "Dec", "value": 1320},
+        {"month": "Jan", "value": 1518}
+      ]
+    }
+  },
+  "hardcodedValues": {
+    "urls": {
+      "apiUrl": "http://localhost:4002/api",
+      "storageUrl": "https://storage.metsel.edu.co",
+      "avatarService": "https://ui-avatars.com/api/",
+      "whatsappBase": "https://wa.me/",
+      "whatsappGroups": "https://chat.whatsapp.com/",
+      "metselWebsite": "https://metsel.edu.co",
+      "youtubeThumbnail": "https://img.youtube.com/vi/",
+      "unsplashPhotos": "https://source.unsplash.com/400x300?course",
+      "placeholderImage": "https://via.placeholder.com/300x200?text=Curso",
+      "fontsUrl": "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap",
+      "svgNamespace": "http://www.w3.org/2000/svg",
+      "videoExample": "https://www.w3schools.com/html/mov_bbb.mp4",
+      "youtubeExample": "https://www.youtube.com/watch?v=...",
+      "youtubeShort": "https://youtu.be/...",
+      "zoomExample": "https://zoom.us/j/123456789",
+      "teamsExample": "https://teams.microsoft.com/...",
+      "certificateVerify": "https://platform.com/verify/",
+      "googleCalendar": "https://calendar.google.com/calendar/render",
+      "linkedinShare": "https://www.linkedin.com/sharing/share-offsite/",
+      "linkedinProfile": "https://www.linkedin.com/profile/add",
+      "twitterShare": "https://twitter.com/intent/tweet",
+      "facebookShare": "https://www.facebook.com/sharer/sharer.php",
+      "imageExamples": {
+        "placeholder": "https://via.placeholder.com/300x200?text=Error+al+cargar+imagen",
+        "placeholderImage": "https://via.placeholder.com/300x200?text=Error+al+cargar+imagen",
+        "geologySample": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Igneous_rock_formation.jpg/400px-Igneous_rock_formation.jpg",
+        "mohsScaleDiagram": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Mohs_scale_diagram.svg/400px-Mohs_scale_diagram.svg.png",
+        "bronzeAxe": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Bronze_age_axe.jpg/200px-Bronze_age_axe.jpg",
+        "eventImages": {
+          "metalurgia": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800",
+          "mineria": "https://images.unsplash.com/photo-1577094620378-8a8c3a7c2e3a?w=800",
+          "geologia": "https://images.unsplash.com/photo-1516298773066-c48f8e9bd92b?w=800"
+        },
+        "unsplashSamples": [
+          "https://images.unsplash.com/photo-1518929458119-e5bf444c30f4?w=800",
+          "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=800",
+          "https://images.unsplash.com/photo-1463413547347-bd0c8dd6e25b?w=800",
+          "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800",
+          "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400",
+          "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400"
+        ]
+      }
+    },
+    "contacts": {
+      "whatsappNumber": "+57 300 123 4567",
+      "supportPhone": "+51 999 999 999",
+      "emergencyPhone": "987232323",
+      "supportEmail": "admin@metsel.com",
+      "noReplyEmail": "noreply@metsel.edu",
+      "testEmail": "test@example.com"
+    },
+    "timers": {
+      "toastDuration": 4000,
+      "sessionWarning": 300000,
+      "notificationInterval": 30000,
+      "courseNotificationDelay": 45000,
+      "whatsappResponseDelay": 3000,
+      "videoPlayerDelay": 3000,
+      "eventSimulatorDelay": 3000,
+      "longEventDuration": 5000,
+      "systemCheckTimeout": 15000
+    },
+    "points": {
+      "welcomeBonus": 100,
+      "courseCompletion": 100,
+      "loyaltyTestAmount": 250,
+      "videoWatchBonus": 10,
+      "adminAdjustment": 50,
+      "demoUserPoints1": 2500,
+      "demoUserPoints2": 1200,
+      "demoUserPoints3": 500,
+      "demoUserPoints4": 8500,
+      "demoUserPoints5": 3200
+    },
+    "examples": {
+      "courseEnrollmentUrl": "https://ejemplo.com/inscribirse-curso",
+      "imageUrl": "https://ejemplo.com/imagen.jpg",
+      "materialUrl": "https://example.com/material.pdf",
+      "upgradeProUrl": "https://ejemplo.com/upgrade-pro",
+      "whatsappChannelUrl": "https://chat.whatsapp.com/ejemplo123",
+      "registrationUrl": "https://metsel.edu.co/webinars/registro",
+      "testGroupUrl": "https://chat.whatsapp.com/test-group",
+      "videoUrl": "https://www.youtube.com/watch?v=abc123",
+      "meetingUrl": "https://zoom.us/j/123456789 o https://teams.microsoft.com/...",
+      "geologicalImageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Igneous_rock_formation.jpg/400px-Igneous_rock_formation.jpg",
+      "demoEmail1": "carlos.rodriguez@email.com",
+      "demoEmail2": "maria.gonzalez@email.com",
+      "demoEmail3": "ana.martinez@email.com",
+      "demoEmail4": "juan.perez@email.com",
+      "demoEmail5": "sofia.lopez@email.com",
+      "testUserEmail1": "ana@email.com",
+      "testUserEmail2": "carlos@email.com",
+      "testUserEmail3": "maria@email.com",
+      "testUserEmail4": "juan@email.com",
+      "testUserEmail5": "laura@email.com"
+    },
+    "certificates": {
+      "sampleIds": [
+        "CERT-2024-001-REACT",
+        "CERT-2024-002-NODE", 
+        "CERT-2024-003-ML",
+        "CERT-2023-015-DEVOPS",
+        "CERT-2023-012-UXUI"
+      ]
+    },
+    "social": {
+      "platformExamples": [
+        "facebook.com",
+        "instagram.com", 
+        "linkedin.com",
+        "youtube.com",
+        "twitter.com"
+      ]
+    },
+    "phoneFormats": {
+      "colombia": "+57 300 123 4567",
+      "peru": "+51 999 999 999", 
+      "generic": "987232323"
+    },
+    "ui": {
+      "growthPercentages": {
+        "users": 12,
+        "courses": 8,
+        "enrollments": 15,
+        "whatsapp": 12
+      },
+      "maxParticipants": 50,
+      "defaultDuration": 180,
+      "defaultPoints": 100,
+      "eventDuration": 5000,
+      "cardAnimationDuration": 300,
+      "modalFadeTime": 200,
+      "toastPosition": "top-right",
+      "defaultPageSize": 10,
+      "maxPageSize": 100,
+      "maxUploadSize": 5242880,
+      "maxVideoSize": 10485760,
+      "allowedImageTypes": ["image/jpeg", "image/png", "image/webp"],
+      "allowedVideoTypes": ["video/mp4", "video/webm"],
+      "animationDurations": {
+        "bounceIn": 600,
+        "spin": 1000,
+        "fade": 200,
+        "slide": 300
+      },
+      "colors": {
+        "primary": "#98d932",
+        "secondary": "#4ecdc4",
+        "accent": "#45b7d1",
+        "background": "#121f3d",
+        "surface": "#1a2744",
+        "error": "#ef4444",
+        "warning": "#f59e0b",
+        "success": "#10b981",
+        "info": "#3b82f6"
+      },
+      "gradients": {
+        "primary": "linear-gradient(135deg, #98d932, #45b7d1)",
+        "dark": "linear-gradient(135deg, #1a2744, #121f3d)"
+      },
+      "statusColors": {
+        "pending": "bg-yellow-500",
+        "approved": "bg-green-500",
+        "rejected": "bg-red-500",
+        "inProgress": "bg-blue-500",
+        "completed": "bg-emerald-500"
+      },
+      "levelColors": {
+        "basico": "bg-green-500",
+        "intermedio": "bg-yellow-500",
+        "avanzado": "bg-red-500"
+      },
+      "eventTypeColors": {
+        "webinar": "blue",
+        "taller": "purple",
+        "conferencia": "green",
+        "curso": "orange",
+        "certificacion": "red"
+      },
+      "tailwindClasses": {
+        "backgrounds": {
+          "dark": "bg-black",
+          "light": "bg-white",
+          "transparent": "bg-transparent",
+          "overlay": "bg-black bg-opacity-50",
+          "overlayDark": "bg-black bg-opacity-75",
+          "modal": "bg-gray-800",
+          "surface": "bg-gray-700",
+          "surfaceLight": "bg-gray-600",
+          "danger": "bg-red-500",
+          "dangerLight": "bg-red-500/30",
+          "success": "bg-green-500",
+          "successLight": "bg-green-600/20",
+          "warning": "bg-yellow-500",
+          "warningLight": "bg-yellow-500/30",
+          "info": "bg-blue-500",
+          "infoLight": "bg-blue-600/20",
+          "accent": "bg-accent",
+          "primary": "bg-primary",
+          "purple": "bg-purple-600/20",
+          "orange": "bg-orange-500",
+          "orangeLight": "bg-orange-500/20"
+        },
+        "text": {
+          "white": "text-white",
+          "black": "text-black",
+          "gray": "text-gray-300",
+          "grayDark": "text-gray-400",
+          "grayLight": "text-gray-600",
+          "primary": "text-primary",
+          "accent": "text-accent",
+          "danger": "text-red-400",
+          "dangerDark": "text-red-500",
+          "success": "text-green-400",
+          "successDark": "text-green-500",
+          "warning": "text-yellow-400",
+          "warningDark": "text-yellow-500",
+          "info": "text-blue-400",
+          "infoDark": "text-blue-500",
+          "purple": "text-purple-300",
+          "purpleDark": "text-purple-400",
+          "orange": "text-orange-400",
+          "orangeDark": "text-orange-500"
+        },
+        "borders": {
+          "gray": "border-gray-600",
+          "grayDark": "border-gray-700",
+          "transparent": "border-transparent",
+          "danger": "border-red-500/30",
+          "warning": "border-yellow-500/30",
+          "success": "border-green-500/30",
+          "purple": "border-purple-500/50"
+        },
+        "hover": {
+          "bgGray": "hover:bg-gray-700",
+          "bgGrayLight": "hover:bg-gray-600",
+          "textWhite": "hover:text-white",
+          "textGray": "hover:text-gray-300",
+          "bgOpacity": "hover:bg-opacity-90",
+          "opacity": "hover:opacity-100"
+        },
+        "gradients": {
+          "primary": "bg-gradient-to-r from-accent/20 to-primary/20",
+          "dark": "bg-gradient-to-t from-black/70 via-transparent to-transparent",
+          "orange": "bg-gradient-to-br from-orange-500/20 to-red-500/20"
+        },
+        "animations": {
+          "spin": "animate-spin",
+          "bounce": "animate-bounce",
+          "pulse": "animate-pulse",
+          "ping": "animate-ping"
+        },
+        "spacing": {
+          "modalPadding": "p-6",
+          "cardPadding": "p-4",
+          "buttonPadding": "px-4 py-2",
+          "inputPadding": "px-3 py-2"
+        },
+        "sizing": {
+          "modalMaxWidth": "max-w-md",
+          "modalLargeWidth": "max-w-4xl",
+          "fullWidth": "w-full",
+          "iconSmall": "w-5 h-5",
+          "iconMedium": "w-6 h-6",
+          "iconLarge": "w-24 h-24"
+        },
+        "zIndex": {
+          "modal": "z-50",
+          "dropdown": "z-40",
+          "overlay": "z-30",
+          "sticky": "z-20",
+          "above": "z-10"
+        }
+      }
+    },
+    "authentication": {
+      "adminCredentials": {
+        "email": "admin@metsel.com",
+        "password": "admin123"
+      },
+      "testUser": {
+        "email": "admin@metsel.com",
+        "password": "admin123",
+        "points": 150
+      }
+    },
+    "placeholders": {
+      "phone": "+51 999 999 999",
+      "phoneSimple": "999 999 999",
+      "phoneColombiano": "+57 300 123 4567",
+      "email": "usuario@ejemplo.com",
+      "socialUrl": "https://ejemplo.com",
+      "courseTitle": "Ej: Fundamentos de Metalurgia",
+      "instructorName": "Dr. Juan Pérez",
+      "courseDescription": "Describe lo que los estudiantes aprenderán en este curso...",
+      "userEmail": "tu@email.com",
+      "userEmailAlt": "tu@correo.com",
+      "userEmailAlt2": "juan@email.com",
+      "courseDuration": "Ej: 8 horas",
+      "tags": "metalurgia, tecnología, industria 4.0",
+      "benefits": "Certificado de participación\nMaterial descargable\nDescuento en curso",
+      "eventTitle": "Ej: Innovaciones en Metalurgia 4.0",
+      "eventDescription": "Descripción breve del evento...",
+      "eventOrganizer": "Nombre del organizador",
+      "eventDuration": "Ej: 2 horas",
+      "optionPrefix": "Opción",
+      "optionImageUrl": "URL de imagen para esta opción (opcional)",
+      "imageUrlGeneric": "Ingresa el título de la foto",
+      "photoDescription": "Descripción opcional de la foto",
+      "notificationTitle": "Título de la notificación",
+      "notificationContent": "Contenido del mensaje...",
+      "areaName": "ej. Metalurgia",
+      "areaSlug": "ej. metalurgia",
+      "areaDescription": "Descripción del área de estudio...",
+      "areaIcon": "📚",
+      "followupDescription": "Describe el seguimiento realizado...",
+      "searchPlaceholder": "Buscar...",
+      "searchCourse": "Buscar curso...",
+      "searchLead": "Buscar por nombre, email, teléfono...",
+      "proUpgradeButton": "Subir a Pro",
+      "whatsappButton": "Unirse al Canal de WhatsApp",
+      "viewMoreButton": "Ver más",
+      "certificateTitle": "¡Certifícate y potencia tu CV!",
+      "certificateDescription": "Transforma tu carrera profesional con certificaciones oficiales...",
+      "certificateBenefit": "💼 Destaca en el mercado laboral",
+      "certificateDetails": "Valida tus conocimientos con certificaciones oficiales...",
+      "certificateMotivation": "El conocimiento certificado es tu mejor inversión profesional",
+      "eventTypeValue": "Valor (ej: taller)",
+      "eventTypeLabel": "Etiqueta (ej: Taller)",
+      "colorHex": "#98d932",
+      "logoPath": "/logo.png",
+      "faviconPath": "/favicon.ico",
+      "platformName": "MetSel Academy",
+      "platformDescription": "Academia especializada en Metalurgia, Minería y Geología",
+      "welcomeMessage": "¡Hola! 👋 Gracias por tu interés...",
+      "courseObjective": "Ej: Crear aplicaciones web modernas",
+      "courseRequirement": "Ej: Conocimientos básicos de HTML"
+    },
+    "messages": {
+      "enrollmentSuccess": "¡Te has inscrito exitosamente!",
+      "courseCompleted": "¡Felicidades! Has completado el curso",
+      "pointsEarned": "Has ganado puntos por tu progreso",
+      "welcomeBack": "¡Bienvenido de vuelta!",
+      "registrationSuccess": "¡Registro exitoso! Bienvenido a MetSel Academy",
+      "loginSuccess": "Has iniciado sesión correctamente",
+      "logoutSuccess": "Has cerrado sesión correctamente",
+      "profileUpdated": "Tu perfil ha sido actualizado",
+      "passwordChanged": "Tu contraseña ha sido cambiada exitosamente",
+      "courseEnrolled": "Te has inscrito en el curso exitosamente",
+      "certificateGenerated": "Tu certificado está siendo generado",
+      "reviewSubmitted": "Tu reseña ha sido enviada para moderación",
+      "pointsAdded": "Se han agregado puntos a tu cuenta",
+      "levelUp": "¡Felicidades! Has subido de nivel",
+      "eventRegistered": "Te has registrado al evento exitosamente",
+      "notificationSent": "La notificación ha sido enviada",
+      "configSaved": "La configuración ha sido guardada",
+      "leadCaptured": "Gracias por tu interés. Te contactaremos pronto",
+      "leadSuccess": "¡Información enviada correctamente!",
+      "examCompleted": "Has completado el examen",
+      "discountApplied": "Se ha aplicado tu descuento",
+      "errorGeneric": "Ha ocurrido un error. Por favor intenta nuevamente",
+      "errorUnexpected": "Ha ocurrido un error inesperado",
+      "errorConnection": "Error de conexión",
+      "errorNetwork": "Error de conexión. Verifica tu internet.",
+      "errorAuth": "Error de autenticación. Por favor inicia sesión",
+      "errorAuthAgain": "Por favor, inicia sesión nuevamente",
+      "errorPermission": "No tienes permisos para realizar esta acción",
+      "errorNotFound": "El recurso solicitado no fue encontrado",
+      "errorServer": "Error del servidor. Por favor intenta más tarde",
+      "errorServerGeneric": "Error del servidor",
+      "errorFileType": "Tipo de archivo no permitido",
+      "errorFileSize": "El archivo excede el tamaño máximo de 5MB",
+      "errorFileRead": "Error al leer el archivo",
+      "errorApi": "Error de API",
+      "errorFormSubmission": "Error in form submission",
+      "confirmDelete": "¿Estás seguro de que quieres eliminar este elemento?",
+      "confirmLogout": "¿Estás seguro de que quieres cerrar sesión?",
+      "confirmAction": "¿Estás seguro de que quieres realizar esta acción?",
+      "confirmPurchase": "Confirmar Compra",
+      "loading": "Cargando...",
+      "saving": "Guardando...",
+      "processing": "Procesando...",
+      "updating": "Actualizando...",
+      "creating": "Creando...",
+      "deleting": "Eliminando...",
+      "searching": "Buscando...",
+      "uploading": "Subiendo...",
+      "downloading": "Descargando...",
+      "savingChanges": "Guardar Cambios",
+      "savePreferences": "Guardar Preferencias",
+      "updateCourse": "Actualizar Curso",
+      "createCourse": "Crear Curso",
+      "updateProfile": "Actualizar",
+      "create": "Crear",
+      "noEventsMessage": "No hay eventos en esta categoría por el momento",
+      "uploadPhotosMessage": "Sube tus fotos de certificados, eventos o momentos especiales",
+      "activeNow": "Activo ahora",
+      "spaceUsed": "Espacio usado",
+      "storageLimit": "50 MB",
+      "popupBlocked": "Tu navegador bloqueó el popup. Haz click en el botón para abrir WhatsApp:",
+      "copyButton": "Copiar",
+      "openWhatsApp": "Abrir WhatsApp",
+      "newCoursesAvailable": "🆕 ¡Nuevos cursos de {{area}} disponibles! {{coursesList}}. Inscríbete con 20% descuento: {{link}}"
+    },
+    "whatsappConfig": {
+      "channelUrl": "https://whatsapp.com/channel/0029VaAqUub9Vz0pnXzMzR2w",
+      "enrollmentTemplate": "https://whatsapp.com/send?phone=573001234567&text=Hola%2C%20quiero%20inscribirme%20en%20el%20curso%20de%20Tratamientos%20T%C3%A9rmicos"
+    },
+    "validation": {
+      "minPasswordLength": 8,
+      "maxPasswordLength": 128,
+      "minNameLength": 2,
+      "maxNameLength": 50,
+      "minPhoneLength": 7,
+      "maxPhoneLength": 15,
+      "minCourseTitle": 5,
+      "maxCourseTitle": 100,
+      "minDescription": 10,
+      "maxDescription": 500,
+      "minReviewComment": 20,
+      "maxReviewComment": 1000,
+      "emailRegex": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+      "phoneRegex": "^[+]?[0-9\\s-()]+$",
+      "hexColorRegex": "^#[0-9A-Fa-f]{6}$",
+      "youtubeRegex": "(youtube\\.com|youtu\\.be)",
+      "urlRegex": "^https?://[\\w\\-._~:/?#[\\]@!$&'()*+,;=.]+$"
+    },
+    "limits": {
+      "maxLoginAttempts": 5,
+      "lockoutDuration": 900,
+      "sessionTimeout": 3600,
+      "maxCoursesPerUser": 10,
+      "maxFilesPerUpload": 5,
+      "maxReviewsPerCourse": 3,
+      "maxEventsPerMonth": 20,
+      "maxNotificationsPerDay": 50,
+      "freeVideosLimit": 3,
+      "trialDays": 7,
+      "refundDays": 30,
+      "certificateValidityYears": 2,
+      "apiRequestTimeout": 10000,
+      "searchDebounceMs": 500,
+      "autoSaveIntervalMs": 30000,
+      "retryDelayMs": 2000,
+      "loadingDelayMs": 1500,
+      "updateIntervalMs": 30000,
+      "notificationCheckIntervalMs": 30000,
+      "whatsappDelayMs": 3000,
+      "whatsappWebinarDelayMs": 5000,
+      "whatsappGroupDelayMs": 8000,
+      "whatsappFollowUpDelayMs": 10000,
+      "modalAnimationMs": 500,
+      "toastDurationMs": 4000,
+      "toastErrorDurationMs": 6000,
+      "profileUpdateDelayMs": 1000,
+      "maxStorageMB": 50,
+      "photoSizeMB": 0.5,
+      "paginationDefaultSize": 10,
+      "eventCheckIntervalMs": 10000,
+      "demoEventDelaySeconds": 30,
+      "notificationMarkReadDelayMs": 3000,
+      "coursePromotionDelaySeconds": 30,
+      "leadMagnetDelaySeconds": 10,
+      "popupZIndex": 50,
+      "modalMaxWidth": 400,
+      "textareaMaxHeight": 80,
+      "galleryPhotoMaxCount": 100,
+      "dashboardUpdateIntervalSeconds": 30,
+      "sessionUpdateIntervalSeconds": 30,
+      "daysInMonth": 30,
+      "daysInYear": 365,
+      "hoursToMilliseconds": 3600000,
+      "minutesToMilliseconds": 60000,
+      "secondsToMilliseconds": 1000
+    },
+    "defaults": {
+      "currency": "USD",
+      "language": "es",
+      "timezone": "America/Bogota",
+      "country": "CO",
+      "dateFormat": "DD/MM/YYYY",
+      "timeFormat": "HH:mm",
+      "weekStart": "monday",
+      "role": "user",
+      "status": "active",
+      "points": 100,
+      "discount": 0,
+      "rating": 0,
+      "progress": 0,
+      "attempts": 0,
+      "duration": 180,
+      "price": 0,
+      "capacity": 50,
+      "minParticipants": 5,
+      "maxParticipants": 100
+    },
+    "statistics": {
+      "averageRating": 4.5,
+      "totalUsers": 15420,
+      "totalCourses": 156,
+      "totalHours": 2340,
+      "completionRate": 73,
+      "revenueThisMonth": 45600,
+      "newUsersThisWeek": 234,
+      "conversionRate": 12.5,
+      "retentionRate": 85,
+      "engagementScore": 78
+    },
+    "mock": {
+      "randomDelayMin": 200,
+      "randomDelayMax": 700,
+      "videoDuration": 1800,
+      "progressIncrement": 10,
+      "uploadProgressInterval": 100,
+      "dniDefault": "00000000",
+      "tokenExpiry": 86400000,
+      "certificatePrefix": "CERT",
+      "discountCodePrefix": "PROMO",
+      "invoicePrefix": "INV"
+    },
+    "routes": {
+      "auth": {
+        "login": "/auth/login",
+        "register": "/auth/register",
+        "refresh": "/auth/refresh",
+        "logout": "/auth/logout",
+        "me": "/auth/me"
+      },
+      "admin": {
+        "dashboard": "/admin/dashboard",
+        "courses": "/admin/courses",
+        "areas": "/admin/areas",
+        "leads": "/admin/leads",
+        "reviews": "/admin/reviews",
+        "whatsapp": "/admin/whatsapp",
+        "config": "/admin/config",
+        "system": "/admin/system",
+        "exams": "/admin/exams",
+        "analytics": "/admin/analytics",
+        "users": "/admin/users",
+        "content": "/admin/content",
+        "profile": "/admin/profile",
+        "settings": "/admin/settings"
+      },
+      "user": {
+        "dashboard": "/user/dashboard",
+        "courses": "/user/courses",
+        "profile": "/user/profile",
+        "certificates": "/user/certificates",
+        "favorites": "/user/favorites",
+        "learning": "/user/learning",
+        "notifications": "/user/notifications"
+      },
+      "api": {
+        "base": "/api",
+        "leads": "/api/leads",
+        "reviews": "/api/reviews",
+        "whatsapp": "/api/whatsapp/interactions",
+        "content": "/content/courses",
+        "courseById": "/content/courses/:id",
+        "courseByArea": "/content/courses/area/:area"
+      }
+    },
+    "fileExtensions": {
+      "documents": [".pdf", ".doc", ".docx", ".xlsx", ".xls", ".ppt", ".pptx"],
+      "images": [".jpg", ".jpeg", ".png", ".webp", ".gif", ".svg"],
+      "videos": [".mp4", ".webm", ".avi", ".mov"],
+      "audio": [".mp3", ".wav", ".ogg"],
+      "code": [".js", ".jsx", ".ts", ".tsx", ".json", ".css", ".html"]
+    },
+    "icons": {
+      "dashboard": "📊",
+      "courses": "📚",
+      "areas": "📁",
+      "leads": "👥",
+      "reviews": "⭐",
+      "whatsapp": "💬",
+      "config": "⚙️",
+      "system": "🔧",
+      "user": "👤",
+      "certificate": "🎓",
+      "favorites": "❤️",
+      "learning": "📖",
+      "notifications": "🔔",
+      "success": "✅",
+      "error": "❌",
+      "warning": "⚠️",
+      "info": "ℹ️",
+      "search": "🔍",
+      "filter": "🔽",
+      "sort": "↕️",
+      "calendar": "📅",
+      "clock": "🕐",
+      "location": "📍",
+      "phone": "📱",
+      "email": "📧",
+      "link": "🔗",
+      "download": "⬇️",
+      "upload": "⬆️",
+      "edit": "✏️",
+      "delete": "🗑️",
+      "add": "➕",
+      "remove": "➖",
+      "play": "▶️",
+      "pause": "⏸️",
+      "stop": "⏹️",
+      "next": "⏭️",
+      "previous": "⏮️",
+      "star": "⭐",
+      "fire": "🔥",
+      "trophy": "🏆",
+      "medal": "🏅",
+      "badge": "🎖️",
+      "lock": "🔒",
+      "unlock": "🔓",
+      "key": "🔑"
+    },
+    "brandNames": {
+      "company": "MetSel Academy",
+      "shortName": "MetSel",
+      "adminShort": "MA",
+      "copyright": "© 2024 MetSel Academy. Todos los derechos reservados."
+    },
+    "areaNames": {
+      "metalurgia": {
+        "id": "metalurgia",
+        "name": "Metalurgia",
+        "displayName": "Metalurgia",
+        "icon": "⚙️"
+      },
+      "mineria": {
+        "id": "mineria",
+        "name": "Minería",
+        "displayName": "Minería",
+        "icon": "⛏️"
+      },
+      "geologia": {
+        "id": "geologia",
+        "name": "Geología",
+        "displayName": "Geología",
+        "icon": "🗻"
+      }
+    },
+    "levels": {
+      "basico": {
+        "id": "basico",
+        "name": "Básico",
+        "displayName": "Básico",
+        "color": "bg-green-500",
+        "order": 1,
+        "description": "Para principiantes sin experiencia previa"
+      },
+      "intermedio": {
+        "id": "intermedio",
+        "name": "Intermedio",
+        "displayName": "Intermedio",
+        "color": "bg-yellow-500",
+        "order": 2,
+        "description": "Requiere conocimientos básicos del área"
+      },
+      "avanzado": {
+        "id": "avanzado",
+        "name": "Avanzado",
+        "displayName": "Avanzado",
+        "color": "bg-red-500",
+        "order": 3,
+        "description": "Para profesionales con experiencia"
+      }
+    },
+    "loyaltyLevels": {
+      "bronce": {
+        "id": "bronce",
+        "name": "Bronce",
+        "minPoints": 0,
+        "maxPoints": 299,
+        "color": "#CD7F32",
+        "icon": "🥉"
+      },
+      "plata": {
+        "id": "plata",
+        "name": "Plata",
+        "minPoints": 300,
+        "maxPoints": 599,
+        "color": "#C0C0C0",
+        "icon": "🥈"
+      },
+      "oro": {
+        "id": "oro",
+        "name": "Oro",
+        "minPoints": 600,
+        "maxPoints": 999999,
+        "color": "#FFD700",
+        "icon": "🥇"
+      }
+    },
+    "examMessages": {
+      "lowScore": "Te recomendamos empezar con cursos básicos para construir una base sólida.",
+      "mediumScore": "Tienes una buena base. Cursos intermedios serán perfectos para ti.",
+      "highScore": "¡Excelente conocimiento! Estás listo para cursos avanzados."
+    }
+  },
+  "mockTestData": {
+    "instructors": [
+      "Dr. Carlos Rodriguez",
+      "Ing. María González", 
+      "Dr. Roberto Mendez",
+      "Ing. Pedro Vargas",
+      "Ing. Ana Gutierrez",
+      "Dr. Luis Martinez",
+      "Dr. Sofia Herrera",
+      "Dr. Miguel Torres",
+      "Prof. Laura Fernández",
+      "Ing. Juan Carlos Pérez"
+    ],
+    "studentNames": [
+      "Carlos Mendoza",
+      "Ana María Torres",
+      "Roberto Silva",
+      "María Elena Vásquez",
+      "Luis Fernández",
+      "Ana Rodriguez",
+      "Fernando Castro",
+      "Claudia Herrera",
+      "Javier Mendoza",
+      "Miguel Santos",
+      "Carmen Ruiz",
+      "Eduardo Vargas",
+      "Ricardo Torres",
+      "Andrea Morales",
+      "Patricia Díaz",
+      "Jorge Ramírez"
+    ],
+    "universities": [
+      "Universidad Nacional",
+      "Universidad de los Andes",
+      "Universidad Técnica",
+      "Instituto Tecnológico"
+    ],
+    "companies": [
+      "MinTech Solutions",
+      "Metalurgia Avanzada S.A.",
+      "Geología Aplicada Corp",
+      "Minería Sustentable Ltda"
+    ],
+    "courseTitles": {
+      "metalurgia": [
+        "Fundamentos de Metalurgia",
+        "Tratamientos Térmicos",
+        "Metalurgia Física Avanzada",
+        "Corrosión y Protección de Metales"
+      ],
+      "mineria": [
+        "Introducción a la Minería",
+        "Minería Sustentable",
+        "Perforación y Voladura",
+        "Procesamiento de Minerales"
+      ],
+      "geologia": [
+        "Geología Estructural",
+        "Petrografía y Mineralogía",
+        "Geofísica Aplicada",
+        "Hidrogeología"
+      ]
+    },
+    "lessonTitles": [
+      "Introducción y Conceptos Básicos",
+      "Fundamentos Teóricos",
+      "Aplicaciones Prácticas",
+      "Casos de Estudio",
+      "Evaluación y Análisis",
+      "Técnicas Avanzadas",
+      "Laboratorio Virtual",
+      "Proyecto Final"
+    ],
+    "materialTypes": [
+      { "name": "Manual.pdf", "type": "pdf", "icon": "📄" },
+      { "name": "Presentación.pptx", "type": "pptx", "icon": "📊" },
+      { "name": "Datos.xlsx", "type": "excel", "icon": "📈" },
+      { "name": "Video.mp4", "type": "video", "icon": "🎥" },
+      { "name": "Guía.docx", "type": "doc", "icon": "📝" }
+    ],
+    "videoFiles": [
+      "demo_video_1.mp4",
+      "demo_video_2.mp4",
+      "lesson_1.mp4",
+      "lesson_2.mp4",
+      "lesson_3.mp4",
+      "intro_metalurgia.mp4",
+      "intro_mineria.mp4",
+      "intro_geologia.mp4"
+    ],
+    "certificateTexts": [
+      "Por haber completado satisfactoriamente el curso",
+      "En reconocimiento a su destacada participación",
+      "Por su excelente desempeño académico en"
+    ],
+    "emailDomains": [
+      "@email.com",
+      "@gmail.com",
+      "@hotmail.com",
+      "@outlook.com",
+      "@universidad.edu",
+      "@empresa.com"
+    ],
+    "phoneFormats": [
+      "+57 300 XXX XXXX",
+      "+57 301 XXX XXXX",
+      "+57 302 XXX XXXX",
+      "+57 305 XXX XXXX",
+      "+51 9XX XXX XXX",
+      "+56 9 XXXX XXXX"
+    ],
+    "progressRanges": {
+      "low": { "min": 0, "max": 30 },
+      "medium": { "min": 31, "max": 70 },
+      "high": { "min": 71, "max": 99 },
+      "completed": 100
+    },
+    "ratingRanges": {
+      "poor": { "min": 1.0, "max": 2.9 },
+      "average": { "min": 3.0, "max": 3.9 },
+      "good": { "min": 4.0, "max": 4.5 },
+      "excellent": { "min": 4.6, "max": 5.0 }
+    },
+    "priceRanges": {
+      "free": 0,
+      "low": { "min": 10, "max": 50 },
+      "medium": { "min": 51, "max": 100 },
+      "high": { "min": 101, "max": 500 }
+    },
+    "pointRanges": {
+      "basic": { "min": 10, "max": 50 },
+      "intermediate": { "min": 51, "max": 100 },
+      "advanced": { "min": 101, "max": 200 },
+      "premium": { "min": 201, "max": 500 }
     }
   },
   "users": [
@@ -498,6 +1362,27 @@
       "points": 100,
       "createdAt": "2025-01-01T00:00:00.000Z",
       "id": 3
+    },
+    {
+      "name": "Test",
+      "email": "test@test.com",
+      "password": "123456",
+      "role": "user",
+      "id": 4
+    },
+    {
+      "name": "sdfg",
+      "email": "gian@gmail.com",
+      "phone": "987232323",
+      "password": "Akisemi02",
+      "role": "user",
+      "avatar": null,
+      "points": 100,
+      "area": "metalurgia",
+      "interests": [],
+      "acceptMarketing": false,
+      "createdAt": "2025-09-11T14:34:21.698Z",
+      "id": 5
     }
   ]
 }

@@ -1,13 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { useAuthStore, useUIStore } from '../../store'
 import { Button, Input } from '../../components/ui'
 import { validateEmail } from '../../utils/testUtils'
+import hardcodedValuesService from '../../services/hardcodedValuesService'
 
 const Login = () => {
   const navigate = useNavigate()
   const { login } = useAuthStore()
-  const { showSuccess, showError, loading, setLoading } = useUIStore()
+  const { showSuccess, showError } = useUIStore()
+  const [hardcodedValues, setHardcodedValues] = useState(null)
+  const [loading, setLoading] = useState(false)
   
   const [formData, setFormData] = useState({
     email: '',
@@ -15,6 +18,18 @@ const Login = () => {
     rememberMe: false
   })
   const [errors, setErrors] = useState({})
+
+  useEffect(() => {
+    const loadHardcodedValues = async () => {
+      try {
+        const values = await hardcodedValuesService.getValues()
+        setHardcodedValues(values)
+      } catch (error) {
+        console.error('Error loading hardcoded values:', error)
+      }
+    }
+    loadHardcodedValues()
+  }, [])
 
   const validateForm = () => {
     const newErrors = {}
@@ -38,12 +53,42 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     
-    if (!validateForm()) return
+    console.log('=== LOGIN INICIADO ===')
+    console.log('FormData:', formData)
     
+    if (!validateForm()) {
+      console.log('Validación falló')
+      return
+    }
+    
+    console.log('Configurando loading = true')
     setLoading(true)
+    
     try {
-      // Simulación de login - En producción esto llamaría a tu API real
-      const user = await simulateLogin(formData.email, formData.password)
+      console.log('Intentando conectar al backend...')
+      console.log('URL actual:', window.location.href)
+      
+      // Buscar usuario en el backend usando el proxy
+      const response = await fetch('/api/users', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      })
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+      
+      console.log('Response status:', response.status)
+      const users = await response.json()
+      console.log('Usuarios obtenidos:', users.length)
+      
+      // Buscar usuario con email y password coincidentes
+      const user = users.find(u => 
+        u.email === formData.email && 
+        u.password === formData.password
+      )
       
       if (user) {
         login(user, formData.rememberMe)
@@ -59,7 +104,8 @@ const Login = () => {
         showError('Credenciales inválidas')
       }
     } catch (error) {
-      showError('Error al iniciar sesión')
+      console.error('Error al iniciar sesión:', error)
+      showError('Error al conectar con el servidor')
     } finally {
       setLoading(false)
     }
@@ -70,11 +116,12 @@ const Login = () => {
     await new Promise(resolve => setTimeout(resolve, 1000))
     
     // Usuarios de prueba
-    if (email === 'admin@metsel.com' && password === 'admin123') {
+    const adminCreds = hardcodedValues?.authentication?.adminCredentials
+    if (adminCreds && email === adminCreds.email && password === adminCreds.password) {
       return {
         id: '1',
         name: 'Admin User',
-        email: 'admin@metsel.com',
+        email: adminCreds.email,
         role: 'admin',
         avatar: null,
         points: 0
@@ -124,7 +171,7 @@ const Login = () => {
             Credenciales de prueba:
           </p>
           <div className="space-y-1 text-xs text-text-secondary">
-            <p>Admin: admin@metsel.com / admin123</p>
+            <p>Admin: {hardcodedValues?.authentication?.adminCredentials?.email || 'admin@metsel.com'} / {hardcodedValues?.authentication?.adminCredentials?.password || 'admin123'}</p>
             <p>Usuario: user@test.com / user123</p>
           </div>
         </div>

@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useAuthStore, useUIStore } from '../../store'
 import { Button, Input, Modal } from '../ui'
 import apiClient from '../../api/client'
-import whatsappService from '../../services/whatsappService'
+import { whatsappService } from '../../services/whatsappService'
+import hardcodedValuesService from '../../services/hardcodedValuesService'
 
 const LeadCaptureForm = ({ 
   isOpen, 
@@ -14,6 +15,25 @@ const LeadCaptureForm = ({
 }) => {
   const { selectedArea, guestMode } = useAuthStore()
   const { showSuccess, showError } = useUIStore()
+  const [hardcodedValues, setHardcodedValues] = useState({})
+
+  useEffect(() => {
+    const loadHardcodedValues = async () => {
+      try {
+        const values = await hardcodedValuesService.getValues()
+        setHardcodedValues(values)
+      } catch (error) {
+        console.error('Error loading hardcoded values:', error)
+        setHardcodedValues({
+          placeholders: {
+            email: 'tu@email.com',
+            phone: '+51 999 999 999'
+          }
+        })
+      }
+    }
+    loadHardcodedValues()
+  }, [])
   
   const [formData, setFormData] = useState({
     name: '',
@@ -163,7 +183,7 @@ const LeadCaptureForm = ({
             value={formData.email}
             onChange={(e) => handleInputChange('email', e.target.value)}
             error={errors.email}
-            placeholder="tu@email.com"
+            placeholder={hardcodedValues?.placeholders?.email || 'tu@email.com'}
             required
           />
         </div>
@@ -173,7 +193,7 @@ const LeadCaptureForm = ({
           value={formData.phone}
           onChange={(e) => handleInputChange('phone', e.target.value)}
           error={errors.phone}
-          placeholder="+51 999 999 999"
+          placeholder={hardcodedValues?.placeholders?.phone || '+51 999 999 999'}
           required
         />
 

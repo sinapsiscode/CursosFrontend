@@ -1,715 +1,449 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Card, Button } from '../../components/ui'
-import { useAuthStore, useUIStore } from '../../store'
+import { loyaltyService } from '../../services/loyaltyService'
+import { useUIStore, useAuthStore } from '../../store'
 
 const LoyaltyProgram = () => {
   const navigate = useNavigate()
-  const { user } = useAuthStore()
-  const { showSuccess, showError } = useUIStore()
-  
-  const [points, setPoints] = useState({
-    available: 0,
-    pending: 0,
-    total: 0,
-    level: 'bronze',
-    nextLevel: 'silver',
-    pointsToNext: 500
-  })
-  
-  const [history, setHistory] = useState([])
-  const [rewards, setRewards] = useState([])
-  const [selectedReward, setSelectedReward] = useState(null)
-  const [showRedeemModal, setShowRedeemModal] = useState(false)
-  const [activeTab, setActiveTab] = useState('overview')
-  const [filter, setFilter] = useState('all')
+  const { showToast } = useUIStore()
+  const { isAuthenticated } = useAuthStore()
+  const [activeTab, setActiveTab] = useState('overview') // overview, rewards, history
+  const [userLoyaltyData, setUserLoyaltyData] = useState(null)
   const [loading, setLoading] = useState(true)
+  const [redeemingReward, setRedeemingReward] = useState(null)
 
   useEffect(() => {
-    loadLoyaltyData()
-  }, [])
-
-  const loadLoyaltyData = async () => {
-    try {
-      setLoading(true)
-      
-      // Simular carga de datos de puntos
-      setPoints({
-        available: user?.points || 1250,
-        pending: 150,
-        total: 3450,
-        level: getLevelFromPoints(user?.points || 1250),
-        nextLevel: getNextLevel(user?.points || 1250),
-        pointsToNext: getPointsToNextLevel(user?.points || 1250)
-      })
-      
-      // Simular historial de transacciones
-      setHistory([
-        {
-          id: 1,
-          type: 'earned',
-          amount: 100,
-          description: 'Completaste el curso de JavaScript Avanzado',
-          date: new Date(Date.now() - 1000 * 60 * 60 * 24 * 2),
-          status: 'completed',
-          icon: 'course'
-        },
-        {
-          id: 2,
-          type: 'earned',
-          amount: 50,
-          description: 'Referiste a un nuevo estudiante',
-          date: new Date(Date.now() - 1000 * 60 * 60 * 24 * 5),
-          status: 'completed',
-          icon: 'referral'
-        },
-        {
-          id: 3,
-          type: 'redeemed',
-          amount: -200,
-          description: 'Canjeaste descuento del 20%',
-          date: new Date(Date.now() - 1000 * 60 * 60 * 24 * 7),
-          status: 'completed',
-          icon: 'discount'
-        },
-        {
-          id: 4,
-          type: 'earned',
-          amount: 150,
-          description: 'Completaste examen con 100%',
-          date: new Date(Date.now() - 1000 * 60 * 60 * 24 * 10),
-          status: 'pending',
-          icon: 'exam'
-        },
-        {
-          id: 5,
-          type: 'earned',
-          amount: 25,
-          description: 'Escribiste una reseña',
-          date: new Date(Date.now() - 1000 * 60 * 60 * 24 * 12),
-          status: 'completed',
-          icon: 'review'
-        },
-        {
-          id: 6,
-          type: 'earned',
-          amount: 75,
-          description: 'Asististe a evento en vivo',
-          date: new Date(Date.now() - 1000 * 60 * 60 * 24 * 15),
-          status: 'completed',
-          icon: 'event'
-        },
-        {
-          id: 7,
-          type: 'expired',
-          amount: -50,
-          description: 'Puntos expirados (más de 1 año)',
-          date: new Date(Date.now() - 1000 * 60 * 60 * 24 * 20),
-          status: 'completed',
-          icon: 'expired'
-        }
-      ])
-      
-      // Simular catálogo de recompensas
-      setRewards([
-        {
-          id: 1,
-          title: 'Descuento 10%',
-          description: 'En tu próximo curso',
-          points: 500,
-          category: 'discount',
-          available: true,
-          popular: false
-        },
-        {
-          id: 2,
-          title: 'Descuento 20%',
-          description: 'En cualquier curso',
-          points: 1000,
-          category: 'discount',
-          available: true,
-          popular: true
-        },
-        {
-          id: 3,
-          title: 'Curso Gratis',
-          description: 'Curso básico a elección',
-          points: 2000,
-          category: 'course',
-          available: false,
-          popular: true
-        },
-        {
-          id: 4,
-          title: 'Mentoría 1:1',
-          description: 'Sesión de 30 minutos',
-          points: 1500,
-          category: 'mentoring',
-          available: false,
-          popular: false
-        },
-        {
-          id: 5,
-          title: 'Certificado Premium',
-          description: 'Con verificación blockchain',
-          points: 750,
-          category: 'certificate',
-          available: true,
-          popular: false
-        },
-        {
-          id: 6,
-          title: 'Acceso VIP',
-          description: 'Eventos exclusivos por 3 meses',
-          points: 2500,
-          category: 'vip',
-          available: false,
-          popular: true
-        }
-      ])
-      
-    } catch (error) {
-      showError('Error al cargar datos del programa')
-    } finally {
-      setLoading(false)
-    }
-  }
-
-  const getLevelFromPoints = (points) => {
-    if (points < 500) return 'bronze'
-    if (points < 1500) return 'silver'
-    if (points < 3000) return 'gold'
-    if (points < 5000) return 'platinum'
-    return 'diamond'
-  }
-
-  const getNextLevel = (points) => {
-    if (points < 500) return 'silver'
-    if (points < 1500) return 'gold'
-    if (points < 3000) return 'platinum'
-    if (points < 5000) return 'diamond'
-    return null
-  }
-
-  const getPointsToNextLevel = (points) => {
-    if (points < 500) return 500 - points
-    if (points < 1500) return 1500 - points
-    if (points < 3000) return 3000 - points
-    if (points < 5000) return 5000 - points
-    return 0
-  }
-
-  const getLevelColor = (level) => {
-    const colors = {
-      bronze: 'text-orange-600',
-      silver: 'text-gray-400',
-      gold: 'text-yellow-500',
-      platinum: 'text-purple-500',
-      diamond: 'text-blue-400'
-    }
-    return colors[level] || 'text-gray-400'
-  }
-
-  const getLevelIcon = (level) => {
-    const icons = {
-      bronze: '🥉',
-      silver: '🥈',
-      gold: '🥇',
-      platinum: '💎',
-      diamond: '💠'
-    }
-    return icons[level] || '🏅'
-  }
-
-  const getTransactionIcon = (icon) => {
-    const icons = {
-      course: '📚',
-      referral: '👥',
-      discount: '🎟️',
-      exam: '✅',
-      review: '⭐',
-      event: '🎤',
-      expired: '⏰'
-    }
-    return icons[icon] || '💰'
-  }
-
-  const getCategoryIcon = (category) => {
-    const icons = {
-      discount: '🎟️',
-      course: '📚',
-      mentoring: '👨‍🏫',
-      certificate: '📜',
-      vip: '👑'
-    }
-    return icons[category] || '🎁'
-  }
-
-  const formatDate = (date) => {
-    return new Intl.DateTimeFormat('es-ES', {
-      day: 'numeric',
-      month: 'short',
-      year: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit'
-    }).format(new Date(date))
-  }
-
-  const handleRedeemReward = (reward) => {
-    if (reward.points > points.available) {
-      showError('No tienes suficientes puntos')
+    if (!isAuthenticated) {
+      navigate('/')
       return
     }
-    setSelectedReward(reward)
-    setShowRedeemModal(true)
+    loadLoyaltyData()
+  }, [isAuthenticated])
+
+  const loadLoyaltyData = () => {
+    const data = loyaltyService.getUserPoints()
+    const currentLevel = loyaltyService.getCurrentLevel()
+    const levelProgress = loyaltyService.getLevelProgress()
+    const pointsToNext = loyaltyService.getPointsToNextLevel()
+    const config = loyaltyService.config
+
+    setUserLoyaltyData({
+      ...data,
+      currentLevel,
+      levelProgress,
+      pointsToNext,
+      levelConfig: config.levels[currentLevel],
+      availableRewards: loyaltyService.getAvailableRewards(),
+      redeemedRewards: loyaltyService.getRedeemedRewards(),
+      transactions: loyaltyService.getTransactionHistory(20)
+    })
+    setLoading(false)
   }
 
-  const confirmRedeem = async () => {
-    try {
-      // Simular canje
-      await new Promise(resolve => setTimeout(resolve, 1000))
-      
-      // Actualizar puntos
-      setPoints(prev => ({
-        ...prev,
-        available: prev.available - selectedReward.points
-      }))
-      
-      // Agregar al historial
-      const newTransaction = {
-        id: history.length + 1,
-        type: 'redeemed',
-        amount: -selectedReward.points,
-        description: `Canjeaste ${selectedReward.title}`,
-        date: new Date(),
-        status: 'completed',
-        icon: 'discount'
-      }
-      setHistory([newTransaction, ...history])
-      
-      showSuccess('¡Recompensa canjeada exitosamente!')
-      setShowRedeemModal(false)
-      setSelectedReward(null)
-    } catch (error) {
-      showError('Error al canjear recompensa')
+  const handleRedeemReward = async (rewardId) => {
+    setRedeemingReward(rewardId)
+    
+    const result = await loyaltyService.redeemReward(rewardId)
+    
+    if (result.success) {
+      showToast('¡Recompensa canjeada exitosamente!', 'success')
+      loadLoyaltyData()
+    } else {
+      showToast(result.error || 'Error al canjear la recompensa', 'error')
+    }
+    
+    setRedeemingReward(null)
+  }
+
+  const handleClaimDailyBonus = async () => {
+    const result = await loyaltyService.addDailyLoginPoints()
+    
+    if (result.success) {
+      showToast(`¡+${result.transaction.amount} puntos diarios reclamados!`, 'success')
+      loadLoyaltyData()
+    } else {
+      showToast(result.error, 'info')
     }
   }
 
-  const filteredHistory = history.filter(item => {
-    if (filter === 'all') return true
-    if (filter === 'earned') return item.type === 'earned'
-    if (filter === 'redeemed') return item.type === 'redeemed' || item.type === 'expired'
-    if (filter === 'pending') return item.status === 'pending'
-    return true
-  })
-
-  const filteredRewards = rewards.filter(reward => 
-    reward.available ? reward.points <= points.available : true
-  )
-
-  if (loading) {
+  if (loading || !userLoyaltyData) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-accent"></div>
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent mx-auto mb-4"></div>
+          <p className="text-gray-400">Cargando programa de fidelización...</p>
+        </div>
       </div>
     )
   }
 
+  const categoryIcons = {
+    cupones: '🎟️',
+    cursos: '📚',
+    servicios: '🛠️',
+    eventos: '🎭',
+    merchandising: '🎁'
+  }
+
   return (
-    <div className="max-w-7xl mx-auto">
-      {/* Header */}
-      <div className="mb-6">
-        <h1 className="text-3xl font-bold text-text-primary mb-2">
-          Programa de Lealtad
-        </h1>
-        <p className="text-text-secondary">
-          Gana puntos con cada acción y canjéalos por increíbles recompensas
-        </p>
-      </div>
-
-      {/* Resumen de Puntos */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-        <Card className="p-6 bg-gradient-to-br from-accent/20 to-primary/20">
-          <div className="flex items-center justify-between mb-4">
+    <div className="min-h-screen bg-background py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header con información del usuario */}
+        <div className="bg-gradient-to-r from-purple-600/20 to-pink-600/20 rounded-2xl p-8 mb-8">
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Información de puntos */}
             <div>
-              <p className="text-sm text-text-secondary mb-1">Puntos Disponibles</p>
-              <p className="text-3xl font-bold text-accent">{points.available.toLocaleString()}</p>
-            </div>
-            <span className="text-4xl">💰</span>
-          </div>
-          <div className="text-sm text-text-secondary">
-            +{points.pending} pendientes
-          </div>
-        </Card>
-
-        <Card className="p-6">
-          <div className="flex items-center justify-between mb-4">
-            <div>
-              <p className="text-sm text-text-secondary mb-1">Nivel Actual</p>
-              <p className={`text-2xl font-bold capitalize ${getLevelColor(points.level)}`}>
-                {points.level}
-              </p>
-            </div>
-            <span className="text-4xl">{getLevelIcon(points.level)}</span>
-          </div>
-          {points.nextLevel && (
-            <div>
-              <div className="flex items-center justify-between text-sm text-text-secondary mb-1">
-                <span>Próximo: {points.nextLevel}</span>
-                <span>{points.pointsToNext} pts</span>
-              </div>
-              <div className="w-full bg-gray-700 rounded-full h-2">
-                <div 
-                  className="bg-accent h-2 rounded-full transition-all"
-                  style={{ 
-                    width: `${((points.available % 1500) / 1500) * 100}%` 
-                  }}
-                />
-              </div>
-            </div>
-          )}
-        </Card>
-
-        <Card className="p-6">
-          <div className="flex items-center justify-between mb-4">
-            <div>
-              <p className="text-sm text-text-secondary mb-1">Total Histórico</p>
-              <p className="text-3xl font-bold text-text-primary">{points.total.toLocaleString()}</p>
-            </div>
-            <span className="text-4xl">📈</span>
-          </div>
-          <div className="text-sm text-primary">
-            Top 5% de usuarios
-          </div>
-        </Card>
-      </div>
-
-      {/* Tabs */}
-      <div className="border-b border-gray-700 mb-6">
-        <nav className="flex space-x-8">
-          {['overview', 'history', 'rewards', 'rules'].map(tab => (
-            <button
-              key={tab}
-              onClick={() => setActiveTab(tab)}
-              className={`pb-3 px-1 text-sm font-medium capitalize transition-colors ${
-                activeTab === tab
-                  ? 'text-accent border-b-2 border-accent'
-                  : 'text-text-secondary hover:text-text-primary'
-              }`}
-            >
-              {tab === 'overview' && 'Resumen'}
-              {tab === 'history' && 'Historial'}
-              {tab === 'rewards' && 'Recompensas'}
-              {tab === 'rules' && 'Cómo Funciona'}
-            </button>
-          ))}
-        </nav>
-      </div>
-
-      {/* Contenido de Tabs */}
-      {activeTab === 'overview' && (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* Actividad Reciente */}
-          <Card className="p-6">
-            <h3 className="text-lg font-semibold text-text-primary mb-4">
-              Actividad Reciente
-            </h3>
-            <div className="space-y-3">
-              {history.slice(0, 5).map(item => (
-                <div key={item.id} className="flex items-center justify-between py-2">
-                  <div className="flex items-center gap-3">
-                    <span className="text-2xl">{getTransactionIcon(item.icon)}</span>
-                    <div>
-                      <p className="text-sm text-text-primary">{item.description}</p>
-                      <p className="text-xs text-text-secondary">{formatDate(item.date)}</p>
-                    </div>
-                  </div>
-                  <span className={`font-bold ${
-                    item.amount > 0 ? 'text-green-500' : 'text-red-500'
-                  }`}>
-                    {item.amount > 0 ? '+' : ''}{item.amount}
-                  </span>
+              <h1 className="text-3xl font-bold text-white mb-2">Programa de Fidelización</h1>
+              <p className="text-gray-300 mb-6">Gana puntos y canjéalos por increíbles recompensas</p>
+              
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-gray-400">Puntos disponibles</span>
+                  <span className="text-3xl font-bold text-white">{userLoyaltyData.availablePoints.toLocaleString()}</span>
                 </div>
-              ))}
-            </div>
-            <Button 
-              variant="secondary" 
-              size="small" 
-              className="w-full mt-4"
-              onClick={() => setActiveTab('history')}
-            >
-              Ver Todo el Historial
-            </Button>
-          </Card>
-
-          {/* Recompensas Destacadas */}
-          <Card className="p-6">
-            <h3 className="text-lg font-semibold text-text-primary mb-4">
-              Recompensas Disponibles
-            </h3>
-            <div className="space-y-3">
-              {rewards.filter(r => r.available && r.points <= points.available).slice(0, 3).map(reward => (
-                <div key={reward.id} className="border border-gray-700 rounded-lg p-4 hover:border-accent transition-colors">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <span className="text-2xl">{getCategoryIcon(reward.category)}</span>
-                      <div>
-                        <p className="font-medium text-text-primary">{reward.title}</p>
-                        <p className="text-sm text-text-secondary">{reward.description}</p>
-                      </div>
-                    </div>
-                    <Button
-                      variant="primary"
-                      size="small"
-                      onClick={() => handleRedeemReward(reward)}
-                    >
-                      {reward.points} pts
-                    </Button>
-                  </div>
+                
+                <div className="flex items-center justify-between">
+                  <span className="text-gray-400">Puntos totales</span>
+                  <span className="text-xl text-gray-300">{userLoyaltyData.lifetimePoints.toLocaleString()}</span>
                 </div>
-              ))}
-            </div>
-            <Button 
-              variant="secondary" 
-              size="small" 
-              className="w-full mt-4"
-              onClick={() => setActiveTab('rewards')}
-            >
-              Ver Todas las Recompensas
-            </Button>
-          </Card>
-        </div>
-      )}
 
-      {activeTab === 'history' && (
-        <Card className="p-6">
-          <div className="flex items-center justify-between mb-6">
-            <h3 className="text-lg font-semibold text-text-primary">
-              Historial de Transacciones
-            </h3>
-            <select
-              value={filter}
-              onChange={(e) => setFilter(e.target.value)}
-              className="px-4 py-2 bg-surface border border-gray-600 rounded-lg text-text-primary focus:outline-none focus:ring-2 focus:ring-accent"
-            >
-              <option value="all">Todas</option>
-              <option value="earned">Ganados</option>
-              <option value="redeemed">Canjeados</option>
-              <option value="pending">Pendientes</option>
-            </select>
-          </div>
-
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead>
-                <tr className="border-b border-gray-700">
-                  <th className="text-left py-3 px-4 text-text-secondary text-sm font-medium">Fecha</th>
-                  <th className="text-left py-3 px-4 text-text-secondary text-sm font-medium">Descripción</th>
-                  <th className="text-left py-3 px-4 text-text-secondary text-sm font-medium">Estado</th>
-                  <th className="text-right py-3 px-4 text-text-secondary text-sm font-medium">Puntos</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredHistory.map(item => (
-                  <tr key={item.id} className="border-b border-gray-700/50 hover:bg-surface-light">
-                    <td className="py-3 px-4">
-                      <p className="text-sm text-text-primary">{formatDate(item.date)}</p>
-                    </td>
-                    <td className="py-3 px-4">
-                      <div className="flex items-center gap-2">
-                        <span className="text-xl">{getTransactionIcon(item.icon)}</span>
-                        <p className="text-sm text-text-primary">{item.description}</p>
-                      </div>
-                    </td>
-                    <td className="py-3 px-4">
-                      <span className={`text-xs px-2 py-1 rounded-full ${
-                        item.status === 'completed' 
-                          ? 'bg-green-500/20 text-green-400'
-                          : 'bg-yellow-500/20 text-yellow-400'
-                      }`}>
-                        {item.status === 'completed' ? 'Completado' : 'Pendiente'}
-                      </span>
-                    </td>
-                    <td className="py-3 px-4 text-right">
-                      <span className={`font-bold ${
-                        item.amount > 0 ? 'text-green-500' : 'text-red-500'
-                      }`}>
-                        {item.amount > 0 ? '+' : ''}{item.amount}
-                      </span>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </Card>
-      )}
-
-      {activeTab === 'rewards' && (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredRewards.map(reward => (
-            <Card 
-              key={reward.id} 
-              className={`p-6 relative ${
-                !reward.available || reward.points > points.available 
-                  ? 'opacity-60' 
-                  : 'hover:shadow-lg hover:shadow-accent/20'
-              } transition-all`}
-            >
-              {reward.popular && (
-                <span className="absolute top-2 right-2 bg-accent text-white text-xs px-2 py-1 rounded-full">
-                  Popular
-                </span>
-              )}
-              
-              <div className="text-center mb-4">
-                <span className="text-4xl">{getCategoryIcon(reward.category)}</span>
-              </div>
-              
-              <h4 className="text-lg font-semibold text-text-primary mb-2">
-                {reward.title}
-              </h4>
-              <p className="text-text-secondary text-sm mb-4">
-                {reward.description}
-              </p>
-              
-              <div className="flex items-center justify-between">
-                <span className="text-xl font-bold text-accent">
-                  {reward.points.toLocaleString()} pts
-                </span>
-                <Button
-                  variant={reward.points <= points.available ? 'primary' : 'secondary'}
-                  size="small"
-                  disabled={!reward.available || reward.points > points.available}
-                  onClick={() => handleRedeemReward(reward)}
+                <button
+                  onClick={handleClaimDailyBonus}
+                  className="w-full bg-accent text-background py-2 rounded-lg font-medium hover:bg-opacity-90 transition-colors"
                 >
-                  {reward.points > points.available 
-                    ? `Faltan ${reward.points - points.available}`
-                    : 'Canjear'
-                  }
-                </Button>
+                  🎁 Reclamar Bonus Diario (+10 pts)
+                </button>
               </div>
-            </Card>
-          ))}
-        </div>
-      )}
-
-      {activeTab === 'rules' && (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <Card className="p-6">
-            <h3 className="text-lg font-semibold text-text-primary mb-4">
-              Cómo Ganar Puntos
-            </h3>
-            <div className="space-y-4">
-              {[
-                { action: 'Completar un curso', points: '100-200', icon: '📚' },
-                { action: 'Aprobar examen (>80%)', points: '50-150', icon: '✅' },
-                { action: 'Escribir una reseña', points: '25', icon: '⭐' },
-                { action: 'Referir a un amigo', points: '50', icon: '👥' },
-                { action: 'Asistir a evento en vivo', points: '75', icon: '🎤' },
-                { action: 'Completar perfil', points: '10', icon: '👤' },
-                { action: 'Primera compra', points: '100', icon: '🛒' },
-                { action: 'Compartir en redes', points: '15', icon: '📱' }
-              ].map((rule, index) => (
-                <div key={index} className="flex items-center justify-between py-2">
-                  <div className="flex items-center gap-3">
-                    <span className="text-2xl">{rule.icon}</span>
-                    <span className="text-text-primary">{rule.action}</span>
-                  </div>
-                  <span className="font-bold text-accent">+{rule.points}</span>
-                </div>
-              ))}
             </div>
-          </Card>
 
-          <Card className="p-6">
-            <h3 className="text-lg font-semibold text-text-primary mb-4">
-              Niveles y Beneficios
-            </h3>
-            <div className="space-y-4">
-              {[
-                { level: 'Bronze', range: '0-499', benefits: 'Acceso básico', icon: '🥉' },
-                { level: 'Silver', range: '500-1,499', benefits: '5% descuento extra', icon: '🥈' },
-                { level: 'Gold', range: '1,500-2,999', benefits: '10% descuento + Envío gratis', icon: '🥇' },
-                { level: 'Platinum', range: '3,000-4,999', benefits: '15% descuento + Acceso VIP', icon: '💎' },
-                { level: 'Diamond', range: '5,000+', benefits: '20% descuento + Mentoría gratis', icon: '💠' }
-              ].map((level, index) => (
-                <div key={index} className="border border-gray-700 rounded-lg p-3">
-                  <div className="flex items-center justify-between mb-2">
-                    <div className="flex items-center gap-2">
-                      <span className="text-2xl">{level.icon}</span>
-                      <span className={`font-semibold ${getLevelColor(level.level.toLowerCase())}`}>
-                        {level.level}
-                      </span>
+            {/* Información de nivel */}
+            <div className="bg-gray-800/50 rounded-xl p-6">
+              <div className="flex items-center justify-between mb-4">
+                <div>
+                  <h3 className="text-lg font-medium text-gray-400">Tu Nivel</h3>
+                  <div className="flex items-center space-x-2 mt-1">
+                    <span className="text-2xl">{userLoyaltyData.levelConfig.icon}</span>
+                    <span className="text-2xl font-bold" style={{ color: userLoyaltyData.levelConfig.color }}>
+                      {userLoyaltyData.levelConfig.name}
+                    </span>
+                  </div>
+                </div>
+                <div className="text-right">
+                  <p className="text-sm text-gray-400">Descuento activo</p>
+                  <p className="text-2xl font-bold text-green-400">
+                    {userLoyaltyData.levelConfig.discountPercentage}%
+                  </p>
+                </div>
+              </div>
+
+              {/* Progreso al siguiente nivel */}
+              {userLoyaltyData.pointsToNext !== null && (
+                <>
+                  <div className="mb-2">
+                    <div className="flex justify-between text-sm text-gray-400 mb-1">
+                      <span>Progreso al siguiente nivel</span>
+                      <span>{userLoyaltyData.pointsToNext.toLocaleString()} pts restantes</span>
                     </div>
-                    <span className="text-sm text-text-secondary">{level.range} pts</span>
+                    <div className="w-full bg-gray-700 rounded-full h-3">
+                      <div 
+                        className="bg-gradient-to-r from-accent to-pink-500 h-3 rounded-full transition-all duration-500"
+                        style={{ width: `${userLoyaltyData.levelProgress}%` }}
+                      />
+                    </div>
                   </div>
-                  <p className="text-sm text-text-secondary">{level.benefits}</p>
-                </div>
-              ))}
-            </div>
-            
-            <div className="mt-6 p-4 bg-yellow-500/10 border border-yellow-500/30 rounded-lg">
-              <p className="text-sm text-yellow-400">
-                ⚠️ Los puntos expiran después de 12 meses de inactividad
-              </p>
-            </div>
-          </Card>
-        </div>
-      )}
+                </>
+              )}
 
-      {/* Modal de Confirmación de Canje */}
-      {showRedeemModal && selectedReward && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <Card className="max-w-md w-full p-6">
-            <h3 className="text-xl font-bold text-text-primary mb-4">
-              Confirmar Canje
-            </h3>
-            
-            <div className="text-center mb-6">
-              <span className="text-5xl">{getCategoryIcon(selectedReward.category)}</span>
-              <h4 className="text-lg font-semibold text-text-primary mt-4">
-                {selectedReward.title}
-              </h4>
-              <p className="text-text-secondary mt-2">
-                {selectedReward.description}
-              </p>
-            </div>
-            
-            <div className="bg-surface-light rounded-lg p-4 mb-6">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-text-secondary">Costo:</span>
-                <span className="font-bold text-accent">
-                  {selectedReward.points.toLocaleString()} puntos
-                </span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-text-secondary">Saldo después:</span>
-                <span className="font-bold text-text-primary">
-                  {(points.available - selectedReward.points).toLocaleString()} puntos
-                </span>
+              {/* Beneficios del nivel */}
+              <div className="mt-4">
+                <p className="text-sm font-medium text-gray-400 mb-2">Beneficios de tu nivel:</p>
+                <ul className="space-y-1 text-sm text-gray-300">
+                  {userLoyaltyData.levelConfig.benefits.slice(0, 3).map((benefit, index) => (
+                    <li key={index} className="flex items-start">
+                      <span className="text-green-400 mr-2">✓</span>
+                      <span>{benefit}</span>
+                    </li>
+                  ))}
+                  {userLoyaltyData.levelConfig.benefits.length > 3 && (
+                    <li className="text-accent">
+                      +{userLoyaltyData.levelConfig.benefits.length - 3} beneficios más...
+                    </li>
+                  )}
+                </ul>
               </div>
             </div>
-            
-            <div className="flex gap-3">
-              <Button
-                variant="secondary"
-                className="flex-1"
-                onClick={() => setShowRedeemModal(false)}
-              >
-                Cancelar
-              </Button>
-              <Button
-                variant="primary"
-                className="flex-1"
-                onClick={confirmRedeem}
-              >
-                Confirmar Canje
-              </Button>
-            </div>
-          </Card>
+          </div>
         </div>
-      )}
+
+        {/* Tabs */}
+        <div className="flex space-x-4 mb-8 border-b border-gray-700">
+          <button
+            onClick={() => setActiveTab('overview')}
+            className={`pb-4 px-2 font-medium transition-colors ${
+              activeTab === 'overview'
+                ? 'text-white border-b-2 border-accent'
+                : 'text-gray-400 hover:text-white'
+            }`}
+          >
+            Resumen
+          </button>
+          <button
+            onClick={() => setActiveTab('rewards')}
+            className={`pb-4 px-2 font-medium transition-colors ${
+              activeTab === 'rewards'
+                ? 'text-white border-b-2 border-accent'
+                : 'text-gray-400 hover:text-white'
+            }`}
+          >
+            Tienda de Recompensas
+          </button>
+          <button
+            onClick={() => setActiveTab('history')}
+            className={`pb-4 px-2 font-medium transition-colors ${
+              activeTab === 'history'
+                ? 'text-white border-b-2 border-accent'
+                : 'text-gray-400 hover:text-white'
+            }`}
+          >
+            Historial
+          </button>
+        </div>
+
+        {/* Tab Content */}
+        {activeTab === 'overview' && (
+          <div className="space-y-8">
+            {/* Todos los niveles */}
+            <div>
+              <h2 className="text-2xl font-bold text-white mb-6">Niveles del Programa</h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                {Object.entries(loyaltyService.config.levels).map(([key, level]) => (
+                  <div
+                    key={key}
+                    className={`bg-surface rounded-xl p-6 border-2 transition-all ${
+                      key === userLoyaltyData.currentLevel
+                        ? 'border-accent shadow-lg shadow-accent/20'
+                        : 'border-gray-700'
+                    }`}
+                  >
+                    <div className="text-center mb-4">
+                      <div className="text-4xl mb-2">{level.icon}</div>
+                      <h3 className="text-xl font-bold" style={{ color: level.color }}>
+                        {level.name}
+                      </h3>
+                      <p className="text-sm text-gray-400 mt-1">
+                        {level.minPoints.toLocaleString()}+ puntos
+                      </p>
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <div className="text-center py-2 bg-gray-800 rounded-lg">
+                        <p className="text-2xl font-bold text-green-400">{level.discountPercentage}%</p>
+                        <p className="text-xs text-gray-400">Descuento</p>
+                      </div>
+                      
+                      <ul className="space-y-1 text-xs text-gray-300">
+                        {level.benefits.slice(0, 2).map((benefit, idx) => (
+                          <li key={idx} className="truncate">• {benefit}</li>
+                        ))}
+                        {level.benefits.length > 2 && (
+                          <li className="text-accent">+{level.benefits.length - 2} más...</li>
+                        )}
+                      </ul>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Cómo ganar puntos */}
+            <div>
+              <h2 className="text-2xl font-bold text-white mb-6">¿Cómo ganar puntos?</h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {Object.entries(loyaltyService.config.pointsRules).map(([key, rule]) => (
+                  <div key={key} className="bg-surface rounded-xl p-6">
+                    <div className="flex items-center justify-between mb-2">
+                      <h3 className="font-medium text-white">{rule.description}</h3>
+                    </div>
+                    <p className="text-2xl font-bold text-accent">
+                      {key === 'coursePurchase' 
+                        ? `${rule.rate} pts/$1`
+                        : `+${rule.points} pts`
+                      }
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Recompensas canjeadas */}
+            {userLoyaltyData.redeemedRewards.length > 0 && (
+              <div>
+                <h2 className="text-2xl font-bold text-white mb-6">Mis Recompensas Canjeadas</h2>
+                <div className="grid md:grid-cols-2 gap-4">
+                  {userLoyaltyData.redeemedRewards.slice(0, 4).map(redemption => (
+                    <div key={redemption.id} className="bg-surface rounded-xl p-6">
+                      <div className="flex items-start justify-between mb-4">
+                        <div>
+                          <div className="flex items-center space-x-2">
+                            <span className="text-2xl">{redemption.reward.icon}</span>
+                            <h3 className="font-medium text-white">{redemption.reward.name}</h3>
+                          </div>
+                          <p className="text-sm text-gray-400 mt-1">{redemption.reward.description}</p>
+                        </div>
+                        <span className={`text-xs px-2 py-1 rounded ${
+                          redemption.status === 'active' ? 'bg-green-600/20 text-green-400' :
+                          redemption.status === 'used' ? 'bg-gray-600/20 text-gray-400' :
+                          'bg-red-600/20 text-red-400'
+                        }`}>
+                          {redemption.status === 'active' ? 'Activo' :
+                           redemption.status === 'used' ? 'Usado' : 'Expirado'}
+                        </span>
+                      </div>
+                      
+                      <div className="bg-gray-800 rounded-lg p-3 text-center">
+                        <p className="text-xs text-gray-400 mb-1">Código de canje</p>
+                        <p className="font-mono text-sm text-white">{redemption.code}</p>
+                      </div>
+                      
+                      {redemption.status === 'active' && (
+                        <p className="text-xs text-gray-400 text-center mt-2">
+                          Expira en {redemption.daysUntilExpiration} días
+                        </p>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+
+        {activeTab === 'rewards' && (
+          <div>
+            <h2 className="text-2xl font-bold text-white mb-6">Tienda de Recompensas</h2>
+            
+            {/* Categorías de recompensas */}
+            {Object.entries(
+              userLoyaltyData.availableRewards.reduce((acc, reward) => {
+                if (!acc[reward.category]) acc[reward.category] = []
+                acc[reward.category].push(reward)
+                return acc
+              }, {})
+            ).map(([category, rewards]) => (
+              <div key={category} className="mb-8">
+                <h3 className="text-xl font-semibold text-white mb-4 flex items-center">
+                  <span className="text-2xl mr-2">{categoryIcons[category]}</span>
+                  {category.charAt(0).toUpperCase() + category.slice(1)}
+                </h3>
+                
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {rewards.map(reward => (
+                    <div
+                      key={reward.id}
+                      className={`bg-surface rounded-xl p-6 border transition-all ${
+                        reward.canRedeem
+                          ? 'border-gray-700 hover:border-accent hover:shadow-lg'
+                          : 'border-gray-800 opacity-60'
+                      }`}
+                    >
+                      <div className="flex items-start justify-between mb-4">
+                        <div className="text-3xl">{reward.icon}</div>
+                        <div className="text-right">
+                          <p className="text-2xl font-bold text-white">{reward.points.toLocaleString()}</p>
+                          <p className="text-xs text-gray-400">puntos</p>
+                        </div>
+                      </div>
+                      
+                      <h4 className="font-medium text-white mb-2">{reward.name}</h4>
+                      <p className="text-sm text-gray-400 mb-4">{reward.description}</p>
+                      
+                      <button
+                        onClick={() => handleRedeemReward(reward.id)}
+                        disabled={!reward.canRedeem || redeemingReward === reward.id}
+                        className={`w-full py-2 rounded-lg font-medium transition-colors ${
+                          reward.canRedeem
+                            ? 'bg-accent text-background hover:bg-opacity-90'
+                            : 'bg-gray-700 text-gray-500 cursor-not-allowed'
+                        }`}
+                      >
+                        {redeemingReward === reward.id ? (
+                          <span className="flex items-center justify-center">
+                            <svg className="animate-spin h-5 w-5 mr-2" viewBox="0 0 24 24">
+                              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                            Canjeando...
+                          </span>
+                        ) : reward.canRedeem ? (
+                          'Canjear'
+                        ) : (
+                          `Necesitas ${(reward.points - userLoyaltyData.availablePoints).toLocaleString()} pts más`
+                        )}
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {activeTab === 'history' && (
+          <div>
+            <h2 className="text-2xl font-bold text-white mb-6">Historial de Transacciones</h2>
+            
+            {userLoyaltyData.transactions.length > 0 ? (
+              <div className="bg-surface rounded-xl overflow-hidden">
+                <table className="w-full">
+                  <thead className="bg-gray-800">
+                    <tr>
+                      <th className="text-left py-3 px-4 font-medium text-gray-400">Fecha</th>
+                      <th className="text-left py-3 px-4 font-medium text-gray-400">Descripción</th>
+                      <th className="text-right py-3 px-4 font-medium text-gray-400">Puntos</th>
+                      <th className="text-center py-3 px-4 font-medium text-gray-400">Tipo</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-700">
+                    {userLoyaltyData.transactions.map(transaction => (
+                      <tr key={transaction.id} className="hover:bg-gray-800/50 transition-colors">
+                        <td className="py-3 px-4 text-sm text-gray-400">
+                          {new Date(transaction.timestamp).toLocaleDateString('es-ES')}
+                        </td>
+                        <td className="py-3 px-4 text-sm text-white">
+                          {transaction.description}
+                        </td>
+                        <td className={`py-3 px-4 text-sm font-medium text-right ${
+                          transaction.amount > 0 ? 'text-green-400' : 'text-red-400'
+                        }`}>
+                          {transaction.amount > 0 ? '+' : ''}{transaction.amount.toLocaleString()}
+                        </td>
+                        <td className="py-3 px-4 text-center">
+                          <span className={`text-xs px-2 py-1 rounded ${
+                            transaction.type === 'earned' ? 'bg-green-600/20 text-green-400' :
+                            transaction.type === 'redeemed' ? 'bg-blue-600/20 text-blue-400' :
+                            transaction.type === 'bonus' ? 'bg-purple-600/20 text-purple-400' :
+                            'bg-gray-600/20 text-gray-400'
+                          }`}>
+                            {transaction.type === 'earned' ? 'Ganado' :
+                             transaction.type === 'redeemed' ? 'Canjeado' :
+                             transaction.type === 'bonus' ? 'Bonus' :
+                             'Otro'}
+                          </span>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            ) : (
+              <div className="text-center py-12 bg-surface rounded-xl">
+                <p className="text-gray-400">No hay transacciones aún</p>
+                <p className="text-sm text-gray-500 mt-2">Comienza a ganar puntos comprando cursos</p>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
     </div>
   )
 }
