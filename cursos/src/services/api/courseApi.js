@@ -1,10 +1,9 @@
 import baseApi from './baseApi'
-import { mockAPI } from '../mockData.js'
 
 /**
  * Course API Service
  * Handles all course-related API operations
- * Migrado desde frontend/src/services/api.js con mejores prácticas
+ * Now uses real API data from db.json
  */
 class CourseApi {
   /**

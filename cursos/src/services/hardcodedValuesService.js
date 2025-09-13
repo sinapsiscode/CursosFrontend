@@ -140,6 +140,56 @@ class HardcodedValuesService {
     return values.mockTestData?.[key] || null
   }
 
+  async getConsoleMessage(key) {
+    const values = await this.getValues()
+    return values.consoleMessages?.[key] || ''
+  }
+
+  async getFormLabel(key) {
+    const values = await this.getValues()
+    return values.formLabels?.[key] || ''
+  }
+
+  async getValidationMessage(key) {
+    const values = await this.getValues()
+    return values.validationMessages?.[key] || ''
+  }
+
+  async getHttpCode(key) {
+    const values = await this.getValues()
+    return values.httpCodes?.[key] || 500
+  }
+
+  async getRegexPattern(key) {
+    const values = await this.getValues()
+    return values.regexPatterns?.[key] || ''
+  }
+
+  async getBrandName(key) {
+    const values = await this.getValues()
+    return values.brandNames?.[key] || ''
+  }
+
+  async getAreaName(area, field = 'displayName') {
+    const values = await this.getValues()
+    return values.areaNames?.[area]?.[field] || area
+  }
+
+  async getLevel(level, field = 'displayName') {
+    const values = await this.getValues()
+    return values.levels?.[level]?.[field] || level
+  }
+
+  async getLoyaltyLevel(level, field = 'name') {
+    const values = await this.getValues()
+    return values.loyaltyLevels?.[level]?.[field] || level
+  }
+
+  async getTailwindClass(category, key) {
+    const values = await this.getValues()
+    return values.ui?.tailwindClasses?.[category]?.[key] || ''
+  }
+
   // Convenience methods for common use cases
   async getWhatsAppUrl(message = '') {
     const baseUrl = await this.getUrl('whatsappBase')

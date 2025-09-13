@@ -1,4 +1,3 @@
-import { mockAPI, mockUsers } from './mockData'
 import config from '../config/env'
 
 class ApiService {
@@ -22,10 +21,6 @@ class ApiService {
 
   async handleRequest(requestFn, fallbackData = null) {
     try {
-      // Simular delay de red
-      const delay = Math.random() * 500 + 200
-      await new Promise(resolve => setTimeout(resolve, delay))
-      
       return await requestFn()
     } catch (error) {
       console.error('API Error:', error)
@@ -40,13 +35,25 @@ class ApiService {
     }
   }
 
-  // Courses
+  // Courses - Now using real API
   async getCourses(area = null, filters = {}) {
-    return this.handleRequest(() => mockAPI.getCourses(area))
+    const url = area 
+      ? `${this.baseURL}/courses?area=${area}`
+      : `${this.baseURL}/courses`
+    
+    return this.handleRequest(async () => {
+      const response = await fetch(url)
+      if (!response.ok) throw new Error('Failed to fetch courses')
+      return await response.json()
+    })
   }
 
   async getCourseById(id) {
-    return this.handleRequest(() => mockAPI.getCourseById(id))
+    return this.handleRequest(async () => {
+      const response = await fetch(`${this.baseURL}/courses/${id}`)
+      if (!response.ok) throw new Error('Course not found')
+      return await response.json()
+    })
   }
 
   async searchCourses(query) {
