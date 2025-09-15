@@ -3855,8 +3855,8 @@ const AdminDashboard = () => {
           <button
             onClick={() => setActiveTab('dashboard')}
             className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
-              activeTab === 'dashboard' 
-                ? 'bg-accent text-background' 
+              activeTab === 'dashboard'
+                ? 'bg-accent text-background'
                 : 'text-text-secondary hover:text-white'
             }`}
           >
@@ -3865,8 +3865,8 @@ const AdminDashboard = () => {
           <button
             onClick={() => setActiveTab('courses')}
             className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
-              activeTab === 'courses' 
-                ? 'bg-accent text-background' 
+              activeTab === 'courses'
+                ? 'bg-accent text-background'
                 : 'text-text-secondary hover:text-white'
             }`}
           >
@@ -3875,8 +3875,8 @@ const AdminDashboard = () => {
           <button
             onClick={() => setActiveTab('enrollments')}
             className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
-              activeTab === 'enrollments' 
-                ? 'bg-accent text-background' 
+              activeTab === 'enrollments'
+                ? 'bg-accent text-background'
                 : 'text-text-secondary hover:text-white'
             }`}
           >
@@ -3885,8 +3885,8 @@ const AdminDashboard = () => {
           <button
             onClick={() => setActiveTab('students')}
             className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
-              activeTab === 'students' 
-                ? 'bg-accent text-background' 
+              activeTab === 'students'
+                ? 'bg-accent text-background'
                 : 'text-text-secondary hover:text-white'
             }`}
           >
@@ -3895,8 +3895,8 @@ const AdminDashboard = () => {
           <button
             onClick={() => setActiveTab('reviews')}
             className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
-              activeTab === 'reviews' 
-                ? 'bg-accent text-background' 
+              activeTab === 'reviews'
+                ? 'bg-accent text-background'
                 : 'text-text-secondary hover:text-white'
             }`}
           >
@@ -4195,6 +4195,7 @@ const AdminDashboard = () => {
           }}
         />
       )}
+      </div>
     </div>
   )
 }

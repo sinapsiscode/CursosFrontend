@@ -724,7 +724,7 @@
   },
   "hardcodedValues": {
     "urls": {
-      "apiUrl": "http://localhost:4002/api",
+      "apiUrl": "https://api.metsel.edu.co/api",
       "storageUrl": "https://storage.metsel.edu.co",
       "avatarService": "https://ui-avatars.com/api/",
       "whatsappBase": "https://wa.me/",
@@ -768,12 +768,12 @@
       }
     },
     "contacts": {
-      "whatsappNumber": "+57 300 123 4567",
-      "supportPhone": "+51 999 999 999",
-      "emergencyPhone": "987232323",
+      "whatsappNumber": "+57 315 876 4321",
+      "supportPhone": "+57 1 234 5678",
+      "emergencyPhone": "+57 310 555 6789",
       "supportEmail": "admin@metsel.com",
       "noReplyEmail": "noreply@metsel.edu",
-      "testEmail": "test@example.com"
+      "testEmail": "test@metsel.edu.co"
     },
     "whatsappApi": {
       "accessToken": "EAABVtYgZC9BABOH1234567890abcdefghijklmnop",
@@ -781,6 +781,17 @@
       "businessAccountId": "987654321098765",
       "appSecret": "ab12cd34ef56gh78ij90kl12mn34op56",
       "webhookVerifyToken": "metsel_webhook_verify_token_2024"
+    },
+    "placeholders": {
+      "email": "tu@email.com",
+      "phone": "+57 315 999 9999",
+      "phoneSimple": "315 999 9999",
+      "courseTitle": "Fundamentos de Metalurgia",
+      "instructorName": "Dr. Juan Pérez",
+      "courseDescription": "Describe lo que los estudiantes aprenderán en este curso...",
+      "courseEnrollmentUrl": "https://metsel.edu.co/inscribirse",
+      "imageUrl": "https://metsel.edu.co/imagen.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=example"
     },
     "timers": {
       "toastDuration": 4000,

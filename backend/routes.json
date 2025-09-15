@@ -1,4 +1,4 @@
-{
+FFFF{
   "/api/auth/*": "/auth/$1",
   "/api/content/areas": "/areas",
   "/api/content/areas/:id": "/areas/:id",
