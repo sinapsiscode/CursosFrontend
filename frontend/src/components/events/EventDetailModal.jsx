@@ -97,11 +97,6 @@ const EventDetailModal = ({ event, onClose, onSuccess }) => {
             <span className="bg-green-600 text-white px-4 py-2 rounded-full font-bold text-lg">
               GRATIS
             </span>
-            {event.originalPrice && (
-              <span className="ml-2 text-white bg-black bg-opacity-50 px-2 py-1 rounded text-sm line-through">
-                ${event.originalPrice}
-              </span>
-            )}
           </div>
         </div>
 

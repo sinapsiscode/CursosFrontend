@@ -294,11 +294,10 @@ const Events = () => {
                       </div>
                       <div className="flex items-center justify-between">
                         <div>
-                          <span className="text-gray-400 line-through text-sm">${event.originalPrice}</span>
-                          <span className="text-2xl font-bold text-white ml-2">${event.bundlePrice}</span>
+                          <span className="text-2xl font-bold text-white">GRATIS</span>
                         </div>
                         <span className="bg-green-600/20 text-green-400 px-3 py-1 rounded-full text-sm">
-                          Ahorra ${event.savings}
+                          Evento gratuito
                         </span>
                       </div>
                     </div>
@@ -338,20 +337,9 @@ const Events = () => {
 
                     {/* Precio y botón */}
                     <div className={`${!event.capacity ? 'w-full' : ''} text-right`}>
-                      {event.price !== undefined && (
-                        <p className="text-lg font-bold text-white mb-2">
-                          {event.price === 0 ? 'GRATIS' : (
-                            <>
-                              {event.originalPrice && (
-                                <span className="text-gray-400 line-through text-sm mr-2">
-                                  ${event.originalPrice}
-                                </span>
-                              )}
-                              ${event.price}
-                            </>
-                          )}
-                        </p>
-                      )}
+                      <p className="text-lg font-bold text-white mb-2">
+                        GRATIS
+                      </p>
                       
                       {(event.type === 'webinar' || event.type === 'masterclass') ? (
                         <div className="flex gap-2 flex-wrap">

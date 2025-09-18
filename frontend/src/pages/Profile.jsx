@@ -136,15 +136,17 @@ const Profile = () => {
         {/* Header del perfil */}
         <div className="bg-surface rounded-xl p-8 mb-8">
           <div className="flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-8">
-            {/* Avatar */}
+            {/* Logo de la empresa - siempre el mismo para todos */}
             <div className="relative">
-              <img
-                src={user?.avatar || 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150'}
-                alt={user?.name}
-                className="w-32 h-32 rounded-full object-cover border-4 border-accent"
-              />
+              <div className="w-32 h-32 rounded-full border-4 border-accent bg-white flex items-center justify-center">
+                <img
+                  src="/vite.svg"
+                  alt="Logo Empresa"
+                  className="w-20 h-20 object-contain"
+                />
+              </div>
               <div className={`absolute -bottom-2 -right-2 w-10 h-10 ${colors.bg} rounded-full flex items-center justify-center text-white font-bold text-sm`}>
-                📸
+                🏢
               </div>
             </div>
 

@@ -1,24 +1,32 @@
 import { useState, useEffect } from 'react'
-import { useReviewStore } from '../../store'
+import { useReviewStore, useCourseStore } from '../../store'
 import { LoadingSpinner } from '../../components/common'
+import { apiService } from '../../services/api'
 import Swal from 'sweetalert2'
 
 const ReviewModeration = () => {
-  const { 
-    pendingReviews, 
-    loadPendingReviews, 
-    approveReview, 
+  const {
+    pendingReviews,
+    loadPendingReviews,
+    approveReview,
     rejectReview,
     loading,
     generateTestData
   } = useReviewStore()
-  
+
+  const { courses, setCourses } = useCourseStore()
   const [selectedReview, setSelectedReview] = useState(null)
   const [filterCourse, setFilterCourse] = useState('all')
   const [searchTerm, setSearchTerm] = useState('')
 
   useEffect(() => {
     loadPendingReviews()
+    // Cargar cursos si no están cargados
+    if (courses.length === 0) {
+      apiService.getCourses().then(coursesData => {
+        setCourses(coursesData)
+      }).catch(err => console.error('Error loading courses:', err))
+    }
   }, [])
 
   const filteredReviews = pendingReviews.filter(review => {
@@ -137,6 +145,12 @@ const ReviewModeration = () => {
   // Obtener cursos únicos de las reseñas pendientes
   const coursesWithReviews = [...new Set(pendingReviews.map(r => r.courseId))]
 
+  // Función para obtener el nombre del curso por ID
+  const getCourseName = (courseId) => {
+    const course = courses.find(c => c.id === courseId)
+    return course ? course.title : `Curso ${courseId}`
+  }
+
   return (
     <div className="max-w-7xl mx-auto p-6">
       {/* Header */}
@@ -234,7 +248,7 @@ const ReviewModeration = () => {
             <option value="all">Todos los cursos</option>
             {coursesWithReviews.map(courseId => (
               <option key={courseId} value={courseId}>
-                Curso {courseId}
+                {getCourseName(courseId)}
               </option>
             ))}
           </select>
@@ -294,7 +308,7 @@ const ReviewModeration = () => {
                       {/* Course Info */}
                       <div className="mb-3">
                         <span className="bg-gray-700 text-gray-300 text-xs px-2 py-1 rounded">
-                          Curso ID: {review.courseId}
+                          {getCourseName(review.courseId)}
                         </span>
                       </div>
                       

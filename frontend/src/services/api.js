@@ -2,7 +2,7 @@ import { mockAPI, mockUsers } from './mockData'
 
 class ApiService {
   constructor() {
-    this.baseURL = 'http://localhost:4002/api'
+    this.baseURL = 'http://localhost:3000/api'
     this.isOnline = navigator.onLine
     this.setupNetworkListeners()
   }

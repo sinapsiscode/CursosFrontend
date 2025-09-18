@@ -765,13 +765,6 @@ const AdminDashboard = () => {
 
       const currentEnrolled = course.enrolledStudents || 0
       const newEnrolled = Math.max(0, currentEnrolled + change)
-      const maxAllowed = course.students || 0
-
-      // Validar que no exceda el histórico total
-      if (newEnrolled > maxAllowed) {
-        alert(`No se puede inscribir más estudiantes. Máximo permitido: ${maxAllowed}`)
-        return
-      }
 
       try {
         // Llamar al API para persistir el cambio
@@ -809,11 +802,6 @@ const AdminDashboard = () => {
         return
       }
 
-      const maxAllowed = course.students || 0
-      if (newValue > maxAllowed) {
-        alert(`No se puede inscribir más estudiantes. Máximo permitido: ${maxAllowed}`)
-        return
-      }
 
       const currentEnrolled = course.enrolledStudents || 0
       const change = newValue - currentEnrolled
@@ -966,7 +954,7 @@ const AdminDashboard = () => {
                   Tasa {sortBy === 'enrollmentRate' && (sortOrder === 'desc' ? '↓' : '↑')}
                 </th>
                 <th className="text-center py-3 px-4 font-medium text-text-secondary">
-                  Estudiantes
+                  Estudiantes reales
                 </th>
                 <th className="text-center py-3 px-4 font-medium text-text-secondary">
                   Acciones
@@ -1000,7 +988,6 @@ const AdminDashboard = () => {
                           onChange={(e) => setNewEnrollmentValue(e.target.value)}
                           className="w-20 bg-background border border-gray-600 text-white rounded px-2 py-1 text-center focus:outline-none focus:ring-2 focus:ring-accent"
                           min="0"
-                          max={course.students || 0}
                         />
                         <button
                           onClick={saveEnrollmentEdit}
@@ -3855,8 +3842,8 @@ const AdminDashboard = () => {
           <button
             onClick={() => setActiveTab('dashboard')}
             className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
-              activeTab === 'dashboard'
-                ? 'bg-accent text-background'
+              activeTab === 'dashboard' 
+                ? 'bg-accent text-background' 
                 : 'text-text-secondary hover:text-white'
             }`}
           >
@@ -3865,8 +3852,8 @@ const AdminDashboard = () => {
           <button
             onClick={() => setActiveTab('courses')}
             className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
-              activeTab === 'courses'
-                ? 'bg-accent text-background'
+              activeTab === 'courses' 
+                ? 'bg-accent text-background' 
                 : 'text-text-secondary hover:text-white'
             }`}
           >
@@ -3875,8 +3862,8 @@ const AdminDashboard = () => {
           <button
             onClick={() => setActiveTab('enrollments')}
             className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
-              activeTab === 'enrollments'
-                ? 'bg-accent text-background'
+              activeTab === 'enrollments' 
+                ? 'bg-accent text-background' 
                 : 'text-text-secondary hover:text-white'
             }`}
           >
@@ -3885,8 +3872,8 @@ const AdminDashboard = () => {
           <button
             onClick={() => setActiveTab('students')}
             className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
-              activeTab === 'students'
-                ? 'bg-accent text-background'
+              activeTab === 'students' 
+                ? 'bg-accent text-background' 
                 : 'text-text-secondary hover:text-white'
             }`}
           >
@@ -3895,8 +3882,8 @@ const AdminDashboard = () => {
           <button
             onClick={() => setActiveTab('reviews')}
             className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
-              activeTab === 'reviews'
-                ? 'bg-accent text-background'
+              activeTab === 'reviews' 
+                ? 'bg-accent text-background' 
                 : 'text-text-secondary hover:text-white'
             }`}
           >
@@ -4195,7 +4182,6 @@ const AdminDashboard = () => {
           }}
         />
       )}
-      </div>
     </div>
   )
 }

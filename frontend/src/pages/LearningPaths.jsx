@@ -34,12 +34,12 @@ const LearningPaths = () => {
   }
 
   useEffect(() => {
-    if (!isAuthenticated) {
-      navigate('/login')
-      return
+    if (isAuthenticated) {
+      loadCoursesData()
+    } else {
+      setLoading(false)
     }
-    loadCoursesData()
-  }, [selectedArea, isAuthenticated, navigate])
+  }, [selectedArea, isAuthenticated])
 
   const loadCoursesData = async () => {
     try {
@@ -70,6 +70,33 @@ const LearningPaths = () => {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <LoadingSpinner size="large" />
+      </div>
+    )
+  }
+
+  // Mostrar mensaje para usuarios no autenticados
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="bg-surface rounded-xl p-8 max-w-md w-full mx-4 text-center">
+          <div className="mb-6">
+            <svg className="w-20 h-20 mx-auto text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+            </svg>
+          </div>
+          <h2 className="text-2xl font-bold text-white mb-4">
+            Acceso Restringido
+          </h2>
+          <p className="text-text-secondary mb-6">
+            Loguéate para tener acceso a esta sección
+          </p>
+          <button
+            onClick={() => navigate('/login')}
+            className="bg-accent text-background px-6 py-3 rounded-lg font-semibold hover:bg-accent-hover transition-colors w-full"
+          >
+            Iniciar Sesión
+          </button>
+        </div>
       </div>
     )
   }

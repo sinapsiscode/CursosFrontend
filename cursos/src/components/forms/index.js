@@ -1,1 +1,0 @@
-export { default as LeadCaptureForm } from './LeadCaptureForm'
