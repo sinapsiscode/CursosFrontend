@@ -21,6 +21,7 @@ const ExportsPage = lazy(() => import('./Analytics/ExportsPage'))
 const ExamListPage = lazy(() => import('./Exams/ExamListPage'))
 const ExamCreatePage = lazy(() => import('./Exams/ExamCreatePage'))
 const ExamConfigPage = lazy(() => import('./Exams/ExamConfigPage'))
+const ExamManagementPage = lazy(() => import('./Exams/ExamManagementPage'))
 
 // Areas
 const AreaListPage = lazy(() => import('./Areas/AreaListPage'))
@@ -77,6 +78,7 @@ const AdminRouter = () => (
         <Route index element={<ExamListPage />} />
         <Route path="create" element={<ExamCreatePage />} />
         <Route path="config" element={<ExamConfigPage />} />
+        <Route path="management" element={<ExamManagementPage />} />
       </Route>
 
       <Route path="areas">
