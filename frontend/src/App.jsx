@@ -16,7 +16,7 @@ import MyCourses from './pages/MyCourses'
 import MyFavorites from './pages/MyFavorites'
 import Certificates from './pages/Certificates'
 import CertificateVerify from './pages/CertificateVerify'
-import AdminDashboard from './pages/Admin/AdminDashboard'
+import AdminRouter from './pages/Admin/micro/AdminRouter'
 import LoyaltyProgram from './pages/LoyaltyProgram'
 import Events from './pages/Events'
 
@@ -91,7 +91,7 @@ function App() {
             <Route path="/favorites" element={<MyFavorites />} />
             <Route path="/certificates" element={<Certificates />} />
             <Route path="/certificate/verify/:verificationCode" element={<CertificateVerify />} />
-            <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="/admin/*" element={<AdminRouter />} />
             <Route path="/loyalty" element={<LoyaltyProgram />} />
             <Route path="/profile/loyalty" element={<LoyaltyProgram />} />
             <Route path="/profile/rewards" element={<LoyaltyProgram />} />
