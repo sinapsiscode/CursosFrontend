@@ -1,4 +1,4 @@
-import { NOTIFICATION_STYLES } from '../../../constants/notificationConstants'
+import { NOTIFICATION_STYLES } from '../../../constants/notificationConstants.jsx'
 
 const NotificationActions = ({ actions, onAction }) => {
   return (

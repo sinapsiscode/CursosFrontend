@@ -1,4 +1,4 @@
-import { NAVBAR_STYLES, NAVBAR_TEXTS } from '../../../constants/navbarConstants'
+import { NAVBAR_STYLES, NAVBAR_TEXTS } from '../../../constants/navbarConstants.jsx'
 import { isAdmin } from '../../../utils/navbarUtils'
 
 const UserMenuDropdown = ({ user, menuActions }) => {

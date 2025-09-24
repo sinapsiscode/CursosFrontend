@@ -1,4 +1,4 @@
-import { LOYALTY_WIDGET_STYLES, LOYALTY_TEXTS } from '../../../constants/loyaltyConstants'
+import { LOYALTY_WIDGET_STYLES, LOYALTY_TEXTS } from '../../../constants/loyaltyConstants.jsx'
 import PanelHeader from './PanelHeader'
 import LevelCard from './LevelCard'
 import BenefitsSection from './BenefitsSection'

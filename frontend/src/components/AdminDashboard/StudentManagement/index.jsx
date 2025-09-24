@@ -1,5 +1,5 @@
 import { useStudentManagement } from '../../../hooks/useStudentManagement'
-import { STUDENT_STYLES } from '../../../constants/studentManagementConstants'
+import { STUDENT_STYLES } from '../../../constants/studentManagementConstants.jsx'
 import StudentHeader from './StudentHeader'
 import ViewModeSelector from './ViewModeSelector'
 import StudentFilters from './StudentFilters'

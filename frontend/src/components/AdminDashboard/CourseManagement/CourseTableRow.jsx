@@ -1,7 +1,7 @@
 import {
   COURSE_MANAGEMENT_STYLES,
   COURSE_MANAGEMENT_LABELS
-} from '../../../constants/courseManagementConstants'
+} from '../../../constants/courseManagementConstants.jsx'
 import CourseActions from './CourseActions'
 
 const CourseTableRow = ({

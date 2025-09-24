@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuthStore, useUIStore } from '../store'
-import { NAVBAR_ROUTES, NAVBAR_MODALS } from '../constants/navbarConstants'
+import { NAVBAR_ROUTES, NAVBAR_MODALS } from '../constants/navbarConstants.jsx'
 
 export const useNavbar = () => {
   const { user, isAuthenticated, selectedArea, logout } = useAuthStore()

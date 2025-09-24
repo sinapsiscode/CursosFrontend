@@ -1,4 +1,4 @@
-import { TOAST_STYLES } from '../../../constants/toastConstants'
+import { TOAST_STYLES } from '../../../constants/toastConstants.jsx'
 import { getToastIcon } from '../../../utils/toastUtils'
 import ToastCloseButton from './ToastCloseButton'
 

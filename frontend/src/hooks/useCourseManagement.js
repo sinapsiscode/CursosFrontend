@@ -5,7 +5,7 @@ import {
   COURSE_MANAGEMENT_LOG_MESSAGES,
   COURSE_MANAGEMENT_CONFIRMATIONS,
   DEFAULT_COLORS
-} from '../constants/courseManagementConstants'
+} from '../constants/courseManagementConstants.jsx'
 
 export const useCourseManagement = () => {
   const {

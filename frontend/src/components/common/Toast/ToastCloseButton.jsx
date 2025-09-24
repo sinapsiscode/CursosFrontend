@@ -1,4 +1,4 @@
-import { TOAST_STYLES, CLOSE_ICON } from '../../../constants/toastConstants'
+import { TOAST_STYLES, CLOSE_ICON } from '../../../constants/toastConstants.jsx'
 
 const ToastCloseButton = ({ onClick }) => {
   return (

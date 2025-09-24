@@ -1,4 +1,4 @@
-import { MODAL_STYLES } from '../../../constants/modalConstants'
+import { MODAL_STYLES } from '../../../constants/modalConstants.jsx'
 
 const ModalOverlay = ({ onClose, closeOnOverlayClick }) => {
   return (

@@ -1,4 +1,4 @@
-import { NOTIFICATION_STYLES, NOTIFICATION_ICONS } from '../../../constants/notificationConstants'
+import { NOTIFICATION_STYLES, NOTIFICATION_ICONS } from '../../../constants/notificationConstants.jsx'
 import { formatUnreadCount } from '../../../utils/notificationUtils'
 
 const NotificationButton = ({ unreadCount, onClick }) => {

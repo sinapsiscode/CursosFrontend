@@ -1,4 +1,4 @@
-import { NOTIFICATION_STYLES, NOTIFICATION_TEXTS, NOTIFICATION_ICONS } from '../../../constants/notificationConstants'
+import { NOTIFICATION_STYLES, NOTIFICATION_TEXTS, NOTIFICATION_ICONS } from '../../../constants/notificationConstants.jsx'
 
 const NotificationHeader = ({ unreadCount, onMarkAllAsRead, onClose }) => {
   return (

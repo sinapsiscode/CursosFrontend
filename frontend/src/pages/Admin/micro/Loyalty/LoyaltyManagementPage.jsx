@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import PageLayout from '../../../../components/Admin/Layout/PageLayout'
-import LoyaltyManagement from '../../../LoyaltyManagement'
+import LoyaltyManagement from '../../LoyaltyManagement'
 
 const LoyaltyManagementPage = () => {
   const [loading, setLoading] = useState(true)

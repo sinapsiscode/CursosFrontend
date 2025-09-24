@@ -1,7 +1,7 @@
 import { useCallback } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useUIStore } from '../store'
-import { TAB_DEFINITIONS } from '../constants/tabBarConstants'
+import { TAB_DEFINITIONS } from '../constants/tabBarConstants.jsx'
 
 export const useTabBar = () => {
   const navigate = useNavigate()

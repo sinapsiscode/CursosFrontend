@@ -1,4 +1,4 @@
-import { NAVBAR_STYLES, NAVBAR_ICONS } from '../../../constants/navbarConstants'
+import { NAVBAR_STYLES, NAVBAR_ICONS } from '../../../constants/navbarConstants.jsx'
 import { getUserAvatar, getUserName } from '../../../utils/navbarUtils'
 
 const UserMenuButton = ({ user, showUserMenu, onToggle }) => {

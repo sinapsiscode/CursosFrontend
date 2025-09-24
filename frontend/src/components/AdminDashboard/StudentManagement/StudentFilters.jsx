@@ -3,7 +3,7 @@ import {
   STUDENT_STYLES,
   STUDENT_LABELS,
   STUDENT_ICONS
-} from '../../../constants/studentManagementConstants'
+} from '../../../constants/studentManagementConstants.jsx'
 
 const StudentFilters = ({
   searchTerm,

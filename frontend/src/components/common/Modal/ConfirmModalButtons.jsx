@@ -1,4 +1,4 @@
-import { CONFIRM_MODAL_STYLES, CONFIRM_MODAL_VARIANTS } from '../../../constants/modalConstants'
+import { CONFIRM_MODAL_STYLES, CONFIRM_MODAL_VARIANTS } from '../../../constants/modalConstants.jsx'
 
 const ConfirmModalButtons = ({
   onClose,

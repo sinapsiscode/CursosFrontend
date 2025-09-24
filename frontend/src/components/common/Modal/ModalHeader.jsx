@@ -1,4 +1,4 @@
-import { MODAL_STYLES, MODAL_ICONS } from '../../../constants/modalConstants'
+import { MODAL_STYLES, MODAL_ICONS } from '../../../constants/modalConstants.jsx'
 
 const ModalHeader = ({ title, showCloseButton, onClose }) => {
   if (!title && !showCloseButton) return null

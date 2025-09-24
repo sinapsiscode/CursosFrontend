@@ -1,4 +1,4 @@
-import { LOYALTY_WIDGET_STYLES, LOYALTY_TEXTS } from '../../../constants/loyaltyConstants'
+import { LOYALTY_WIDGET_STYLES, LOYALTY_TEXTS } from '../../../constants/loyaltyConstants.jsx'
 
 const LevelProgress = ({ levelProgress }) => {
   return (

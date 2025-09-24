@@ -1,5 +1,5 @@
 import { createPortal } from 'react-dom'
-import { MODAL_SIZES, MODAL_STYLES } from '../../../constants/modalConstants'
+import { MODAL_SIZES, MODAL_STYLES } from '../../../constants/modalConstants.jsx'
 import { useModalEffects } from '../../../hooks/useModal'
 import ModalOverlay from './ModalOverlay'
 import ModalHeader from './ModalHeader'

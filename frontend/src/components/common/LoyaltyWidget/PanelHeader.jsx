@@ -1,4 +1,4 @@
-import { LOYALTY_TEXTS, LOYALTY_ICONS } from '../../../constants/loyaltyConstants'
+import { LOYALTY_TEXTS, LOYALTY_ICONS } from '../../../constants/loyaltyConstants.jsx'
 
 const PanelHeader = ({ onClose }) => {
   return (

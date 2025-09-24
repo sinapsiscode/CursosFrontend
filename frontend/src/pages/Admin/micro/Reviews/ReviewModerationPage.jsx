@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import PageLayout from '../../../../components/Admin/Layout/PageLayout'
-import ReviewModeration from '../../../ReviewModeration'
+import ReviewModeration from '../../ReviewModeration'
 
 const ReviewModerationPage = () => {
   const [loading, setLoading] = useState(true)

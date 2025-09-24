@@ -1,4 +1,4 @@
-import { NAVBAR_STYLES } from '../../constants/navbarConstants'
+import { NAVBAR_STYLES } from '../../constants/navbarConstants.jsx'
 import { useNavbar } from '../../hooks/useNavbar'
 import NavbarLogo from './Navbar/NavbarLogo'
 import NavbarSearch from './Navbar/NavbarSearch'

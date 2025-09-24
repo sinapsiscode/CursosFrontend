@@ -1,4 +1,4 @@
-import { AREA_COLORS, DEFAULT_AVATAR } from '../constants/navbarConstants'
+import { AREA_COLORS, DEFAULT_AVATAR } from '../constants/navbarConstants.jsx'
 
 export const getAreaColorClass = (area) => {
   return AREA_COLORS[area] || ''

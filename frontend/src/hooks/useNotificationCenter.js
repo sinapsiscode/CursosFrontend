@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 import { notificationService } from '../services/notificationService'
-import { NOTIFICATION_CONFIG } from '../constants/notificationConstants'
+import { NOTIFICATION_CONFIG } from '../constants/notificationConstants.jsx'
 
 export const useNotificationCenter = () => {
   const [isOpen, setIsOpen] = useState(false)

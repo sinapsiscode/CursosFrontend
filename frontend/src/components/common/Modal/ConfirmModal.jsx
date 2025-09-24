@@ -1,4 +1,4 @@
-import { CONFIRM_MODAL_STYLES, CONFIRM_MODAL_DEFAULTS } from '../../../constants/modalConstants'
+import { CONFIRM_MODAL_STYLES, CONFIRM_MODAL_DEFAULTS } from '../../../constants/modalConstants.jsx'
 import { useConfirmModal } from '../../../hooks/useModal'
 import BaseModal from './BaseModal'
 import ConfirmModalButtons from './ConfirmModalButtons'

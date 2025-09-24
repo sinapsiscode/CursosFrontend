@@ -5,7 +5,7 @@ import {
   STUDENT_ICONS,
   STUDENT_CONFIG,
   STUDENT_STATUS
-} from '../../../constants/studentManagementConstants'
+} from '../../../constants/studentManagementConstants.jsx'
 
 const StudentCard = ({
   student,

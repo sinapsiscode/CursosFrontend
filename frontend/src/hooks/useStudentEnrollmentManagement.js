@@ -5,7 +5,7 @@
 // Sigue el patrón SOLID: Single Responsibility Principle
 
 import { useState, useEffect, useCallback, useMemo } from 'react'
-import { apiService } from '../api/api'
+import { apiService } from '../services/api'
 import {
   ENROLLMENT_MODAL_INITIAL_STATE,
   NOTIFICATION_TYPES,

@@ -1,4 +1,4 @@
-import { NAVBAR_STYLES } from '../../../constants/navbarConstants'
+import { NAVBAR_STYLES } from '../../../constants/navbarConstants.jsx'
 import NotificationCenter from '../NotificationCenter'
 import UserMenu from './UserMenu'
 import GuestButtons from './GuestButtons'

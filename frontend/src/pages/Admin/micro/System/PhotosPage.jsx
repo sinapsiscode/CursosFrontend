@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import PageLayout from '../../../../components/Admin/Layout/PageLayout'
-import AdminPhotos from '../../../AdminPhotos'
+import AdminPhotos from '../../AdminPhotos'
 
 const PhotosPage = () => {
   const [loading, setLoading] = useState(true)

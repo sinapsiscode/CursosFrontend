@@ -1,4 +1,4 @@
-import { NAVBAR_STYLES, LOGO_CONFIG } from '../../../constants/navbarConstants'
+import { NAVBAR_STYLES, LOGO_CONFIG } from '../../../constants/navbarConstants.jsx'
 import { getAreaColorClass, capitalizeArea } from '../../../utils/navbarUtils'
 
 const NavbarLogo = ({ selectedArea }) => {

@@ -1,5 +1,5 @@
 import { useCourseManagement } from '../../../hooks/useCourseManagement'
-import { COURSE_MANAGEMENT_STYLES } from '../../../constants/courseManagementConstants'
+import { COURSE_MANAGEMENT_STYLES } from '../../../constants/courseManagementConstants.jsx'
 import CourseCreationForm from '../../Admin/CourseCreationForm'
 import CourseHeader from './CourseHeader'
 import CourseFormLoading from './CourseFormLoading'

@@ -2,7 +2,7 @@ import {
   COURSE_MANAGEMENT_STYLES,
   COURSE_MANAGEMENT_LABELS,
   COURSE_MANAGEMENT_ICONS
-} from '../../../constants/courseManagementConstants'
+} from '../../../constants/courseManagementConstants.jsx'
 
 const CourseActions = ({ course, onPreview, onEdit, onDelete }) => {
   const handleOpenInNewTab = () => {

@@ -1,4 +1,4 @@
-import { NOTIFICATION_STYLES, NOTIFICATION_TEXTS, NOTIFICATION_CONFIG } from '../../../constants/notificationConstants'
+import { NOTIFICATION_STYLES, NOTIFICATION_TEXTS, NOTIFICATION_CONFIG } from '../../../constants/notificationConstants.jsx'
 import NotificationItem from './NotificationItem'
 
 const NotificationList = ({ notifications, onNotificationAction, onDismiss }) => {

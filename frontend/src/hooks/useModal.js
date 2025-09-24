@@ -1,6 +1,6 @@
 import { useEffect, useCallback } from 'react'
 import { useUIStore } from '../store'
-import { MODAL_KEYS } from '../constants/modalConstants'
+import { MODAL_KEYS } from '../constants/modalConstants.jsx'
 
 export const useModal = () => {
   const { isModalOpen, openModal, closeModal } = useUIStore()

@@ -1,4 +1,4 @@
-import { NOTIFICATION_STYLES, NOTIFICATION_TEXTS } from '../../../constants/notificationConstants'
+import { NOTIFICATION_STYLES, NOTIFICATION_TEXTS } from '../../../constants/notificationConstants.jsx'
 import { formatNotificationDate, isNotificationUnread } from '../../../utils/notificationUtils'
 import NotificationActions from './NotificationActions'
 

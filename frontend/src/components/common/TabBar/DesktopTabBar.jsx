@@ -1,4 +1,4 @@
-import { TAB_BAR_STYLES } from '../../../constants/tabBarConstants'
+import { TAB_BAR_STYLES } from '../../../constants/tabBarConstants.jsx'
 import DesktopTab from './DesktopTab'
 
 const DesktopTabBar = ({ tabs, currentTabId, onTabClick }) => {

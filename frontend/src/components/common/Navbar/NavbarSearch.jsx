@@ -1,4 +1,4 @@
-import { NAVBAR_STYLES, NAVBAR_TEXTS, NAVBAR_ICONS } from '../../../constants/navbarConstants'
+import { NAVBAR_STYLES, NAVBAR_TEXTS, NAVBAR_ICONS } from '../../../constants/navbarConstants.jsx'
 
 const NavbarSearch = ({ searchQuery, setSearchQuery, onSearch }) => {
   return (

@@ -1,4 +1,4 @@
-import { LOYALTY_WIDGET_STYLES, LOYALTY_TEXTS, LOYALTY_ICONS } from '../../../constants/loyaltyConstants'
+import { LOYALTY_WIDGET_STYLES, LOYALTY_TEXTS, LOYALTY_ICONS } from '../../../constants/loyaltyConstants.jsx'
 import MinimizeButton from './MinimizeButton'
 
 const CompactWidget = ({ loyaltyData, isExpanded, onToggleExpanded, onMinimize }) => {

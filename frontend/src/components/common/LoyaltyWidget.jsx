@@ -1,4 +1,4 @@
-import { LOYALTY_WIDGET_STYLES } from '../../constants/loyaltyConstants'
+import { LOYALTY_WIDGET_STYLES } from '../../constants/loyaltyConstants.jsx'
 import { useLoyaltyWidget } from '../../hooks/useLoyaltyWidget'
 import MinimizedButton from './LoyaltyWidget/MinimizedButton'
 import CompactWidget from './LoyaltyWidget/CompactWidget'

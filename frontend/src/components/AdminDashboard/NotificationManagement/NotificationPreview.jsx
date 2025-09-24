@@ -163,9 +163,9 @@ const NotificationPreview = ({
 
               <div className="bg-blue-50 rounded-lg p-4">
                 <div className="text-sm text-blue-800 space-y-2">
-                  <div><strong>Estudiante:</strong> {'{'}{'{'}{'}student.name{'}'}{'}}, {'{'}{'{'}{'}student.firstName{'}'}{'}}, {'{'}{'{'}{'}student.email{'}'}{'}}</div>
-                  <div><strong>Curso:</strong> {'{'}{'{'}{'}course.title{'}'}{'}}, {'{'}{'{'}{'}course.instructor{'}'}{'}}, {'{'}{'{'}{'}course.startDate{'}'}{'}}</div>
-                  <div><strong>Sistema:</strong> {'{'}{'{'}{'}system.siteName{'}'}{'}}, {'{'}{'{'}{'}system.currentDate{'}'}{'}}</div>
+                  <div><strong>Estudiante:</strong> {'{student.name}'}, {'{student.firstName}'}, {'{student.email}'}</div>
+                  <div><strong>Curso:</strong> {'{course.title}'}, {'{course.instructor}'}, {'{course.startDate}'}</div>
+                  <div><strong>Sistema:</strong> {'{system.siteName}'}, {'{system.currentDate}'}</div>
                 </div>
               </div>
             </div>

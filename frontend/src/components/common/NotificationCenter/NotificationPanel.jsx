@@ -1,4 +1,4 @@
-import { NOTIFICATION_STYLES } from '../../../constants/notificationConstants'
+import { NOTIFICATION_STYLES } from '../../../constants/notificationConstants.jsx'
 import NotificationHeader from './NotificationHeader'
 import NotificationList from './NotificationList'
 

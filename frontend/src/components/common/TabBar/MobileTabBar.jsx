@@ -1,4 +1,4 @@
-import { TAB_BAR_STYLES } from '../../../constants/tabBarConstants'
+import { TAB_BAR_STYLES } from '../../../constants/tabBarConstants.jsx'
 import MobileTab from './MobileTab'
 
 const MobileTabBar = ({ tabs, currentTabId, onTabClick }) => {

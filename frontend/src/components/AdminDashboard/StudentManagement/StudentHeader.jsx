@@ -1,7 +1,7 @@
 import {
   STUDENT_STYLES,
   STUDENT_LABELS
-} from '../../../constants/studentManagementConstants'
+} from '../../../constants/studentManagementConstants.jsx'
 
 const StudentHeader = () => {
   return (

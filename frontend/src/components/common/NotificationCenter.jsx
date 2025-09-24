@@ -1,4 +1,4 @@
-import { NOTIFICATION_STYLES } from '../../constants/notificationConstants'
+import { NOTIFICATION_STYLES } from '../../constants/notificationConstants.jsx'
 import { useNotificationCenter } from '../../hooks/useNotificationCenter'
 import NotificationButton from './NotificationCenter/NotificationButton'
 import NotificationPanel from './NotificationCenter/NotificationPanel'

@@ -1,4 +1,4 @@
-import { NOTIFICATION_CONFIG, DATE_FORMAT_OPTIONS } from '../constants/notificationConstants'
+import { NOTIFICATION_CONFIG, DATE_FORMAT_OPTIONS } from '../constants/notificationConstants.jsx'
 
 export const formatUnreadCount = (count) => {
   return count > NOTIFICATION_CONFIG.maxUnreadDisplay

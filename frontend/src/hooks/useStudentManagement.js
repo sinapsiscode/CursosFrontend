@@ -8,7 +8,7 @@ import {
   STUDENT_LOG_MESSAGES,
   STUDENT_CONFIRMATION_CONFIG,
   STUDENT_CONFIG
-} from '../constants/studentManagementConstants'
+} from '../constants/studentManagementConstants.jsx'
 
 export const useStudentManagement = () => {
   const { courses, setCourses } = useAdminStore()
