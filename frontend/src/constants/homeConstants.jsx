@@ -67,13 +67,13 @@ export const HOME_STYLES = {
   section: {
     container: 'mb-12',
     header: 'mb-8 text-center',
-    title: 'text-3xl font-bold text-foreground mb-2',
-    subtitle: 'text-muted-foreground'
+    title: 'text-3xl font-bold text-text-primary mb-2',
+    subtitle: 'text-text-secondary'
   },
   areas: {
     grid: 'grid grid-cols-2 md:grid-cols-4 gap-6',
     card: 'p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer',
-    cardTitle: 'text-lg font-semibold text-center'
+    cardTitle: 'text-lg font-semibold text-center text-black'
   },
   courses: {
     grid: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6',

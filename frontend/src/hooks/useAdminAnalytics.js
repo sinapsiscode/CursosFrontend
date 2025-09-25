@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useAdminStore } from '../store'
 import { apiService } from '../services/api'
-// import { TIME_RANGES, LOG_MESSAGES, ANALYTICS_CONFIG } from '../constants/adminDashboardConstants'
+import { TIME_RANGES, LOG_MESSAGES, ANALYTICS_CONFIG } from '../constants/adminDashboardConstants'
 
 export const useAdminAnalytics = () => {
   const {
@@ -60,17 +60,13 @@ export const useAdminAnalytics = () => {
 
   // Configurar auto-refresh
   const setupAutoRefresh = useCallback(() => {
-    if (refreshInterval) {
-      clearInterval(refreshInterval)
-    }
-
     const interval = setInterval(() => {
       loadAnalytics()
     }, ANALYTICS_CONFIG.refreshInterval)
 
     setRefreshInterval(interval)
     return interval
-  }, [loadAnalytics, refreshInterval])
+  }, [loadAnalytics])
 
   // Limpiar auto-refresh
   const clearAutoRefresh = useCallback(() => {
@@ -96,12 +92,14 @@ export const useAdminAnalytics = () => {
 
   // Configurar auto-refresh al montar
   useEffect(() => {
-    const interval = setupAutoRefresh()
+    const interval = setInterval(() => {
+      loadAnalytics()
+    }, ANALYTICS_CONFIG.refreshInterval)
 
     return () => {
       clearInterval(interval)
     }
-  }, [setupAutoRefresh])
+  }, [])
 
   return {
     // Estado

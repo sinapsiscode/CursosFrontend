@@ -24,19 +24,61 @@ class ApiService {
       // Simular delay de red
       const delay = Math.random() * 500 + 200
       await new Promise(resolve => setTimeout(resolve, delay))
-      
+
       return await requestFn()
     } catch (error) {
       console.error('API Error:', error)
-      
+
       // Si hay datos de respaldo, usarlos
       if (fallbackData) {
         console.log('📦 Usando datos locales como respaldo')
         return fallbackData
       }
-      
+
       throw error
     }
+  }
+
+  // HTTP Methods
+  async get(endpoint) {
+    // Map common endpoints to existing methods
+    if (endpoint === '/courses') {
+      return this.getCourses()
+    }
+    if (endpoint === '/courses/featured') {
+      return this.getFeaturedCourses()
+    }
+    if (endpoint === '/courses/recommended') {
+      const courses = await this.getCourses()
+      return courses.slice(0, 3) // Return first 3 as recommended
+    }
+    if (endpoint === '/courses/continue') {
+      return null // No continue course by default
+    }
+    if (endpoint === '/favorites') {
+      return []
+    }
+    if (endpoint === '/suggestions') {
+      return []
+    }
+
+    // Default empty response
+    return { data: [] }
+  }
+
+  async post(endpoint, data) {
+    console.log(`POST ${endpoint}:`, data)
+    return { success: true, data }
+  }
+
+  async put(endpoint, data) {
+    console.log(`PUT ${endpoint}:`, data)
+    return { success: true, data }
+  }
+
+  async delete(endpoint) {
+    console.log(`DELETE ${endpoint}`)
+    return { success: true }
   }
 
   // Courses
