@@ -10,79 +10,66 @@ const AdminLayout = () => {
     {
       id: 'dashboard',
       label: 'Dashboard',
-      icon: '📊',
       path: '/admin/dashboard'
     },
     {
       id: 'courses',
       label: 'Cursos',
-      icon: '📚',
       path: '/admin/courses'
     },
     {
       id: 'students',
       label: 'Estudiantes',
-      icon: '👥',
       path: '/admin/students'
     },
     {
       id: 'reviews',
       label: 'Reseñas',
-      icon: '⭐',
       path: '/admin/reviews'
     },
     {
       id: 'loyalty',
       label: 'Fidelización',
-      icon: '🎁',
       path: '/admin/loyalty'
     },
     {
       id: 'coupons',
       label: 'Cupones',
-      icon: '🎫',
       path: '/admin/coupons'
     },
     {
       id: 'areas',
       label: 'Áreas',
-      icon: '🏷️',
       path: '/admin/areas'
     },
     {
       id: 'analytics',
       label: 'Reportes',
-      icon: '📈',
       path: '/admin/analytics'
     },
     {
       id: 'whatsapp',
       label: 'WhatsApp',
-      icon: '💬',
       path: '/admin/whatsapp'
     },
     {
       id: 'notifications',
       label: 'Notificaciones',
-      icon: '🔔',
       path: '/admin/notifications'
     },
     {
       id: 'events',
       label: 'Eventos',
-      icon: '📅',
       path: '/admin/events'
     },
     {
       id: 'exams',
       label: 'Exámenes',
-      icon: '📝',
       path: '/admin/exams'
     },
     {
       id: 'photos',
       label: 'Fotos',
-      icon: '📸',
       path: '/admin/photos'
     }
   ], [])
@@ -113,26 +100,25 @@ const AdminLayout = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background" style={{ overflowX: 'hidden', width: '100%', maxWidth: '100vw' }}>
       {/* Header con tabs */}
-      <div className="bg-surface border-b border-gray-700">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center space-x-8 overflow-x-auto">
+      <div className="w-full border-b border-gray-700 bg-surface" style={{ maxWidth: '100vw' }}>
+        <div className="w-full px-4 py-3" style={{ maxWidth: '100vw', overflowX: 'hidden' }}>
+          <div className="flex flex-wrap items-center justify-center gap-2">
             {adminTabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => handleTabClick(tab)}
                 className={`
-                  flex items-center space-x-2 px-4 py-4 text-sm font-medium whitespace-nowrap
-                  border-b-2 transition-all duration-200
+                  px-3 py-2 text-sm font-medium whitespace-nowrap rounded-md
+                  transition-all duration-200
                   ${currentTabId === tab.id
-                    ? 'border-accent text-accent'
-                    : 'border-transparent text-text-secondary hover:text-text-primary hover:border-gray-500'
+                    ? 'bg-accent text-background'
+                    : 'text-text-secondary hover:text-text-primary hover:bg-surface-hover'
                   }
                 `}
               >
-                <span className="text-lg">{tab.icon}</span>
-                <span>{tab.label}</span>
+                {tab.label}
               </button>
             ))}
           </div>
@@ -140,8 +126,10 @@ const AdminLayout = () => {
       </div>
 
       {/* Contenido de la página actual */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <Outlet />
+      <div className="w-full px-4 py-8 sm:px-6 lg:px-8" style={{ maxWidth: '100vw', overflowX: 'hidden' }}>
+        <div className="max-w-7xl mx-auto">
+          <Outlet />
+        </div>
       </div>
     </div>
   )
