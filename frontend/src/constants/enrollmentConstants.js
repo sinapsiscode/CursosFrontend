@@ -32,7 +32,7 @@ export const ENROLLMENT_TEXTS = {
   acquireCourse: 'Adquirir curso completo',
   processing: 'Procesando...',
   purchaseDetails: 'Detalles de Compra',
-  originalPrice: 'Precio original',
+  originalPrice: 'Gratis',
   levelDiscount: 'Descuento nivel',
   totalToPay: 'Total a pagar',
   pointsToEarn: 'Puntos a ganar',
@@ -90,7 +90,7 @@ export const NOTIFICATION_CONFIGS = {
 
 export const WHATSAPP_MESSAGE_TEMPLATE = {
   header: '*Solicitud de Inscripción - {courseTitle}*\n\n',
-  courseInfo: '📚 *Curso:* {courseTitle}\n🎯 *Área:* {courseArea}\n⭐ *Nivel:* {courseLevel}\n💰 *Precio:* ${finalPrice}\n\n',
+  courseInfo: '📚 *Curso:* {courseTitle}\n🎯 *Área:* {courseArea}\n⭐ *Nivel:* {courseLevel}\n💰 *Gratis*\n\n',
   studentInfo: '👤 *Estudiante:*\nNombre: {userName}\nEmail: {userEmail}\nID: {userId}\n\n',
   actionInfo: '🚀 *Quiero adquirir este curso completo*\nPor favor, envíenme información sobre métodos de pago y acceso inmediato.\n\nFecha de solicitud: {currentDate}'
 }

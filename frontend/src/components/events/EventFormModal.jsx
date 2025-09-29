@@ -195,7 +195,7 @@ const EventFormModal = ({
 
             <div>
               <label className="block text-text-secondary text-sm font-medium mb-2">
-                Precio (S/)
+                Gratis
               </label>
               <input
                 type="number"

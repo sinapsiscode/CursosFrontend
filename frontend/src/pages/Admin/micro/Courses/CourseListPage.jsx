@@ -18,10 +18,6 @@ const CourseListPage = () => {
   return (
     <PageLayout
       title="Gestión de Cursos"
-      action={{
-        label: "Nuevo Curso",
-        href: "/admin/courses/create"
-      }}
     >
       <div className="space-y-6">
         <p className="text-text-secondary">

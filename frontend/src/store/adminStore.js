@@ -1,12 +1,25 @@
 import { create } from 'zustand'
 import { useCourseStore } from './courseStore'
 
+// Datos iniciales para áreas y niveles
+const initialAreas = [
+  { id: 1, key: 'metalurgia', name: 'Metalurgia', active: true, textColor: 'text-red-500', bgColor: 'bg-red-500' },
+  { id: 2, key: 'mineria', name: 'Minería', active: true, textColor: 'text-blue-500', bgColor: 'bg-blue-500' },
+  { id: 3, key: 'geologia', name: 'Geología', active: true, textColor: 'text-green-500', bgColor: 'bg-green-500' }
+]
+
+const initialLevels = [
+  { id: 1, key: 'basico', name: 'Básico', active: true, textColor: 'text-gray-500', bgColor: 'bg-gray-500' },
+  { id: 2, key: 'intermedio', name: 'Intermedio', active: true, textColor: 'text-yellow-500', bgColor: 'bg-yellow-500' },
+  { id: 3, key: 'avanzado', name: 'Avanzado', active: true, textColor: 'text-purple-500', bgColor: 'bg-purple-500' }
+]
+
 export const useAdminStore = create((set, get) => ({
   users: [],
   courses: [],
   coursesWithEnrollment: [],
-  areas: [],
-  levels: [],
+  areas: initialAreas,
+  levels: initialLevels,
   analytics: {
     totalUsers: 0,
     totalCourses: 0,

@@ -11,7 +11,7 @@ export const formatTime = (minutes) => {
 }
 
 export const formatPrice = (price) => {
-  return price === 0 ? 'Gratis' : `$${price}`
+  return 'Gratis'
 }
 
 export const formatStatus = (published) => {

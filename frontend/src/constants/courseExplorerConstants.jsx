@@ -120,7 +120,7 @@ export const COURSE_EXPLORER_MESSAGES = {
     area: 'Área',
     level: 'Nivel',
     duration: 'Duración',
-    price: 'Precio'
+    price: 'Gratis'
   },
   emptyState: {
     title: 'No se encontraron cursos',

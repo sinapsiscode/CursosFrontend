@@ -16,7 +16,7 @@ export const capitalizeFirst = (text) => {
 }
 
 export const formatPrice = (price) => {
-  return price === 0 ? 'Gratis' : `S/ ${price}`
+  return 'Gratis'
 }
 
 export const getDefaultPoints = () => 100

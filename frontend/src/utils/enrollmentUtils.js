@@ -5,7 +5,7 @@ export const calculatePointsToEarn = (finalPrice) => {
 }
 
 export const formatPrice = (price) => {
-  return `$${price.toFixed(2)}`
+  return 'Gratis'
 }
 
 export const formatCourseDetails = (course) => {

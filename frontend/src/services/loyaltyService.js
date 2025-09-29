@@ -647,7 +647,7 @@ export class LoyaltyService {
     }
   }
 
-  // Aplicar descuento de nivel a precio
+  // Aplicar descuento de nivel - ahora todo es gratis
   applyLevelDiscount(price) {
     const level = this.config.levels[this.userPoints.currentLevel]
     const discount = level.discountPercentage / 100

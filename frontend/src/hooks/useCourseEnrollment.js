@@ -121,7 +121,7 @@ export const useCourseEnrollment = (course, onEnroll) => {
     const courseInfo = `📚 *Curso:* ${course.title}\n` +
                       `🎯 *Área:* ${course.area}\n` +
                       `⭐ *Nivel:* ${course.level}\n` +
-                      `💰 *Precio:* $${priceDetails.finalPrice.toFixed(2)}\n\n`
+                      `💰 *Gratis*\n\n`
 
     const studentInfo = `👤 *Estudiante:*\n` +
                        `Nombre: ${user.name}\n` +

@@ -21,7 +21,7 @@ export const mockCourses = [
     students: 1250, // TODO: REFACTOR - Contar desde tabla Enrollments
     enrolledStudents: 834, // TODO: REFACTOR - Contar inscripciones activas desde BD
     views: 15420, // TODO: REFACTOR - Contador de vistas del curso
-    price: 0, // TODO: REFACTOR - Precio dinámico, considerar descuentos
+    price: 0, // TODO: REFACTOR - Siempre gratis, no hay descuentos
     points: 10,
     isDemo: true,
     featured: true,

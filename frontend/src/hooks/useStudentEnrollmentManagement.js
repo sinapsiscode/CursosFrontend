@@ -254,7 +254,7 @@ export const useStudentEnrollmentManagement = () => {
   }, [])
 
   const formatPrice = useCallback((price) => {
-    return price === 0 ? 'Gratis' : `S/ ${price}`
+    return 'Gratis'
   }, [])
 
   // ===================================

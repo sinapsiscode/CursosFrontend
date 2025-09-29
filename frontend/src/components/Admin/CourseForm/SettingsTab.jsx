@@ -186,9 +186,9 @@ const SettingsTab = ({ formData, updateFormData, lessons, materials }) => {
             <hr className="border-gray-600" />
 
             <div className="flex justify-between font-medium">
-              <span className="text-gray-300">Precio:</span>
+              <span className="text-gray-300">Gratis:</span>
               <span className="text-accent">
-                {formData.price === 0 ? 'Gratis' : `$${formData.price}`}
+                Gratis
               </span>
             </div>
           </div>

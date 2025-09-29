@@ -51,7 +51,7 @@ export const useCourseForm = ({ editingCourse, activeAreas, levels, onSave, onCl
     if (!formData.area) newErrors.area = 'El área es obligatoria'
     if (!formData.level) newErrors.level = 'El nivel es obligatorio'
     if (!formData.duration || formData.duration < 1) newErrors.duration = 'La duración debe ser mayor a 0'
-    if (formData.price < 0) newErrors.price = 'El precio no puede ser negativo'
+    if (formData.price < 0) newErrors.price = 'El precio siempre es gratis'
 
     if (!lessons || lessons.length === 0) {
       newErrors.lessons = 'Debe agregar al menos una lección'

@@ -105,7 +105,7 @@ export class EventService {
         id: 'promo-002',
         type: 'bundle',
         title: 'Pack Completo Metalurgia',
-        description: '3 cursos esenciales de metalurgia por el precio de 2',
+        description: '3 cursos esenciales de metalurgia, todos gratis',
         area: 'metalurgia',
         courses: [
           { id: 'met-101', title: 'Fundamentos de Metalurgia' },
@@ -273,7 +273,7 @@ export class EventService {
     }).map(event => ({
       ...event,
       price: 0, // TODOS los eventos son gratuitos para estudiantes
-      discount: event.originalPrice ? 100 : (event.discount || 0) // Si tiene precio original, descuento del 100%
+      discount: event.originalPrice ? 100 : (event.discount || 0) // Si tenía precio original, descuento del 100% - ahora todo es gratis
     }))
   }
 

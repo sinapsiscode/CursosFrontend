@@ -3,9 +3,9 @@ import { FileUploadButton } from './FileUploadButton'
 const BasicInfoTab = ({ formData, updateFormData, errors, activeAreas, levels, handleFileUpload }) => {
   return (
     <div className="space-y-6">
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid gap-6 md:grid-cols-2">
         <div>
-          <label className="block text-sm font-medium text-gray-300 mb-2">
+          <label className="block mb-2 text-sm font-medium text-gray-300">
             Título del Curso *
           </label>
           <input
@@ -17,11 +17,11 @@ const BasicInfoTab = ({ formData, updateFormData, errors, activeAreas, levels, h
             }`}
             placeholder="Ej: Fundamentos de Metalurgia"
           />
-          {errors.title && <p className="text-red-400 text-sm mt-1">{errors.title}</p>}
+          {errors.title && <p className="mt-1 text-sm text-red-400">{errors.title}</p>}
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-300 mb-2">
+          <label className="block mb-2 text-sm font-medium text-gray-300">
             Instructor *
           </label>
           <input
@@ -33,11 +33,11 @@ const BasicInfoTab = ({ formData, updateFormData, errors, activeAreas, levels, h
             }`}
             placeholder="Dr. Juan Pérez"
           />
-          {errors.instructor && <p className="text-red-400 text-sm mt-1">{errors.instructor}</p>}
+          {errors.instructor && <p className="mt-1 text-sm text-red-400">{errors.instructor}</p>}
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-300 mb-2">
+          <label className="block mb-2 text-sm font-medium text-gray-300">
             Área *
           </label>
           <select
@@ -53,11 +53,11 @@ const BasicInfoTab = ({ formData, updateFormData, errors, activeAreas, levels, h
               </option>
             ))}
           </select>
-          {errors.area && <p className="text-red-400 text-sm mt-1">{errors.area}</p>}
+          {errors.area && <p className="mt-1 text-sm text-red-400">{errors.area}</p>}
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-300 mb-2">
+          <label className="block mb-2 text-sm font-medium text-gray-300">
             Nivel *
           </label>
           <select
@@ -73,11 +73,11 @@ const BasicInfoTab = ({ formData, updateFormData, errors, activeAreas, levels, h
               </option>
             ))}
           </select>
-          {errors.level && <p className="text-red-400 text-sm mt-1">{errors.level}</p>}
+          {errors.level && <p className="mt-1 text-sm text-red-400">{errors.level}</p>}
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-300 mb-2">
+          <label className="block mb-2 text-sm font-medium text-gray-300">
             Duración (minutos) *
           </label>
           <input
@@ -89,12 +89,12 @@ const BasicInfoTab = ({ formData, updateFormData, errors, activeAreas, levels, h
             }`}
             min="1"
           />
-          {errors.duration && <p className="text-red-400 text-sm mt-1">{errors.duration}</p>}
+          {errors.duration && <p className="mt-1 text-sm text-red-400">{errors.duration}</p>}
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-300 mb-2">
-            Precio ($)
+          <label className="block mb-2 text-sm font-medium text-gray-300">
+            Precio
           </label>
           <input
             type="number"
@@ -106,11 +106,11 @@ const BasicInfoTab = ({ formData, updateFormData, errors, activeAreas, levels, h
             min="0"
             step="0.01"
           />
-          {errors.price && <p className="text-red-400 text-sm mt-1">{errors.price}</p>}
+          {errors.price && <p className="mt-1 text-sm text-red-400">{errors.price}</p>}
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-300 mb-2">
+          <label className="block mb-2 text-sm font-medium text-gray-300">
             N° de participantes
           </label>
           <input
@@ -123,11 +123,11 @@ const BasicInfoTab = ({ formData, updateFormData, errors, activeAreas, levels, h
             min="1"
             placeholder="50"
           />
-          {errors.maxParticipants && <p className="text-red-400 text-sm mt-1">{errors.maxParticipants}</p>}
+          {errors.maxParticipants && <p className="mt-1 text-sm text-red-400">{errors.maxParticipants}</p>}
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-300 mb-2">
+          <label className="block mb-2 text-sm font-medium text-gray-300">
             Puntos de Fidelización
           </label>
           <input
@@ -141,15 +141,15 @@ const BasicInfoTab = ({ formData, updateFormData, errors, activeAreas, levels, h
             step="10"
             placeholder="100"
           />
-          <p className="text-gray-400 text-xs mt-1">
+          <p className="mt-1 text-xs text-gray-400">
             Puntos que el estudiante ganará al completar este curso
           </p>
-          {errors.points && <p className="text-red-400 text-sm mt-1">{errors.points}</p>}
+          {errors.points && <p className="mt-1 text-sm text-red-400">{errors.points}</p>}
         </div>
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-300 mb-2">
+        <label className="block mb-2 text-sm font-medium text-gray-300">
           Imagen de Portada
         </label>
         <div className="space-y-4">
@@ -158,12 +158,12 @@ const BasicInfoTab = ({ formData, updateFormData, errors, activeAreas, levels, h
               <img
                 src={formData.thumbnail}
                 alt="Portada actual"
-                className="w-24 h-16 object-cover rounded-lg"
+                className="object-cover w-24 h-16 rounded-lg"
               />
               <button
                 type="button"
                 onClick={() => updateFormData({ thumbnail: '' })}
-                className="text-red-400 hover:text-red-300 text-sm"
+                className="text-sm text-red-400 hover:text-red-300"
               >
                 Eliminar imagen
               </button>
@@ -174,14 +174,14 @@ const BasicInfoTab = ({ formData, updateFormData, errors, activeAreas, levels, h
               type="url"
               value={formData.thumbnail}
               onChange={(e) => updateFormData({ thumbnail: e.target.value })}
-              className="flex-1 px-4 py-2 bg-background border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-accent"
+              className="flex-1 px-4 py-2 text-white border border-gray-600 rounded-lg bg-background focus:outline-none focus:ring-2 focus:ring-accent"
               placeholder="URL de la imagen o sube un archivo"
             />
             <FileUploadButton
               type="image"
               onUpload={(url) => updateFormData({ thumbnail: url })}
               handleFileUpload={handleFileUpload}
-              className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+              className="px-4 py-2 text-white transition-colors bg-blue-600 rounded-lg hover:bg-blue-700"
             >
               Subir Imagen
             </FileUploadButton>
@@ -190,7 +190,7 @@ const BasicInfoTab = ({ formData, updateFormData, errors, activeAreas, levels, h
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-300 mb-2">
+        <label className="block mb-2 text-sm font-medium text-gray-300">
           Descripción *
         </label>
         <textarea
@@ -202,7 +202,7 @@ const BasicInfoTab = ({ formData, updateFormData, errors, activeAreas, levels, h
           }`}
           placeholder="Describe lo que los estudiantes aprenderán en este curso..."
         />
-        {errors.description && <p className="text-red-400 text-sm mt-1">{errors.description}</p>}
+        {errors.description && <p className="mt-1 text-sm text-red-400">{errors.description}</p>}
       </div>
     </div>
   )

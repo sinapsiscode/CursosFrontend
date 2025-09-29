@@ -6,11 +6,7 @@ const CoursePrice = ({ course }) => {
     <div className={CARD_STYLES.priceContainer}>
       <div className={CARD_STYLES.priceSection}>
         <div className={CARD_STYLES.priceText}>
-          {course.price === 0 ? (
-            <span className="text-accent">Gratis</span>
-          ) : (
-            <span>{formatPrice(course.price)}</span>
-          )}
+          <span className="text-accent">Gratis</span>
         </div>
 
         {course.points && (

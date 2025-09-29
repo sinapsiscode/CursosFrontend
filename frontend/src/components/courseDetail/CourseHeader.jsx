@@ -72,11 +72,7 @@ const CourseHeader = ({
 
             <div className="flex items-center space-x-4">
               <div className="text-2xl font-bold text-white">
-                {course.price === 0 ? (
-                  <span className="text-accent">{COURSE_DETAIL_CONFIG.labels.free}</span>
-                ) : (
-                  <span>S/ {course.price}</span>
-                )}
+                <span className="text-accent">Gratis</span>
               </div>
 
               {/* Puntos de fidelización */}

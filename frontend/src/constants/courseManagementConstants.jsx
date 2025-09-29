@@ -67,7 +67,7 @@ export const COURSE_MANAGEMENT_LABELS = {
     area: 'Área',
     level: 'Nivel',
     duration: 'Duración',
-    price: 'Precio',
+    price: 'Gratis',
     actions: 'Acciones'
   },
 

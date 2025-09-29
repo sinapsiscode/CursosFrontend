@@ -20,31 +20,24 @@ export const LOG_MESSAGES = {
 export const STAT_CARDS_CONFIG = [
   {
     key: 'totalUsers',
-    title: 'Usuarios Totales',
+    title: 'Total Usuarios',
     change: 12,
     color: 'blue',
     icon: '👥'
   },
   {
     key: 'totalCourses',
-    title: 'Cursos Activos',
+    title: 'Total Cursos',
     change: 5,
     color: 'green',
     icon: '📚'
   },
   {
     key: 'totalHours',
-    title: 'Horas de Contenido',
+    title: 'Horas Totales',
     change: 8,
     color: 'purple',
     icon: '⏱️'
-  },
-  {
-    key: 'revenueThisMonth',
-    title: 'Ingresos del Mes',
-    change: 15,
-    color: 'yellow',
-    icon: '💰'
   }
 ]
 

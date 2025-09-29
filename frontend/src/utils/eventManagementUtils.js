@@ -98,7 +98,7 @@ export const exportEventsToExcel = (events, registrations) => {
     'Fecha': formatEventDate(event.date, event.time),
     'Capacidad': event.capacity,
     'Inscritos': registrations[event.id]?.length || 0,
-    'Precio': event.price === 0 ? 'Gratis' : `S/ ${event.price}`,
+    'Gratis': 'Gratis',
     'Estado': event.status
   }))
 
@@ -180,7 +180,7 @@ export const validateEventForm = (formData) => {
   }
 
   if (formData.price < 0) {
-    errors.price = 'El precio no puede ser negativo'
+    errors.price = 'El precio siempre es gratis'
   }
 
   return {

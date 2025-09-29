@@ -115,7 +115,7 @@ export const useCourseManagement = () => {
 
   // Funciones de formato
   const formatPrice = useCallback((price) => {
-    return price > 0 ? `$${price}` : 'Gratis'
+    return 'Gratis'
   }, [])
 
   const formatDuration = useCallback((duration) => {
