@@ -6,6 +6,10 @@ const EventsPage = () => {
   const [loading, setLoading] = useState(true)
   const [showCreateSection, setShowCreateSection] = useState(false)
   const [showTypesSection, setShowTypesSection] = useState(false)
+  const [showNotificationModal, setShowNotificationModal] = useState(false)
+  const [selectedEvent, setSelectedEvent] = useState(null)
+  const [showSuccessToast, setShowSuccessToast] = useState(false)
+  const [notificationCount, setNotificationCount] = useState(0)
 
   const [eventTypes, setEventTypes] = useState([
     { id: 1, name: 'Webinar', value: 'webinar', color: 'bg-blue-600' },
@@ -176,6 +180,24 @@ const EventsPage = () => {
     if (confirm('¿Estás seguro de eliminar este tipo de evento?')) {
       setEventTypes(eventTypes.filter(t => t.id !== id))
     }
+  }
+
+  const handleOpenNotificationModal = (event) => {
+    setSelectedEvent(event)
+    setShowNotificationModal(true)
+  }
+
+  const handleSendNotification = () => {
+    // TODO: Conectar con API para enviar notificaciones
+    const count = Math.floor(Math.random() * 100) + 20 // Simular número de usuarios notificados
+    setNotificationCount(count)
+    setShowNotificationModal(false)
+    setShowSuccessToast(true)
+
+    // Ocultar toast después de 5 segundos
+    setTimeout(() => {
+      setShowSuccessToast(false)
+    }, 5000)
   }
 
   const colorOptions = [
@@ -663,7 +685,7 @@ const EventsPage = () => {
                           Ver Detalles
                         </button>
                         <button
-                          onClick={() => console.log('Notificar:', event.id)}
+                          onClick={() => handleOpenNotificationModal(event)}
                           className="px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded text-sm transition-colors"
                         >
                           Notificar
@@ -676,6 +698,44 @@ const EventsPage = () => {
             </tbody>
           </table>
         </div>
+
+        {/* Modal de Confirmación de Notificación */}
+        {showNotificationModal && selectedEvent && (
+          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+            <div className="bg-surface rounded-lg p-6 max-w-md w-full mx-4">
+              <h3 className="text-xl font-semibold text-white mb-4">Enviar Notificación</h3>
+              <p className="text-text-secondary mb-6">
+                ¿Deseas notificar a los usuarios interesados en <span className="text-white font-medium">{selectedEvent.area}</span> sobre el evento <span className="text-white font-medium">"{selectedEvent.title}"</span>?
+              </p>
+              <div className="flex justify-end gap-3">
+                <button
+                  onClick={() => setShowNotificationModal(false)}
+                  className="px-4 py-2 bg-surface border border-gray-600 text-white rounded-lg hover:bg-background transition-colors"
+                >
+                  Cancelar
+                </button>
+                <button
+                  onClick={handleSendNotification}
+                  className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors"
+                >
+                  Enviar Notificación
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Toast de Éxito */}
+        {showSuccessToast && (
+          <div className="fixed top-4 right-4 bg-green-600 text-white px-6 py-4 rounded-lg shadow-lg z-50 flex items-center gap-3 animate-fade-in">
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+            </svg>
+            <p className="font-medium">
+              Se notificó a {notificationCount} usuarios interesados en {selectedEvent?.area || 'la categoría'}
+            </p>
+          </div>
+        )}
       </div>
     </PageLayout>
   )

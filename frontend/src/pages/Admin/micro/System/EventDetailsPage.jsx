@@ -175,19 +175,6 @@ const EventDetailsPage = () => {
           </div>
         </div>
 
-        {/* Beneficios */}
-        <div className="bg-surface rounded-lg p-6">
-          <h3 className="text-lg font-semibold text-white mb-4">Beneficios</h3>
-          <ul className="space-y-2">
-            {event.benefits.map((benefit, index) => (
-              <li key={index} className="text-white flex items-start gap-2">
-                <span className="text-accent">•</span>
-                {benefit}
-              </li>
-            ))}
-          </ul>
-        </div>
-
         {/* Participantes Registrados */}
         <div className="bg-surface rounded-lg p-6">
           <div className="flex items-center justify-between mb-4">
