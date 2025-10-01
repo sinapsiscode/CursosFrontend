@@ -8,7 +8,9 @@
       "Bash(for file in courseManagementConstants.js loyaltyConstants.js notificationConstants.js studentManagementConstants.js)",
       "Bash(do mv \"$file\" \"$file%.js.jsx\")",
       "Bash(done)",
-      "Bash(npm run dev:*)"
+      "Bash(npm run dev:*)",
+      "Bash(tree:*)",
+      "Bash(cat:*)"
     ],
     "deny": [],
     "ask": []

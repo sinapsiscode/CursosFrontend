@@ -10,7 +10,7 @@ export const TAB_BAR_STYLES = {
   desktopContainer: 'hidden md:block',
   desktopWrapper: 'bg-surface border-b border-gray-700',
   desktopContent: 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8',
-  desktopTabs: 'flex space-x-8',
+  desktopTabs: 'flex justify-center space-x-8',
   desktopTab: 'flex items-center space-x-2 px-3 py-4 border-b-2 text-sm font-medium transition-colors',
   desktopTabActive: 'border-accent text-accent',
   desktopTabInactive: 'border-transparent text-gray-400 hover:text-white hover:border-gray-300',
