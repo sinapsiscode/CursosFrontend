@@ -10,6 +10,8 @@ const ExamListPage = () => {
   const [editingExamId, setEditingExamId] = useState(null)
   const [showQuestionModal, setShowQuestionModal] = useState(false)
   const [editingQuestionId, setEditingQuestionId] = useState(null)
+  const [showDeleteModal, setShowDeleteModal] = useState(false)
+  const [examToDelete, setExamToDelete] = useState(null)
   const [questionFormData, setQuestionFormData] = useState({
     question: '',
     imageUrl: '',
@@ -325,8 +327,16 @@ const ExamListPage = () => {
   }
 
   const handleDeleteExam = (examId) => {
-    if (confirm('¿Estás seguro de eliminar este examen?')) {
-      setExams(exams.filter(e => e.id !== examId))
+    const exam = exams.find(e => e.id === examId)
+    setExamToDelete(exam)
+    setShowDeleteModal(true)
+  }
+
+  const handleConfirmDelete = () => {
+    if (examToDelete) {
+      setExams(exams.filter(e => e.id !== examToDelete.id))
+      setShowDeleteModal(false)
+      setExamToDelete(null)
     }
   }
 
@@ -899,6 +909,35 @@ const ExamListPage = () => {
                     {editingQuestionId ? 'Guardar Cambios' : 'Agregar Pregunta'}
                   </button>
                 </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Modal de Confirmación de Eliminación */}
+        {showDeleteModal && examToDelete && (
+          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+            <div className="bg-surface rounded-lg p-6 max-w-md w-full mx-4">
+              <h3 className="text-xl font-semibold text-white mb-4">Eliminar Examen</h3>
+              <p className="text-text-secondary mb-6">
+                ¿Estás seguro de eliminar el examen <span className="text-white font-medium">"{examToDelete.title}"</span>? Esta acción no se puede deshacer.
+              </p>
+              <div className="flex justify-end gap-3">
+                <button
+                  onClick={() => {
+                    setShowDeleteModal(false)
+                    setExamToDelete(null)
+                  }}
+                  className="px-4 py-2 bg-surface border border-gray-600 text-white rounded-lg hover:bg-background transition-colors"
+                >
+                  Cancelar
+                </button>
+                <button
+                  onClick={handleConfirmDelete}
+                  className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white font-medium rounded-lg transition-colors"
+                >
+                  Eliminar
+                </button>
               </div>
             </div>
           </div>
