@@ -36,6 +36,7 @@ const CouponCreatePage = lazy(() => import('./Coupons/CouponCreatePage'))
 const WhatsAppPage = lazy(() => import('./System/WhatsAppPage'))
 const NotificationsPage = lazy(() => import('./System/NotificationsPage'))
 const EventsPage = lazy(() => import('./System/EventsPage'))
+const EventDetailsPage = lazy(() => import('./System/EventDetailsPage'))
 const EventManagementPage = lazy(() => import('./System/EventManagementPage'))
 const PhotosPage = lazy(() => import('./System/PhotosPage'))
 
@@ -240,6 +241,14 @@ const AdminRouter = () => (
         element={
           <Suspense fallback={<div className="flex items-center justify-center h-64">Cargando...</div>}>
             <EventsPage />
+          </Suspense>
+        }
+      />
+      <Route
+        path="events/:id"
+        element={
+          <Suspense fallback={<div className="flex items-center justify-center h-64">Cargando...</div>}>
+            <EventDetailsPage />
           </Suspense>
         }
       />
