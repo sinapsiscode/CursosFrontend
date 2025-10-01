@@ -24,7 +24,7 @@ const EnrollmentCountersPage = () => {
         {/* Usar el componente ya refactorizado */}
         <CourseEnrollmentManagement />
 
-        <div className="bg-card p-4 rounded-lg">
+        <div className="bg-surface p-4 rounded-lg">
           <h3 className="font-medium text-white mb-2">💡 Información</h3>
           <ul className="text-sm text-text-secondary space-y-1">
             <li>• Los contadores se actualizan en tiempo real</li>

@@ -72,7 +72,7 @@ const AreaCreatePage = () => {
                 type="text"
                 value={formData.name}
                 onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                className="w-full p-3 bg-card border border-gray-600 rounded-lg text-white"
+                className="w-full p-3 bg-background border border-gray-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-accent"
                 placeholder="Ej: Metalurgia"
                 required
               />
@@ -86,7 +86,7 @@ const AreaCreatePage = () => {
                 type="text"
                 value={formData.key}
                 onChange={(e) => setFormData(prev => ({ ...prev, key: e.target.value }))}
-                className="w-full p-3 bg-card border border-gray-600 rounded-lg text-white"
+                className="w-full p-3 bg-background border border-gray-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-accent"
                 placeholder="Se genera automáticamente"
               />
             </div>
@@ -99,7 +99,7 @@ const AreaCreatePage = () => {
             <textarea
               value={formData.description}
               onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
-              className="w-full p-3 bg-card border border-gray-600 rounded-lg text-white"
+              className="w-full p-3 bg-background border border-gray-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-accent resize-none"
               rows="3"
               placeholder="Descripción del área de estudio"
               required
@@ -117,7 +117,7 @@ const AreaCreatePage = () => {
                     key={icon}
                     type="button"
                     onClick={() => setFormData(prev => ({ ...prev, icon }))}
-                    className={`p-3 text-2xl border rounded-lg transition-colors ${
+                    className={`p-3 text-2xl border rounded-lg transition-colors bg-background ${
                       formData.icon === icon
                         ? 'border-accent bg-accent/20'
                         : 'border-gray-600 hover:border-gray-500'
@@ -168,14 +168,14 @@ const AreaCreatePage = () => {
             <button
               type="button"
               onClick={() => navigate('/admin/areas')}
-              className="px-6 py-2 border border-gray-600 rounded-lg text-white hover:bg-card transition-colors"
+              className="px-6 py-2 border border-gray-600 rounded-lg text-white hover:bg-surface transition-colors"
             >
               Cancelar
             </button>
             <button
               type="submit"
               disabled={saving}
-              className="px-6 py-2 bg-accent text-background rounded-lg hover:bg-accent/80 transition-colors disabled:opacity-50"
+              className="px-6 py-2 bg-accent text-black font-medium rounded-lg hover:bg-accent/90 transition-colors disabled:opacity-50"
             >
               {saving ? 'Guardando...' : (isEditing ? 'Actualizar Área' : 'Crear Área')}
             </button>

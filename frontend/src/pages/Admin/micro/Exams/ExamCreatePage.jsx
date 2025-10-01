@@ -41,7 +41,7 @@ const ExamCreatePage = () => {
               type="text"
               value={formData.title}
               onChange={(e) => setFormData(prev => ({ ...prev, title: e.target.value }))}
-              className="w-full p-3 bg-card border border-gray-600 rounded-lg text-white"
+              className="w-full p-3 bg-surface border border-gray-600 rounded-lg text-white"
               placeholder="Ej: Examen Final de Metalurgia"
               required
             />
@@ -54,7 +54,7 @@ const ExamCreatePage = () => {
             <select
               value={formData.course}
               onChange={(e) => setFormData(prev => ({ ...prev, course: e.target.value }))}
-              className="w-full p-3 bg-card border border-gray-600 rounded-lg text-white"
+              className="w-full p-3 bg-surface border border-gray-600 rounded-lg text-white"
               required
             >
               <option value="">Seleccionar curso</option>
@@ -73,7 +73,7 @@ const ExamCreatePage = () => {
                 type="number"
                 value={formData.timeLimit}
                 onChange={(e) => setFormData(prev => ({ ...prev, timeLimit: Number(e.target.value) }))}
-                className="w-full p-3 bg-card border border-gray-600 rounded-lg text-white"
+                className="w-full p-3 bg-surface border border-gray-600 rounded-lg text-white"
                 min="1"
                 required
               />
@@ -87,7 +87,7 @@ const ExamCreatePage = () => {
                 type="number"
                 value={formData.questions}
                 onChange={(e) => setFormData(prev => ({ ...prev, questions: Number(e.target.value) }))}
-                className="w-full p-3 bg-card border border-gray-600 rounded-lg text-white"
+                className="w-full p-3 bg-surface border border-gray-600 rounded-lg text-white"
                 min="1"
                 required
               />
@@ -101,7 +101,7 @@ const ExamCreatePage = () => {
                 type="number"
                 value={formData.passingScore}
                 onChange={(e) => setFormData(prev => ({ ...prev, passingScore: Number(e.target.value) }))}
-                className="w-full p-3 bg-card border border-gray-600 rounded-lg text-white"
+                className="w-full p-3 bg-surface border border-gray-600 rounded-lg text-white"
                 min="1"
                 max="100"
                 required
@@ -113,7 +113,7 @@ const ExamCreatePage = () => {
             <button
               type="button"
               onClick={() => navigate('/admin/exams')}
-              className="px-6 py-2 border border-gray-600 rounded-lg text-white hover:bg-card transition-colors"
+              className="px-6 py-2 border border-gray-600 rounded-lg text-white hover:bg-surface transition-colors"
             >
               Cancelar
             </button>

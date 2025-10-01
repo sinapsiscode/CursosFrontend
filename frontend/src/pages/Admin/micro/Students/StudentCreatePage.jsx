@@ -40,7 +40,7 @@ const StudentCreatePage = () => {
               type="text"
               value={formData.name}
               onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-              className="w-full p-3 bg-card border border-gray-600 rounded-lg text-white"
+              className="w-full p-3 bg-surface border border-gray-600 rounded-lg text-white"
               required
             />
           </div>
@@ -53,7 +53,7 @@ const StudentCreatePage = () => {
               type="email"
               value={formData.email}
               onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-              className="w-full p-3 bg-card border border-gray-600 rounded-lg text-white"
+              className="w-full p-3 bg-surface border border-gray-600 rounded-lg text-white"
               required
             />
           </div>
@@ -62,7 +62,7 @@ const StudentCreatePage = () => {
             <button
               type="button"
               onClick={() => navigate('/admin/students')}
-              className="px-6 py-2 border border-gray-600 rounded-lg text-white hover:bg-card transition-colors"
+              className="px-6 py-2 border border-gray-600 rounded-lg text-white hover:bg-surface transition-colors"
             >
               Cancelar
             </button>

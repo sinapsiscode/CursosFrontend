@@ -63,7 +63,7 @@ const CouponListPage = () => {
           <select
             value={filter}
             onChange={(e) => setFilter(e.target.value)}
-            className="bg-card border border-gray-600 rounded-lg px-3 py-2 text-white"
+            className="bg-background border border-gray-600 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-accent"
           >
             <option value="all">Todos los cupones</option>
             <option value="active">Activos</option>
@@ -72,7 +72,7 @@ const CouponListPage = () => {
           </select>
         </div>
 
-        <div className="bg-card rounded-lg overflow-hidden">
+        <div className="bg-surface rounded-lg overflow-hidden">
           <table className="w-full">
             <thead className="bg-background">
               <tr>
@@ -133,7 +133,7 @@ const CouponListPage = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="bg-card p-4 rounded-lg">
+          <div className="bg-surface p-4 rounded-lg">
             <h3 className="font-medium text-white mb-2">📊 Estadísticas</h3>
             <div className="space-y-1 text-sm">
               <div className="flex justify-between">

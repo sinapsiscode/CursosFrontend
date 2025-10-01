@@ -52,7 +52,7 @@ const StudentManagerPage = () => {
               placeholder="Buscar por nombre, email, área..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full max-w-md bg-card border border-gray-600 rounded-lg px-3 py-2 text-white focus:border-accent focus:outline-none"
+              className="w-full max-w-md bg-surface border border-gray-600 rounded-lg px-3 py-2 text-white focus:border-accent focus:outline-none"
             />
           </div>
           <button
@@ -65,20 +65,20 @@ const StudentManagerPage = () => {
 
         {/* Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="bg-card p-4 rounded-lg">
+          <div className="bg-surface p-4 rounded-lg">
             <p className="text-text-secondary text-sm">Total</p>
             <p className="text-2xl font-bold text-white">{stats.total}</p>
           </div>
-          <div className="bg-card p-4 rounded-lg">
+          <div className="bg-surface p-4 rounded-lg">
             <p className="text-text-secondary text-sm">Activos</p>
             <p className="text-2xl font-bold text-green-400">{stats.active}</p>
           </div>
-          <div className="bg-card p-4 rounded-lg">
+          <div className="bg-surface p-4 rounded-lg">
             <p className="text-text-secondary text-sm">Suspendidos</p>
             <p className="text-2xl font-bold text-red-400">{stats.suspended}</p>
           </div>
           {stats.byArea.map(area => (
-            <div key={area.value} className="bg-card p-4 rounded-lg">
+            <div key={area.value} className="bg-surface p-4 rounded-lg">
               <p className="text-text-secondary text-sm">{area.label}</p>
               <p className={`text-2xl font-bold ${area.value === 'metalurgia' ? 'text-blue-400' : area.value === 'mineria' ? 'text-green-400' : 'text-orange-400'}`}>
                 {area.count}
@@ -88,7 +88,7 @@ const StudentManagerPage = () => {
         </div>
 
         {/* Students Table */}
-        <div className="bg-card rounded-lg overflow-hidden">
+        <div className="bg-surface rounded-lg overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead className="bg-background">

@@ -1,44 +1,80 @@
 import { useState, useEffect } from 'react'
 import PageLayout from '../../../../components/Admin/Layout/PageLayout'
-import { useEventManagement } from '../../../../hooks/useEventManagement'
-import { getEventStats, filterEvents, formatEventDate } from '../../../../utils/eventManagementUtils'
-import { EVENT_TYPES, EVENT_AREAS, getEventTypeColor } from '../../../../constants/eventManagementConstants'
-import EventFormModal from '../../../../components/Events/EventFormModal'
-import EventRegistrations from '../../../../components/Events/EventRegistrations'
 
 const EventManagementPage = () => {
-  const {
-    events,
-    stats,
-    loading,
-    eventRegistrations,
-    isCreating,
-    selectedEvent,
-    searchTerm,
-    filters,
-    formData,
-    validationErrors,
-    setIsCreating,
-    setSearchTerm,
-    setFilters,
-    handleInputChange,
-    handleSubmit,
-    handleEdit,
-    handleDelete,
-    handleDuplicate,
-    handlePublishToggle,
-    handleCloseForm
-  } = useEventManagement()
+  const [events, setEvents] = useState([])
+  const [loading, setLoading] = useState(true)
 
-  const [showRegistrations, setShowRegistrations] = useState(false)
-  const [selectedEventForRegistrations, setSelectedEventForRegistrations] = useState(null)
+  useEffect(() => {
+    // TODO: Reemplazar con llamada a API
+    const timer = setTimeout(() => {
+      setEvents([
+        {
+          id: 1,
+          title: 'Innovaciones en Metalurgia 4.0',
+          description: 'Descubre las últimas tecnologías en la industria metalúrgica',
+          type: 'webinar',
+          area: 'metalurgia',
+          date: '7/10/2025',
+          registrations: 45,
+          maxRegistrations: 100,
+          status: 'active'
+        },
+        {
+          id: 2,
+          title: 'Técnicas Avanzadas de Exploración Minera',
+          description: 'Masterclass exclusiva con expertos internacionales',
+          type: 'masterclass',
+          area: 'mineria',
+          date: '14/10/2025',
+          registrations: 38,
+          maxRegistrations: 50,
+          status: 'active'
+        },
+        {
+          id: 3,
+          title: 'Black Friday Geología',
+          description: 'Todos los cursos de geología con 40% de descuento',
+          type: 'promotion',
+          area: 'geologia',
+          date: 'N/A',
+          registrations: null,
+          maxRegistrations: null,
+          status: 'scheduled'
+        },
+        {
+          id: 4,
+          title: 'Pack Completo Metalurgia',
+          description: '3 cursos esenciales de metalurgia por el precio de 2',
+          type: 'bundle',
+          area: 'metalurgia',
+          date: 'N/A',
+          registrations: null,
+          maxRegistrations: null,
+          status: 'active'
+        }
+      ])
+      setLoading(false)
+    }, 500)
+    return () => clearTimeout(timer)
+  }, [])
 
-  const filteredEvents = filterEvents(events, searchTerm, filters)
-  const eventStats = getEventStats(events, eventRegistrations)
+  // Calcular estadísticas
+  const stats = {
+    total: events.length,
+    webinars: events.filter(e => e.type === 'webinar').length,
+    promotions: events.filter(e => e.type === 'promotion').length,
+    totalRegistrations: events.reduce((sum, e) => sum + (e.registrations || 0), 0)
+  }
 
-  const handleViewRegistrations = (event) => {
-    setSelectedEventForRegistrations(event)
-    setShowRegistrations(true)
+  const getTypeBadge = (type) => {
+    const badges = {
+      webinar: { label: 'webinar', color: 'bg-blue-600' },
+      masterclass: { label: 'masterclass', color: 'bg-purple-600' },
+      promotion: { label: 'promotion', color: 'bg-green-600' },
+      bundle: { label: 'bundle', color: 'bg-orange-600' }
+    }
+    return badges[type] || { label: type, color: 'bg-gray-600' }
   }
 
   if (loading) {
@@ -46,181 +82,138 @@ const EventManagementPage = () => {
   }
 
   return (
-    <PageLayout title="Gestión de Eventos">
+    <PageLayout
+      title="Gestión de Eventos"
+      action={{
+        label: "+ Crear Evento",
+        href: "/admin/events/create"
+      }}
+    >
       <div className="space-y-6">
-        {/* Header Actions */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div className="flex gap-4">
-            <input
-              type="text"
-              placeholder="Buscar eventos..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full max-w-md bg-card border border-gray-600 rounded-lg px-3 py-2 text-white focus:border-accent focus:outline-none"
-            />
-            <select
-              value={filters.type}
-              onChange={(e) => setFilters(prev => ({ ...prev, type: e.target.value }))}
-              className="bg-card border border-gray-600 rounded-lg px-3 py-2 text-white focus:border-accent focus:outline-none"
-            >
-              <option value="all">Todos los tipos</option>
-              {EVENT_TYPES.map(type => (
-                <option key={type.value} value={type.value}>
-                  {type.label}
-                </option>
-              ))}
-            </select>
+        {/* Stats Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div className="bg-surface rounded-lg p-6">
+            <p className="text-text-secondary text-sm mb-1">Total Eventos</p>
+            <p className="text-4xl font-bold text-white">{stats.total}</p>
           </div>
+
+          <div className="bg-surface rounded-lg p-6">
+            <p className="text-text-secondary text-sm mb-1">Webinars</p>
+            <p className="text-4xl font-bold text-blue-400">{stats.webinars}</p>
+          </div>
+
+          <div className="bg-surface rounded-lg p-6">
+            <p className="text-text-secondary text-sm mb-1">Promociones</p>
+            <p className="text-4xl font-bold text-green-400">{stats.promotions}</p>
+          </div>
+
+          <div className="bg-surface rounded-lg p-6">
+            <p className="text-text-secondary text-sm mb-1">Registros Totales</p>
+            <p className="text-4xl font-bold text-purple-400">{stats.totalRegistrations}</p>
+          </div>
+        </div>
+
+        {/* Actions Bar */}
+        <div className="flex items-center justify-between">
+          <h2 className="text-xl font-semibold text-white">Gestión de Eventos</h2>
           <button
-            onClick={() => setIsCreating(true)}
-            className="bg-accent text-background px-4 py-2 rounded-lg font-medium hover:bg-opacity-90 transition-colors"
+            onClick={() => console.log('Configurar tipos')}
+            className="px-4 py-2 bg-surface border border-gray-600 text-white rounded-lg hover:bg-background transition-colors flex items-center gap-2"
           >
-            + Crear Evento
+            ⚙️ Configurar Tipos
           </button>
         </div>
 
-        {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="bg-card p-4 rounded-lg">
-            <p className="text-text-secondary text-sm">Total Eventos</p>
-            <p className="text-2xl font-bold text-white">{eventStats.total}</p>
-          </div>
-          <div className="bg-card p-4 rounded-lg">
-            <p className="text-text-secondary text-sm">Publicados</p>
-            <p className="text-2xl font-bold text-green-400">{eventStats.published}</p>
-          </div>
-          <div className="bg-card p-4 rounded-lg">
-            <p className="text-text-secondary text-sm">Borradores</p>
-            <p className="text-2xl font-bold text-yellow-400">{eventStats.drafts}</p>
-          </div>
-          <div className="bg-card p-4 rounded-lg">
-            <p className="text-text-secondary text-sm">Inscripciones</p>
-            <p className="text-2xl font-bold text-blue-400">{eventStats.totalRegistrations}</p>
-          </div>
-        </div>
-
         {/* Events Table */}
-        <div className="bg-card rounded-lg overflow-hidden">
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead className="bg-background">
-                <tr>
-                  <th className="text-left p-4 text-text-secondary font-medium">Evento</th>
-                  <th className="text-left p-4 text-text-secondary font-medium">Tipo</th>
-                  <th className="text-left p-4 text-text-secondary font-medium">Fecha</th>
-                  <th className="text-left p-4 text-text-secondary font-medium">Inscripciones</th>
-                  <th className="text-left p-4 text-text-secondary font-medium">Estado</th>
-                  <th className="text-left p-4 text-text-secondary font-medium">Acciones</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredEvents.map(event => {
-                  const registrations = eventRegistrations[event.id] || []
-                  const typeColor = getEventTypeColor(event.type)
+        <div className="bg-surface rounded-lg overflow-hidden">
+          <table className="w-full">
+            <thead className="bg-background">
+              <tr>
+                <th className="text-left p-4 text-white font-medium">Evento</th>
+                <th className="text-left p-4 text-white font-medium">Tipo</th>
+                <th className="text-left p-4 text-white font-medium">Área</th>
+                <th className="text-left p-4 text-white font-medium">Fecha</th>
+                <th className="text-left p-4 text-white font-medium">Registros</th>
+                <th className="text-left p-4 text-white font-medium">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              {events.map((event, index) => {
+                const badge = getTypeBadge(event.type)
+                const progressPercentage = event.maxRegistrations
+                  ? (event.registrations / event.maxRegistrations) * 100
+                  : 0
 
-                  return (
-                    <tr key={event.id} className="border-t border-gray-700">
-                      <td className="p-4">
+                return (
+                  <tr
+                    key={event.id}
+                    className={`${index !== events.length - 1 ? 'border-b border-gray-700' : ''}`}
+                  >
+                    {/* Evento */}
+                    <td className="p-4">
+                      <h3 className="text-white font-medium mb-1">{event.title}</h3>
+                      <p className="text-text-secondary text-sm">{event.description}</p>
+                    </td>
+
+                    {/* Tipo */}
+                    <td className="p-4">
+                      <span className={`${badge.color} text-white px-3 py-1 rounded text-sm font-medium`}>
+                        {badge.label}
+                      </span>
+                    </td>
+
+                    {/* Área */}
+                    <td className="p-4">
+                      <span className="text-white">{event.area}</span>
+                    </td>
+
+                    {/* Fecha */}
+                    <td className="p-4">
+                      <span className="text-text-secondary">{event.date}</span>
+                    </td>
+
+                    {/* Registros */}
+                    <td className="p-4">
+                      {event.registrations !== null ? (
                         <div>
-                          <p className="text-white font-medium">{event.title}</p>
-                          <p className="text-text-secondary text-sm truncate max-w-xs">
-                            {event.description}
-                          </p>
+                          <div className="text-white font-medium mb-1">
+                            {event.registrations}/{event.maxRegistrations}
+                          </div>
+                          <div className="w-24 bg-background rounded-full h-2">
+                            <div
+                              className="bg-accent h-2 rounded-full transition-all duration-500"
+                              style={{ width: `${progressPercentage}%` }}
+                            />
+                          </div>
                         </div>
-                      </td>
-                      <td className="p-4">
-                        <span className={`inline-block px-2 py-1 rounded-full text-xs font-medium bg-${typeColor}-900/20 text-${typeColor}-400`}>
-                          {EVENT_TYPES.find(t => t.value === event.type)?.label || event.type}
-                        </span>
-                      </td>
-                      <td className="p-4">
-                        <div className="text-sm">
-                          <p className="text-white">{formatEventDate(event.date, event.time)}</p>
-                          <p className="text-text-secondary">Duración: {event.duration}</p>
-                        </div>
-                      </td>
-                      <td className="p-4">
-                        <div className="text-center">
-                          <p className="text-white font-medium">{registrations.length}</p>
-                          <p className="text-text-secondary text-sm">/ {event.capacity}</p>
-                        </div>
-                      </td>
-                      <td className="p-4">
-                        <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                          event.status === 'published' ? 'bg-green-900/20 text-green-400' :
-                          event.status === 'draft' ? 'bg-yellow-900/20 text-yellow-400' :
-                          'bg-gray-900/20 text-gray-400'
-                        }`}>
-                          {event.status === 'published' ? 'Publicado' :
-                           event.status === 'draft' ? 'Borrador' : event.status}
-                        </span>
-                      </td>
-                      <td className="p-4">
-                        <div className="flex gap-2">
-                          <button
-                            onClick={() => handleEdit(event)}
-                            className="text-accent hover:text-accent/80 text-sm"
-                          >
-                            Editar
-                          </button>
-                          <button
-                            onClick={() => handleViewRegistrations(event)}
-                            className="text-blue-400 hover:text-blue-300 text-sm"
-                          >
-                            Ver Inscritos
-                          </button>
-                          <button
-                            onClick={() => handlePublishToggle(event)}
-                            className="text-yellow-400 hover:text-yellow-300 text-sm"
-                          >
-                            {event.status === 'published' ? 'Despublicar' : 'Publicar'}
-                          </button>
-                          <button
-                            onClick={() => handleDuplicate(event)}
-                            className="text-green-400 hover:text-green-300 text-sm"
-                          >
-                            Duplicar
-                          </button>
-                          <button
-                            onClick={() => handleDelete(event)}
-                            className="text-red-400 hover:text-red-300 text-sm"
-                          >
-                            Eliminar
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  )
-                })}
-              </tbody>
-            </table>
-          </div>
+                      ) : (
+                        <span className="text-text-secondary">N/A</span>
+                      )}
+                    </td>
+
+                    {/* Acciones */}
+                    <td className="p-4">
+                      <div className="flex gap-2">
+                        <button
+                          onClick={() => console.log('Ver detalles:', event.id)}
+                          className="px-3 py-1 bg-accent hover:bg-accent/90 text-black font-medium rounded text-sm transition-colors"
+                        >
+                          Ver Detalles
+                        </button>
+                        <button
+                          onClick={() => console.log('Notificar:', event.id)}
+                          className="px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded text-sm transition-colors"
+                        >
+                          Notificar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                )
+              })}
+            </tbody>
+          </table>
         </div>
-
-        {filteredEvents.length === 0 && (
-          <div className="text-center py-8 text-text-secondary">
-            {events.length === 0 ? 'No hay eventos creados' : 'No se encontraron eventos con ese criterio'}
-          </div>
-        )}
-
-        {/* Event Form Modal */}
-        <EventFormModal
-          isCreating={isCreating}
-          selectedEvent={selectedEvent}
-          formData={formData}
-          validationErrors={validationErrors}
-          handleInputChange={handleInputChange}
-          handleSubmit={handleSubmit}
-          handleCloseForm={handleCloseForm}
-        />
-
-        {/* Event Registrations Modal */}
-        <EventRegistrations
-          show={showRegistrations}
-          event={selectedEventForRegistrations}
-          registrations={eventRegistrations[selectedEventForRegistrations?.id] || []}
-          onClose={() => setShowRegistrations(false)}
-        />
       </div>
     </PageLayout>
   )

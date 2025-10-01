@@ -45,7 +45,7 @@ const AdminLayout = () => {
     {
       id: 'analytics',
       label: 'Reportes',
-      path: '/admin/analytics'
+      path: '/admin/analytics/reports'
     },
     {
       id: 'whatsapp',

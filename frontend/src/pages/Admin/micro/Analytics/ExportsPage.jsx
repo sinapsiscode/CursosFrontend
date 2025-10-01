@@ -35,7 +35,7 @@ const ExportsPage = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {exportOptions.map(option => (
-            <div key={option.id} className="bg-card p-4 rounded-lg">
+            <div key={option.id} className="bg-surface p-4 rounded-lg">
               <div className="flex items-start justify-between mb-3">
                 <div className="flex items-center gap-3">
                   <span className="text-2xl">{option.icon}</span>
@@ -57,7 +57,7 @@ const ExportsPage = () => {
           ))}
         </div>
 
-        <div className="bg-card p-4 rounded-lg">
+        <div className="bg-surface p-4 rounded-lg">
           <h3 className="font-medium text-white mb-2">💡 Información</h3>
           <ul className="text-sm text-text-secondary space-y-1">
             <li>• Los archivos se descargan automáticamente</li>

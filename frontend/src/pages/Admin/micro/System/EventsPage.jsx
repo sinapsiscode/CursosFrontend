@@ -67,7 +67,7 @@ const EventsPage = () => {
 
         <div className="grid grid-cols-1 gap-4">
           {events.map(event => (
-            <div key={event.id} className="bg-card p-6 rounded-lg">
+            <div key={event.id} className="bg-surface p-6 rounded-lg">
               <div className="flex items-start justify-between">
                 <div className="flex items-start gap-4">
                   <span className="text-3xl">{getTypeIcon(event.type)}</span>
@@ -96,7 +96,7 @@ const EventsPage = () => {
                   </button>
                   <button
                     onClick={() => console.log('Editar evento:', event.id)}
-                    className="px-3 py-1 bg-card border border-gray-600 text-white rounded text-sm hover:bg-background transition-colors"
+                    className="px-3 py-1 bg-surface border border-gray-600 text-white rounded text-sm hover:bg-background transition-colors"
                   >
                     Editar
                   </button>
@@ -107,7 +107,7 @@ const EventsPage = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="bg-card p-4 rounded-lg">
+          <div className="bg-surface p-4 rounded-lg">
             <h3 className="font-medium text-white mb-2">📊 Estadísticas Generales</h3>
             <div className="space-y-2 text-sm">
               <div className="flex justify-between">
@@ -125,7 +125,7 @@ const EventsPage = () => {
             </div>
           </div>
 
-          <div className="bg-card p-4 rounded-lg">
+          <div className="bg-surface p-4 rounded-lg">
             <h3 className="font-medium text-white mb-2">🎯 Acciones Rápidas</h3>
             <div className="space-y-2">
               <button

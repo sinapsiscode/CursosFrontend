@@ -52,7 +52,7 @@ const ExamConfigPage = () => {
       }}
     >
       <div className="max-w-2xl space-y-6">
-        <div className="bg-card p-6 rounded-lg">
+        <div className="bg-surface p-6 rounded-lg">
           <h3 className="text-lg font-medium text-white mb-4">Configuración General</h3>
 
           <div className="space-y-4">
@@ -97,7 +97,7 @@ const ExamConfigPage = () => {
           </div>
         </div>
 
-        <div className="bg-card p-6 rounded-lg">
+        <div className="bg-surface p-6 rounded-lg">
           <h3 className="text-lg font-medium text-white mb-4">Límites y Restricciones</h3>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

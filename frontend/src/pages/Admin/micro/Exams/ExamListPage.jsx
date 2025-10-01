@@ -44,7 +44,7 @@ const ExamListPage = () => {
           <select
             value={filter}
             onChange={(e) => setFilter(e.target.value)}
-            className="bg-card border border-gray-600 rounded-lg px-3 py-2 text-white"
+            className="bg-surface border border-gray-600 rounded-lg px-3 py-2 text-white"
           >
             <option value="all">Todos los exámenes</option>
             <option value="active">Activos</option>
@@ -52,7 +52,7 @@ const ExamListPage = () => {
           </select>
         </div>
 
-        <div className="bg-card rounded-lg overflow-hidden">
+        <div className="bg-surface rounded-lg overflow-hidden">
           <table className="w-full">
             <thead className="bg-background">
               <tr>

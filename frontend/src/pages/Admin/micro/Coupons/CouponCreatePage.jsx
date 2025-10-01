@@ -74,7 +74,7 @@ const CouponCreatePage = () => {
                 type="text"
                 value={formData.code}
                 onChange={(e) => setFormData(prev => ({ ...prev, code: e.target.value.toUpperCase() }))}
-                className="flex-1 p-3 bg-card border border-gray-600 rounded-lg text-white font-mono"
+                className="flex-1 p-3 bg-surface border border-gray-600 rounded-lg text-white font-mono"
                 placeholder="CODIGO123"
                 required
               />
@@ -96,7 +96,7 @@ const CouponCreatePage = () => {
               <select
                 value={formData.discountType}
                 onChange={(e) => setFormData(prev => ({ ...prev, discountType: e.target.value }))}
-                className="w-full p-3 bg-card border border-gray-600 rounded-lg text-white"
+                className="w-full p-3 bg-surface border border-gray-600 rounded-lg text-white"
                 required
               >
                 <option value="percentage">Porcentaje (%)</option>
@@ -113,7 +113,7 @@ const CouponCreatePage = () => {
                   type="number"
                   value={formData.discountValue}
                   onChange={(e) => setFormData(prev => ({ ...prev, discountValue: e.target.value }))}
-                  className="w-full p-3 bg-card border border-gray-600 rounded-lg text-white"
+                  className="w-full p-3 bg-surface border border-gray-600 rounded-lg text-white"
                   placeholder={formData.discountType === 'percentage' ? '20' : '100'}
                   min="1"
                   max={formData.discountType === 'percentage' ? '100' : undefined}
@@ -135,7 +135,7 @@ const CouponCreatePage = () => {
                 type="number"
                 value={formData.maxUses}
                 onChange={(e) => setFormData(prev => ({ ...prev, maxUses: e.target.value }))}
-                className="w-full p-3 bg-card border border-gray-600 rounded-lg text-white"
+                className="w-full p-3 bg-surface border border-gray-600 rounded-lg text-white"
                 placeholder="100"
                 min="1"
                 required
@@ -150,7 +150,7 @@ const CouponCreatePage = () => {
                 type="date"
                 value={formData.expiryDate}
                 onChange={(e) => setFormData(prev => ({ ...prev, expiryDate: e.target.value }))}
-                className="w-full p-3 bg-card border border-gray-600 rounded-lg text-white"
+                className="w-full p-3 bg-surface border border-gray-600 rounded-lg text-white"
                 min={new Date().toISOString().split('T')[0]}
                 required
               />
@@ -164,7 +164,7 @@ const CouponCreatePage = () => {
             <textarea
               value={formData.description}
               onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
-              className="w-full p-3 bg-card border border-gray-600 rounded-lg text-white"
+              className="w-full p-3 bg-surface border border-gray-600 rounded-lg text-white"
               rows="3"
               placeholder="Descripción del cupón y condiciones de uso"
             />
@@ -187,7 +187,7 @@ const CouponCreatePage = () => {
             <button
               type="button"
               onClick={() => navigate('/admin/coupons')}
-              className="px-6 py-2 border border-gray-600 rounded-lg text-white hover:bg-card transition-colors"
+              className="px-6 py-2 border border-gray-600 rounded-lg text-white hover:bg-surface transition-colors"
             >
               Cancelar
             </button>

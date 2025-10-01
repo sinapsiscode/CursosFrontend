@@ -32,7 +32,7 @@ const OverviewPage = () => {
           <select
             value={timeRange}
             onChange={(e) => setTimeRange(e.target.value)}
-            className="bg-card border border-gray-600 rounded-lg px-3 py-2 text-white"
+            className="bg-surface border border-gray-600 rounded-lg px-3 py-2 text-white"
           >
             <option value="week">Última semana</option>
             <option value="month">Último mes</option>
@@ -43,7 +43,7 @@ const OverviewPage = () => {
         <DashboardStats />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="bg-card p-4 rounded-lg">
+          <div className="bg-surface p-4 rounded-lg">
             <h3 className="font-medium text-white mb-2">Acciones Rápidas</h3>
             <div className="space-y-2">
               <a href="/admin/analytics/reports" className="block text-accent hover:underline">
@@ -55,7 +55,7 @@ const OverviewPage = () => {
             </div>
           </div>
 
-          <div className="bg-card p-4 rounded-lg">
+          <div className="bg-surface p-4 rounded-lg">
             <h3 className="font-medium text-white mb-2">Resumen</h3>
             <p className="text-text-secondary text-sm">
               Datos actualizados cada 15 minutos

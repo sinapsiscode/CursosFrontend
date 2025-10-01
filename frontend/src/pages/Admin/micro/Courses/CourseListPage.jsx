@@ -37,7 +37,7 @@ const CourseListPage = () => {
 
           <button
             onClick={() => console.log('Exportar cursos')}
-            className="bg-card hover:bg-card/80 text-white px-4 py-2 rounded-lg transition-colors"
+            className="bg-surface hover:bg-surface/80 text-white px-4 py-2 rounded-lg transition-colors"
           >
             📋 Exportar Lista
           </button>

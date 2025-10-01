@@ -25,7 +25,7 @@ const StudentEnrollmentsPage = () => {
         <StudentEnrollmentManagement setActiveTab={() => {}} />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="bg-card p-4 rounded-lg">
+          <div className="bg-surface p-4 rounded-lg">
             <h3 className="font-medium text-white mb-2">📊 Resumen</h3>
             <div className="space-y-2 text-sm">
               <div className="flex justify-between">
@@ -39,7 +39,7 @@ const StudentEnrollmentsPage = () => {
             </div>
           </div>
 
-          <div className="bg-card p-4 rounded-lg">
+          <div className="bg-surface p-4 rounded-lg">
             <h3 className="font-medium text-white mb-2">⚡ Acciones</h3>
             <div className="space-y-2">
               <button className="w-full text-left px-3 py-2 text-accent hover:bg-accent/10 rounded transition-colors">
@@ -51,7 +51,7 @@ const StudentEnrollmentsPage = () => {
             </div>
           </div>
 
-          <div className="bg-card p-4 rounded-lg">
+          <div className="bg-surface p-4 rounded-lg">
             <h3 className="font-medium text-white mb-2">💡 Ayuda</h3>
             <ul className="text-sm text-text-secondary space-y-1">
               <li>• Inscribe estudiantes directamente</li>

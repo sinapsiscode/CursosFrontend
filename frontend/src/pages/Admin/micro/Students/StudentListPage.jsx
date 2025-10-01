@@ -34,7 +34,7 @@ const StudentListPage = () => {
         <div className="flex gap-4 mt-6">
           <button
             onClick={() => console.log('Exportar estudiantes')}
-            className="bg-card hover:bg-card/80 text-white px-4 py-2 rounded-lg transition-colors"
+            className="bg-surface hover:bg-surface/80 text-white px-4 py-2 rounded-lg transition-colors"
           >
             📊 Exportar Lista
           </button>
