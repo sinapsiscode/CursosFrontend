@@ -1,11 +1,12 @@
-import { useCallback } from 'react'
-import { useAuthStore, useUIStore } from '../store'
-import { apiService } from '../services/api'
+import { useCallback, useState } from 'react'
+import { useAuth } from '../context/AuthContext'
+import { useUIStore } from '../store'
 import { LOGIN_MESSAGES, DEMO_PASSWORD } from '../constants/authConstants'
 
 export const useLoginModal = (validateForm, resetForm, setFormValues) => {
-  const { login } = useAuthStore()
-  const { closeModal, showToast, setLoading, isLoading } = useUIStore()
+  const { login } = useAuth()
+  const { closeModal, showToast } = useUIStore()
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleSubmit = useCallback(async (e, formData) => {
     e.preventDefault()
@@ -15,25 +16,23 @@ export const useLoginModal = (validateForm, resetForm, setFormValues) => {
     }
 
     try {
-      setLoading('global', true)
+      setIsLoading(true)
 
-      const response = await apiService.login(formData.email, formData.password)
+      const result = await login(formData.email, formData.password)
 
-      if (response.success) {
-        login(response.user)
+      if (result.success) {
         closeModal('login')
-        showToast(LOGIN_MESSAGES.SUCCESS(response.user.name), 'success')
+        showToast(LOGIN_MESSAGES.SUCCESS(result.usuario.nombre), 'success')
         resetForm()
-      } else {
-        showToast(response.error || LOGIN_MESSAGES.ERROR, 'error')
       }
     } catch (error) {
       console.error('Login error:', error)
-      showToast(LOGIN_MESSAGES.CONNECTION_ERROR, 'error')
+      const errorMessage = error.response?.data?.message || error.message || LOGIN_MESSAGES.ERROR
+      showToast(errorMessage, 'error')
     } finally {
-      setLoading('global', false)
+      setIsLoading(false)
     }
-  }, [validateForm, resetForm, login, closeModal, showToast, setLoading])
+  }, [validateForm, resetForm, login, closeModal, showToast])
 
   const handleClose = useCallback(() => {
     closeModal('login')
@@ -66,6 +65,6 @@ export const useLoginModal = (validateForm, resetForm, setFormValues) => {
     handleClose,
     handleQuickLogin,
     handleSwitchToRegister,
-    isLoading: isLoading('global')
+    isLoading
   }
 }

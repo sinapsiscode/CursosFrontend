@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import { useEffect } from 'react'
+import { useAuth } from './context/AuthContext'
 import { useAuthStore, useUIStore } from './store'
 import { sessionService } from './services/sessionService'
 import { Navbar, TabBar, Toast } from './components/common'
@@ -21,8 +22,12 @@ import LoyaltyProgram from './pages/LoyaltyProgram'
 import Events from './pages/Events'
 
 function App() {
-  const { selectedArea, isAuthenticated, isGuest, user } = useAuthStore()
+  const { isAuthenticated: authContextAuthenticated } = useAuth()
+  const { selectedArea, isGuest } = useAuthStore()
   const { isModalOpen } = useUIStore()
+
+  // Usar autenticación del AuthContext
+  const isAuthenticated = authContextAuthenticated
 
   // Verificar si necesita seleccionar área
   const needsAreaSelection = !selectedArea && !isAuthenticated && !isGuest

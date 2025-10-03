@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import PageLayout from '../../../../components/Admin/Layout/PageLayout'
+import { eventsService } from '../../../../services/eventsService'
+import { useAuth } from '../../../../context/AuthContext'
 
 const EventsPage = () => {
   const [events, setEvents] = useState([])
@@ -10,6 +12,9 @@ const EventsPage = () => {
   const [selectedEvent, setSelectedEvent] = useState(null)
   const [showSuccessToast, setShowSuccessToast] = useState(false)
   const [notificationCount, setNotificationCount] = useState(0)
+  const [error, setError] = useState(null)
+
+  const { hasPermission } = useAuth()
 
   const [eventTypes, setEventTypes] = useState([
     { id: 1, name: 'Webinar', value: 'webinar', color: 'bg-blue-600' },
@@ -44,59 +49,38 @@ const EventsPage = () => {
     color: 'bg-blue-600'
   })
 
+  // Cargar eventos desde el backend
   useEffect(() => {
-    // TODO: Reemplazar con llamada a API
-    const timer = setTimeout(() => {
-      setEvents([
-        {
-          id: 1,
-          title: 'Innovaciones en Metalurgia 4.0',
-          description: 'Descubre las últimas tecnologías en la industria metalúrgica',
-          type: 'webinar',
-          area: 'metalurgia',
-          date: '7/10/2025',
-          registrations: 45,
-          maxRegistrations: 100,
-          status: 'active'
-        },
-        {
-          id: 2,
-          title: 'Técnicas Avanzadas de Exploración Minera',
-          description: 'Masterclass exclusiva con expertos internacionales',
-          type: 'masterclass',
-          area: 'mineria',
-          date: '14/10/2025',
-          registrations: 38,
-          maxRegistrations: 50,
-          status: 'active'
-        },
-        {
-          id: 3,
-          title: 'Black Friday Geología',
-          description: 'Todos los cursos de geología con 40% de descuento',
-          type: 'promotion',
-          area: 'geologia',
-          date: 'N/A',
-          registrations: null,
-          maxRegistrations: null,
-          status: 'scheduled'
-        },
-        {
-          id: 4,
-          title: 'Pack Completo Metalurgia',
-          description: '3 cursos esenciales de metalurgia por el precio de 2',
-          type: 'bundle',
-          area: 'metalurgia',
-          date: 'N/A',
-          registrations: null,
-          maxRegistrations: null,
-          status: 'active'
-        }
-      ])
-      setLoading(false)
-    }, 500)
-    return () => clearTimeout(timer)
+    loadEvents()
   }, [])
+
+  const loadEvents = async () => {
+    try {
+      setLoading(true)
+      setError(null)
+      const data = await eventsService.getAll()
+
+      // Normalizar datos del backend al formato que usa el componente
+      const normalizedEvents = data.map(event => ({
+        id: event.id,
+        title: event.titulo || event.title || '',
+        description: event.descripcion || event.description || '',
+        type: event.tipo || event.type || 'webinar',
+        area: event.areaId || event.area || 'metalurgia',
+        date: event.fecha || event.date || 'N/A',
+        registrations: event.registros !== undefined ? event.registros : (event.registrations || 0),
+        maxRegistrations: event.maxRegistros !== undefined ? event.maxRegistros : (event.maxRegistrations || null),
+        status: event.activo ? 'active' : 'inactive'
+      }))
+
+      setEvents(normalizedEvents)
+    } catch (err) {
+      console.error('Error cargando eventos:', err)
+      setError(err.message || 'Error al cargar eventos')
+    } finally {
+      setLoading(false)
+    }
+  }
 
   // Calcular estadísticas
   const stats = {
@@ -128,38 +112,60 @@ const EventsPage = () => {
     }
   }
 
-  const handleCreateEvent = (e) => {
+  const handleCreateEvent = async (e) => {
     e.preventDefault()
-    const newEvent = {
-      id: Date.now(),
-      title: formData.title,
-      description: formData.description,
-      type: formData.type,
-      area: formData.area,
-      date: formData.startDate,
-      registrations: 0,
-      maxRegistrations: parseInt(formData.capacity),
-      status: 'active'
+
+    try {
+      setLoading(true)
+
+      const newEvent = {
+        titulo: formData.title,
+        descripcion: formData.description,
+        tipo: formData.type,
+        areaId: parseInt(formData.area) || 1, // Convertir a ID numérico
+        fecha: formData.startDate,
+        duracion: parseInt(formData.duration) || 60,
+        maxRegistros: parseInt(formData.capacity) || null,
+        registros: 0,
+        activo: true,
+        tags: formData.tags ? formData.tags.split(',').map(t => t.trim()) : [],
+        instructor: organizers.join(', ') || 'Por definir',
+        urlTransmision: formData.redirectUrl || null
+      }
+
+      await eventsService.create(newEvent)
+      await loadEvents() // Recargar eventos
+
+      setShowCreateSection(false)
+      setFormData({
+        type: 'webinar',
+        area: 'metalurgia',
+        title: '',
+        description: '',
+        startDate: '',
+        startTime: '',
+        duration: '',
+        capacity: '',
+        extraComments: '',
+        tags: '',
+        benefits: '',
+        pdfUrl: '',
+        videoUrl: '',
+        redirectUrl: ''
+      })
+      setOrganizers([])
+
+      // Mostrar mensaje de éxito
+      setShowSuccessToast(true)
+      setNotificationCount(1)
+      setTimeout(() => setShowSuccessToast(false), 3000)
+
+    } catch (err) {
+      console.error('Error creando evento:', err)
+      alert(err.message || 'Error al crear evento')
+    } finally {
+      setLoading(false)
     }
-    setEvents([...events, newEvent])
-    setShowCreateSection(false)
-    setFormData({
-      type: 'webinar',
-      area: 'metalurgia',
-      title: '',
-      description: '',
-      startDate: '',
-      startTime: '',
-      duration: '',
-      capacity: '',
-      extraComments: '',
-      tags: '',
-      benefits: '',
-      pdfUrl: '',
-      videoUrl: '',
-      redirectUrl: ''
-    })
-    setOrganizers([])
   }
 
   const handleAddType = (e) => {
@@ -187,17 +193,25 @@ const EventsPage = () => {
     setShowNotificationModal(true)
   }
 
-  const handleSendNotification = () => {
-    // TODO: Conectar con API para enviar notificaciones
-    const count = Math.floor(Math.random() * 100) + 20 // Simular número de usuarios notificados
-    setNotificationCount(count)
-    setShowNotificationModal(false)
-    setShowSuccessToast(true)
+  const handleSendNotification = async () => {
+    try {
+      if (!selectedEvent) return
 
-    // Ocultar toast después de 5 segundos
-    setTimeout(() => {
-      setShowSuccessToast(false)
-    }, 5000)
+      const result = await eventsService.notifyUsers(selectedEvent.id, selectedEvent.area)
+
+      setNotificationCount(result.count)
+      setShowNotificationModal(false)
+      setShowSuccessToast(true)
+
+      // Ocultar toast después de 5 segundos
+      setTimeout(() => {
+        setShowSuccessToast(false)
+      }, 5000)
+
+    } catch (err) {
+      console.error('Error enviando notificaciones:', err)
+      alert(err.message || 'Error al enviar notificaciones')
+    }
   }
 
   const colorOptions = [

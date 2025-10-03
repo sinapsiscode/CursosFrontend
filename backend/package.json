@@ -1,0 +1,26 @@
+{
+  "name": "cursos-backend",
+  "version": "1.0.0",
+  "description": "Backend REST API con JSON Server para plataforma de cursos",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js",
+    "seed": "node seed.js"
+  },
+  "keywords": [
+    "json-server",
+    "rest-api",
+    "backend"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "json-server": "^0.17.4",
+    "axios": "^1.6.5"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^8.3.1",
+    "nodemon": "^3.0.2"
+  }
+}
