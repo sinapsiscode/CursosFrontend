@@ -9,9 +9,7 @@ const CourseReviews = ({
   isUserEnrolled,
   user,
   canReview,
-  onShowReviewForm,
-  onGenerateTestData,
-  onCompleteTestCourse
+  onShowReviewForm
 }) => {
   const renderStars = (rating) => {
     return [...Array(5)].map((_, index) => (
@@ -113,34 +111,6 @@ const CourseReviews = ({
                   </div>
                 )
               })}
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Test Data Button - Solo para desarrollo */}
-      {(!reviews || reviews.length === 0) && (
-        <div className="mb-6 p-4 bg-blue-900/20 border border-blue-500/30 rounded-lg">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-blue-300 font-medium">{COURSE_DETAIL_CONFIG.labels.developmentMode}</p>
-              <p className="text-blue-200 text-sm">{COURSE_DETAIL_CONFIG.labels.loadTestData}</p>
-            </div>
-            <div className="flex gap-2">
-              <button
-                onClick={onGenerateTestData}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
-              >
-                {COURSE_DETAIL_CONFIG.labels.loadTestDataButton}
-              </button>
-              {isAuthenticated && (
-                <button
-                  onClick={onCompleteTestCourse}
-                  className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
-                >
-                  {COURSE_DETAIL_CONFIG.labels.completeCourse}
-                </button>
-              )}
             </div>
           </div>
         </div>

@@ -26,7 +26,7 @@ const CourseExam = () => {
     progress,
     isLastQuestion,
     formattedTime,
-    scoreCategory,
+    scoreRange,
     handleNext,
     handlePrevious,
     goToQuestion,
@@ -89,7 +89,7 @@ const CourseExam = () => {
             /* Results */
             <ExamResults
               score={score}
-              scoreCategory={scoreCategory}
+              scoreRange={scoreRange}
               discount={discount}
               course={course}
               couponCode={couponCode}

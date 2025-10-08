@@ -1,6 +1,7 @@
 const jsonServer = require('json-server')
 const path = require('path')
 const fs = require('fs')
+const { validationMiddleware, validateQueryParams } = require('./middlewares/validation')
 
 const server = jsonServer.create()
 const router = jsonServer.router(path.join(__dirname, 'db.json'))
@@ -43,6 +44,11 @@ server.use((req, res, next) => {
 server.use((req, res, next) => {
   // Permitir GET sin autenticación (solo lectura pública)
   if (req.method === 'GET') {
+    return next()
+  }
+
+  // Permitir rutas de autenticación sin headers
+  if (req.path.startsWith('/auth/')) {
     return next()
   }
 
@@ -137,8 +143,13 @@ server.use((req, res, next) => {
   const recurso = '/' + req.path.split('/')[1]
   const metodo = req.method
 
-  // Si el recurso tiene permisos definidos
-  if (permisosPorRuta[recurso] && permisosPorRuta[recurso][metodo]) {
+  // Permitir que usuarios actualicen sus propios datos (para sesiones, perfil, etc.)
+  const isUpdatingSelf = recurso === '/usuarios' &&
+                          (metodo === 'PUT' || metodo === 'PATCH') &&
+                          req.path.includes(`/usuarios/${userId}`)
+
+  // Si el recurso tiene permisos definidos y NO es actualización propia
+  if (!isUpdatingSelf && permisosPorRuta[recurso] && permisosPorRuta[recurso][metodo]) {
     const permisoRequerido = permisosPorRuta[recurso][metodo]
 
     if (!rol.permisos.includes(permisoRequerido)) {
@@ -186,6 +197,10 @@ server.use((req, res, next) => {
 // Usar middlewares por defecto de json-server
 server.use(middlewares)
 server.use(jsonServer.bodyParser)
+
+// Middleware de validación de datos
+server.use(validateQueryParams)
+server.use(validationMiddleware)
 
 // Rutas personalizadas adicionales
 
@@ -263,6 +278,23 @@ server.get('/auth/modulos', (req, res) => {
     modulos: modulosAccesibles
   })
 })
+
+// Middleware para modificar respuestas de json-server
+router.render = (req, res) => {
+  // Si la respuesta tiene datos y es exitosa, asegurar status 200
+  if (res.locals.data) {
+    const data = res.locals.data
+
+    // Si tiene estructura de éxito pero status incorrecto
+    if (data.success === true) {
+      res.status(200).json(data)
+    } else {
+      res.json(data)
+    }
+  } else {
+    res.json(res.locals.data)
+  }
+}
 
 // Usar el router de json-server
 server.use(router)

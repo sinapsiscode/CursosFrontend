@@ -1,10 +1,8 @@
 import {
   EVENTS_STYLES,
-  EVENTS_MESSAGES,
   EVENT_TYPE_CONFIG,
   AREA_COLORS,
   EVENTS_CONFIG,
-  EVENTS_ICONS,
   FILTER_TYPES
 } from '../../constants/eventsConstants.jsx'
 import EventCardImage from './EventCardImage'
@@ -15,15 +13,12 @@ import EventBenefits from './EventBenefits'
 import EventCapacity from './EventCapacity'
 import EventActions from './EventActions'
 import TimeIndicator from './TimeIndicator'
-import RelevanceScore from './RelevanceScore'
 
 const EventCard = ({
   event,
-  demoMode,
   isAuthenticated,
   filter,
   onEventDetail,
-  onSimulatorOpen,
   onNavigateToCourses,
   onNavigateToBundle,
   onNavigateToLogin,
@@ -99,11 +94,9 @@ const EventCard = ({
           <EventActions
             event={event}
             eventConfig={eventConfig}
-            demoMode={demoMode}
             isAuthenticated={isAuthenticated}
             hasCapacity={!!event.capacity}
             onEventDetail={onEventDetail}
-            onSimulatorOpen={onSimulatorOpen}
             onNavigateToCourses={onNavigateToCourses}
             onNavigateToBundle={onNavigateToBundle}
             onNavigateToLogin={onNavigateToLogin}
@@ -117,11 +110,6 @@ const EventCard = ({
             getDaysUntilEvent={getDaysUntilEvent}
             getTimeIndicatorClass={getTimeIndicatorClass}
           />
-        )}
-
-        {/* Relevance Score */}
-        {filter === FILTER_TYPES.relevant && event.relevanceScore && (
-          <RelevanceScore score={event.relevanceScore} />
         )}
       </div>
     </div>

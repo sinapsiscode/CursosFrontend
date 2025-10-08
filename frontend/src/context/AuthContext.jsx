@@ -10,14 +10,19 @@ export const AuthProvider = ({ children }) => {
 
   // Cargar usuario al montar el componente
   useEffect(() => {
-    const loadUser = () => {
+    const loadUser = async () => {
       try {
         const currentUser = authService.getCurrentUser()
 
         if (currentUser) {
           setUsuario(currentUser)
           setIsAuthenticated(true)
-          console.log('👤 Usuario cargado:', currentUser.nombre)
+
+          // Sincronizar con authStore de Zustand
+          const { useAuthStore } = await import('../store/authStore')
+          useAuthStore.getState().login(currentUser)
+
+          console.log('👤 Usuario cargado y sincronizado:', currentUser.nombre)
         } else {
           setUsuario(null)
           setIsAuthenticated(false)
@@ -36,9 +41,14 @@ export const AuthProvider = ({ children }) => {
 
   // Escuchar eventos de autenticación
   useEffect(() => {
-    const handleLogout = () => {
+    const handleLogout = async () => {
       setUsuario(null)
       setIsAuthenticated(false)
+
+      // Sincronizar con authStore de Zustand
+      const { useAuthStore } = await import('../store/authStore')
+      useAuthStore.getState().logout()
+
       console.log('🔓 Usuario deslogueado')
     }
 
@@ -68,7 +78,12 @@ export const AuthProvider = ({ children }) => {
       if (result.success && result.usuario) {
         setUsuario(result.usuario)
         setIsAuthenticated(true)
-        console.log('✅ Login exitoso')
+
+        // Sincronizar con authStore de Zustand
+        const { useAuthStore } = await import('../store/authStore')
+        useAuthStore.getState().login(result.usuario)
+
+        console.log('✅ Login exitoso y sincronizado con authStore')
         return { success: true, usuario: result.usuario }
       }
 
@@ -86,10 +101,16 @@ export const AuthProvider = ({ children }) => {
   /**
    * Cerrar sesión
    */
-  const logout = () => {
+  const logout = async () => {
     authService.logout()
     setUsuario(null)
     setIsAuthenticated(false)
+
+    // Sincronizar con authStore de Zustand
+    const { useAuthStore } = await import('../store/authStore')
+    useAuthStore.getState().logout()
+
+    console.log('✅ Logout sincronizado con authStore')
   }
 
   /**

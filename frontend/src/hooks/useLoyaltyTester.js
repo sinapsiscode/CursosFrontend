@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { loyaltyService } from '../services/loyaltyService'
+import { fidelizacionService as loyaltyService } from '../services/fidelizacionService'
 import { runAllTests } from '../utils/loyaltyTesterUtils'
 
 export const useLoyaltyTester = () => {

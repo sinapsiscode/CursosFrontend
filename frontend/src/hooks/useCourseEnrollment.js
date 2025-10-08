@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuthStore, useUIStore } from '../store'
-import { loyaltyService } from '../services/loyaltyService'
+import { fidelizacionService as loyaltyService } from '../services/fidelizacionService'
 import { notificationService } from '../services/notificationService'
 import { whatsappService } from '../services/whatsappService'
 import {

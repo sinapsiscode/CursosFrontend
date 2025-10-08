@@ -1,11 +1,14 @@
 import { useCallback, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { useUIStore } from '../store'
 import { LOGIN_MESSAGES, DEMO_PASSWORD } from '../constants/authConstants'
+import { isAdmin } from '../constants/roleIds'
 
 export const useLoginModal = (validateForm, resetForm, setFormValues) => {
   const { login } = useAuth()
   const { closeModal, showToast } = useUIStore()
+  const navigate = useNavigate()
   const [isLoading, setIsLoading] = useState(false)
 
   const handleSubmit = useCallback(async (e, formData) => {
@@ -24,6 +27,13 @@ export const useLoginModal = (validateForm, resetForm, setFormValues) => {
         closeModal('login')
         showToast(LOGIN_MESSAGES.SUCCESS(result.usuario.nombre), 'success')
         resetForm()
+
+        // Redirigir según el rol del usuario
+        const targetRoute = isAdmin(result.usuario.rolId) ? '/admin' : '/home'
+
+        setTimeout(() => {
+          navigate(targetRoute)
+        }, 100)
       }
     } catch (error) {
       console.error('Login error:', error)
@@ -32,7 +42,7 @@ export const useLoginModal = (validateForm, resetForm, setFormValues) => {
     } finally {
       setIsLoading(false)
     }
-  }, [validateForm, resetForm, login, closeModal, showToast])
+  }, [validateForm, resetForm, login, closeModal, showToast, navigate])
 
   const handleClose = useCallback(() => {
     closeModal('login')

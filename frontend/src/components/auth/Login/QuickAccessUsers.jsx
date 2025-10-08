@@ -1,5 +1,6 @@
 import { getUserRoleIcon, ArrowRightIcon } from '../../common/Icons'
 import { getUserRoleColor, getAreaColor, capitalizeFirst } from '../../../utils/authUtils'
+import { DEFAULT_SUBSCRIPTION } from '../../../constants/subscriptionConstants'
 
 const QuickAccessUsers = ({ users, onQuickLogin, isLoading }) => {
   return (
@@ -31,7 +32,7 @@ const QuickAccessUsers = ({ users, onQuickLogin, isLoading }) => {
                   {capitalizeFirst(user.selectedArea)}
                 </span>
                 <span>•</span>
-                <span className="capitalize">{user.subscription.type}</span>
+                <span className="capitalize">{user.subscription?.type || DEFAULT_SUBSCRIPTION}</span>
               </div>
             </div>
             <ArrowRightIcon className="opacity-60" />

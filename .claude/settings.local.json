@@ -1,20 +1,15 @@
 {
   "permissions": {
     "allow": [
-      "Bash(mkdir:*)",
-      "Bash(git add:*)",
-      "Bash(npm run build:*)",
-      "Bash(find:*)",
-      "Bash(for file in courseManagementConstants.js loyaltyConstants.js notificationConstants.js studentManagementConstants.js)",
-      "Bash(do mv \"$file\" \"$file%.js.jsx\")",
+      "Bash(curl:*)",
+      "Bash(ren:*)",
+      "Bash(for:*)",
+      "Bash(do echo \"=== $file ===\")",
       "Bash(done)",
+      "Bash(node -e \"const db = require(''./db.json''); console.log(Object.keys(db).join(''\\n''))\")",
+      "Bash(do echo \"=== $f ===\")",
       "Bash(npm run dev:*)",
-      "Bash(tree:*)",
-      "Bash(cat:*)",
-      "Bash(npm run seed:*)",
-      "Bash(netstat:*)",
-      "Bash(findstr:*)",
-      "Bash(taskkill:*)"
+      "Bash(node:*)"
     ],
     "deny": [],
     "ask": []

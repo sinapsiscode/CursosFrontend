@@ -250,7 +250,8 @@ export const useStudentEnrollmentManagement = () => {
   }, [])
 
   const getStudentInitials = useCallback((name) => {
-    return name.split(' ').map(n => n[0]).join('').slice(0, 2)
+    if (!name || typeof name !== 'string') return '??'
+    return name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase()
   }, [])
 
   const formatPrice = useCallback((price) => {

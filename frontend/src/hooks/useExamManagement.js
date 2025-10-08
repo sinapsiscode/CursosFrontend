@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useUIStore } from '../store'
-import { examService } from '../services/examService'
+import { examenesService as examService } from '../services/examenesService'
 import { DEFAULT_QUESTION_FORM, DEFAULT_QUESTIONS } from '../constants/examManagementConstants'
 import { validateQuestionForm, generateQuestionId, importQuestionsFromJSON } from '../utils/examManagementUtils'
 

@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import PageLayout from '../../../../components/Admin/Layout/PageLayout'
+import cuponesService from '../../../../services/cuponesService'
+import Swal from 'sweetalert2'
 
 const CouponCreatePage = () => {
   const navigate = useNavigate()
@@ -18,24 +20,43 @@ const CouponCreatePage = () => {
     active: true
   })
   const [saving, setSaving] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     if (isEditing) {
-      // Simular carga de datos para edición
-      const timer = setTimeout(() => {
-        setFormData({
-          code: 'WELCOME2024',
-          discountType: 'percentage',
-          discountValue: '20',
-          maxUses: '100',
-          expiryDate: '2024-12-31',
-          description: 'Cupón de bienvenida para nuevos usuarios',
-          active: true
-        })
-      }, 500)
-      return () => clearTimeout(timer)
+      loadCouponData()
     }
   }, [isEditing])
+
+  const loadCouponData = async () => {
+    setLoading(true)
+    try {
+      const coupon = await cuponesService.getById(editId)
+      setFormData({
+        code: coupon.code,
+        discountType: coupon.discountType,
+        discountValue: coupon.discountValue.toString(),
+        maxUses: coupon.maxUses.toString(),
+        expiryDate: coupon.expiryDate,
+        description: coupon.description || '',
+        active: coupon.active
+      })
+    } catch (error) {
+      console.error('Error cargando cupón:', error)
+      Swal.fire({
+        title: 'Error',
+        text: 'No se pudo cargar el cupón',
+        icon: 'error',
+        customClass: {
+          popup: 'bg-gray-800 text-white',
+          title: 'text-white'
+        }
+      })
+      navigate('/admin/coupons')
+    } finally {
+      setLoading(false)
+    }
+  }
 
   const generateCode = () => {
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
@@ -51,14 +72,58 @@ const CouponCreatePage = () => {
     setSaving(true)
 
     try {
-      await new Promise(resolve => setTimeout(resolve, 1500))
-      console.log(isEditing ? 'Cupón actualizado:' : 'Cupón creado:', formData)
+      if (isEditing) {
+        await cuponesService.updateGeneralCoupon(editId, formData)
+        Swal.fire({
+          title: '¡Cupón actualizado!',
+          text: 'El cupón se actualizó correctamente',
+          icon: 'success',
+          timer: 2000,
+          showConfirmButton: false,
+          customClass: {
+            popup: 'bg-gray-800 text-white',
+            title: 'text-white'
+          }
+        })
+      } else {
+        await cuponesService.createGeneralCoupon(formData)
+        Swal.fire({
+          title: '¡Cupón creado!',
+          text: 'El cupón se creó correctamente',
+          icon: 'success',
+          timer: 2000,
+          showConfirmButton: false,
+          customClass: {
+            popup: 'bg-gray-800 text-white',
+            title: 'text-white'
+          }
+        })
+      }
       navigate('/admin/coupons')
     } catch (error) {
       console.error('Error:', error)
+      Swal.fire({
+        title: 'Error',
+        text: 'No se pudo guardar el cupón',
+        icon: 'error',
+        customClass: {
+          popup: 'bg-gray-800 text-white',
+          title: 'text-white'
+        }
+      })
     } finally {
       setSaving(false)
     }
+  }
+
+  if (loading) {
+    return (
+      <PageLayout title={isEditing ? 'Editar Cupón' : 'Nuevo Cupón'}>
+        <div className="flex justify-center py-12">
+          <div className="text-white">Cargando...</div>
+        </div>
+      </PageLayout>
+    )
   }
 
   return (

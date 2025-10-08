@@ -1,15 +1,12 @@
-import { EVENTS_STYLES, EVENTS_MESSAGES } from '../../constants/eventsConstants.jsx'
+import { EVENTS_STYLES } from '../../constants/eventsConstants.jsx'
 import EventCard from './EventCard'
-import EmptyEventsState from './EmptyEventsState'
 
 const EventsList = ({
   events,
   hasEvents,
-  demoMode,
   isAuthenticated,
   filter,
   onEventDetail,
-  onSimulatorOpen,
   onNavigateToCourses,
   onNavigateToBundle,
   onNavigateToLogin,
@@ -17,7 +14,13 @@ const EventsList = ({
   getTimeIndicatorClass
 }) => {
   if (!hasEvents) {
-    return <EmptyEventsState />
+    return (
+      <div className={EVENTS_STYLES.emptyState.container}>
+        <p className={EVENTS_STYLES.emptyState.text}>
+          No hay eventos disponibles con los filtros seleccionados
+        </p>
+      </div>
+    )
   }
 
   return (
@@ -26,11 +29,9 @@ const EventsList = ({
         <EventCard
           key={event.id}
           event={event}
-          demoMode={demoMode}
           isAuthenticated={isAuthenticated}
           filter={filter}
           onEventDetail={onEventDetail}
-          onSimulatorOpen={onSimulatorOpen}
           onNavigateToCourses={onNavigateToCourses}
           onNavigateToBundle={onNavigateToBundle}
           onNavigateToLogin={onNavigateToLogin}

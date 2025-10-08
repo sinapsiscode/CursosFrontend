@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import PageLayout from '../../../../components/Admin/Layout/PageLayout'
+import cuponesService from '../../../../services/cuponesService'
+import Swal from 'sweetalert2'
 
 const CouponListPage = () => {
   const [coupons, setCoupons] = useState([])
@@ -7,17 +9,56 @@ const CouponListPage = () => {
   const [filter, setFilter] = useState('all')
 
   useEffect(() => {
-    // Simular carga de cupones
-    const timer = setTimeout(() => {
-      setCoupons([
-        { id: 1, code: 'WELCOME2024', discount: 20, type: 'percentage', uses: 45, maxUses: 100, status: 'active', expiry: '2024-12-31' },
-        { id: 2, code: 'STUDENT50', discount: 50, type: 'percentage', uses: 12, maxUses: 50, status: 'active', expiry: '2024-06-30' },
-        { id: 3, code: 'PROMO10', discount: 10, type: 'fixed', uses: 89, maxUses: 100, status: 'used', expiry: '2024-03-15' }
-      ])
-      setLoading(false)
-    }, 500)
-    return () => clearTimeout(timer)
+    loadCoupons()
   }, [])
+
+  const loadCoupons = async () => {
+    setLoading(true)
+    try {
+      const data = await cuponesService.getAll()
+
+      // Procesar cupones y calcular su estado
+      const processedCoupons = data.map(coupon => {
+        const now = new Date()
+        const expiryDate = new Date(coupon.expiryDate)
+        const currentUses = coupon.currentUses || 0
+        const maxUses = coupon.maxUses || 0
+
+        let status = 'active'
+        if (currentUses >= maxUses) {
+          status = 'used'
+        } else if (expiryDate < now) {
+          status = 'expired'
+        } else if (!coupon.active) {
+          status = 'inactive'
+        }
+
+        return {
+          ...coupon,
+          status,
+          uses: currentUses,
+          discount: coupon.discountValue,
+          type: coupon.discountType,
+          expiry: coupon.expiryDate
+        }
+      })
+
+      setCoupons(processedCoupons)
+    } catch (error) {
+      console.error('Error cargando cupones:', error)
+      Swal.fire({
+        title: 'Error',
+        text: 'No se pudieron cargar los cupones',
+        icon: 'error',
+        customClass: {
+          popup: 'bg-gray-800 text-white',
+          title: 'text-white'
+        }
+      })
+    } finally {
+      setLoading(false)
+    }
+  }
 
   const filteredCoupons = coupons.filter(coupon => {
     if (filter === 'all') return true
@@ -27,6 +68,7 @@ const CouponListPage = () => {
   const getStatusColor = (status) => {
     switch (status) {
       case 'active': return 'bg-green-500/20 text-green-400'
+      case 'inactive': return 'bg-yellow-500/20 text-yellow-400'
       case 'used': return 'bg-red-500/20 text-red-400'
       case 'expired': return 'bg-gray-500/20 text-gray-400'
       default: return 'bg-gray-500/20 text-gray-400'
@@ -38,7 +80,115 @@ const CouponListPage = () => {
       case 'active': return 'Activo'
       case 'used': return 'Agotado'
       case 'expired': return 'Expirado'
+      case 'inactive': return 'Inactivo'
       default: return 'Desconocido'
+    }
+  }
+
+  const handleDuplicate = async (coupon) => {
+    try {
+      const result = await Swal.fire({
+        title: 'Duplicar Cupón',
+        text: `¿Deseas duplicar el cupón ${coupon.code}?`,
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#22c55e',
+        cancelButtonColor: '#6b7280',
+        confirmButtonText: 'Sí, duplicar',
+        cancelButtonText: 'Cancelar',
+        customClass: {
+          popup: 'bg-gray-800 text-white',
+          title: 'text-white'
+        }
+      })
+
+      if (result.isConfirmed) {
+        const newCode = cuponesService.generateCouponCode()
+        const duplicatedCoupon = {
+          code: newCode,
+          discountType: coupon.discountType,
+          discountValue: coupon.discountValue,
+          maxUses: coupon.maxUses,
+          expiryDate: coupon.expiryDate,
+          description: coupon.description,
+          active: true
+        }
+
+        await cuponesService.createGeneralCoupon(duplicatedCoupon)
+
+        Swal.fire({
+          title: '¡Cupón duplicado!',
+          text: `Nuevo código: ${newCode}`,
+          icon: 'success',
+          timer: 2000,
+          showConfirmButton: false,
+          customClass: {
+            popup: 'bg-gray-800 text-white',
+            title: 'text-white'
+          }
+        })
+
+        loadCoupons()
+      }
+    } catch (error) {
+      console.error('Error duplicando cupón:', error)
+      Swal.fire({
+        title: 'Error',
+        text: 'No se pudo duplicar el cupón',
+        icon: 'error',
+        customClass: {
+          popup: 'bg-gray-800 text-white',
+          title: 'text-white'
+        }
+      })
+    }
+  }
+
+  const handleDelete = async (coupon) => {
+    try {
+      const result = await Swal.fire({
+        title: '¿Eliminar cupón?',
+        text: `Se eliminará el cupón ${coupon.code}`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#ef4444',
+        cancelButtonColor: '#6b7280',
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar',
+        customClass: {
+          popup: 'bg-gray-800 text-white',
+          title: 'text-white'
+        }
+      })
+
+      if (result.isConfirmed) {
+        await cuponesService.delete(coupon.id)
+
+        Swal.fire({
+          title: '¡Eliminado!',
+          text: 'El cupón se eliminó correctamente',
+          icon: 'success',
+          timer: 2000,
+          showConfirmButton: false,
+          customClass: {
+            popup: 'bg-gray-800 text-white',
+            title: 'text-white'
+          }
+        })
+
+        loadCoupons()
+      }
+    } catch (error) {
+      console.error('Error eliminando cupón:', error)
+      Swal.fire({
+        title: 'Error',
+        text: 'No se pudo eliminar el cupón',
+        icon: 'error',
+        customClass: {
+          popup: 'bg-gray-800 text-white',
+          title: 'text-white'
+        }
+      })
     }
   }
 
@@ -67,6 +217,7 @@ const CouponListPage = () => {
           >
             <option value="all">Todos los cupones</option>
             <option value="active">Activos</option>
+            <option value="inactive">Inactivos</option>
             <option value="used">Agotados</option>
             <option value="expired">Expirados</option>
           </select>
@@ -120,10 +271,16 @@ const CouponListPage = () => {
                       Editar
                     </button>
                     <button
-                      onClick={() => console.log('Duplicar cupón:', coupon.id)}
-                      className="text-text-secondary hover:text-white text-sm"
+                      onClick={() => handleDuplicate(coupon)}
+                      className="text-blue-400 hover:text-blue-300 text-sm mr-3"
                     >
                       Duplicar
+                    </button>
+                    <button
+                      onClick={() => handleDelete(coupon)}
+                      className="text-red-400 hover:text-red-300 text-sm"
+                    >
+                      Eliminar
                     </button>
                   </td>
                 </tr>

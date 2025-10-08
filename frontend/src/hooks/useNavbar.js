@@ -1,13 +1,32 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useAuth } from '../context/AuthContext'
 import { useAuthStore, useUIStore } from '../store'
 import { NAVBAR_ROUTES, NAVBAR_MODALS } from '../constants/navbarConstants.jsx'
 
 export const useNavbar = () => {
-  const { user, isAuthenticated, selectedArea, logout } = useAuthStore()
+  // Usar AuthContext como fuente principal de verdad
+  const { usuario, isAuthenticated: authContextAuthenticated, logout: authContextLogout } = useAuth()
+  const { selectedArea } = useAuthStore()
   const { searchQuery, setSearchQuery, openModal } = useUIStore()
   const [showUserMenu, setShowUserMenu] = useState(false)
   const navigate = useNavigate()
+
+  // Mapear usuario del AuthContext al formato esperado por el Navbar
+  const user = useMemo(() => {
+    if (!usuario) return null
+
+    return {
+      id: usuario.id,
+      name: usuario.nombre,
+      email: usuario.email,
+      avatar: usuario.avatar || usuario.foto,
+      role: usuario.rolId === 1 || usuario.rolId === 2 ? 'admin' : 'user',
+      rolId: usuario.rolId
+    }
+  }, [usuario])
+
+  const isAuthenticated = authContextAuthenticated
 
   const handleSearch = useCallback((e) => {
     e.preventDefault()
@@ -27,9 +46,10 @@ export const useNavbar = () => {
   }, [navigate])
 
   const handleLogout = useCallback(() => {
-    logout()
+    authContextLogout()
     setShowUserMenu(false)
-  }, [logout])
+    navigate('/')
+  }, [authContextLogout, navigate])
 
   const handleLogin = useCallback(() => {
     openModal(NAVBAR_MODALS.login)

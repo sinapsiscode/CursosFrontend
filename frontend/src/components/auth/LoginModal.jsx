@@ -1,4 +1,4 @@
-import { mockUsers } from '../../services/mockData'
+import { mockUsers } from '../../services/mockUsers'
 import { useLoginForm } from '../../hooks/useLoginForm'
 import { useLoginModal } from '../../hooks/useLoginModal'
 import { modalStyles } from '../../styles/components'

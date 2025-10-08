@@ -1,8 +1,31 @@
 import apiClient from './apiClient'
+import { STORAGE_KEYS } from '../constants/storageKeys'
 
-const AUTH_STORAGE_KEY = 'auth'
+const AUTH_STORAGE_KEY = STORAGE_KEYS.AUTH_STORAGE
 
 class AuthService {
+  constructor() {
+    // Limpiar almacenamiento antiguo si existe
+    this.migrateOldStorage()
+  }
+
+  /**
+   * Migrar almacenamiento antiguo de 'auth' a 'auth-storage'
+   */
+  migrateOldStorage() {
+    try {
+      const oldAuth = localStorage.getItem('auth')
+      if (oldAuth && !localStorage.getItem(AUTH_STORAGE_KEY)) {
+        // Copiar datos antiguos al nuevo storage
+        localStorage.setItem(AUTH_STORAGE_KEY, oldAuth)
+        localStorage.removeItem('auth')
+        console.log('✅ Migración de auth storage completada')
+      }
+    } catch (error) {
+      console.error('Error migrando auth storage:', error)
+    }
+  }
+
   /**
    * Iniciar sesión
    */

@@ -24,8 +24,6 @@ const CourseDetail = () => {
     reloadCourseReviews,
     updateEnrollmentStatus,
     formatDuration,
-    generateTestReviewData,
-    completeTestCourse,
     canReview,
     navigate,
     isAuthenticated,
@@ -111,8 +109,6 @@ const CourseDetail = () => {
         navigate={navigate}
         canReview={canReview}
         onShowReviewForm={() => setShowReviewForm(true)}
-        generateTestReviewData={generateTestReviewData}
-        completeTestCourse={completeTestCourse}
       />
 
       <CourseModals

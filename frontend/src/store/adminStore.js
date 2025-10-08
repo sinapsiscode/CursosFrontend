@@ -231,21 +231,8 @@ export const useAdminStore = create((set, get) => ({
   updateAnalytics: (analytics) => set({ analytics }),
   
   calculateAnalytics: () => {
-    // Obtener usuarios actualizados desde localStorage
-    let users = get().users || []
-    try {
-      const storedUsers = JSON.parse(localStorage.getItem('userData') || '[]')
-      if (storedUsers.length > 0) {
-        // Combinar datos del store con datos actualizados de localStorage
-        users = users.map(user => {
-          const storedUser = storedUsers.find(su => su.id === user.id)
-          return storedUser ? { ...user, ...storedUser } : user
-        })
-      }
-    } catch (error) {
-      console.error('Error loading users from localStorage:', error)
-    }
-
+    // Obtener usuarios desde el store (ya vienen del backend)
+    const users = get().users || []
     const courses = get().courses || []
     const totalUsers = users.length
     const totalCourses = courses.length

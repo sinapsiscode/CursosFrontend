@@ -15,9 +15,7 @@ const CourseTabContent = ({
   onLessonClick,
   navigate,
   canReview,
-  onShowReviewForm,
-  generateTestReviewData,
-  completeTestCourse
+  onShowReviewForm
 }) => {
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
@@ -49,8 +47,6 @@ const CourseTabContent = ({
           user={user}
           canReview={canReview}
           onShowReviewForm={onShowReviewForm}
-          onGenerateTestData={generateTestReviewData}
-          onCompleteTestCourse={completeTestCourse}
         />
       )}
     </div>

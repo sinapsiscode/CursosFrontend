@@ -10,8 +10,7 @@ const ReviewModeration = () => {
     loadPendingReviews,
     approveReview,
     rejectReview,
-    loading,
-    generateTestData
+    loading
   } = useReviewStore()
 
   const { courses, setCourses } = useCourseStore()
@@ -155,37 +154,10 @@ const ReviewModeration = () => {
     <div className="max-w-7xl mx-auto p-6">
       {/* Header */}
       <div className="mb-8">
-        <div className="flex justify-between items-start">
-          <div>
-            <h1 className="text-3xl font-bold text-white mb-2">Gestión de Reseñas</h1>
-            <p className="text-text-secondary">
-              Controla qué reseñas se muestran públicamente en la plataforma
-            </p>
-          </div>
-          <button
-            onClick={() => {
-              generateTestData()
-              loadPendingReviews()
-              Swal.fire({
-                title: '¡Datos cargados!',
-                text: 'Se han cargado 14 reseñas de prueba',
-                icon: 'success',
-                timer: 2000,
-                showConfirmButton: false,
-                customClass: {
-                  popup: 'bg-gray-800 text-white',
-                  title: 'text-white'
-                }
-              })
-            }}
-            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors flex items-center space-x-2"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
-            </svg>
-            <span>Cargar Datos de Prueba</span>
-          </button>
-        </div>
+        <h1 className="text-3xl font-bold text-white mb-2">Gestión de Reseñas</h1>
+        <p className="text-text-secondary">
+          Controla qué reseñas se muestran públicamente en la plataforma
+        </p>
       </div>
 
       {/* Stats */}

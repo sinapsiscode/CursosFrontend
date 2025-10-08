@@ -1,11 +1,11 @@
-import { EVENTS_STYLES, EVENTS_MESSAGES } from '../../constants/eventsConstants.jsx'
+import { EVENTS_STYLES } from '../../constants/eventsConstants.jsx'
 
 const EventBundle = ({ event }) => {
   return (
     <div className={EVENTS_STYLES.bundle.container}>
       <div className={EVENTS_STYLES.bundle.details}>
         <p className={EVENTS_STYLES.bundle.title}>
-          {EVENTS_MESSAGES.eventDetails.packIncludes}
+          Este pack incluye:
         </p>
         <ul className={EVENTS_STYLES.bundle.list}>
           {event.courses.map((course, idx) => (
@@ -18,11 +18,11 @@ const EventBundle = ({ event }) => {
       <div className={EVENTS_STYLES.bundle.pricing}>
         <div>
           <span className={EVENTS_STYLES.bundle.price}>
-            {EVENTS_MESSAGES.eventDetails.free}
+            GRATIS
           </span>
         </div>
         <span className={EVENTS_STYLES.bundle.badge}>
-          {EVENTS_MESSAGES.eventDetails.freeEvent}
+          Evento gratuito
         </span>
       </div>
     </div>

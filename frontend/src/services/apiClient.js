@@ -1,9 +1,11 @@
 import axios from 'axios'
+import { CONFIG } from '../constants/config'
+import { STORAGE_KEYS } from '../constants/storageKeys'
 
 // Configuración base de axios
 const apiClient = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000',
-  timeout: 10000,
+  baseURL: CONFIG.API.BASE_URL,
+  timeout: CONFIG.API.TIMEOUT,
   headers: {
     'Content-Type': 'application/json'
   }
@@ -13,15 +15,20 @@ const apiClient = axios.create({
 apiClient.interceptors.request.use(
   (config) => {
     // Obtener datos de autenticación del localStorage
-    const authData = localStorage.getItem('auth')
+    const authData = localStorage.getItem(STORAGE_KEYS.AUTH_STORAGE)
 
     if (authData) {
       try {
-        const { usuario } = JSON.parse(authData)
+        const parsed = JSON.parse(authData)
+        // Buscar usuario en diferentes formatos:
+        // - Zustand persist: parsed.state.user
+        // - authService: parsed.usuario
+        // - Directo: parsed.user
+        const user = parsed.state?.user || parsed.usuario || parsed.user
 
-        if (usuario && usuario.id && usuario.rolId) {
-          config.headers['x-user-id'] = usuario.id
-          config.headers['x-role-id'] = usuario.rolId
+        if (user && user.id && user.rolId) {
+          config.headers['x-user-id'] = user.id
+          config.headers['x-role-id'] = user.rolId
         }
       } catch (error) {
         console.error('Error parseando auth data:', error)
@@ -68,12 +75,15 @@ apiClient.interceptors.response.use(
       // Manejo específico por código de estado
       switch (status) {
         case 401:
-          // No autorizado - Limpiar sesión y redirigir a login
-          console.warn('Sesión expirada o no autorizado')
-          localStorage.removeItem('auth')
+          // No limpiar sesión si el error viene de login o registro
+          if (!error.config.url.includes('/auth/')) {
+            // No autorizado - Limpiar sesión y redirigir a login
+            console.warn('Sesión expirada o no autorizado')
+            localStorage.removeItem(STORAGE_KEYS.AUTH_STORAGE)
 
-          // Disparar evento personalizado para que el AuthContext lo maneje
-          window.dispatchEvent(new CustomEvent('auth:unauthorized'))
+            // Disparar evento personalizado para que el AuthContext lo maneje
+            window.dispatchEvent(new CustomEvent('auth:unauthorized'))
+          }
           break
 
         case 403:

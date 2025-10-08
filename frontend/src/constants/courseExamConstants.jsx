@@ -1,16 +1,16 @@
-export const EXAM_SCORE_RANGES = {
-  excellent: { min: 18, max: 20, discount: 20, color: 'bg-green-500/20 text-green-400', message: '¡Excelente!' },
-  good: { min: 15, max: 17, discount: 15, color: 'bg-green-500/20 text-green-400', message: '¡Excelente!' },
-  average: { min: 11, max: 14, discount: 10, color: 'bg-yellow-500/20 text-yellow-400', message: '¡Bien hecho!' },
-  below: { min: 0, max: 10, discount: 0, color: 'bg-red-500/20 text-red-400', message: 'Sigue aprendiendo' }
-}
+/**
+ * ⚠️ MIGRADO A BACKEND
+ * Los rangos de puntuación y configuración de negocio ahora están en:
+ * - backend/db.json → system_config.exams
+ * - Usar: import { getScoreRange, calculateExamDiscount } from '../utils/examUtils'
+ *
+ * Este archivo solo mantiene constantes de UI (estilos, mensajes)
+ */
 
 export const EXAM_CONFIG = {
-  defaultQuestionPoints: 10,
-  maxScore: 20,
-  minPassingScore: 11,
-  questionSubstringLength: 60,
-  imageMaxHeight: '300px'
+  // UI/Presentación (no son configuración de negocio)
+  questionSubstringLength: 60,  // Caracteres mostrados en preview de pregunta
+  imageMaxHeight: '300px'       // Altura máxima de imágenes
 }
 
 export const EXAM_STYLES = {
@@ -107,24 +107,14 @@ export const EXAM_ICONS = {
   )
 }
 
-export const EXAM_UTILS = {
-  formatTime: (seconds) => {
-    const mins = Math.floor(seconds / 60)
-    const secs = seconds % 60
-    return `${mins}:${secs.toString().padStart(2, '0')}`
-  },
-
-  getScoreCategory: (score) => {
-    if (score >= 18) return 'excellent'
-    if (score >= 15) return 'good'
-    if (score >= 11) return 'average'
-    return 'below'
-  },
-
-  calculateDiscount: (score) => {
-    if (score >= 18) return 20
-    if (score >= 15) return 15
-    if (score >= 11) return 10
-    return 0
-  }
-}
+/**
+ * ⚠️ MIGRADO A BACKEND
+ * Las utilidades de cálculo de puntuación ahora están en:
+ * - utils/examUtils.js
+ *
+ * Usar:
+ * - formatTime(seconds) - Formatear tiempo
+ * - getScoreCategory(score) - Obtener categoría desde backend
+ * - calculateExamDiscount(score) - Calcular descuento desde backend
+ * - getScoreRange(score) - Obtener rango completo desde backend
+ */

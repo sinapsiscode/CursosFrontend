@@ -37,21 +37,20 @@ export const useAuthStore = create(
           const sessionDuration = Date.now() - state.sessionStartTime
           const newTotalTime = state.totalSessionTime + sessionDuration
           
-          // Guardar tiempo de sesión en el perfil del usuario
+          // Guardar tiempo de sesión en el perfil del usuario (backend)
           if (state.user) {
-            const updatedUser = {
-              ...state.user,
-              totalUsageTime: (state.user.totalUsageTime || 0) + sessionDuration
-            }
-            
-            // Actualizar en localStorage para persistencia
+            const totalUsageTime = (state.user.totalUsageTime || 0) + sessionDuration
+
+            // Actualizar en backend en lugar de localStorage
             try {
-              const existingUsers = JSON.parse(localStorage.getItem('userData') || '[]')
-              const userIndex = existingUsers.findIndex(u => u.id === state.user.id)
-              if (userIndex >= 0) {
-                existingUsers[userIndex] = updatedUser
-                localStorage.setItem('userData', JSON.stringify(existingUsers))
-              }
+              import('../services/usuariosService').then(({ default: usuariosService }) => {
+                usuariosService.update(state.user.id, {
+                  totalUsageTime,
+                  lastLogout: new Date().toISOString()
+                }).catch(error => {
+                  console.error('Error saving user session time to backend:', error)
+                })
+              })
             } catch (error) {
               console.error('Error saving user session time:', error)
             }
@@ -133,14 +132,16 @@ export const useAuthStore = create(
             totalSessionTime: state.totalSessionTime + sessionDuration
           })
           
-          // Guardar en localStorage
+          // Guardar en backend
           try {
-            const existingUsers = JSON.parse(localStorage.getItem('userData') || '[]')
-            const userIndex = existingUsers.findIndex(u => u.id === state.user.id)
-            if (userIndex >= 0) {
-              existingUsers[userIndex] = updatedUser
-              localStorage.setItem('userData', JSON.stringify(existingUsers))
-            }
+            import('../services/usuariosService').then(({ default: usuariosService }) => {
+              usuariosService.update(state.user.id, {
+                totalUsageTime: updatedUser.totalUsageTime,
+                lastActive: new Date().toISOString()
+              }).catch(error => {
+                console.error('Error updating user session time to backend:', error)
+              })
+            })
           } catch (error) {
             console.error('Error updating user session time:', error)
           }
@@ -148,7 +149,7 @@ export const useAuthStore = create(
       }
     }),
     {
-      name: 'auth-storage',
+      name: 'zustand-auth-store',
       partialize: (state) => ({
         user: state.user,
         isAuthenticated: state.isAuthenticated,

@@ -1,4 +1,4 @@
-import { EVENTS_STYLES, EVENTS_MESSAGES } from '../../constants/eventsConstants.jsx'
+import { EVENTS_STYLES } from '../../constants/eventsConstants.jsx'
 
 const EventPromotion = ({ event }) => {
   return (
@@ -8,14 +8,14 @@ const EventPromotion = ({ event }) => {
           -{event.discount}%
         </span>
         <span className={EVENTS_STYLES.promotion.code}>
-          {EVENTS_MESSAGES.eventDetails.promoCode}{' '}
+          Código:{' '}
           <span className={EVENTS_STYLES.promotion.codeValue}>
             {event.promoCode}
           </span>
         </span>
       </div>
       <p className={EVENTS_STYLES.promotion.validity}>
-        {EVENTS_MESSAGES.eventDetails.validUntil}{' '}
+        Válido hasta:{' '}
         {new Date(event.endDate).toLocaleDateString('es-ES')}
       </p>
     </div>

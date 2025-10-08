@@ -1,13 +1,11 @@
-import { EVENTS_STYLES, EVENTS_MESSAGES } from '../../constants/eventsConstants.jsx'
+import { EVENTS_STYLES } from '../../constants/eventsConstants.jsx'
 
 const EventActions = ({
   event,
   eventConfig,
-  demoMode,
   isAuthenticated,
   hasCapacity,
   onEventDetail,
-  onSimulatorOpen,
   onNavigateToCourses,
   onNavigateToBundle,
   onNavigateToLogin
@@ -17,7 +15,7 @@ const EventActions = ({
   return (
     <div className={`${!hasCapacity ? 'w-full' : ''} text-right`}>
       <p className={EVENTS_STYLES.eventCard.price}>
-        {EVENTS_MESSAGES.eventDetails.free}
+        GRATIS
       </p>
 
       {(event.type === 'webinar' || event.type === 'masterclass') ? (
@@ -26,7 +24,7 @@ const EventActions = ({
             onClick={() => onEventDetail(event)}
             className={EVENTS_STYLES.eventCard.buttons.detail}
           >
-            {EVENTS_MESSAGES.eventDetails.seeDetails}
+            📋 Ver detalles
           </button>
           <button
             onClick={() => {
@@ -51,15 +49,6 @@ const EventActions = ({
                 : eventConfig.buttonText
             }
           </button>
-          {demoMode && (
-            <button
-              onClick={() => onSimulatorOpen(event)}
-              className={EVENTS_STYLES.eventCard.buttons.demo}
-              title={EVENTS_MESSAGES.eventDetails.simulateNotifications}
-            >
-              🎮
-            </button>
-          )}
         </div>
       ) : event.type === 'promotion' ? (
         <button

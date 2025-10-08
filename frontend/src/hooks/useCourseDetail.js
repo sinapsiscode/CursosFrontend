@@ -4,14 +4,14 @@ import { useAuthStore, useCourseStore, useProgressStore, useReviewStore } from '
 import { apiService } from '../services/api'
 import { whatsappService } from '../services/whatsappService'
 import { eventService } from '../services/eventService'
-import { examService } from '../services/examService'
+import { examenesService as examService } from '../services/examenesService'
 
 export const useCourseDetail = (courseId) => {
   const navigate = useNavigate()
   const { isAuthenticated, selectedArea, user } = useAuthStore()
   const { toggleFavorite, favorites } = useCourseStore()
   const { getCourseProgress, updateLessonProgress } = useProgressStore()
-  const { canReview, loadCourseReviews, reviews, generateTestData } = useReviewStore()
+  const { canReview, loadCourseReviews, reviews } = useReviewStore()
 
   const [course, setCourse] = useState(null)
   const [loading, setLoading] = useState(true)
@@ -157,30 +157,6 @@ export const useCourseDetail = (courseId) => {
     return hours > 0 ? `${hours}h ${mins}m` : `${mins}m`
   }
 
-  const generateTestReviewData = () => {
-    generateTestData()
-    reloadCourseReviews()
-  }
-
-  const completeTestCourse = () => {
-    if (isAuthenticated && user && course) {
-      const enrollments = JSON.parse(localStorage.getItem('student_enrollments') || '[]')
-      const newEnrollment = {
-        id: `enrollment_${Date.now()}`,
-        userId: user.id,
-        courseId: course.id,
-        status: 'completed',
-        enrolledAt: new Date().toISOString(),
-        completedAt: new Date().toISOString(),
-        canReview: true,
-        hasReviewed: false
-      }
-      enrollments.push(newEnrollment)
-      localStorage.setItem('student_enrollments', JSON.stringify(enrollments))
-      window.location.reload()
-    }
-  }
-
   return {
     // Data
     course,
@@ -198,8 +174,6 @@ export const useCourseDetail = (courseId) => {
     reloadCourseReviews,
     updateEnrollmentStatus,
     formatDuration,
-    generateTestReviewData,
-    completeTestCourse,
     canReview: (userId, courseId) => canReview(userId, courseId),
 
     // Navigation

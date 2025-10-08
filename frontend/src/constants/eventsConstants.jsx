@@ -175,50 +175,7 @@ export const EVENTS_STYLES = {
   }
 }
 
-export const EVENTS_MESSAGES = {
-  title: 'Eventos y Promociones',
-  subtitle: 'Descubre webinars, masterclasses y ofertas especiales',
-  subtitleAuthenticated: ' personalizadas para ti',
-
-  demoMode: {
-    active: '🎮 Modo Demo Activo',
-    inactive: '🎮 Activar Modo Demo',
-    description: 'Modo Demo Activo: Haz clic en el botón morado (🎮) en cualquier evento para simular las notificaciones'
-  },
-
-  filters: {
-    eventType: 'Tipo de evento',
-    areaOfInterest: 'Área de interés',
-    relevantFilter: 'Para Ti 🎯',
-    relevantMessage: '🎯 Estos eventos están seleccionados especialmente para ti basados en tu actividad'
-  },
-
-  eventDetails: {
-    includes: 'Incluye:',
-    registered: 'registrados',
-    free: 'GRATIS',
-    validUntil: 'Válido hasta:',
-    promoCode: 'Código:',
-    packIncludes: 'Este pack incluye:',
-    freeEvent: 'Evento gratuito',
-    relevance: 'Relevancia:',
-    seeDetails: '📋 Ver detalles',
-    simulateNotifications: 'Simular notificaciones del evento'
-  },
-
-  timeLabels: {
-    today: 'Hoy',
-    tomorrow: 'Mañana',
-    inDays: 'En {days} días',
-    eventPast: 'Evento pasado'
-  },
-
-  emptyState: 'No hay eventos disponibles con los filtros seleccionados',
-
-  consoleMessages: {
-    registrationSuccess: '✅ Inscripción exitosa al evento:'
-  }
-}
+// MESSAGES eliminado - ya no se usan textos hardcodeados
 
 export const EVENTS_ICONS = {
   calendar: (
@@ -253,7 +210,7 @@ export const EVENTS_UTILS = {
     if (diffDays === 0) return TIME_INDICATORS.today.text
     if (diffDays === 1) return TIME_INDICATORS.tomorrow.text
     if (diffDays < 0) return TIME_INDICATORS.past.text
-    return EVENTS_MESSAGES.timeLabels.inDays.replace('{days}', diffDays)
+    return `En ${diffDays} días`
   },
 
   getTimeIndicatorClass: (dateString) => {

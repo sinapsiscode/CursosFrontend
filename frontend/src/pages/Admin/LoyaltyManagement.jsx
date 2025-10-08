@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { loyaltyService } from '../../services/loyaltyService'
+import { fidelizacionService as loyaltyService } from '../../services/fidelizacionService'
 import { LoadingSpinner } from '../../components/common'
 import CoursePointsManagement from './CoursePointsManagement'
 import RewardsManagement from './RewardsManagement'
@@ -18,15 +18,16 @@ const LoyaltyManagement = () => {
     loadLoyaltyData()
   }, [])
 
-  const loadLoyaltyData = () => {
+  const loadLoyaltyData = async () => {
     setLoading(true)
     try {
       // Cargar configuración del programa
+      await loyaltyService.loadConfig()
       const config = loyaltyService.config
-      
+
       // Cargar datos reales de usuarios
-      const realUsers = loyaltyService.getAllUsersWithPoints()
-      
+      const realUsers = await loyaltyService.getAllUsersWithPoints()
+
       // Si no hay usuarios reales, crear algunos de prueba
       if (realUsers.length === 0) {
         // Generar usuarios de prueba
@@ -37,7 +38,7 @@ const LoyaltyManagement = () => {
           { id: 'user_4', name: 'Juan Pérez', email: 'juan@email.com' },
           { id: 'user_5', name: 'Laura Martínez', email: 'laura@email.com' }
         ]
-        
+
         // Guardar usuarios en auth storage
         const authData = localStorage.getItem('auth-storage')
         if (authData) {
@@ -45,21 +46,21 @@ const LoyaltyManagement = () => {
           auth.state.allUsers = testUsers
           localStorage.setItem('auth-storage', JSON.stringify(auth))
         }
-        
+
         // Asignar puntos de prueba a algunos usuarios
-        loyaltyService.adminAddPoints('user_1', 2500, 'Puntos iniciales de prueba')
-        loyaltyService.adminAddPoints('user_2', 1200, 'Puntos iniciales de prueba')
-        loyaltyService.adminAddPoints('user_3', 500, 'Puntos iniciales de prueba')
-        loyaltyService.adminAddPoints('user_4', 8500, 'Puntos iniciales de prueba')
-        loyaltyService.adminAddPoints('user_5', 3200, 'Puntos iniciales de prueba')
-        
+        await loyaltyService.adminAddPoints('user_1', 2500, 'Puntos iniciales de prueba')
+        await loyaltyService.adminAddPoints('user_2', 1200, 'Puntos iniciales de prueba')
+        await loyaltyService.adminAddPoints('user_3', 500, 'Puntos iniciales de prueba')
+        await loyaltyService.adminAddPoints('user_4', 8500, 'Puntos iniciales de prueba')
+        await loyaltyService.adminAddPoints('user_5', 3200, 'Puntos iniciales de prueba')
+
         // Volver a cargar usuarios con puntos
-        const updatedUsers = loyaltyService.getAllUsersWithPoints()
+        const updatedUsers = await loyaltyService.getAllUsersWithPoints()
         setUserPoints(updatedUsers)
       } else {
         setUserPoints(realUsers)
       }
-      
+
       setLoyaltyData(config)
     } catch (error) {
       console.error('Error loading loyalty data:', error)
@@ -209,34 +210,6 @@ const LoyaltyManagement = () => {
         <p className="text-text-secondary">
           Gestiona puntos, niveles y recompensas del programa de lealtad
         </p>
-      </div>
-
-      {/* Test Button - Solo para desarrollo */}
-      <div className="mb-4 flex justify-end">
-        <button
-          onClick={() => {
-            // Simular completar curso para usuario de prueba
-            const testUserId = 'user_test_' + Date.now()
-            loyaltyService.adminAddPoints(testUserId, 100, 'Test: Curso completado')
-              .then(() => {
-                loadLoyaltyData()
-                Swal.fire({
-                  title: 'Prueba Exitosa',
-                  text: 'Se agregó un usuario de prueba con 100 puntos',
-                  icon: 'success',
-                  timer: 2000,
-                  showConfirmButton: false,
-                  customClass: {
-                    popup: 'bg-gray-800 text-white',
-                    title: 'text-white'
-                  }
-                })
-              })
-          }}
-          className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg font-medium text-sm"
-        >
-          🧪 Agregar Usuario de Prueba
-        </button>
       </div>
 
       {/* Stats */}

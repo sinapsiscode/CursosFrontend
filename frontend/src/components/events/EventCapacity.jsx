@@ -1,10 +1,10 @@
-import { EVENTS_STYLES, EVENTS_MESSAGES } from '../../constants/eventsConstants.jsx'
+import { EVENTS_STYLES } from '../../constants/eventsConstants.jsx'
 
 const EventCapacity = ({ registered, capacity }) => {
   return (
     <div className="text-sm">
       <p className={EVENTS_STYLES.eventCard.capacity.text}>
-        {registered}/{capacity} {EVENTS_MESSAGES.eventDetails.registered}
+        {registered}/{capacity} registrados
       </p>
       <div className={EVENTS_STYLES.eventCard.capacity.bar}>
         <div

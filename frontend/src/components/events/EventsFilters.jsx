@@ -1,6 +1,5 @@
-import { EVENTS_STYLES, EVENTS_MESSAGES } from '../../constants/eventsConstants.jsx'
+import { EVENTS_STYLES } from '../../constants/eventsConstants.jsx'
 import FilterGroup from './FilterGroup'
-import RelevantIndicator from './RelevantIndicator'
 
 const EventsFilters = ({
   filter,
@@ -16,7 +15,7 @@ const EventsFilters = ({
       <div className={EVENTS_STYLES.filters.grid}>
         {/* Type Filter */}
         <FilterGroup
-          label={EVENTS_MESSAGES.filters.eventType}
+          label="Tipo de evento"
           options={typeFilters}
           selectedValue={filter}
           onFilterChange={onFilterChange}
@@ -24,15 +23,12 @@ const EventsFilters = ({
 
         {/* Area Filter */}
         <FilterGroup
-          label={EVENTS_MESSAGES.filters.areaOfInterest}
+          label="Área de interés"
           options={areaFilters}
           selectedValue={areaFilter}
           onFilterChange={onAreaFilterChange}
         />
       </div>
-
-      {/* Relevant Events Indicator */}
-      {isRelevantFilterActive && <RelevantIndicator />}
     </div>
   )
 }

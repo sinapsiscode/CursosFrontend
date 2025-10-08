@@ -20,11 +20,8 @@ export const useEvents = () => {
   const [filter, setFilter] = useState(FILTER_TYPES.all)
   const [areaFilter, setAreaFilter] = useState(FILTER_TYPES.all)
   const [registering, setRegistering] = useState(null)
-  const [demoMode, setDemoMode] = useState(false)
 
   // Modal states
-  const [showSimulator, setShowSimulator] = useState(false)
-  const [selectedEventForSimulation, setSelectedEventForSimulation] = useState(null)
   const [showRegistrationModal, setShowRegistrationModal] = useState(false)
   const [selectedEventForRegistration, setSelectedEventForRegistration] = useState(null)
   const [showEventDetail, setShowEventDetail] = useState(false)
@@ -87,16 +84,6 @@ export const useEvents = () => {
     loadEvents() // Reload to update registered counter
   }, [selectedEventForDetail, loadEvents])
 
-  const handleSimulatorOpen = useCallback((event) => {
-    setSelectedEventForSimulation(event)
-    setShowSimulator(true)
-  }, [])
-
-  const handleSimulatorClose = useCallback(() => {
-    setShowSimulator(false)
-    setSelectedEventForSimulation(null)
-  }, [])
-
   const handleModalClose = useCallback((modalType) => {
     switch (modalType) {
       case 'registration':
@@ -119,10 +106,6 @@ export const useEvents = () => {
 
   const handleAreaFilterChange = useCallback((newAreaFilter) => {
     setAreaFilter(newAreaFilter)
-  }, [])
-
-  const toggleDemoMode = useCallback(() => {
-    setDemoMode(prev => !prev)
   }, [])
 
   // Navigation helpers
@@ -167,11 +150,8 @@ export const useEvents = () => {
     filter,
     areaFilter,
     registering,
-    demoMode,
 
     // Modal states
-    showSimulator,
-    selectedEventForSimulation,
     showRegistrationModal,
     selectedEventForRegistration,
     showEventDetail,
@@ -192,14 +172,11 @@ export const useEvents = () => {
     handleRegistrationSuccess,
     handleEventDetail,
     handleEventDetailSuccess,
-    handleSimulatorOpen,
-    handleSimulatorClose,
     handleModalClose,
 
     // Filter handlers
     handleFilterChange,
     handleAreaFilterChange,
-    toggleDemoMode,
 
     // Navigation helpers
     navigateToCourses,

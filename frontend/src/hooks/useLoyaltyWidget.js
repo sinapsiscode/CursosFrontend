@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { loyaltyService } from '../services/loyaltyService'
+import { fidelizacionService as loyaltyService } from '../services/fidelizacionService'
 import { useAuthStore } from '../store'
 import { LOYALTY_NAVIGATION_ROUTES } from '../constants/loyaltyConstants.jsx'
 

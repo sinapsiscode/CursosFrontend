@@ -1,9 +1,15 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuthStore, useUIStore } from '../store'
-import { examService } from '../services/examService'
+import { examenesService as examService } from '../services/examenesService'
 import { apiService } from '../services/api'
-import { EXAM_CONFIG, EXAM_MESSAGES, EXAM_UTILS } from '../constants/courseExamConstants.jsx'
+import { EXAM_MESSAGES } from '../constants/courseExamConstants.jsx'
+import {
+  getMaxScore,
+  calculateExamDiscount,
+  formatTime,
+  getScoreCategory
+} from '../utils/examUtils'
 
 export const useCourseExam = (courseId, examId) => {
   const navigate = useNavigate()
@@ -23,13 +29,35 @@ export const useCourseExam = (courseId, examId) => {
   const [loading, setLoading] = useState(true)
   const [couponCode, setCouponCode] = useState(null)
 
+  // Transform backend exam format (Spanish) to frontend format (English)
+  const transformExam = (examData) => {
+    if (!examData) return null
+
+    return {
+      ...examData,
+      isActive: examData.activo,
+      duration: examData.duracion,
+      questions: examData.preguntas?.map(pregunta => ({
+        id: pregunta.id,
+        question: pregunta.pregunta,
+        points: pregunta.puntos,
+        options: pregunta.opciones?.map(opt => opt.texto) || [],
+        correct: pregunta.opciones?.findIndex(opt => opt.correcta) || 0
+      })) || []
+    }
+  }
+
   // Load exam and course data
   const loadExamAndCourse = useCallback(async () => {
     try {
       setLoading(true)
 
-      // Load exam
-      const examData = examService.getExamById(examId)
+      // Load exam from backend
+      const examDataRaw = await examService.getById(examId)
+
+      // Transform to frontend format
+      const examData = transformExam(examDataRaw)
+
       if (!examData || !examData.isActive) {
         showToast(EXAM_MESSAGES.examNotAvailable, 'error')
         navigate(`/course/${courseId}`)
@@ -95,7 +123,7 @@ export const useCourseExam = (courseId, examId) => {
   }, [])
 
   // Score calculation
-  const calculateScore = useCallback(() => {
+  const calculateScore = useCallback(async () => {
     if (!exam || !exam.questions) {
       return { score: 0, discount: 0, correctAnswers: 0, totalPoints: 0 }
     }
@@ -104,18 +132,21 @@ export const useCourseExam = (courseId, examId) => {
     let totalPoints = 0
 
     exam.questions.forEach(question => {
-      const questionPoints = question.points || EXAM_CONFIG.defaultQuestionPoints
+      const questionPoints = question.points || 10 // Default question points
       totalPoints += questionPoints
       if (answers[question.id] === question.correct) {
         correctAnswers += questionPoints
       }
     })
 
-    // Calculate score out of 20
-    const scoreOn20 = Math.round((correctAnswers / totalPoints) * EXAM_CONFIG.maxScore)
+    // Get max score from backend config
+    const maxScore = await getMaxScore()
 
-    // Calculate discount based on score
-    const discountPercentage = EXAM_UTILS.calculateDiscount(scoreOn20)
+    // Calculate score out of max (usually 20)
+    const scoreOn20 = Math.round((correctAnswers / totalPoints) * maxScore)
+
+    // Calculate discount based on score (from backend config)
+    const discountPercentage = await calculateExamDiscount(scoreOn20)
 
     return { score: scoreOn20, discount: discountPercentage, correctAnswers, totalPoints }
   }, [exam, answers])
@@ -128,8 +159,8 @@ export const useCourseExam = (courseId, examId) => {
     setIsSubmitting(true)
 
     try {
-      // Calculate results
-      const { score: finalScore, discount: finalDiscount } = calculateScore()
+      // Calculate results (now async)
+      const { score: finalScore, discount: finalDiscount } = await calculateScore()
       console.log('📊 Calculated score:', { finalScore, finalDiscount })
       setScore(finalScore)
       setDiscount(finalDiscount)
@@ -198,8 +229,23 @@ export const useCourseExam = (courseId, examId) => {
   const currentQuestionData = exam?.questions?.[currentQuestion] || null
   const progress = exam?.questions?.length ? ((currentQuestion + 1) / exam.questions.length) * 100 : 0
   const isLastQuestion = currentQuestion === (exam?.questions?.length - 1)
-  const formattedTime = EXAM_UTILS.formatTime(timeLeft)
-  const scoreCategory = EXAM_UTILS.getScoreCategory(score)
+  const formattedTime = formatTime(timeLeft)
+
+  // Score range info (async, computed when results are shown)
+  const [scoreRange, setScoreRange] = useState(null)
+  const [scoreCategory, setScoreCategory] = useState(null)
+
+  useEffect(() => {
+    if (showResults && score > 0) {
+      // Load score range from backend config
+      import('../utils/examUtils').then(({ getScoreRange, getScoreCategory }) => {
+        getScoreRange(score).then(range => {
+          setScoreRange(range)
+          setScoreCategory(range.key)
+        })
+      })
+    }
+  }, [showResults, score])
 
   return {
     // Data
@@ -221,6 +267,7 @@ export const useCourseExam = (courseId, examId) => {
     isLastQuestion,
     formattedTime,
     scoreCategory,
+    scoreRange,
 
     // Actions
     handleNext,

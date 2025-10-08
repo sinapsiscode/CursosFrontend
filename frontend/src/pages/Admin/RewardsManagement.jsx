@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { loyaltyService } from '../../services/loyaltyService'
+import { fidelizacionService as loyaltyService } from '../../services/fidelizacionService'
 import { LoadingSpinner } from '../../components/common'
 import Swal from 'sweetalert2'
 
