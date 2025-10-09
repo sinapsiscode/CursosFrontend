@@ -18,7 +18,7 @@ const EventCardImage = ({
 
       {/* Type Badge */}
       <div className={EVENTS_STYLES.eventCard.image.badge}>
-        <span className={`px-3 py-1 rounded-full text-xs font-medium ${eventConfig.color}`}>
+        <span className={`px-2 py-1 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-xs font-medium ${eventConfig.color}`}>
           {eventConfig.badge}
         </span>
       </div>

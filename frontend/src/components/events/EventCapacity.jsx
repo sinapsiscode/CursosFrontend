@@ -2,7 +2,7 @@ import { EVENTS_STYLES } from '../../constants/eventsConstants.jsx'
 
 const EventCapacity = ({ registered, capacity }) => {
   return (
-    <div className="text-sm">
+    <div className={EVENTS_STYLES.eventCard.capacity.wrapper}>
       <p className={EVENTS_STYLES.eventCard.capacity.text}>
         {registered}/{capacity} registrados
       </p>

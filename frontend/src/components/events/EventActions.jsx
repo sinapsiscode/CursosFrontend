@@ -13,7 +13,7 @@ const EventActions = ({
   const isEventFull = event.capacity && event.registered >= event.capacity
 
   return (
-    <div className={`${!hasCapacity ? 'w-full' : ''} text-right`}>
+    <div className={`${!hasCapacity ? 'w-full' : 'w-full sm:w-auto'} sm:text-right`}>
       <p className={EVENTS_STYLES.eventCard.price}>
         GRATIS
       </p>
@@ -24,7 +24,8 @@ const EventActions = ({
             onClick={() => onEventDetail(event)}
             className={EVENTS_STYLES.eventCard.buttons.detail}
           >
-            📋 Ver detalles
+            <span className="hidden sm:inline">📋 Ver detalles</span>
+            <span className="sm:hidden">📋 Detalles</span>
           </button>
           <button
             onClick={() => {
@@ -43,24 +44,26 @@ const EventActions = ({
             title={!isAuthenticated ? 'Inicia sesión para inscribirte' : ''}
           >
             {isEventFull
-              ? eventConfig.fullButtonText
+              ? <span className="hidden sm:inline">{eventConfig.fullButtonText}</span>
               : !isAuthenticated
-                ? eventConfig.lockedButtonText
-                : eventConfig.buttonText
+                ? <span className="hidden sm:inline">{eventConfig.lockedButtonText}</span>
+                : <span>{eventConfig.buttonText}</span>
             }
+            {isEventFull && <span className="sm:hidden">🚫 Lleno</span>}
+            {!isEventFull && !isAuthenticated && <span className="sm:hidden">🔒 Iniciar Sesión</span>}
           </button>
         </div>
       ) : event.type === 'promotion' ? (
         <button
           onClick={onNavigateToCourses}
-          className="px-4 py-2 bg-accent text-background rounded-lg font-medium hover:bg-opacity-90"
+          className="w-full sm:w-auto px-3 py-2 sm:px-4 sm:py-2.5 bg-accent text-background rounded-lg text-xs sm:text-sm md:text-base font-medium hover:bg-opacity-90"
         >
           {eventConfig.buttonText}
         </button>
       ) : (
         <button
           onClick={() => onNavigateToBundle(event.id)}
-          className="px-4 py-2 bg-accent text-background rounded-lg font-medium hover:bg-opacity-90"
+          className="w-full sm:w-auto px-3 py-2 sm:px-4 sm:py-2.5 bg-accent text-background rounded-lg text-xs sm:text-sm md:text-base font-medium hover:bg-opacity-90"
         >
           {eventConfig.buttonText}
         </button>

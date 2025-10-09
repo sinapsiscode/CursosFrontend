@@ -104,36 +104,37 @@ export const EVENTS_STYLES = {
   },
 
   eventCard: {
-    container: 'bg-surface rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 group',
+    container: 'bg-surface rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 group max-w-md mx-auto sm:max-w-none',
     image: {
-      wrapper: 'relative h-48 overflow-hidden',
+      wrapper: 'relative h-40 sm:h-48 overflow-hidden',
       image: 'w-full h-full object-cover group-hover:scale-110 transition-transform duration-300',
-      badge: 'absolute top-4 left-4',
+      badge: 'absolute top-3 left-3 sm:top-4 sm:left-4',
       areaGradient: 'absolute bottom-0 left-0 right-0 h-1'
     },
-    content: 'p-6',
-    title: 'text-xl font-bold text-white mb-2',
-    description: 'text-gray-400 text-sm mb-4',
-    details: 'space-y-2 mb-4',
-    detailItem: 'flex items-center text-sm text-gray-300',
-    detailIcon: 'w-4 h-4 mr-2 text-accent',
-    footer: 'flex items-center justify-between pt-4 border-t border-gray-700',
+    content: 'p-4 sm:p-6',
+    title: 'text-lg sm:text-xl font-bold text-white mb-2 leading-tight',
+    description: 'text-gray-400 text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-2',
+    details: 'space-y-1.5 sm:space-y-2 mb-3 sm:mb-4',
+    detailItem: 'flex items-center text-xs sm:text-sm text-gray-300',
+    detailIcon: 'w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1.5 sm:mr-2 text-accent flex-shrink-0',
+    footer: 'flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2 sm:gap-3 pt-3 sm:pt-4 border-t border-gray-700',
     capacity: {
-      text: 'text-sm text-gray-400',
-      bar: 'w-24 bg-gray-700 rounded-full h-2 mt-1',
-      progress: 'bg-accent h-2 rounded-full'
+      wrapper: 'flex flex-col space-y-1',
+      text: 'text-[10px] sm:text-xs md:text-sm text-gray-400',
+      bar: 'w-full sm:w-32 md:w-24 bg-gray-700 rounded-full h-1 sm:h-1.5 md:h-2',
+      progress: 'bg-accent h-1 sm:h-1.5 md:h-2 rounded-full'
     },
-    price: 'text-lg font-bold text-white mb-2',
+    price: 'text-sm sm:text-base md:text-lg font-bold text-white mb-1',
     buttons: {
-      wrapper: 'flex gap-2 flex-wrap',
-      detail: 'flex-1 min-w-[120px] bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors',
-      register: 'flex-1 min-w-[140px] px-4 py-2 rounded-lg font-medium transition-colors',
+      wrapper: 'flex flex-col sm:flex-row gap-1.5 sm:gap-2 w-full',
+      detail: 'w-full sm:flex-1 sm:min-w-[100px] bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 sm:px-4 sm:py-2.5 rounded-lg text-xs sm:text-sm md:text-base font-medium transition-colors',
+      register: 'w-full sm:flex-1 sm:min-w-[120px] px-3 py-2 sm:px-4 sm:py-2.5 rounded-lg text-xs sm:text-sm md:text-base font-medium transition-colors',
       registerActive: 'bg-green-600 hover:bg-green-700 text-white',
       registerDisabled: 'bg-gray-700 text-gray-500 cursor-not-allowed',
-      demo: 'px-4 py-2 bg-purple-600 text-white rounded-lg font-medium hover:bg-purple-700 transition-colors'
+      demo: 'px-3 py-2 sm:px-4 sm:py-2 bg-purple-600 text-white rounded-lg font-medium hover:bg-purple-700 transition-colors text-xs sm:text-sm md:text-base'
     },
-    timeIndicator: 'mt-3 text-center',
-    relevanceScore: 'mt-3 text-center text-xs text-purple-400'
+    timeIndicator: 'mt-1.5 sm:mt-2 md:mt-3 text-center text-[10px] sm:text-xs',
+    relevanceScore: 'mt-1.5 sm:mt-2 md:mt-3 text-center text-[10px] sm:text-xs text-purple-400'
   },
 
   promotion: {
@@ -157,11 +158,11 @@ export const EVENTS_STYLES = {
   },
 
   benefits: {
-    container: 'mb-4',
-    title: 'text-sm font-medium text-gray-400 mb-2',
-    list: 'space-y-1',
-    item: 'text-xs text-gray-300 flex items-start',
-    checkmark: 'text-green-400 mr-1'
+    container: 'mb-3 sm:mb-4',
+    title: 'text-xs sm:text-sm font-medium text-gray-400 mb-1.5 sm:mb-2',
+    list: 'space-y-0.5 sm:space-y-1',
+    item: 'text-[10px] sm:text-xs text-gray-300 flex items-start',
+    checkmark: 'text-green-400 mr-1 text-xs sm:text-sm flex-shrink-0'
   },
 
   emptyState: {
