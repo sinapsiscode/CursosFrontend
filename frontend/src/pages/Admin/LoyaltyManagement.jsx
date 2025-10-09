@@ -189,10 +189,10 @@ const LoyaltyManagement = () => {
     return loyaltyData?.levels[level] || {}
   }
 
-  const totalPoints = userPoints.reduce((sum, user) => sum + user.points, 0)
+  const totalPoints = userPoints.reduce((sum, user) => sum + (user.lifetimePoints || 0), 0)
   const totalUsers = userPoints.length
   const averagePoints = totalUsers > 0 ? Math.round(totalPoints / totalUsers) : 0
-  const totalCoursesCompleted = Math.floor(totalPoints / 100) // 100 puntos por curso
+  const totalCoursesCompleted = userPoints.reduce((sum, user) => sum + (user.completedCourses?.length || 0), 0)
 
   if (loading) {
     return (
@@ -331,7 +331,7 @@ const LoyaltyManagement = () => {
               <div className="bg-gray-800 rounded-lg p-6">
                 <h4 className="text-lg font-semibold text-white mb-4">Distribución por Nivel</h4>
                 {Object.entries(loyaltyData?.levels || {}).map(([key, level]) => {
-                  const usersInLevel = userPoints.filter(u => u.level === key).length
+                  const usersInLevel = userPoints.filter(u => u.currentLevel === key).length
                   const percentage = totalUsers > 0 ? (usersInLevel / totalUsers * 100).toFixed(1) : 0
                   return (
                     <div key={key} className="mb-4">
@@ -422,8 +422,8 @@ const LoyaltyManagement = () => {
                 </thead>
                 <tbody>
                   {filteredUsers.map(user => {
-                    const level = getLevelConfig(user.level)
-                    const coursesCompleted = user.completedCourses || Math.floor((user.lifetimePoints || user.points) / 100)
+                    const level = getLevelConfig(user.currentLevel)
+                    const coursesCompleted = user.completedCourses?.length || 0
                     return (
                       <tr key={user.userId} className="border-b border-gray-700/50 hover:bg-gray-800/50">
                         <td className="py-4 px-4">
@@ -440,7 +440,7 @@ const LoyaltyManagement = () => {
                                 {level.name}
                               </span>
                               <span className="text-xs text-gray-500">
-                                Próximo: {level.maxPoints ? Math.ceil((level.maxPoints + 1 - (user.points || 0)) / 100) : 0} cursos
+                                Próximo: {level.maxPoints ? Math.ceil((level.maxPoints + 1 - (user.lifetimePoints || 0)) / 100) : 0} cursos
                               </span>
                             </div>
                           </div>
@@ -452,10 +452,10 @@ const LoyaltyManagement = () => {
                           </div>
                         </td>
                         <td className="py-4 px-4 text-center">
-                          <span className="text-white font-bold">{(user.points || 0).toLocaleString()}</span>
+                          <span className="text-white font-bold">{(user.availablePoints || 0).toLocaleString()}</span>
                         </td>
                         <td className="py-4 px-4 text-center">
-                          <span className="text-green-400">{(user.lifetimePoints || user.totalEarned || 0).toLocaleString()}</span>
+                          <span className="text-green-400">{(user.lifetimePoints || 0).toLocaleString()}</span>
                         </td>
                         <td className="py-4 px-4">
                           <div className="flex justify-center space-x-2">
@@ -466,7 +466,7 @@ const LoyaltyManagement = () => {
                               + Agregar
                             </button>
                             <button
-                              onClick={() => handleRemovePoints(user.userId, user.name, user.points)}
+                              onClick={() => handleRemovePoints(user.userId, user.name, user.availablePoints || 0)}
                               className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded text-sm font-medium transition-colors"
                             >
                               - Remover

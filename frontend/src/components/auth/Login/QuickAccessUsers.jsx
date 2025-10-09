@@ -10,7 +10,7 @@ const QuickAccessUsers = ({ users, onQuickLogin, isLoading }) => {
         {users.map((user) => (
           <button
             key={user.id}
-            onClick={() => onQuickLogin(user.email)}
+            onClick={() => onQuickLogin(user.email, user.password)}
             disabled={isLoading}
             className={`w-full ${getUserRoleColor(user.role)} text-white py-3 px-4 rounded-lg font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-3`}
           >

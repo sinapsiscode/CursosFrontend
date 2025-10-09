@@ -251,9 +251,7 @@
       "avatar": "https://avatars.githubusercontent.com/u/38490595",
       "telefono": "812-910-0722",
       "fechaCreacion": "2024-11-17T00:05:42.355Z",
-      "ultimoAcceso": "2025-09-28T19:09:36.519Z",
-      "totalUsageTime": 40346,
-      "lastActive": "2025-10-09T02:49:00.006Z"
+      "ultimoAcceso": "2025-09-28T19:09:36.519Z"
     },
     {
       "id": 2,
@@ -865,9 +863,12 @@
       "avatar": "https://images.unsplash.com/photo-1494790108755-2616b612b372?w=100",
       "telefono": "+57 301 987 6543",
       "fechaCreacion": "2025-10-08T19:04:10.819Z",
-      "ultimoAcceso": "2025-10-08T19:04:10.819Z",
-      "totalUsageTime": 102856,
-      "lastActive": "2025-10-09T02:00:22.345Z"
+      "ultimoAcceso": "2025-10-08T19:04:10.819Z"
+    },
+    {
+      "totalUsageTime": 4445676,
+      "lastActive": "2025-10-08T23:52:21.270Z",
+      "id": 56
     }
   ],
   "areas": [

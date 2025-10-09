@@ -55,10 +55,11 @@ class UsuariosService {
 
   /**
    * Actualizar usuario existente
+   * IMPORTANTE: Usa PATCH para actualización parcial, no PUT que sobrescribe todo
    */
   async update(id, userData) {
     try {
-      const response = await apiClient.put(`/usuarios/${id}`, userData)
+      const response = await apiClient.patch(`/usuarios/${id}`, userData)
       console.log('✅ Usuario actualizado:', response.data)
       return response.data
     } catch (error) {

@@ -49,16 +49,19 @@ export const useLoginModal = (validateForm, resetForm, setFormValues) => {
     resetForm()
   }, [closeModal, resetForm])
 
-  const handleQuickLogin = useCallback(async (userEmail) => {
+  const handleQuickLogin = useCallback(async (userEmail, userPassword) => {
+    // Usar la contraseña del usuario específico
+    const password = userPassword || DEMO_PASSWORD
+
     setFormValues({
       email: userEmail,
-      password: DEMO_PASSWORD
+      password: password
     })
 
     // Automatically submit after setting demo data
     setTimeout(() => {
       const mockEvent = { preventDefault: () => {} }
-      const formData = { email: userEmail, password: DEMO_PASSWORD }
+      const formData = { email: userEmail, password: password }
       handleSubmit(mockEvent, formData)
     }, 100)
   }, [setFormValues, handleSubmit])
