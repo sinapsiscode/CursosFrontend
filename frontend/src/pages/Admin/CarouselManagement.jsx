@@ -237,18 +237,18 @@ const CarouselManagement = () => {
   }
 
   return (
-    <div className="max-w-7xl mx-auto p-6">
+    <div className="max-w-7xl mx-auto p-3 sm:p-4 md:p-6">
       {/* Header */}
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-white mb-2">Gestión de Carrusel</h1>
-        <p className="text-gray-400 mb-4">
+      <div className="mb-6 sm:mb-8">
+        <h1 className="text-2xl sm:text-3xl font-bold text-white mb-2">Gestión de Carrusel</h1>
+        <p className="text-sm sm:text-base text-gray-400 mb-4">
           Administra los slides del carrusel principal del home
         </p>
 
         {/* Especificaciones de imagen */}
-        <div className="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4 max-w-2xl">
-          <h3 className="text-blue-400 font-semibold mb-2">📐 Especificaciones de Imágenes</h3>
-          <div className="grid grid-cols-2 gap-4 text-sm text-blue-200">
+        <div className="bg-blue-900/20 border border-blue-500/30 rounded-lg p-3 sm:p-4 max-w-2xl">
+          <h3 className="text-sm sm:text-base text-blue-400 font-semibold mb-2">📐 Especificaciones de Imágenes</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 text-xs sm:text-sm text-blue-200">
             <div>
               <strong>Tamaño:</strong> {IMAGE_SPECS.recommendedWidth}x{IMAGE_SPECS.recommendedHeight}px
             </div>
@@ -266,26 +266,26 @@ const CarouselManagement = () => {
       </div>
 
       {/* Botón crear */}
-      <div className="mb-6">
+      <div className="mb-4 sm:mb-6">
         <button
           onClick={handleCreate}
-          className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-medium transition-colors"
+          className="w-full sm:w-auto bg-green-600 hover:bg-green-700 text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-medium transition-colors"
         >
           + Crear Nuevo Slide
         </button>
       </div>
 
       {/* Lista de slides */}
-      <div className="bg-gray-800 rounded-lg overflow-hidden">
-        <table className="w-full">
+      <div className="bg-gray-800 rounded-lg overflow-x-auto">
+        <table className="w-full min-w-[640px]">
           <thead className="bg-gray-900">
             <tr>
-              <th className="text-left py-3 px-4 text-gray-300 font-medium">Orden</th>
-              <th className="text-left py-3 px-4 text-gray-300 font-medium">Vista Previa</th>
-              <th className="text-left py-3 px-4 text-gray-300 font-medium">Título</th>
-              <th className="text-left py-3 px-4 text-gray-300 font-medium">Subtítulo</th>
-              <th className="text-center py-3 px-4 text-gray-300 font-medium">Estado</th>
-              <th className="text-center py-3 px-4 text-gray-300 font-medium">Acciones</th>
+              <th className="text-left py-2 sm:py-3 px-2 sm:px-4 text-gray-300 font-medium text-xs sm:text-sm">Orden</th>
+              <th className="text-left py-2 sm:py-3 px-2 sm:px-4 text-gray-300 font-medium text-xs sm:text-sm">Vista Previa</th>
+              <th className="text-left py-2 sm:py-3 px-2 sm:px-4 text-gray-300 font-medium text-xs sm:text-sm">Título</th>
+              <th className="text-left py-2 sm:py-3 px-2 sm:px-4 text-gray-300 font-medium text-xs sm:text-sm hidden md:table-cell">Subtítulo</th>
+              <th className="text-center py-2 sm:py-3 px-2 sm:px-4 text-gray-300 font-medium text-xs sm:text-sm">Estado</th>
+              <th className="text-center py-2 sm:py-3 px-2 sm:px-4 text-gray-300 font-medium text-xs sm:text-sm">Acciones</th>
             </tr>
           </thead>
           <tbody>
@@ -294,31 +294,35 @@ const CarouselManagement = () => {
                 key={slide.id}
                 className="border-b border-gray-700 hover:bg-gray-700/30 transition-colors"
               >
-                <td className="py-4 px-4 text-white font-semibold">
+                <td className="py-3 sm:py-4 px-2 sm:px-4 text-white font-semibold text-xs sm:text-sm">
                   #{slide.order}
                 </td>
-                <td className="py-4 px-4">
+                <td className="py-3 sm:py-4 px-2 sm:px-4">
                   {slide.image ? (
                     <img
                       src={slide.image}
                       alt={slide.title}
-                      className="w-32 h-10 object-cover rounded"
+                      className="w-24 sm:w-32 h-8 sm:h-10 object-cover rounded"
                     />
                   ) : (
-                    <div className="w-32 h-10 bg-gray-700 rounded flex items-center justify-center text-xs text-gray-400">
+                    <div className="w-24 sm:w-32 h-8 sm:h-10 bg-gray-700 rounded flex items-center justify-center text-[10px] sm:text-xs text-gray-400">
                       Sin imagen
                     </div>
                   )}
                 </td>
-                <td className="py-4 px-4 text-white font-medium">
-                  {slide.title}
+                <td className="py-3 sm:py-4 px-2 sm:px-4 text-white font-medium text-xs sm:text-sm">
+                  <div className="max-w-[120px] sm:max-w-none truncate">
+                    {slide.title}
+                  </div>
                 </td>
-                <td className="py-4 px-4 text-gray-300 text-sm">
-                  {slide.subtitle}
+                <td className="py-3 sm:py-4 px-2 sm:px-4 text-gray-300 text-xs sm:text-sm hidden md:table-cell">
+                  <div className="max-w-[200px] truncate">
+                    {slide.subtitle}
+                  </div>
                 </td>
-                <td className="py-4 px-4 text-center">
+                <td className="py-3 sm:py-4 px-2 sm:px-4 text-center">
                   <span
-                    className={`px-3 py-1 rounded-full text-xs font-medium ${
+                    className={`px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-medium ${
                       slide.active
                         ? 'bg-green-900/30 text-green-400'
                         : 'bg-gray-700 text-gray-400'
@@ -327,18 +331,18 @@ const CarouselManagement = () => {
                     {slide.active ? 'Activo' : 'Inactivo'}
                   </span>
                 </td>
-                <td className="py-4 px-4">
-                  <div className="flex flex-wrap justify-center gap-2">
+                <td className="py-3 sm:py-4 px-2 sm:px-4">
+                  <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-1 sm:gap-2">
                     <button
                       onClick={() => handleUploadImage(slide.id)}
-                      className="bg-purple-600 hover:bg-purple-700 text-white px-3 py-1 rounded text-sm transition-colors"
+                      className="bg-purple-600 hover:bg-purple-700 text-white px-2 sm:px-3 py-1 rounded text-[10px] sm:text-sm transition-colors whitespace-nowrap"
                       title="Cambiar imagen"
                     >
                       🖼️ Imagen
                     </button>
                     <button
                       onClick={() => handleEdit(slide)}
-                      className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm transition-colors"
+                      className="bg-blue-600 hover:bg-blue-700 text-white px-2 sm:px-3 py-1 rounded text-[10px] sm:text-sm transition-colors whitespace-nowrap"
                       title="Editar texto"
                     >
                       ✏️ Editar
@@ -349,17 +353,17 @@ const CarouselManagement = () => {
                         slide.active
                           ? 'bg-yellow-600 hover:bg-yellow-700'
                           : 'bg-green-600 hover:bg-green-700'
-                      } text-white px-3 py-1 rounded text-sm transition-colors`}
+                      } text-white px-2 sm:px-3 py-1 rounded text-[10px] sm:text-sm transition-colors whitespace-nowrap`}
                       title={slide.active ? 'Desactivar' : 'Activar'}
                     >
-                      {slide.active ? '👁️ Ocultar' : '✅ Activar'}
+                      {slide.active ? '👁️' : '✅'} <span className="hidden sm:inline">{slide.active ? 'Ocultar' : 'Activar'}</span>
                     </button>
                     <button
                       onClick={() => handleDelete(slide)}
-                      className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded text-sm transition-colors"
+                      className="bg-red-600 hover:bg-red-700 text-white px-2 sm:px-3 py-1 rounded text-[10px] sm:text-sm transition-colors whitespace-nowrap"
                       title="Eliminar"
                     >
-                      🗑️ Eliminar
+                      🗑️ <span className="hidden sm:inline">Eliminar</span>
                     </button>
                   </div>
                 </td>
@@ -369,7 +373,7 @@ const CarouselManagement = () => {
         </table>
 
         {slides.length === 0 && (
-          <div className="py-12 text-center text-gray-400">
+          <div className="py-8 sm:py-12 text-center text-gray-400 text-sm sm:text-base">
             No hay slides creados. Crea el primero.
           </div>
         )}
