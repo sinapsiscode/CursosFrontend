@@ -5,10 +5,16 @@ const NavbarLogo = ({ selectedArea }) => {
   return (
     <div className={NAVBAR_STYLES.logoSection}>
       <div className={NAVBAR_STYLES.logoContainer}>
-        <div className={NAVBAR_STYLES.logoIcon}>
-          <span className={NAVBAR_STYLES.logoText}>{LOGO_CONFIG.text}</span>
+        <div className="flex items-center gap-3">
+          {/* Logo imagen */}
+          <img
+            src="/logo.png"
+            alt="METSEL Logo"
+            className="h-10 w-10 object-contain rounded-lg"
+          />
+          {/* Texto de marca */}
+          <span className={NAVBAR_STYLES.brandText}>{LOGO_CONFIG.brandName}</span>
         </div>
-        <span className={NAVBAR_STYLES.brandText}>{LOGO_CONFIG.brandName}</span>
       </div>
       {selectedArea && (
         <div className={`${NAVBAR_STYLES.areaTag} ${getAreaColorClass(selectedArea)}`}>

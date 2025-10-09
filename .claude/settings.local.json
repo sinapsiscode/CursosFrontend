@@ -16,7 +16,8 @@
       "Bash(npm run build:*)",
       "Bash(del fix-user56.js)",
       "Bash(netstat:*)",
-      "Bash(findstr:*)"
+      "Bash(findstr:*)",
+      "Bash(if not exist \"src\\assets\" mkdir srcassets)"
     ],
     "deny": [],
     "ask": []

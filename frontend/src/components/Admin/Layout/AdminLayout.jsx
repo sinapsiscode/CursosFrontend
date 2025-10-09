@@ -71,6 +71,11 @@ const AdminLayout = () => {
       id: 'photos',
       label: 'Fotos',
       path: '/admin/photos'
+    },
+    {
+      id: 'carousel',
+      label: 'Carrusel',
+      path: '/admin/carousel'
     }
   ], [])
 
@@ -91,6 +96,7 @@ const AdminLayout = () => {
     if (path.startsWith('/admin/events')) return 'events'
     if (path.startsWith('/admin/exams')) return 'exams'
     if (path.startsWith('/admin/photos')) return 'photos'
+    if (path.startsWith('/admin/carousel')) return 'carousel'
 
     return 'dashboard'
   }, [location.pathname])

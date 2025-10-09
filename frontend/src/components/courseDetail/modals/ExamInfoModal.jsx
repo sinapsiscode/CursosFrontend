@@ -41,15 +41,15 @@ const ExamInfoModal = ({ isOpen, onClose, courseExam, course, navigate }) => {
             </div>
             <div className="bg-gray-800 rounded-lg p-3">
               <p className="text-gray-400">{COURSE_DETAIL_CONFIG.exam.questions}</p>
-              <p className="text-white font-semibold">{courseExam.questions.length} preguntas</p>
+              <p className="text-white font-semibold">{courseExam.questions?.length || 0} preguntas</p>
             </div>
             <div className="bg-gray-800 rounded-lg p-3">
               <p className="text-gray-400">{COURSE_DETAIL_CONFIG.exam.attempts}</p>
-              <p className="text-white font-semibold">{courseExam.attempts} intentos</p>
+              <p className="text-white font-semibold">{courseExam.attempts || 'Ilimitados'} intentos</p>
             </div>
             <div className="bg-gray-800 rounded-lg p-3">
               <p className="text-gray-400">{COURSE_DETAIL_CONFIG.exam.passing}</p>
-              <p className="text-white font-semibold">{courseExam.passingScore}%</p>
+              <p className="text-white font-semibold">{courseExam.passingScore || 70}%</p>
             </div>
           </div>
         </div>

@@ -7,15 +7,27 @@ const HomeCarousel = ({
   onPrevSlide,
   onGoToSlide
 }) => {
+  const currentSlideData = slides[currentSlide]
+
   return (
     <div className={HOME_STYLES.carousel.container}>
-      <div className={HOME_STYLES.carousel.slide}>
+      <div
+        className={HOME_STYLES.carousel.slide}
+        style={{
+          backgroundImage: currentSlideData?.image
+            ? `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${currentSlideData.image})`
+            : 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
         <div>
           <h1 className={HOME_STYLES.carousel.title}>
-            {slides[currentSlide]?.title}
+            {currentSlideData?.title}
           </h1>
           <p className={HOME_STYLES.carousel.subtitle}>
-            {slides[currentSlide]?.subtitle}
+            {currentSlideData?.subtitle}
           </p>
         </div>
       </div>

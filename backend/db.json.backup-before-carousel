@@ -252,8 +252,8 @@
       "telefono": "812-910-0722",
       "fechaCreacion": "2024-11-17T00:05:42.355Z",
       "ultimoAcceso": "2025-09-28T19:09:36.519Z",
-      "totalUsageTime": 682968,
-      "lastActive": "2025-10-09T15:06:50.897Z"
+      "totalUsageTime": 150046,
+      "lastActive": "2025-10-09T14:51:34.919Z"
     },
     {
       "id": 2,
@@ -9285,40 +9285,5 @@
     },
     "updatedAt": "2025-10-08T22:27:10.135Z",
     "updatedBy": 1
-  },
-  "carousel_slides": [
-    {
-      "id": 1,
-      "title": "Bienvenido a CEOs UNI",
-      "subtitle": "Aprende a tu ritmo con los mejores instructores",
-      "order": 1,
-      "active": true,
-      "createdAt": "2025-10-09T14:52:27.945Z",
-      "updatedAt": "2025-10-09T14:52:27.946Z",
-      "image": null,
-      "imageRecommendation": "1920x600px - JPG/PNG - Max 500KB"
-    },
-    {
-      "id": 2,
-      "title": "Certificaciones Profesionales",
-      "subtitle": "Obtén certificados reconocidos en la industria",
-      "order": 2,
-      "active": true,
-      "createdAt": "2025-10-09T14:52:27.946Z",
-      "updatedAt": "2025-10-09T14:52:27.946Z",
-      "image": null,
-      "imageRecommendation": "1920x600px - JPG/PNG - Max 500KB"
-    },
-    {
-      "id": 3,
-      "title": "Comunidad de Aprendizaje",
-      "subtitle": "Conecta con otros estudiantes y comparte conocimientos",
-      "order": 3,
-      "active": true,
-      "createdAt": "2025-10-09T14:52:27.946Z",
-      "updatedAt": "2025-10-09T14:52:27.946Z",
-      "image": null,
-      "imageRecommendation": "1920x600px - JPG/PNG - Max 500KB"
-    }
-  ]
+  }
 }

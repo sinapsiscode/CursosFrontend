@@ -45,16 +45,24 @@ export const useCourseDetail = (courseId) => {
 
   useEffect(() => {
     // Cargar examen del curso si existe
-    if (course?.id) {
-      const exam = examService.getExamByCourse(course.id)
-      setCourseExam(exam)
+    const loadExam = async () => {
+      if (course?.id) {
+        try {
+          const exams = await examService.getByCourse(course.id)
+          setCourseExam(exams[0] || null) // Tomar el primer examen si existe
 
-      // Cargar reseñas del curso
-      const result = loadCourseReviews(course.id)
-      if (result?.stats) {
-        setCourseReviewStats(result.stats)
+          // Cargar reseñas del curso
+          const result = loadCourseReviews(course.id)
+          if (result?.stats) {
+            setCourseReviewStats(result.stats)
+          }
+        } catch (error) {
+          console.error('Error cargando examen:', error)
+        }
       }
     }
+
+    loadExam()
   }, [course, loadCourseReviews])
 
   // No hay sistema de inscripciones - isUserEnrolled siempre false

@@ -720,43 +720,52 @@ END:VCALENDAR`
 
   // Verificar y notificar eventos relacionados cuando el usuario ve un curso
   checkAndNotifyRelatedEvents(course) {
+    // Validar que course tenga los datos mínimos necesarios
+    if (!course || !course.id) {
+      console.warn('⚠️ checkAndNotifyRelatedEvents: curso inválido')
+      return
+    }
+
     const activeEvents = this.getAllActiveEvents()
     const relatedEvents = []
-    
+
     // Buscar eventos relacionados
     activeEvents.forEach(event => {
       let relevanceScore = 0
-      
+
       // 1. Eventos del mismo área
-      if (event.area === course.area) {
+      if (event.area && course.area && event.area === course.area) {
         relevanceScore += 50
       }
-      
+
       // 2. Eventos que incluyen este curso en sus cursos relacionados
       if (event.relatedCourses && event.relatedCourses.includes(course.id)) {
         relevanceScore += 100
       }
-      
+
       // 3. Eventos con tags similares
-      if (event.tags && course.tags) {
-        const commonTags = event.tags.filter(tag => 
-          course.tags.some(courseTag => 
-            tag.toLowerCase().includes(courseTag.toLowerCase()) ||
-            courseTag.toLowerCase().includes(tag.toLowerCase())
+      if (event.tags && course.tags && Array.isArray(event.tags) && Array.isArray(course.tags)) {
+        const commonTags = event.tags.filter(tag =>
+          course.tags.some(courseTag =>
+            tag && courseTag &&
+            (tag.toLowerCase().includes(courseTag.toLowerCase()) ||
+            courseTag.toLowerCase().includes(tag.toLowerCase()))
           )
         )
         relevanceScore += commonTags.length * 20
       }
-      
+
       // 4. Eventos que mencionan el curso en título o descripción
-      const courseKeywords = course.title.toLowerCase().split(' ').filter(word => word.length > 3)
-      const eventText = `${event.title} ${event.description}`.toLowerCase()
-      
-      courseKeywords.forEach(keyword => {
-        if (eventText.includes(keyword)) {
-          relevanceScore += 30
-        }
-      })
+      if (course.title) {
+        const courseKeywords = course.title.toLowerCase().split(' ').filter(word => word.length > 3)
+        const eventText = `${event.title || ''} ${event.description || ''}`.toLowerCase()
+
+        courseKeywords.forEach(keyword => {
+          if (eventText.includes(keyword)) {
+            relevanceScore += 30
+          }
+        })
+      }
       
       if (relevanceScore > 50) {
         relatedEvents.push({ ...event, relevanceScore })

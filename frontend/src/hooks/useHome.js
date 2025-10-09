@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { apiService } from '../services/api'
+import { carouselService } from '../services/carouselService'
 import { useAuthStore } from '../store'
 import { AREA_NAMES } from '../constants/homeConstants.jsx'
 
@@ -14,33 +15,21 @@ export const useHome = () => {
   const [continueCourse, setContinueCourse] = useState(null)
   const [loading, setLoading] = useState(true)
   const [currentSlide, setCurrentSlide] = useState(0)
-
-  const carouselSlides = [
-    {
-      title: 'Bienvenido a Cursos Online',
-      subtitle: 'Aprende a tu ritmo con los mejores instructores'
-    },
-    {
-      title: 'Certificaciones Profesionales',
-      subtitle: 'Obtén certificados reconocidos en la industria'
-    },
-    {
-      title: 'Comunidad de Aprendizaje',
-      subtitle: 'Conecta con otros estudiantes y comparte conocimientos'
-    }
-  ]
+  const [carouselSlides, setCarouselSlides] = useState([])
 
   const loadCourses = useCallback(async () => {
     try {
       setLoading(true)
 
-      const [coursesData, featuredData] = await Promise.all([
+      const [coursesData, featuredData, slidesData] = await Promise.all([
         apiService.get('/courses'),
-        apiService.get('/courses/featured')
+        apiService.get('/courses/featured'),
+        carouselService.getActiveSlides()
       ])
 
       setCourses(coursesData)
       setFeaturedCourses(featuredData)
+      setCarouselSlides(slidesData)
 
       if (isAuthenticated) {
         const [recommendedData, continueData] = await Promise.all([

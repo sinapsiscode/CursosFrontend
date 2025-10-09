@@ -46,6 +46,9 @@ const ReviewModerationPage = lazy(() => import('./Reviews/ReviewModerationPage')
 // Loyalty
 const LoyaltyManagementPage = lazy(() => import('./Loyalty/LoyaltyManagementPage'))
 
+// Carousel
+const CarouselManagementPage = lazy(() => import('../CarouselManagement'))
+
 const AdminRouter = () => (
   <Routes>
     <Route path="/" element={<AdminLayout />}>
@@ -268,6 +271,14 @@ const AdminRouter = () => (
         element={
           <Suspense fallback={<div className="flex items-center justify-center h-64">Cargando...</div>}>
             <LoyaltyManagementPage />
+          </Suspense>
+        }
+      />
+      <Route
+        path="carousel"
+        element={
+          <Suspense fallback={<div className="flex items-center justify-center h-64">Cargando...</div>}>
+            <CarouselManagementPage />
           </Suspense>
         }
       />
