@@ -17,7 +17,6 @@ const initialLevels = [
 export const useAdminStore = create((set, get) => ({
   users: [],
   courses: [],
-  coursesWithEnrollment: [],
   areas: initialAreas,
   levels: initialLevels,
   analytics: {
@@ -153,51 +152,6 @@ export const useAdminStore = create((set, get) => ({
   }),
 
   setSelectedCourse: (course) => set({ selectedCourse: course }),
-
-  // Course Enrollment Management
-  setCoursesWithEnrollment: (coursesWithEnrollment) => set({ coursesWithEnrollment }),
-  
-  updateCourseEnrollment: (courseId, enrolledStudents) => set((state) => ({
-    coursesWithEnrollment: state.coursesWithEnrollment.map(course => 
-      course.id === courseId 
-        ? {
-            ...course,
-            enrolledStudents,
-            enrollmentData: {
-              ...course.enrollmentData,
-              totalEnrolled: enrolledStudents,
-              enrollmentRate: course.students 
-                ? Math.round((enrolledStudents / course.students) * 100)
-                : 0
-            }
-          }
-        : course
-    )
-  })),
-
-  getCourseEnrollmentData: () => {
-    const courses = get().coursesWithEnrollment || []
-    return {
-      totalEnrolled: courses.reduce((sum, course) => sum + (course.enrolledStudents || 0), 0),
-      averageEnrollmentRate: courses.length > 0 
-        ? Math.round(courses.reduce((sum, course) => sum + (course.enrollmentData?.enrollmentRate || 0), 0) / courses.length)
-        : 0,
-      topEnrolledCourses: courses
-        .sort((a, b) => (b.enrolledStudents || 0) - (a.enrolledStudents || 0))
-        .slice(0, 5),
-      lowEnrollmentCourses: courses
-        .filter(course => course.enrollmentData?.enrollmentRate < 30)
-        .sort((a, b) => (a.enrollmentData?.enrollmentRate || 0) - (b.enrollmentData?.enrollmentRate || 0))
-    }
-  },
-
-  getCoursesByEnrollmentRange: (min, max) => {
-    const courses = get().coursesWithEnrollment || []
-    return courses.filter(course => {
-      const enrolled = course.enrolledStudents || 0
-      return enrolled >= min && enrolled <= max
-    })
-  },
 
   // Areas Management
   setAreas: (areas) => set({ areas }),

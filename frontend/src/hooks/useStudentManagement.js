@@ -80,26 +80,21 @@ export const useStudentManagement = () => {
       const students = await apiService.getStudents()
       console.log(STUDENT_LOG_MESSAGES.STUDENTS_LOADED, students.length)
 
-      // Enriquecer con información de cursos inscritos
-      const currentCourses = courses.length > 0 ? courses : await apiService.getCourses()
-      const enrichedStudents = students.map(student => {
-        const enrolledCourses = currentCourses.filter(course =>
-          apiService.isUserEnrolledInCourse(student.id, course.id).isEnrolled
-        )
-        return {
-          ...student,
-          enrolledCourses,
-          totalCourses: enrolledCourses.length,
-          status: enrolledCourses.some(c => c.completed) ? STUDENT_STATUS.COMPLETED : STUDENT_STATUS.ACTIVE
-        }
-      })
+      // No hay sistema de inscripciones - solo mostrar estudiantes básicos
+      const enrichedStudents = students.map(student => ({
+        ...student,
+        enrolledCourses: [],
+        totalCourses: 0,
+        status: student.activo ? STUDENT_STATUS.ACTIVE : STUDENT_STATUS.SUSPENDED
+      }))
+
       console.log(STUDENT_LOG_MESSAGES.ENRICHED_STUDENTS, enrichedStudents.length)
       setAllStudents(enrichedStudents)
     } catch (error) {
       console.error(STUDENT_LOG_MESSAGES.ERROR_LOADING_STUDENTS, error)
       setAllStudents([])
     }
-  }, [courses])
+  }, [])
 
   // Filtrar estudiantes según criterios
   const getFilteredStudents = useCallback(() => {

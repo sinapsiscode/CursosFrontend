@@ -92,13 +92,13 @@ const LoyaltyHeader = ({ userLoyaltyData, onClaimDailyBonus }) => {
               {LOYALTY_MESSAGES.level.benefits}
             </p>
             <ul className={LOYALTY_STYLES.levelCard.benefitsList}>
-              {userLoyaltyData.levelConfig.benefits.slice(0, 3).map((benefit, index) => (
+              {(userLoyaltyData.levelConfig?.benefits || []).slice(0, 3).map((benefit, index) => (
                 <li key={index} className={LOYALTY_STYLES.levelCard.benefitItem}>
                   <span className={LOYALTY_STYLES.levelCard.benefitCheck}>✓</span>
                   <span>{benefit}</span>
                 </li>
               ))}
-              {userLoyaltyData.levelConfig.benefits.length > 3 && (
+              {(userLoyaltyData.levelConfig?.benefits?.length || 0) > 3 && (
                 <li className={LOYALTY_STYLES.levelCard.moreBenefits}>
                   +{userLoyaltyData.levelConfig.benefits.length - 3} {LOYALTY_MESSAGES.level.moreBenefits}
                 </li>

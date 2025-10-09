@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { useAuthStore, useUIStore } from '../store'
 import { NAVBAR_ROUTES, NAVBAR_MODALS } from '../constants/navbarConstants.jsx'
+import { isAdmin } from '../constants/roleIds'
 
 export const useNavbar = () => {
   // Usar AuthContext como fuente principal de verdad
@@ -21,7 +22,7 @@ export const useNavbar = () => {
       name: usuario.nombre,
       email: usuario.email,
       avatar: usuario.avatar || usuario.foto,
-      role: usuario.rolId === 1 || usuario.rolId === 2 ? 'admin' : 'user',
+      role: isAdmin(usuario.rolId) ? 'admin' : 'user',
       rolId: usuario.rolId
     }
   }, [usuario])

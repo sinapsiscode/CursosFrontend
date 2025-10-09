@@ -842,6 +842,28 @@
       "ultimoAcceso": "2025-10-01T15:39:46.115Z"
     },
     {
+      "totalUsageTime": 11381,
+      "lastActive": "2025-10-08T20:10:28.053Z",
+      "id": 51
+    },
+    {
+      "id": 52,
+      "nombre": "Ana María Rodríguez López",
+      "email": "ana@email.com",
+      "password": "123456",
+      "rolId": 6,
+      "activo": true,
+      "avatar": "https://images.unsplash.com/photo-1494790108755-2616b612b372?w=100",
+      "telefono": "+57 301 987 6543",
+      "fechaCreacion": "2025-10-07T20:09:11.466Z",
+      "ultimoAcceso": "2025-10-07T20:09:11.466Z"
+    },
+    {
+      "totalUsageTime": 4112,
+      "lastActive": "2025-10-08T14:28:07.488Z",
+      "id": 53
+    },
+    {
       "id": 54,
       "nombre": "Carlos Mendoza",
       "email": "carlos@email.com",
@@ -866,9 +888,16 @@
       "ultimoAcceso": "2025-10-08T19:04:10.819Z"
     },
     {
-      "totalUsageTime": 4445676,
-      "lastActive": "2025-10-08T23:52:21.270Z",
-      "id": 56
+      "id": 56,
+      "nombre": "Miguel Santos",
+      "email": "miguel@email.com",
+      "password": "123456",
+      "rolId": 1,
+      "activo": true,
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100",
+      "telefono": "+57 302 456 7890",
+      "fechaCreacion": "2025-10-08T19:04:10.819Z",
+      "ultimoAcceso": "2025-10-08T19:04:10.819Z"
     }
   ],
   "areas": [
@@ -9155,12 +9184,7 @@
           "discountPercentage": 5,
           "color": "#CD7F32",
           "icon": "🥉",
-          "coursesRequired": "0-2 cursos",
-          "benefits": [
-            "5% descuento en cursos premium",
-            "Acceso a contenido exclusivo",
-            "Certificado digital"
-          ]
+          "coursesRequired": "0-2 cursos"
         },
         {
           "key": "plata",
@@ -9170,13 +9194,7 @@
           "discountPercentage": 10,
           "color": "#C0C0C0",
           "icon": "🥈",
-          "coursesRequired": "3-5 cursos",
-          "benefits": [
-            "10% descuento en cursos premium",
-            "Acceso prioritario a nuevos cursos",
-            "Certificado digital con sello especial",
-            "Acceso a webinars exclusivos"
-          ]
+          "coursesRequired": "3-5 cursos"
         },
         {
           "key": "oro",
@@ -9186,14 +9204,7 @@
           "discountPercentage": 15,
           "color": "#FFD700",
           "icon": "🥇",
-          "coursesRequired": "6-9 cursos",
-          "benefits": [
-            "15% descuento en cursos premium",
-            "Acceso anticipado a lanzamientos",
-            "Certificado premium con firma digital",
-            "Sesiones 1 a 1 con instructores",
-            "Material descargable exclusivo"
-          ]
+          "coursesRequired": "6-9 cursos"
         },
         {
           "key": "platino",
@@ -9203,39 +9214,9 @@
           "discountPercentage": 20,
           "color": "#E5E4E2",
           "icon": "💎",
-          "coursesRequired": "10+ cursos",
-          "benefits": [
-            "20% descuento en todos los cursos",
-            "Acceso vitalicio a contenido premium",
-            "Certificado VIP personalizado",
-            "Mentoría personalizada mensual",
-            "Invitación a eventos presenciales",
-            "Badge exclusivo en el perfil"
-          ]
+          "coursesRequired": "10+ cursos"
         }
-      ],
-      "pointsRules": {
-        "courseCompletion": {
-          "description": "Completar un curso",
-          "points": 100
-        },
-        "firstCourse": {
-          "description": "Primer curso completado",
-          "points": 50
-        },
-        "dailyLogin": {
-          "description": "Login diario",
-          "points": 5
-        },
-        "reviewCourse": {
-          "description": "Dejar una reseña",
-          "points": 20
-        },
-        "referFriend": {
-          "description": "Referir un amigo",
-          "points": 150
-        }
-      }
+      ]
     },
     "exams": {
       "enabled": true,
@@ -9284,7 +9265,7 @@
       "allowRegistrations": true,
       "allowGuestAccess": true
     },
-    "updatedAt": "2025-10-08T22:27:10.135Z",
+    "updatedAt": "2025-10-06T00:00:00.000Z",
     "updatedBy": 1
   }
 }

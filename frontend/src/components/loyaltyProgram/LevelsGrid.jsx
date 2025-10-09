@@ -39,10 +39,10 @@ const LevelsGrid = ({ levels, currentLevel }) => {
               </div>
 
               <ul className="space-y-1 text-xs text-gray-300">
-                {level.benefits.slice(0, 2).map((benefit, idx) => (
+                {(level.benefits || []).slice(0, 2).map((benefit, idx) => (
                   <li key={idx} className="truncate">• {benefit}</li>
                 ))}
-                {level.benefits.length > 2 && (
+                {(level.benefits?.length || 0) > 2 && (
                   <li className="text-accent">+{level.benefits.length - 2} {LOYALTY_MESSAGES.overview.more}</li>
                 )}
               </ul>

@@ -175,10 +175,10 @@ const ReportsPage = () => {
                 <div className="p-4 rounded-lg bg-background">
                   <div className="mb-1 text-sm text-text-secondary">Hora Pico</div>
                   <div className="mb-1 text-2xl font-bold text-accent">
-                    {reportData.metrics.peakHour.label}
+                    {reportData?.metrics?.peakHour?.label || 'N/A'}
                   </div>
                   <div className="text-sm text-text-secondary">
-                    {reportData.metrics.peakHour.value} {reportData.metrics.peakHour.unit}
+                    {reportData?.metrics?.peakHour?.value || 0} {reportData?.metrics?.peakHour?.unit || ''}
                   </div>
                 </div>
 

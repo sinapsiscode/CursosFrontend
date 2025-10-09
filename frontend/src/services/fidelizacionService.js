@@ -33,7 +33,8 @@ class FidelizacionService {
       this.config = {
         pointsPerCourse: loyaltyConfig.pointsPerCourse,
         firstCourseBonus: loyaltyConfig.firstCourseBonus || 50,
-        levels: levelsObject
+        levels: levelsObject,
+        pointsRules: loyaltyConfig.pointsRules || {}
       }
 
       this.configLoaded = true
@@ -407,8 +408,43 @@ class FidelizacionService {
    */
   async getAllUsersWithPoints() {
     try {
-      const response = await apiClient.get('/fidelizacion')
-      return response.data || []
+      const [loyaltyResponse, usersResponse] = await Promise.all([
+        apiClient.get('/fidelizacion'),
+        apiClient.get('/usuarios')
+      ])
+
+      const loyaltyData = loyaltyResponse.data || []
+      const users = usersResponse.data || []
+
+      // Crear un mapa de fidelizacion por userId
+      const loyaltyMap = {}
+      loyaltyData.forEach(loyalty => {
+        if (loyalty.userId) {
+          loyaltyMap[loyalty.userId] = loyalty
+        }
+      })
+
+      // Combinar datos de usuarios con sus puntos
+      return users.map(user => {
+        const loyalty = loyaltyMap[user.id] || {
+          totalPoints: 0,
+          availablePoints: 0,
+          lifetimePoints: 0,
+          currentLevel: 'bronce',
+          transactions: [],
+          redeemedRewards: [],
+          completedCourses: []
+        }
+
+        return {
+          id: user.id,
+          userId: user.id,
+          name: user.nombre,
+          email: user.email,
+          avatar: user.avatar,
+          ...loyalty
+        }
+      })
     } catch (error) {
       console.error('Error obteniendo usuarios con puntos:', error)
       return []

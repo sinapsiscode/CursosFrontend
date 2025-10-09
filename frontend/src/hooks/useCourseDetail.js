@@ -57,23 +57,9 @@ export const useCourseDetail = (courseId) => {
     }
   }, [course, loadCourseReviews])
 
+  // No hay sistema de inscripciones - isUserEnrolled siempre false
   useEffect(() => {
-    // Verificar si el usuario está inscrito en el curso
-    const checkEnrollment = async () => {
-      if (isAuthenticated && course?.id) {
-        try {
-          const { isEnrolled } = await apiService.isUserEnrolledInCourse(user?.id, course.id)
-          setIsUserEnrolled(isEnrolled)
-        } catch (error) {
-          console.error('Error checking enrollment:', error)
-          setIsUserEnrolled(false)
-        }
-      } else {
-        setIsUserEnrolled(false)
-      }
-    }
-
-    checkEnrollment()
+    setIsUserEnrolled(false)
   }, [isAuthenticated, course?.id, user?.id])
 
   const loadCourseDetail = async () => {
@@ -139,16 +125,9 @@ export const useCourseDetail = (courseId) => {
     }
   }
 
-  const updateEnrollmentStatus = async () => {
-    if (isAuthenticated && course?.id && user?.id) {
-      try {
-        const { isEnrolled } = await apiService.isUserEnrolledInCourse(user.id, course.id)
-        setIsUserEnrolled(isEnrolled)
-        await loadCourseDetail()
-      } catch (error) {
-        console.error('Error actualizando estado de inscripción:', error)
-      }
-    }
+  // No hay sistema de inscripciones
+  const updateEnrollmentStatus = () => {
+    setIsUserEnrolled(false)
   }
 
   const formatDuration = (minutes) => {

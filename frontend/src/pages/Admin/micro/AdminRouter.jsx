@@ -40,17 +40,11 @@ const EventDetailsPage = lazy(() => import('./System/EventDetailsPage'))
 const EventManagementPage = lazy(() => import('./System/EventManagementPage'))
 const PhotosPage = lazy(() => import('./System/PhotosPage'))
 
-// Enrollments
-const EnrollmentCountersPage = lazy(() => import('./Enrollments/EnrollmentCountersPage'))
-
 // Reviews
 const ReviewModerationPage = lazy(() => import('./Reviews/ReviewModerationPage'))
 
 // Loyalty
 const LoyaltyManagementPage = lazy(() => import('./Loyalty/LoyaltyManagementPage'))
-
-// Student Enrollments
-const StudentEnrollmentsPage = lazy(() => import('./Students/StudentEnrollmentsPage'))
 
 const AdminRouter = () => (
   <Routes>
@@ -88,14 +82,6 @@ const AdminRouter = () => (
           element={
             <Suspense fallback={<div className="flex items-center justify-center h-64">Cargando...</div>}>
               <StudentManagerPage />
-            </Suspense>
-          }
-        />
-        <Route
-          path="enrollments"
-          element={
-            <Suspense fallback={<div className="flex items-center justify-center h-64">Cargando...</div>}>
-              <StudentEnrollmentsPage />
             </Suspense>
           }
         />
@@ -269,14 +255,6 @@ const AdminRouter = () => (
         }
       />
 
-      <Route
-        path="enrollments"
-        element={
-          <Suspense fallback={<div className="flex items-center justify-center h-64">Cargando...</div>}>
-            <EnrollmentCountersPage />
-          </Suspense>
-        }
-      />
       <Route
         path="reviews"
         element={

@@ -9,7 +9,6 @@ import resenasService from './resenasService'
 import notificacionesService from './notificacionesService'
 import userInterestsService from './userInterestsService'
 import eventRegistrationsService from './eventRegistrationsService'
-import matriculasService from './matriculasService'
 import { CONFIG } from '../constants/config'
 import { ROLE_IDS, isStudent } from '../constants/roleIds'
 
@@ -78,16 +77,6 @@ class ApiService {
 
   async deleteCourse(courseId) {
     return coursesService.delete(courseId)
-  }
-
-  async getCoursesWithEnrollment(area = null) {
-    return this.getCourses(area)
-  }
-
-  async updateCourseEnrollment(courseId, newEnrollmentCount) {
-    return coursesService.patch(courseId, {
-      estudiantesInscritos: newEnrollmentCount
-    })
   }
 
   // ==================== USERS ====================
@@ -219,50 +208,6 @@ class ApiService {
   async getStudentExamConfig(studentId, courseId) {
     const config = await examenConfigService.getStudentConfig(studentId, courseId)
     return { config }
-  }
-
-  // ==================== ENROLLMENTS / MATRICULAS ====================
-
-  async getCourseStudents(courseId) {
-    // Obtener matrículas del curso
-    const enrollments = await matriculasService.getCourseEnrollments(courseId)
-
-    // Obtener información de los estudiantes
-    const studentIds = enrollments.map(e => e.studentId)
-    const allUsers = await usuariosService.getAll()
-    const students = allUsers.filter(u => studentIds.includes(u.id))
-
-    // Combinar datos de matrícula con datos de estudiante
-    return students.map(student => {
-      const enrollment = enrollments.find(e => e.studentId === student.id)
-      return {
-        ...student,
-        enrollmentId: enrollment.id,
-        enrolledAt: enrollment.enrolledAt,
-        progress: enrollment.progress,
-        status: enrollment.status
-      }
-    })
-  }
-
-  async getStudentEnrollments(studentId) {
-    return matriculasService.getStudentEnrollments(studentId)
-  }
-
-  async enrollStudent(studentId, courseId, enrollmentData = {}) {
-    return matriculasService.create({
-      studentId,
-      courseId,
-      ...enrollmentData
-    })
-  }
-
-  async updateEnrollment(enrollmentId, updateData) {
-    return matriculasService.update(enrollmentId, updateData)
-  }
-
-  async cancelEnrollment(enrollmentId, reason = '') {
-    return matriculasService.cancel(enrollmentId, reason)
   }
 
   // ==================== COUPONS ====================

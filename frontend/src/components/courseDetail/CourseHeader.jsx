@@ -1,5 +1,4 @@
 import { AREA_COLORS, LEVEL_COLORS, COURSE_DETAIL_CONFIG } from '../../constants/courseDetailConstants'
-import CourseEnrollButton from '../courses/CourseEnrollButton'
 
 const CourseHeader = ({
   course,
@@ -101,7 +100,7 @@ const CourseHeader = ({
                 </svg>
               </button>
 
-              {isAuthenticated && isUserEnrolled ? (
+              {isAuthenticated && isUserEnrolled && (
                 <button
                   onClick={() => {
                     if (course.lessons && course.lessons.length > 0) {
@@ -117,11 +116,6 @@ const CourseHeader = ({
                   </svg>
                   <span>{COURSE_DETAIL_CONFIG.labels.accessCourse}</span>
                 </button>
-              ) : (
-                <CourseEnrollButton
-                  course={course}
-                  onEnroll={onEnrollSuccess}
-                />
               )}
             </div>
 

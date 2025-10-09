@@ -9,7 +9,11 @@
       "Bash(node -e \"const db = require(''./db.json''); console.log(Object.keys(db).join(''\\n''))\")",
       "Bash(do echo \"=== $f ===\")",
       "Bash(npm run dev:*)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Bash(cp:*)",
+      "Bash(rm:*)",
+      "Bash(find:*)",
+      "Bash(npm run build:*)"
     ],
     "deny": [],
     "ask": []

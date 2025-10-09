@@ -842,33 +842,33 @@
       "ultimoAcceso": "2025-10-01T15:39:46.115Z"
     },
     {
-      "id": 54,
-      "nombre": "Carlos Mendoza",
+      "id": 51,
+      "nombre": "Carlos Alberto Mendoza García",
       "email": "carlos@email.com",
       "password": "123456",
       "rolId": 5,
       "activo": true,
       "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100",
       "telefono": "+57 300 123 4567",
-      "fechaCreacion": "2025-10-08T19:04:10.818Z",
-      "ultimoAcceso": "2025-10-08T19:04:10.819Z"
+      "fechaCreacion": "2025-10-07T20:09:11.466Z",
+      "ultimoAcceso": "2025-10-07T20:09:11.466Z"
     },
     {
-      "id": 55,
-      "nombre": "Ana Rodriguez",
+      "id": 52,
+      "nombre": "Ana María Rodríguez López",
       "email": "ana@email.com",
       "password": "123456",
       "rolId": 6,
       "activo": true,
       "avatar": "https://images.unsplash.com/photo-1494790108755-2616b612b372?w=100",
       "telefono": "+57 301 987 6543",
-      "fechaCreacion": "2025-10-08T19:04:10.819Z",
-      "ultimoAcceso": "2025-10-08T19:04:10.819Z"
+      "fechaCreacion": "2025-10-07T20:09:11.466Z",
+      "ultimoAcceso": "2025-10-07T20:09:11.466Z"
     },
     {
-      "totalUsageTime": 4445676,
-      "lastActive": "2025-10-08T23:52:21.270Z",
-      "id": 56
+      "totalUsageTime": 4112,
+      "lastActive": "2025-10-08T14:28:07.488Z",
+      "id": 53
     }
   ],
   "areas": [
@@ -9089,33 +9089,9 @@
       "fecha": "2025-09-29T19:37:56.223Z"
     }
   ],
+  "inscripciones": [],
   "cupones": [],
-  "fidelizacion": [
-    {
-      "totalPoints": 0,
-      "availablePoints": 0,
-      "lifetimePoints": 0,
-      "currentLevel": "bronce",
-      "transactions": [],
-      "redeemedRewards": [],
-      "completedCourses": [],
-      "createdAt": "2025-10-08T20:10:21.643Z",
-      "updatedAt": "2025-10-08T20:10:21.643Z",
-      "id": 1
-    },
-    {
-      "totalPoints": 0,
-      "availablePoints": 0,
-      "lifetimePoints": 0,
-      "currentLevel": "bronce",
-      "transactions": [],
-      "redeemedRewards": [],
-      "completedCourses": [],
-      "createdAt": "2025-10-08T20:10:21.649Z",
-      "updatedAt": "2025-10-08T20:10:21.649Z",
-      "id": 2
-    }
-  ],
+  "fidelizacion": [],
   "examen_configuraciones": [],
   "resenas": [],
   "user_interests": [
@@ -9133,6 +9109,64 @@
     }
   ],
   "event_registrations": [],
+  "matriculas": [
+    {
+      "id": 1,
+      "studentId": 51,
+      "courseId": 1,
+      "status": "active",
+      "progress": 65,
+      "enrolledAt": "2025-01-15T10:30:00.000Z",
+      "completedAt": null,
+      "certificateGenerated": false,
+      "paymentStatus": "paid",
+      "paymentAmount": 0,
+      "couponUsed": null,
+      "metadata": {}
+    },
+    {
+      "id": 2,
+      "studentId": 51,
+      "courseId": 3,
+      "status": "completed",
+      "progress": 100,
+      "enrolledAt": "2024-12-01T08:00:00.000Z",
+      "completedAt": "2025-01-10T14:30:00.000Z",
+      "certificateGenerated": true,
+      "paymentStatus": "paid",
+      "paymentAmount": 0,
+      "couponUsed": null,
+      "metadata": {}
+    },
+    {
+      "id": 3,
+      "studentId": 52,
+      "courseId": 1,
+      "status": "active",
+      "progress": 35,
+      "enrolledAt": "2025-01-20T09:15:00.000Z",
+      "completedAt": null,
+      "certificateGenerated": false,
+      "paymentStatus": "paid",
+      "paymentAmount": 0,
+      "couponUsed": null,
+      "metadata": {}
+    },
+    {
+      "id": 4,
+      "studentId": 52,
+      "courseId": 5,
+      "status": "active",
+      "progress": 50,
+      "enrolledAt": "2025-01-18T11:00:00.000Z",
+      "completedAt": null,
+      "certificateGenerated": false,
+      "paymentStatus": "paid",
+      "paymentAmount": 0,
+      "couponUsed": null,
+      "metadata": {}
+    }
+  ],
   "preguntas": [],
   "perfil_publico": {
     "fotos": [],
@@ -9155,12 +9189,7 @@
           "discountPercentage": 5,
           "color": "#CD7F32",
           "icon": "🥉",
-          "coursesRequired": "0-2 cursos",
-          "benefits": [
-            "5% descuento en cursos premium",
-            "Acceso a contenido exclusivo",
-            "Certificado digital"
-          ]
+          "coursesRequired": "0-2 cursos"
         },
         {
           "key": "plata",
@@ -9170,13 +9199,7 @@
           "discountPercentage": 10,
           "color": "#C0C0C0",
           "icon": "🥈",
-          "coursesRequired": "3-5 cursos",
-          "benefits": [
-            "10% descuento en cursos premium",
-            "Acceso prioritario a nuevos cursos",
-            "Certificado digital con sello especial",
-            "Acceso a webinars exclusivos"
-          ]
+          "coursesRequired": "3-5 cursos"
         },
         {
           "key": "oro",
@@ -9186,14 +9209,7 @@
           "discountPercentage": 15,
           "color": "#FFD700",
           "icon": "🥇",
-          "coursesRequired": "6-9 cursos",
-          "benefits": [
-            "15% descuento en cursos premium",
-            "Acceso anticipado a lanzamientos",
-            "Certificado premium con firma digital",
-            "Sesiones 1 a 1 con instructores",
-            "Material descargable exclusivo"
-          ]
+          "coursesRequired": "6-9 cursos"
         },
         {
           "key": "platino",
@@ -9203,39 +9219,9 @@
           "discountPercentage": 20,
           "color": "#E5E4E2",
           "icon": "💎",
-          "coursesRequired": "10+ cursos",
-          "benefits": [
-            "20% descuento en todos los cursos",
-            "Acceso vitalicio a contenido premium",
-            "Certificado VIP personalizado",
-            "Mentoría personalizada mensual",
-            "Invitación a eventos presenciales",
-            "Badge exclusivo en el perfil"
-          ]
+          "coursesRequired": "10+ cursos"
         }
-      ],
-      "pointsRules": {
-        "courseCompletion": {
-          "description": "Completar un curso",
-          "points": 100
-        },
-        "firstCourse": {
-          "description": "Primer curso completado",
-          "points": 50
-        },
-        "dailyLogin": {
-          "description": "Login diario",
-          "points": 5
-        },
-        "reviewCourse": {
-          "description": "Dejar una reseña",
-          "points": 20
-        },
-        "referFriend": {
-          "description": "Referir un amigo",
-          "points": 150
-        }
-      }
+      ]
     },
     "exams": {
       "enabled": true,
@@ -9284,7 +9270,7 @@
       "allowRegistrations": true,
       "allowGuestAccess": true
     },
-    "updatedAt": "2025-10-08T22:27:10.135Z",
+    "updatedAt": "2025-10-06T00:00:00.000Z",
     "updatedBy": 1
   }
 }
