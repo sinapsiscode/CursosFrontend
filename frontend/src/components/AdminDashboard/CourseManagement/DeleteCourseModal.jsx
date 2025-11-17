@@ -17,15 +17,15 @@ const DeleteCourseModal = ({ course, onConfirm, onCancel }) => {
         <div className="bg-background/50 rounded-lg p-4 mb-6">
           <p className="text-white mb-2">¿Estás seguro de que deseas eliminar este curso?</p>
           <div className="flex items-center gap-3 mt-3 p-3 bg-surface rounded-lg">
-            {course.thumbnail && (
+            {(course.imagen || course.thumbnail) && (
               <img
-                src={course.thumbnail}
-                alt={course.title}
+                src={course.imagen || course.thumbnail}
+                alt={course.titulo || course.title}
                 className="w-12 h-12 rounded object-cover"
               />
             )}
             <div className="flex-1 min-w-0">
-              <p className="text-white font-semibold truncate">{course.title}</p>
+              <p className="text-white font-semibold truncate">{course.titulo || course.title}</p>
               <p className="text-secondary text-sm truncate">{course.instructor}</p>
             </div>
           </div>

@@ -23,11 +23,11 @@ const PreviewCourseModal = ({ course, onClose }) => {
         {/* Content */}
         <div className="overflow-y-auto max-h-[calc(90vh-88px)]">
           {/* Imagen destacada */}
-          {course.thumbnail && (
+          {(course.imagen || course.thumbnail) && (
             <div className="relative h-64 bg-background">
               <img
-                src={course.thumbnail}
-                alt={course.title}
+                src={course.imagen || course.thumbnail}
+                alt={course.titulo || course.title}
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
@@ -39,19 +39,19 @@ const PreviewCourseModal = ({ course, onClose }) => {
             {/* Título y badges */}
             <div>
               <div className="flex items-start gap-3 mb-3">
-                <h2 className="text-2xl font-bold text-white flex-1">{course.title}</h2>
+                <h2 className="text-2xl font-bold text-white flex-1">{course.titulo || course.title}</h2>
                 {course.isNew && (
                   <span className="px-3 py-1 bg-green-500/20 text-green-400 text-xs font-semibold rounded-full">
                     Nuevo
                   </span>
                 )}
-                {course.featured && (
+                {course.destacado && (
                   <span className="px-3 py-1 bg-yellow-500/20 text-yellow-400 text-xs font-semibold rounded-full">
                     ⭐ Destacado
                   </span>
                 )}
               </div>
-              <p className="text-secondary">{course.description || 'Sin descripción'}</p>
+              <p className="text-secondary">{course.descripcion || course.description || 'Sin descripción'}</p>
             </div>
 
             {/* Stats grid */}
@@ -70,7 +70,7 @@ const PreviewCourseModal = ({ course, onClose }) => {
               </div>
               <div className="bg-background/50 rounded-lg p-4">
                 <div className="text-xs text-secondary mb-1">Duración</div>
-                <div className="text-white font-semibold">{course.duration} min</div>
+                <div className="text-white font-semibold">{course.duracion || course.duration} min</div>
               </div>
             </div>
 
@@ -81,12 +81,12 @@ const PreviewCourseModal = ({ course, onClose }) => {
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
                     <span className="text-secondary">Estudiantes:</span>
-                    <span className="text-white font-medium">{course.students || 0}</span>
+                    <span className="text-white font-medium">{course.estudiantesInscritos || course.students || 0}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-secondary">Calificación:</span>
                     <span className="text-white font-medium">
-                      {course.rating ? `${course.rating} ⭐` : 'Sin calificar'}
+                      {(course.calificacion || course.rating) ? `${(course.calificacion || course.rating).toFixed(1)} ⭐` : 'Sin calificar'}
                     </span>
                   </div>
                   <div className="flex justify-between">
@@ -101,14 +101,14 @@ const PreviewCourseModal = ({ course, onClose }) => {
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
                     <span className="text-secondary">Visible:</span>
-                    <span className={course.active ? 'text-green-400' : 'text-red-400'}>
-                      {course.active ? '✓ Activo' : '✗ Inactivo'}
+                    <span className={(course.activo ?? course.active) ? 'text-green-400' : 'text-red-400'}>
+                      {(course.activo ?? course.active) ? '✓ Activo' : '✗ Inactivo'}
                     </span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-secondary">Destacado:</span>
-                    <span className={course.featured ? 'text-green-400' : 'text-gray-400'}>
-                      {course.featured ? '✓ Sí' : '✗ No'}
+                    <span className={(course.destacado ?? course.featured) ? 'text-green-400' : 'text-gray-400'}>
+                      {(course.destacado ?? course.featured) ? '✓ Sí' : '✗ No'}
                     </span>
                   </div>
                   <div className="flex justify-between">

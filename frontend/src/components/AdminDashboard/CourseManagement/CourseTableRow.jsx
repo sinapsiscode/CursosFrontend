@@ -24,23 +24,23 @@ const CourseTableRow = ({
       {/* Columna del curso */}
       <td className={COURSE_MANAGEMENT_STYLES.tableCell}>
         <div className={COURSE_MANAGEMENT_STYLES.courseItem}>
-          {course.thumbnail && (
+          {(course.imagen || course.thumbnail) && (
             <img
-              src={course.thumbnail}
-              alt={course.title}
+              src={course.imagen || course.thumbnail}
+              alt={course.titulo || course.title}
               className={COURSE_MANAGEMENT_STYLES.courseThumbnail}
             />
           )}
           <div>
             <p className={COURSE_MANAGEMENT_STYLES.courseTitle}>
-              {course.title}
+              {course.titulo || course.title}
             </p>
             {course.isNew && (
               <span className={COURSE_MANAGEMENT_STYLES.courseNewBadge}>
                 {COURSE_MANAGEMENT_LABELS.badges.new}
               </span>
             )}
-            {course.featured && (
+            {course.destacado && (
               <span className={COURSE_MANAGEMENT_STYLES.courseFeaturedBadge}>
                 {COURSE_MANAGEMENT_LABELS.badges.featured}
               </span>
@@ -73,14 +73,14 @@ const CourseTableRow = ({
       {/* Duración */}
       <td className={COURSE_MANAGEMENT_STYLES.tableCellCenter}>
         <p className={COURSE_MANAGEMENT_STYLES.courseDuration}>
-          {formatDuration(course.duration)}
+          {formatDuration(course.duracion || course.duration)}
         </p>
       </td>
 
       {/* Precio */}
       <td className={COURSE_MANAGEMENT_STYLES.tableCellCenter}>
         <p className={COURSE_MANAGEMENT_STYLES.coursePrice}>
-          {formatPrice(course.price)}
+          {formatPrice(course.precio || course.price)}
         </p>
       </td>
 
