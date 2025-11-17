@@ -15,8 +15,8 @@ const LoginModal = () => {
 
 
   return (
-    <div className={modalStyles.overlay}>
-      <div className={modalStyles.container}>
+    <div className="fixed inset-0 bg-black/60 backdrop-blur-md flex items-center justify-center z-50 p-4">
+      <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-2xl p-8 w-full max-w-md relative max-h-[90vh] overflow-y-auto shadow-2xl border border-gray-700/50">
         <LoginHeader onClose={handleClose} />
 
         <QuickAccessUsers

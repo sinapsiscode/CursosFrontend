@@ -2,26 +2,59 @@ const RecentUsers = ({ recentUsers }) => {
   return (
     <div className="bg-surface rounded-xl p-6">
       <h3 className="text-xl font-bold text-white mb-6">Usuarios Recientes</h3>
-      <div className="space-y-4">
+      <div className="space-y-3">
         {recentUsers && recentUsers.length > 0 ? (
-          recentUsers.map(user => (
-            <div key={user.id} className="flex items-center space-x-4">
-              <img
-                src={user.avatar || 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40'}
-                alt={user.name}
-                className="w-10 h-10 rounded-full object-cover"
-              />
-              <div className="flex-1">
-                <h4 className="text-white font-medium">{user.name}</h4>
-                <p className="text-text-secondary text-sm">
-                  {user.selectedArea} • {user.subscription?.type || 'free'}
-                </p>
+          recentUsers.map(user => {
+            const userName = user.nombre || user.name || 'Usuario'
+            const userAvatar = user.avatar || 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40'
+            const userArea = user.selectedArea || user.areaPreferida || 'Sin área'
+            const userSub = user.subscription?.type || 'free'
+            const userDate = user.fechaCreacion || user.createdAt
+
+            return (
+              <div key={user.id} className="flex items-center w-full" style={{ gap: '12px' }}>
+                {/* Avatar */}
+                <div className="flex-shrink-0" style={{ width: '40px', height: '40px' }}>
+                  <img
+                    src={userAvatar}
+                    alt={userName}
+                    className="w-full h-full rounded-full object-cover"
+                    onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40' }}
+                  />
+                </div>
+
+                {/* User Info */}
+                <div className="flex-1" style={{ minWidth: 0, maxWidth: 'calc(100% - 150px)' }}>
+                  <div className="text-white font-medium text-sm" style={{
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'nowrap'
+                  }}>
+                    {userName}
+                  </div>
+                  <div className="text-text-secondary text-xs" style={{
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'nowrap'
+                  }}>
+                    {userArea} • {userSub}
+                  </div>
+                </div>
+
+                {/* Date */}
+                <div className="flex-shrink-0 text-text-secondary text-xs" style={{
+                  whiteSpace: 'nowrap',
+                  marginLeft: 'auto'
+                }}>
+                  {userDate ? new Date(userDate).toLocaleDateString('es-ES', {
+                    day: '2-digit',
+                    month: '2-digit',
+                    year: 'numeric'
+                  }) : 'N/A'}
+                </div>
               </div>
-              <div className="text-text-secondary text-sm">
-                {user.createdAt ? new Date(user.createdAt).toLocaleDateString() : 'N/A'}
-              </div>
-            </div>
-          ))
+            )
+          })
         ) : (
           <div className="text-center text-text-secondary py-8">
             <p>No hay usuarios registrados</p>

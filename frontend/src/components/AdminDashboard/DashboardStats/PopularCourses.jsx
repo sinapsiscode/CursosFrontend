@@ -10,13 +10,13 @@ const PopularCourses = ({ topCourses }) => {
                 {index + 1}
               </div>
               <div className="flex-1">
-                <h4 className="text-white font-medium">{course.title}</h4>
+                <h4 className="text-white font-medium">{course.titulo || course.title}</h4>
                 <p className="text-text-secondary text-sm">
-                  {course.students || 0} estudiantes
+                  {course.estudiantesInscritos || course.students || 0} estudiantes
                 </p>
               </div>
               <div className="text-accent font-medium">
-                {course.rating || 0} ⭐
+                {course.calificacion || course.rating || 0} ⭐
               </div>
             </div>
           ))

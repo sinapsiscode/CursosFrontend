@@ -35,11 +35,32 @@ export const useAdminAnalytics = () => {
       console.log(LOG_MESSAGES.LOADING_DASHBOARD)
       setLoading(true)
 
-      const analyticsData = await apiService.getAnalytics()
-      console.log(LOG_MESSAGES.DASHBOARD_LOADED, analyticsData)
+      // Cargar usuarios, cursos y analytics en paralelo
+      const [usersData, coursesData, analyticsData] = await Promise.all([
+        apiService.getUsers(),
+        apiService.getCourses(),
+        apiService.getAnalytics()
+      ])
 
+      console.log('📊 Datos cargados:', {
+        usuarios: usersData?.length || 0,
+        cursos: coursesData?.length || 0,
+        analytics: analyticsData
+      })
+
+      // Actualizar el store con los datos
+      const store = useAdminStore.getState()
+      store.setUsers(usersData || [])
+      store.setCourses(coursesData || [])
       updateAnalytics(analyticsData)
+
+      // Recalcular analytics basado en los datos reales
       calculateAnalytics()
+
+      console.log(LOG_MESSAGES.DASHBOARD_LOADED, {
+        totalUsers: usersData?.length || 0,
+        totalCourses: coursesData?.length || 0
+      })
 
     } catch (error) {
       console.error(LOG_MESSAGES.LOADING_ERROR, error)

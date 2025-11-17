@@ -314,16 +314,26 @@ export const useAdminStore = create((set, get) => ({
 
   getTopCourses: (limit = 5) => {
     const courses = get().courses || []
-    return courses
-      .sort((a, b) => (b.students || 0) - (a.students || 0))
+    console.log('📊 getTopCourses - Total cursos:', courses.length)
+    const sorted = courses
+      .sort((a, b) => (b.estudiantesInscritos || 0) - (a.estudiantesInscritos || 0))
       .slice(0, limit)
+    console.log('📊 Top cursos:', sorted.map(c => ({ titulo: c.titulo, estudiantes: c.estudiantesInscritos })))
+    return sorted
   },
 
   getRecentUsers: (limit = 5) => {
     const users = get().users || []
-    return users
-      .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+    console.log('👥 getRecentUsers - Total usuarios:', users.length)
+    const sorted = users
+      .sort((a, b) => {
+        const dateA = new Date(b.fechaCreacion || b.createdAt || 0)
+        const dateB = new Date(a.fechaCreacion || a.createdAt || 0)
+        return dateA - dateB
+      })
       .slice(0, limit)
+    console.log('👥 Usuarios recientes:', sorted.map(u => ({ nombre: u.nombre, fecha: u.fechaCreacion })))
+    return sorted
   },
 
   // Impersonation for testing

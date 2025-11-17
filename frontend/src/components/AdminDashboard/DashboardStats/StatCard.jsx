@@ -7,13 +7,18 @@ const StatCard = ({ title, value, change, color, icon }) => {
     : ADMIN_STYLES.statCardChangeNegative
   const changeSign = changeIsPositive ? '+' : ''
 
+  // Asegurar que siempre haya un valor para mostrar
+  const displayValue = value !== undefined && value !== null
+    ? (typeof value === 'number' ? value.toLocaleString() : value)
+    : '0'
+
   return (
     <div className={ADMIN_STYLES.statCard}>
       <div className={ADMIN_STYLES.statCardHeader}>
         <div>
           <p className={ADMIN_STYLES.statCardTitle}>{title}</p>
           <p className={ADMIN_STYLES.statCardValue}>
-            {typeof value === 'number' ? value.toLocaleString() : value || 0}
+            {displayValue}
           </p>
           <p className={`${ADMIN_STYLES.statCardChange} ${changeClass}`}>
             {changeSign}{change}% vs mes anterior
