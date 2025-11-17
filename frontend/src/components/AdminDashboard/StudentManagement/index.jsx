@@ -4,6 +4,9 @@ import StudentHeader from './StudentHeader'
 import ViewModeSelector from './ViewModeSelector'
 import StudentFilters from './StudentFilters'
 import StudentsList from './StudentsList'
+import ViewStudentModal from './ViewStudentModal'
+import EditStudentModal from './EditStudentModal'
+import SuspendStudentModal from './SuspendStudentModal'
 
 const StudentManagement = () => {
   const {
@@ -15,12 +18,24 @@ const StudentManagement = () => {
     loading,
     courses,
 
+    // Estados de modales
+    viewModal,
+    editModal,
+    suspendModal,
+
     // Datos computados
     filteredStudents,
 
     // Acciones de estudiante
     handleMarkCompleted,
     handleStudentAction,
+
+    // Acciones de modales
+    closeViewModal,
+    confirmEditStudent,
+    cancelEditStudent,
+    confirmSuspendStudent,
+    cancelSuspendStudent,
 
     // Cambios de estado
     changeViewMode,
@@ -64,6 +79,32 @@ const StudentManagement = () => {
         onMarkCompleted={handleMarkCompleted}
         onStudentAction={handleStudentAction}
       />
+
+      {/* Modal de vista de detalles */}
+      {viewModal.show && viewModal.student && (
+        <ViewStudentModal
+          student={viewModal.student}
+          onClose={closeViewModal}
+        />
+      )}
+
+      {/* Modal de edición */}
+      {editModal.show && editModal.student && (
+        <EditStudentModal
+          student={editModal.student}
+          onConfirm={confirmEditStudent}
+          onCancel={cancelEditStudent}
+        />
+      )}
+
+      {/* Modal de suspensión/reactivación */}
+      {suspendModal.show && suspendModal.student && (
+        <SuspendStudentModal
+          student={suspendModal.student}
+          onConfirm={confirmSuspendStudent}
+          onCancel={cancelSuspendStudent}
+        />
+      )}
     </div>
   )
 }

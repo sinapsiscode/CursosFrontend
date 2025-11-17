@@ -22,6 +22,11 @@ export const useStudentManagement = () => {
   const [viewMode, setViewMode] = useState(VIEW_MODES.ALL)
   const [loading, setLoading] = useState(false)
 
+  // Estados de modales
+  const [viewModal, setViewModal] = useState({ show: false, student: null })
+  const [editModal, setEditModal] = useState({ show: false, student: null })
+  const [suspendModal, setSuspendModal] = useState({ show: false, student: null })
+
   // Cargar cursos y estudiantes inicialmente
   useEffect(() => {
     loadCoursesAndStudents()
@@ -200,20 +205,92 @@ export const useStudentManagement = () => {
   const handleStudentAction = useCallback((action, student) => {
     switch (action) {
       case 'view':
-        console.log('Ver detalles:', student)
-        // Implementar vista de detalles
+        setViewModal({ show: true, student })
         break
       case 'edit':
-        console.log('Editar:', student)
-        // Implementar edición
+        setEditModal({ show: true, student })
         break
       case 'suspend':
-        console.log('Suspender:', student)
-        // Implementar suspensión
+        setSuspendModal({ show: true, student })
         break
       default:
         console.log('Acción no reconocida:', action)
     }
+  }, [])
+
+  // Cerrar modal de vista
+  const closeViewModal = useCallback(() => {
+    setViewModal({ show: false, student: null })
+  }, [])
+
+  // Confirmar edición de estudiante
+  const confirmEditStudent = useCallback(async (updatedStudent) => {
+    try {
+      console.log('Guardando cambios de estudiante:', updatedStudent)
+      await apiService.updateUser(updatedStudent.id, updatedStudent)
+
+      // Recargar datos según el modo de vista
+      if (viewMode === VIEW_MODES.COURSE && selectedCourseId) {
+        await loadCourseStudents(selectedCourseId)
+      } else {
+        await loadAllStudents()
+      }
+
+      setEditModal({ show: false, student: null })
+
+      Swal.fire({
+        ...STUDENT_CONFIRMATION_CONFIG.success,
+        title: '¡Actualizado!',
+        text: 'Los datos del estudiante han sido actualizados correctamente'
+      })
+    } catch (error) {
+      console.error('Error al actualizar estudiante:', error)
+      Swal.fire({
+        ...STUDENT_CONFIRMATION_CONFIG.error,
+        text: 'Error al actualizar el estudiante'
+      })
+    }
+  }, [viewMode, selectedCourseId, loadCourseStudents, loadAllStudents])
+
+  // Cancelar edición
+  const cancelEditStudent = useCallback(() => {
+    setEditModal({ show: false, student: null })
+  }, [])
+
+  // Confirmar suspensión/reactivación
+  const confirmSuspendStudent = useCallback(async (student) => {
+    try {
+      const newStatus = !student.activo
+      console.log(`${newStatus ? 'Reactivando' : 'Suspendiendo'} estudiante:`, student.id)
+
+      await apiService.updateUser(student.id, { activo: newStatus })
+
+      // Recargar datos según el modo de vista
+      if (viewMode === VIEW_MODES.COURSE && selectedCourseId) {
+        await loadCourseStudents(selectedCourseId)
+      } else {
+        await loadAllStudents()
+      }
+
+      setSuspendModal({ show: false, student: null })
+
+      Swal.fire({
+        ...STUDENT_CONFIRMATION_CONFIG.success,
+        title: newStatus ? '¡Reactivado!' : '¡Suspendido!',
+        text: `El estudiante ha sido ${newStatus ? 'reactivado' : 'suspendido'} correctamente`
+      })
+    } catch (error) {
+      console.error('Error al cambiar estado del estudiante:', error)
+      Swal.fire({
+        ...STUDENT_CONFIRMATION_CONFIG.error,
+        text: 'Error al cambiar el estado del estudiante'
+      })
+    }
+  }, [viewMode, selectedCourseId, loadCourseStudents, loadAllStudents])
+
+  // Cancelar suspensión
+  const cancelSuspendStudent = useCallback(() => {
+    setSuspendModal({ show: false, student: null })
   }, [])
 
   // Cambiar modo de vista
@@ -253,6 +330,11 @@ export const useStudentManagement = () => {
     loading,
     courses,
 
+    // Estados de modales
+    viewModal,
+    editModal,
+    suspendModal,
+
     // Datos computados
     filteredStudents,
 
@@ -264,6 +346,13 @@ export const useStudentManagement = () => {
     // Acciones de estudiante
     handleMarkCompleted,
     handleStudentAction,
+
+    // Acciones de modales
+    closeViewModal,
+    confirmEditStudent,
+    cancelEditStudent,
+    confirmSuspendStudent,
+    cancelSuspendStudent,
 
     // Cambios de estado
     changeViewMode,
