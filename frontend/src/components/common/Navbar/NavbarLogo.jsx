@@ -10,7 +10,7 @@ const NavbarLogo = ({ selectedArea }) => {
           <img
             src="/logo.png"
             alt="CEOs UNI Logo"
-            className="h-8 w-8 sm:h-9 sm:w-9 md:h-10 md:w-10 object-contain rounded-lg flex-shrink-0"
+            className="h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 object-contain rounded-lg flex-shrink-0"
           />
           {/* Texto de marca - más pequeño en móvil */}
           <span className={NAVBAR_STYLES.brandText}>{LOGO_CONFIG.brandName}</span>

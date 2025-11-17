@@ -7,7 +7,7 @@ export const CONFIG = {
   // API Configuration
   API: {
     BASE_URL: import.meta.env.VITE_API_URL || 'http://localhost:5144',
-    TIMEOUT: parseInt(import.meta.env.VITE_API_TIMEOUT) || 10000,
+    TIMEOUT: 10000,
   },
 
   // Storage Configuration
@@ -48,29 +48,57 @@ export const CONFIG = {
   // Búsqueda
   SEARCH: {
     MIN_QUERY_LENGTH: 2,
-    MAX_RESULTS: 100, // Cambiado de 1000 para mejor performance
+    MAX_RESULTS: 100,
     DEBOUNCE_DELAY: 300,
   },
 
-  // WhatsApp
+  // WhatsApp Configuration (Solo info pública - hardcoded)
   WHATSAPP: {
-    ACCESS_TOKEN: import.meta.env.VITE_WHATSAPP_ACCESS_TOKEN,
-    PHONE_NUMBER_ID: import.meta.env.VITE_WHATSAPP_PHONE_NUMBER_ID,
-    BUSINESS_ACCOUNT_ID: import.meta.env.VITE_WHATSAPP_BUSINESS_ACCOUNT_ID,
-    DEFAULT_PHONE: import.meta.env.VITE_WHATSAPP_DEFAULT_PHONE || '+57 300 123 4567',
+    // Contact Information (Público)
+    DEFAULT_PHONE: '+57 300 123 4567',
+    BUSINESS_PHONE: '+573001234567',
+
+    // WhatsApp URLs Base
+    WA_ME_BASE: 'https://wa.me',
+    CHAT_BASE: 'https://chat.whatsapp.com',
+
+    // Group Links (Públicos)
+    GROUPS: {
+      METALURGIA: 'https://chat.whatsapp.com/metalurgia-pro',
+      MINERIA: 'https://chat.whatsapp.com/mineros-unidos',
+      GEOLOGIA: 'https://chat.whatsapp.com/geologos-colombia',
+      GENERAL: 'https://chat.whatsapp.com/metsel-community',
+    },
   },
 
   // Demo/Development
   DEMO: {
-    PASSWORD: import.meta.env.VITE_DEMO_PASSWORD || 'Demo2024!', // Más seguro que '123456'
-    ENABLED: import.meta.env.VITE_DEMO_MODE === 'true',
+    PASSWORD: 'Demo2024!',
+    ENABLED: true,
   },
 
   // URLs del sitio web
   WEBSITE: {
     BASE_URL: import.meta.env.VITE_WEBSITE_URL || 'https://metsel.edu.co',
+    FORMS_URL: 'https://formularios.metsel.edu.co',
     WEBINARS: '/webinars',
     REGISTRATION: '/inscripciones',
+    DOCUMENTS: '/docs',
+  },
+
+  // External Services URLs (URLs públicas, hardcoded está OK)
+  EXTERNAL: {
+    UNSPLASH_BASE: 'https://images.unsplash.com',
+    ZOOM_BASE: 'https://zoom.us',
+    TEAMS_BASE: 'https://teams.microsoft.com',
+    YOUTUBE_BASE: 'https://www.youtube.com',
+  },
+
+  // Placeholder Images (para desarrollo/demo)
+  PLACEHOLDERS: {
+    AVATAR_DEFAULT: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100',
+    COURSE_DEFAULT: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400',
+    EVENT_DEFAULT: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800',
   },
 }
 

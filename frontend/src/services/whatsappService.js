@@ -1,5 +1,6 @@
 // WhatsApp Lead Generation Service
 import { notificationService } from './notificationService'
+import CONFIG from '../constants/config'
 
 export class WhatsAppService {
   constructor() {
@@ -12,10 +13,10 @@ export class WhatsAppService {
     if (stored) {
       return JSON.parse(stored)
     }
-    
+
     // Configuración por defecto
     return {
-      phoneNumber: '+57 300 123 4567',
+      phoneNumber: CONFIG.WHATSAPP.DEFAULT_PHONE,
       autoSend: false,
       welcomeMessage: '¡Hola! 👋 Gracias por tu interés en nuestros cursos de MetSel. Te enviaré información relevante.',
       templates: {
@@ -25,10 +26,10 @@ export class WhatsAppService {
         groupInvite: '👥 Únete a nuestro grupo de WhatsApp de {{area}} para networking y recursos exclusivos: {{groupLink}}'
       },
       groups: {
-        metalurgia: { name: 'Metalurgia Pro', link: 'https://chat.whatsapp.com/metalurgia-pro' },
-        mineria: { name: 'Mineros Unidos', link: 'https://chat.whatsapp.com/mineros-unidos' },
-        geologia: { name: 'Geólogos Colombia', link: 'https://chat.whatsapp.com/geologos-colombia' },
-        general: { name: 'MetSel Community', link: 'https://chat.whatsapp.com/metsel-community' }
+        metalurgia: { name: 'Metalurgia Pro', link: CONFIG.WHATSAPP.GROUPS.METALURGIA },
+        mineria: { name: 'Mineros Unidos', link: CONFIG.WHATSAPP.GROUPS.MINERIA },
+        geologia: { name: 'Geólogos Colombia', link: CONFIG.WHATSAPP.GROUPS.GEOLOGIA },
+        general: { name: 'MetSel Community', link: CONFIG.WHATSAPP.GROUPS.GENERAL }
       },
       triggers: {
         courseSearch: { enabled: true, delay: 3000 },
@@ -190,20 +191,20 @@ export class WhatsAppService {
   async triggerWebinarInvite(area) {
     const template = this.config.templates.webinarInvite
     const nextWebinarDate = this.getNextWebinarDate()
-    
+
     const message = template
       .replace('{{area}}', area)
       .replace('{{date}}', nextWebinarDate)
-      .replace('{{link}}', 'https://metsel.edu.co/webinars')
-    
+      .replace('{{link}}', `${CONFIG.WEBSITE.BASE_URL}${CONFIG.WEBSITE.WEBINARS}`)
+
     await this.sendWhatsAppMessage(message)
-    
+
     // Mostrar notificación de webinar
     notificationService.showWebinarInvitation({
       id: `webinar-${Date.now()}`,
       title: `Webinar Gratuito: ${area}`,
       date: nextWebinarDate,
-      registrationUrl: 'https://metsel.edu.co/webinars/registro'
+      registrationUrl: `${CONFIG.WEBSITE.BASE_URL}${CONFIG.WEBSITE.WEBINARS}/registro`
     })
   }
 
@@ -211,12 +212,12 @@ export class WhatsAppService {
   async triggerNewCoursesPromotion(area, userPhone = null) {
     const template = this.config.templates.newCourses
     const newCourses = this.getNewCoursesByArea(area)
-    
+
     const message = template
       .replace('{{area}}', area)
       .replace('{{coursesList}}', newCourses)
-      .replace('{{link}}', 'https://metsel.edu.co/inscripciones')
-    
+      .replace('{{link}}', `${CONFIG.WEBSITE.BASE_URL}${CONFIG.WEBSITE.REGISTRATION}`)
+
     await this.sendWhatsAppMessage(message, userPhone)
   }
 
@@ -244,10 +245,10 @@ export class WhatsAppService {
     // Limpiar número de teléfono (solo números)
     const adminPhone = this.config.phoneNumber.replace(/\D/g, '')
     const targetPhone = userPhone ? userPhone.replace(/\D/g, '') : adminPhone
-    
+
     // Crear link de WhatsApp
     const encodedMessage = encodeURIComponent(message)
-    const whatsappUrl = `https://wa.me/${targetPhone}?text=${encodedMessage}`
+    const whatsappUrl = `${CONFIG.WHATSAPP.WA_ME_BASE}/${targetPhone}?text=${encodedMessage}`
     
     console.log('📱 WhatsApp Link Generated:', {
       to: targetPhone,

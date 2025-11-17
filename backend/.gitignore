@@ -29,3 +29,11 @@ Thumbs.db
 # Build
 dist/
 build/
+
+# Database backups
+*.backup
+*.backup-*
+db.json.backup*
+
+# Keep .env.example for documentation
+!.env.example

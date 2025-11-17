@@ -1,5 +1,6 @@
 // Sistema de Notificaciones Interactivas
 import { whatsappService } from './whatsappService'
+import CONFIG from '../constants/config'
 
 export class NotificationService {
   constructor() {
@@ -178,7 +179,7 @@ export class NotificationService {
 
     // Ejecutar acción
     if (action.url) {
-      if (action.url.startsWith('https://wa.me/') || action.url.startsWith('https://chat.whatsapp.com/')) {
+      if (action.url.startsWith(CONFIG.WHATSAPP.WA_ME_BASE) || action.url.startsWith(CONFIG.WHATSAPP.CHAT_BASE)) {
         // WhatsApp link - manejar con el servicio
         whatsappService.showWhatsAppLinkModal(action.url, action.message || 'Únete a nuestro grupo')
       } else if (action.url.startsWith('/')) {
