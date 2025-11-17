@@ -206,7 +206,7 @@ const CouponListPage = () => {
     >
       <div className="space-y-6">
         <div className="flex items-center justify-between">
-          <p className="text-text-secondary">
+          <p className="text-secondary">
             Administración de códigos y cupones de descuento
           </p>
 
@@ -255,7 +255,7 @@ const CouponListPage = () => {
                       />
                     </div>
                   </td>
-                  <td className="p-4 text-text-secondary">
+                  <td className="p-4 text-secondary">
                     {new Date(coupon.expiry).toLocaleDateString()}
                   </td>
                   <td className="p-4">
@@ -294,15 +294,15 @@ const CouponListPage = () => {
             <h3 className="font-medium text-white mb-2">📊 Estadísticas</h3>
             <div className="space-y-1 text-sm">
               <div className="flex justify-between">
-                <span className="text-text-secondary">Total cupones:</span>
+                <span className="text-secondary">Total cupones:</span>
                 <span className="text-white">{coupons.length}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-text-secondary">Activos:</span>
+                <span className="text-secondary">Activos:</span>
                 <span className="text-green-400">{coupons.filter(c => c.status === 'active').length}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-text-secondary">Usos totales:</span>
+                <span className="text-secondary">Usos totales:</span>
                 <span className="text-white">{coupons.reduce((sum, c) => sum + c.uses, 0)}</span>
               </div>
             </div>

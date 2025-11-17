@@ -35,7 +35,7 @@ const CourseContent = ({
 
               <div>
                 <h4 className="text-white font-medium">{lesson.title}</h4>
-                <div className="flex items-center space-x-2 text-sm text-text-secondary">
+                <div className="flex items-center space-x-2 text-sm text-secondary">
                   <span>{formatDuration(lesson.duration)}</span>
                   {lesson.isFree && (
                     <span className="bg-green-500 text-white px-2 py-0.5 rounded text-xs">

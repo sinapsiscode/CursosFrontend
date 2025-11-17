@@ -43,13 +43,13 @@ const CertificateCard = ({ certificate, user, onPreview, onDownload, onShare, fo
           </div>
 
           {certificate.course && (
-            <div className="text-sm text-text-secondary mb-3">
+            <div className="text-sm text-secondary mb-3">
               <p><strong>Instructor:</strong> {certificate.course.instructor}</p>
               <p><strong>Duración:</strong> {Math.floor(certificate.course.duration / 60)}h {certificate.course.duration % 60}m</p>
             </div>
           )}
 
-          <div className="text-xs text-text-secondary bg-background rounded p-2">
+          <div className="text-xs text-secondary bg-background rounded p-2">
             <strong>{CERTIFICATES_CONFIG.verification.codeLabel}</strong><br />
             <code className="font-mono">{certificate.verificationCode}</code>
           </div>

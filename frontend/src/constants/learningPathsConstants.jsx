@@ -69,20 +69,20 @@ export const LEARNING_PATHS_STYLES = {
     card: 'bg-surface rounded-xl p-8 max-w-md w-full mx-4 text-center',
     icon: 'w-20 h-20 mx-auto text-accent mb-6',
     title: 'text-2xl font-bold text-white mb-4',
-    subtitle: 'text-text-secondary mb-6',
+    subtitle: 'text-secondary mb-6',
     button: 'bg-accent text-background px-6 py-3 rounded-lg font-semibold hover:bg-accent-hover transition-colors w-full'
   },
   header: {
     container: 'text-center mb-8',
     title: 'text-4xl md:text-5xl font-bold text-white mb-4',
-    subtitle: 'text-xl text-text-secondary max-w-3xl mx-auto'
+    subtitle: 'text-xl text-secondary max-w-3xl mx-auto'
   },
   stats: {
     grid: 'grid grid-cols-1 md:grid-cols-3 gap-6 mb-8',
     card: 'bg-surface rounded-lg p-6 text-center',
     cardClickable: 'bg-surface rounded-lg p-6 text-center cursor-pointer hover:bg-gray-700 transition-colors',
     number: 'text-3xl font-bold mb-2',
-    label: 'text-text-secondary',
+    label: 'text-secondary',
     clickHint: 'text-xs text-red-400 mt-1'
   },
   filters: {
@@ -106,7 +106,7 @@ export const LEARNING_PATHS_STYLES = {
     container: 'text-center py-16',
     icon: 'w-24 h-24 mx-auto text-gray-600 mb-6',
     title: 'text-2xl font-bold text-white mb-4',
-    subtitle: 'text-text-secondary mb-6 max-w-md mx-auto',
+    subtitle: 'text-secondary mb-6 max-w-md mx-auto',
     button: 'bg-accent text-background px-6 py-3 rounded-lg font-semibold hover:bg-accent-hover transition-colors'
   }
 }

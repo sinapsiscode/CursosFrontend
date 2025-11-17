@@ -25,7 +25,7 @@ const OverviewPage = () => {
     >
       <div className="space-y-6">
         <div className="flex items-center justify-between">
-          <p className="text-text-secondary">
+          <p className="text-secondary">
             Métricas principales de la plataforma
           </p>
 
@@ -57,7 +57,7 @@ const OverviewPage = () => {
 
           <div className="bg-surface p-4 rounded-lg">
             <h3 className="font-medium text-white mb-2">Resumen</h3>
-            <p className="text-text-secondary text-sm">
+            <p className="text-secondary text-sm">
               Datos actualizados cada 15 minutos
             </p>
           </div>

@@ -11,7 +11,7 @@ const CourseRating = ({ rating, students }) => {
           </svg>
           <span className="text-white text-sm ml-1">{rating}</span>
         </div>
-        <span className="text-text-secondary text-sm">
+        <span className="text-secondary text-sm">
           ({formatStudentCount(students)} estudiantes)
         </span>
       </div>

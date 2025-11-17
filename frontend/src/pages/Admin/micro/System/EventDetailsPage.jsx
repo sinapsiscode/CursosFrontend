@@ -108,20 +108,20 @@ const EventDetailsPage = () => {
         {/* Información del Evento */}
         <div className="bg-surface rounded-lg p-6">
           <h2 className="text-2xl font-bold text-white mb-2">{event.title}</h2>
-          <p className="text-text-secondary mb-6">{event.description}</p>
+          <p className="text-secondary mb-6">{event.description}</p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             {/* Columna Izquierda */}
             <div className="space-y-4">
               <div>
-                <p className="text-text-secondary text-sm mb-1">Tipo</p>
+                <p className="text-secondary text-sm mb-1">Tipo</p>
                 <span className="px-3 py-1 bg-blue-600 text-white rounded text-sm font-medium">
                   {event.type}
                 </span>
               </div>
 
               <div>
-                <p className="text-text-secondary text-sm mb-1">Fecha</p>
+                <p className="text-secondary text-sm mb-1">Fecha</p>
                 <p className="text-white font-medium">{event.date}</p>
               </div>
             </div>
@@ -129,14 +129,14 @@ const EventDetailsPage = () => {
             {/* Columna Derecha */}
             <div className="space-y-4">
               <div>
-                <p className="text-text-secondary text-sm mb-1">Área</p>
+                <p className="text-secondary text-sm mb-1">Área</p>
                 <span className="px-3 py-1 bg-green-600 text-white rounded text-sm font-medium">
                   {event.area}
                 </span>
               </div>
 
               <div>
-                <p className="text-text-secondary text-sm mb-1">Hora</p>
+                <p className="text-secondary text-sm mb-1">Hora</p>
                 <p className="text-white font-medium">{event.time}</p>
               </div>
             </div>
@@ -213,7 +213,7 @@ const EventDetailsPage = () => {
                     <td className="p-4 text-white">{registration.lastName}</td>
                     <td className="p-4 text-blue-400">{registration.email}</td>
                     <td className="p-4 text-white">{registration.phone}</td>
-                    <td className="p-4 text-text-secondary">{registration.registeredAt}</td>
+                    <td className="p-4 text-secondary">{registration.registeredAt}</td>
                   </tr>
                 ))}
               </tbody>

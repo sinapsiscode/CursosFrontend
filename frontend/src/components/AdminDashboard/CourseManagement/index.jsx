@@ -4,11 +4,16 @@ import CourseCreationForm from '../../Admin/CourseCreationForm'
 import CourseHeader from './CourseHeader'
 import CourseFormLoading from './CourseFormLoading'
 import CourseTable from './CourseTable'
+import DeleteCourseModal from './DeleteCourseModal'
+import PreviewCourseModal from './PreviewCourseModal'
 
 const CourseManagement = () => {
   const {
     // Estado
     modalState,
+    previewCourse,
+    showPreviewModal,
+    deleteConfirmation,
     courses,
     levels,
 
@@ -20,7 +25,10 @@ const CourseManagement = () => {
     handleSaveCourse,
     handleEditCourse,
     handleDeleteCourse,
+    confirmDelete,
+    cancelDelete,
     handlePreviewCourse,
+    handleClosePreview,
 
     // Utilidades
     getAreaColor,
@@ -67,6 +75,23 @@ const CourseManagement = () => {
         onEdit={handleEditCourse}
         onDelete={handleDeleteCourse}
       />
+
+      {/* Modal de vista previa */}
+      {showPreviewModal && previewCourse && (
+        <PreviewCourseModal
+          course={previewCourse}
+          onClose={handleClosePreview}
+        />
+      )}
+
+      {/* Modal de confirmación de eliminación */}
+      {deleteConfirmation.show && deleteConfirmation.course && (
+        <DeleteCourseModal
+          course={deleteConfirmation.course}
+          onConfirm={confirmDelete}
+          onCancel={cancelDelete}
+        />
+      )}
     </div>
   )
 }

@@ -15,8 +15,8 @@ export const COURSE_MANAGEMENT_STYLES = {
   tableContainer: 'overflow-x-auto',
   table: 'w-full',
   tableHeader: 'border-b border-gray-600',
-  tableHeaderCell: 'text-left py-3 px-4 font-medium text-text-secondary',
-  tableHeaderCellCenter: 'text-center py-3 px-4 font-medium text-text-secondary',
+  tableHeaderCell: 'text-left py-3 px-4 font-medium text-secondary',
+  tableHeaderCellCenter: 'text-center py-3 px-4 font-medium text-secondary',
   tableRow: 'border-b border-gray-700',
   tableRowEven: 'bg-background/30',
   tableCell: 'py-3 px-4',
@@ -28,8 +28,8 @@ export const COURSE_MANAGEMENT_STYLES = {
   courseTitle: 'text-white font-medium text-sm',
   courseNewBadge: 'text-green-400 text-xs',
   courseFeaturedBadge: 'text-accent text-xs ml-2',
-  courseInstructor: 'text-text-secondary text-sm',
-  courseDuration: 'text-text-secondary text-sm',
+  courseInstructor: 'text-secondary text-sm',
+  courseDuration: 'text-secondary text-sm',
   coursePrice: 'text-white text-sm font-medium',
 
   // Tags/Badges
@@ -48,7 +48,7 @@ export const COURSE_MANAGEMENT_STYLES = {
   tooltip: 'absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap',
 
   // Empty state
-  emptyState: 'text-center py-8 text-text-secondary'
+  emptyState: 'text-center py-8 text-secondary'
 }
 
 // Labels y textos

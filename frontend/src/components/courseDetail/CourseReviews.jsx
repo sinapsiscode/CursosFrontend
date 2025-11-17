@@ -37,7 +37,7 @@ const CourseReviews = ({
                   {courseReviewStats.averageRating.toFixed(1)}
                 </span>
               </div>
-              <span className="text-text-secondary">
+              <span className="text-secondary">
                 ({courseReviewStats.totalReviews} {courseReviewStats.totalReviews === 1 ? COURSE_DETAIL_CONFIG.labels.review : COURSE_DETAIL_CONFIG.labels.reviews})
               </span>
             </div>
@@ -82,7 +82,7 @@ const CourseReviews = ({
                 <div className="flex justify-center mb-2">
                   {renderStars(Math.round(courseReviewStats.averageRating))}
                 </div>
-                <p className="text-text-secondary text-sm">
+                <p className="text-secondary text-sm">
                   {COURSE_DETAIL_CONFIG.labels.averageOf} {courseReviewStats.totalReviews} {COURSE_DETAIL_CONFIG.labels.reviews}
                 </p>
               </div>
@@ -105,7 +105,7 @@ const CourseReviews = ({
                         style={{ width: `${percentage}%` }}
                       />
                     </div>
-                    <span className="text-sm text-text-secondary w-12 text-right">
+                    <span className="text-sm text-secondary w-12 text-right">
                       {count}
                     </span>
                   </div>
@@ -135,7 +135,7 @@ const CourseReviews = ({
                       </h4>
                       <div className="flex items-center space-x-2">
                         <div className="flex">{renderStars(review.rating)}</div>
-                        <span className="text-xs text-text-secondary">
+                        <span className="text-xs text-secondary">
                           {new Date(review.createdAt).toLocaleDateString('es-ES')}
                         </span>
                       </div>
@@ -148,7 +148,7 @@ const CourseReviews = ({
                   </span>
                 )}
               </div>
-              <p className="text-text-secondary leading-relaxed">
+              <p className="text-secondary leading-relaxed">
                 {review.comment}
               </p>
             </div>
@@ -160,7 +160,7 @@ const CourseReviews = ({
           <h4 className="text-xl font-semibold text-white mb-2">
             {COURSE_DETAIL_CONFIG.labels.noReviewsYet}
           </h4>
-          <p className="text-text-secondary mb-6">
+          <p className="text-secondary mb-6">
             {COURSE_DETAIL_CONFIG.labels.beFirstToReview}
           </p>
           {isAuthenticated && isUserEnrolled && canReview(user?.id, course.id) && (

@@ -11,7 +11,7 @@ const ErrorState = ({ error, navigate }) => {
             </svg>
           </div>
           <h2 className="text-xl font-bold text-white mb-2">{CERTIFICATE_VERIFY_CONFIG.messages.invalid}</h2>
-          <p className="text-text-secondary mb-6">{error}</p>
+          <p className="text-secondary mb-6">{error}</p>
           <button
             onClick={() => navigate('/')}
             className="bg-accent text-background px-6 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-colors"

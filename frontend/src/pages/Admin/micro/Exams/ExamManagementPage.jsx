@@ -107,12 +107,12 @@ const ExamManagementPage = () => {
         {/* Stats */}
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
           <div className="bg-surface p-4 rounded-lg">
-            <p className="text-text-secondary text-sm">Total Preguntas</p>
+            <p className="text-secondary text-sm">Total Preguntas</p>
             <p className="text-2xl font-bold text-white">{stats.total}</p>
           </div>
           {stats.byArea.map(area => (
             <div key={area.value} className="bg-surface p-4 rounded-lg">
-              <p className="text-text-secondary text-sm">{area.label}</p>
+              <p className="text-secondary text-sm">{area.label}</p>
               <p className={`text-2xl font-bold ${
                 area.value === 'metalurgia' ? 'text-blue-400' :
                 area.value === 'mineria' ? 'text-green-400' : 'text-orange-400'
@@ -122,7 +122,7 @@ const ExamManagementPage = () => {
             </div>
           ))}
           <div className="bg-surface p-4 rounded-lg">
-            <p className="text-text-secondary text-sm">Con Imágenes</p>
+            <p className="text-secondary text-sm">Con Imágenes</p>
             <p className="text-2xl font-bold text-purple-400">{stats.withImages}</p>
           </div>
         </div>
@@ -132,7 +132,7 @@ const ExamManagementPage = () => {
           {filteredQuestions.map((question, index) => (
             <div key={question.id} className="bg-surface rounded-lg p-4 space-y-3">
               <div className="flex items-start justify-between">
-                <span className="text-text-secondary text-sm">#{index + 1}</span>
+                <span className="text-secondary text-sm">#{index + 1}</span>
                 <span className={`px-2 py-1 rounded-full text-xs font-medium ${getAreaColor(question.area).replace('bg-', 'bg-opacity-20 text-')}`}>
                   {getAreaLabel(question.area)}
                 </span>
@@ -148,7 +148,7 @@ const ExamManagementPage = () => {
               <div className="space-y-1">
                 {question.options.map((option, optIndex) => option && (
                   <div key={optIndex} className={`flex items-center gap-2 text-sm ${
-                    optIndex === question.correct ? 'text-green-400' : 'text-text-secondary'
+                    optIndex === question.correct ? 'text-green-400' : 'text-secondary'
                   }`}>
                     <span>{optIndex === question.correct ? '✓' : '○'}</span>
                     <span>{option}</span>
@@ -181,7 +181,7 @@ const ExamManagementPage = () => {
         </div>
 
         {filteredQuestions.length === 0 && (
-          <div className="text-center py-8 text-text-secondary">
+          <div className="text-center py-8 text-secondary">
             {questions.length === 0 ? 'No hay preguntas creadas' : 'No se encontraron preguntas con ese criterio'}
           </div>
         )}
@@ -191,7 +191,7 @@ const ExamManagementPage = () => {
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
             <div className="bg-surface rounded-xl p-6 w-full max-w-md">
               <h3 className="text-xl font-bold text-white mb-4">Importar Preguntas</h3>
-              <p className="text-text-secondary mb-4">
+              <p className="text-secondary mb-4">
                 Selecciona un archivo JSON con las preguntas a importar
               </p>
               <input

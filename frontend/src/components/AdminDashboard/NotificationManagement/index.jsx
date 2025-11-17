@@ -64,7 +64,7 @@ const NotificationManagement = () => {
           <form onSubmit={handleSubmit} className="space-y-4">
             {/* Tipo de Notificación */}
             <div>
-              <label className="block text-sm font-medium text-text-secondary mb-2">
+              <label className="block text-sm font-medium text-secondary mb-2">
                 Tipo de Notificación
               </label>
               <select
@@ -84,7 +84,7 @@ const NotificationManagement = () => {
 
             {/* Título */}
             <div>
-              <label className="block text-sm font-medium text-text-secondary mb-2">
+              <label className="block text-sm font-medium text-secondary mb-2">
                 Título
               </label>
               <input
@@ -98,7 +98,7 @@ const NotificationManagement = () => {
 
             {/* Mensaje */}
             <div>
-              <label className="block text-sm font-medium text-text-secondary mb-2">
+              <label className="block text-sm font-medium text-secondary mb-2">
                 Mensaje
               </label>
               <textarea
@@ -112,7 +112,7 @@ const NotificationManagement = () => {
 
             {/* Audiencia */}
             <div>
-              <label className="block text-sm font-medium text-text-secondary mb-2">
+              <label className="block text-sm font-medium text-secondary mb-2">
                 Audiencia
               </label>
               <select
@@ -128,7 +128,7 @@ const NotificationManagement = () => {
 
             {/* Acción al hacer click */}
             <div>
-              <label className="block text-sm font-medium text-text-secondary mb-2">
+              <label className="block text-sm font-medium text-secondary mb-2">
                 Acción al hacer click
               </label>
               <select
@@ -153,7 +153,7 @@ const NotificationManagement = () => {
                 onChange={(e) => updateField('persistent', e.target.checked)}
                 className="w-4 h-4 text-accent bg-background border-gray-600 rounded focus:ring-accent focus:ring-2"
               />
-              <label htmlFor="persistent" className="ml-2 text-sm text-text-secondary">
+              <label htmlFor="persistent" className="ml-2 text-sm text-secondary">
                 Notificación persistente
               </label>
             </div>
@@ -191,7 +191,7 @@ const NotificationManagement = () => {
                   <span className="text-2xl">{notif.icon}</span>
                   <div className="flex-1">
                     <h4 className="text-white font-medium">{notif.title}</h4>
-                    <p className="text-text-secondary text-sm mt-1">{notif.subtitle}</p>
+                    <p className="text-secondary text-sm mt-1">{notif.subtitle}</p>
                   </div>
                 </div>
               </div>

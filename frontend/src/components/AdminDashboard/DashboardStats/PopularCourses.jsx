@@ -11,7 +11,7 @@ const PopularCourses = ({ topCourses }) => {
               </div>
               <div className="flex-1">
                 <h4 className="text-white font-medium">{course.titulo || course.title}</h4>
-                <p className="text-text-secondary text-sm">
+                <p className="text-secondary text-sm">
                   {course.estudiantesInscritos || course.students || 0} estudiantes
                 </p>
               </div>
@@ -21,7 +21,7 @@ const PopularCourses = ({ topCourses }) => {
             </div>
           ))
         ) : (
-          <div className="text-text-secondary text-center py-8">
+          <div className="text-secondary text-center py-8">
             No hay datos de cursos disponibles
           </div>
         )}

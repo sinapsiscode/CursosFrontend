@@ -9,7 +9,7 @@ const VerificationHeader = () => {
         </svg>
       </div>
       <h1 className="text-3xl font-bold text-white mb-2">{CERTIFICATE_VERIFY_CONFIG.messages.verified}</h1>
-      <p className="text-text-secondary">{CERTIFICATE_VERIFY_CONFIG.messages.verifiedSubtitle}</p>
+      <p className="text-secondary">{CERTIFICATE_VERIFY_CONFIG.messages.verifiedSubtitle}</p>
     </div>
   )
 }

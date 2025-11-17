@@ -32,7 +32,7 @@ const RecentUsers = ({ recentUsers }) => {
                   }}>
                     {userName}
                   </div>
-                  <div className="text-text-secondary text-xs" style={{
+                  <div className="text-secondary text-xs" style={{
                     overflow: 'hidden',
                     textOverflow: 'ellipsis',
                     whiteSpace: 'nowrap'
@@ -42,7 +42,7 @@ const RecentUsers = ({ recentUsers }) => {
                 </div>
 
                 {/* Date */}
-                <div className="flex-shrink-0 text-text-secondary text-xs" style={{
+                <div className="flex-shrink-0 text-secondary text-xs" style={{
                   whiteSpace: 'nowrap',
                   marginLeft: 'auto'
                 }}>
@@ -56,7 +56,7 @@ const RecentUsers = ({ recentUsers }) => {
             )
           })
         ) : (
-          <div className="text-center text-text-secondary py-8">
+          <div className="text-center text-secondary py-8">
             <p>No hay usuarios registrados</p>
           </div>
         )}

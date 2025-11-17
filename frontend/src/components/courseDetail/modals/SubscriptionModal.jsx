@@ -11,7 +11,7 @@ const SubscriptionModal = ({ isOpen, onClose, navigate }) => {
     >
       <div className="text-center space-y-4">
         <div className="text-6xl mb-4">🔒</div>
-        <p className="text-text-secondary">
+        <p className="text-secondary">
           {COURSE_DETAIL_CONFIG.messages.premiumContent}
         </p>
         <div className="flex space-x-4 justify-center">

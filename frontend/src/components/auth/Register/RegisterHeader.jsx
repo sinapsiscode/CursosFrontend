@@ -4,7 +4,7 @@ import { authStyles } from '../../../styles/components'
 const RegisterHeader = ({ onClose }) => {
   return (
     <>
-      <button onClick={onClose} className="absolute top-4 right-4 text-text-secondary hover:text-white transition-colors">
+      <button onClick={onClose} className="absolute top-4 right-4 text-secondary hover:text-white transition-colors">
         <CloseIcon />
       </button>
 

@@ -59,7 +59,7 @@ const ExamConfigPage = () => {
             <div className="flex items-center justify-between">
               <div>
                 <label className="text-white font-medium">Aleatorizar Preguntas</label>
-                <p className="text-text-secondary text-sm">Las preguntas aparecen en orden aleatorio</p>
+                <p className="text-secondary text-sm">Las preguntas aparecen en orden aleatorio</p>
               </div>
               <input
                 type="checkbox"
@@ -72,7 +72,7 @@ const ExamConfigPage = () => {
             <div className="flex items-center justify-between">
               <div>
                 <label className="text-white font-medium">Mostrar Resultados</label>
-                <p className="text-text-secondary text-sm">Mostrar respuestas correctas al finalizar</p>
+                <p className="text-secondary text-sm">Mostrar respuestas correctas al finalizar</p>
               </div>
               <input
                 type="checkbox"
@@ -85,7 +85,7 @@ const ExamConfigPage = () => {
             <div className="flex items-center justify-between">
               <div>
                 <label className="text-white font-medium">Permitir Reintento</label>
-                <p className="text-text-secondary text-sm">Los estudiantes pueden repetir el examen</p>
+                <p className="text-secondary text-sm">Los estudiantes pueden repetir el examen</p>
               </div>
               <input
                 type="checkbox"

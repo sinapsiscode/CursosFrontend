@@ -183,24 +183,34 @@ export const useAdminStore = create((set, get) => ({
 
   // Analytics
   updateAnalytics: (analytics) => set({ analytics }),
-  
-  calculateAnalytics: () => {
+
+  calculateAnalytics: (timeRange = 'month') => {
     // Obtener usuarios desde el store (ya vienen del backend)
     const users = get().users || []
     const courses = get().courses || []
     const totalUsers = users.length
     const totalCourses = courses.length
-    
+
+    // Calcular días según el rango de tiempo
+    const TIME_RANGE_DAYS = {
+      week: 7,
+      month: 30,
+      semester: 180,
+      year: 365
+    }
+
+    const days = TIME_RANGE_DAYS[timeRange] || 30
+
     // Calcular horas totales de uso real de usuarios (en horas)
     const totalUsageTimeMs = users.reduce((sum, user) => {
       return sum + (user.totalUsageTime || 0)
     }, 0)
     const totalHours = Math.round((totalUsageTimeMs / (1000 * 60 * 60)) * 100) / 100
-    
+
     // Calculate completion rate based on user progress
     let totalProgress = 0
     let progressCount = 0
-    
+
     users.forEach(user => {
       if (user.progress) {
         Object.values(user.progress).forEach(progress => {
@@ -209,18 +219,19 @@ export const useAdminStore = create((set, get) => ({
         })
       }
     })
-    
+
     const completionRate = progressCount > 0 ? Math.round(totalProgress / progressCount) : 0
-    
+
     // Mock revenue calculation
     const revenueThisMonth = users.filter(user => user.subscription?.type !== 'free').length * 129
-    
-    // Mock new users this week
-    const oneWeekAgo = new Date()
-    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7)
-    const newUsersThisWeek = users.filter(user => 
-      user.createdAt && new Date(user.createdAt) > oneWeekAgo
-    ).length
+
+    // Nuevos usuarios según el rango de tiempo seleccionado
+    const dateLimit = new Date()
+    dateLimit.setDate(dateLimit.getDate() - days)
+    const newUsersInPeriod = users.filter(user => {
+      const userDate = new Date(user.fechaCreacion || user.createdAt)
+      return userDate > dateLimit
+    }).length
 
     set({
       analytics: {
@@ -229,7 +240,8 @@ export const useAdminStore = create((set, get) => ({
         totalHours,
         completionRate,
         revenueThisMonth,
-        newUsersThisWeek
+        newUsersThisWeek: newUsersInPeriod, // Ahora representa el período seleccionado
+        timeRange
       }
     })
   },
@@ -314,26 +326,20 @@ export const useAdminStore = create((set, get) => ({
 
   getTopCourses: (limit = 5) => {
     const courses = get().courses || []
-    console.log('📊 getTopCourses - Total cursos:', courses.length)
-    const sorted = courses
+    return courses
       .sort((a, b) => (b.estudiantesInscritos || 0) - (a.estudiantesInscritos || 0))
       .slice(0, limit)
-    console.log('📊 Top cursos:', sorted.map(c => ({ titulo: c.titulo, estudiantes: c.estudiantesInscritos })))
-    return sorted
   },
 
   getRecentUsers: (limit = 5) => {
     const users = get().users || []
-    console.log('👥 getRecentUsers - Total usuarios:', users.length)
-    const sorted = users
+    return users
       .sort((a, b) => {
         const dateA = new Date(b.fechaCreacion || b.createdAt || 0)
         const dateB = new Date(a.fechaCreacion || a.createdAt || 0)
         return dateA - dateB
       })
       .slice(0, limit)
-    console.log('👥 Usuarios recientes:', sorted.map(u => ({ nombre: u.nombre, fecha: u.fechaCreacion })))
-    return sorted
   },
 
   // Impersonation for testing

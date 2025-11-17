@@ -6,7 +6,7 @@ const CertificatesHeader = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">
         {CERTIFICATES_CONFIG.pageTitle}
       </h1>
-      <p className="text-text-secondary text-lg">
+      <p className="text-secondary text-lg">
         {CERTIFICATES_CONFIG.pageSubtitle}
       </p>
     </div>

@@ -207,7 +207,7 @@ const LoyaltyManagement = () => {
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-white mb-2">Programa de Fidelización</h1>
-        <p className="text-text-secondary">
+        <p className="text-secondary">
           Gestiona puntos, niveles y recompensas del programa de lealtad
         </p>
       </div>
@@ -218,7 +218,7 @@ const LoyaltyManagement = () => {
           <div className="text-3xl font-bold text-purple-400 mb-2">
             {totalPoints.toLocaleString()}
           </div>
-          <div className="text-text-secondary text-sm">
+          <div className="text-secondary text-sm">
             Puntos Totales
           </div>
         </div>
@@ -226,7 +226,7 @@ const LoyaltyManagement = () => {
           <div className="text-3xl font-bold text-green-400 mb-2">
             {totalCoursesCompleted}
           </div>
-          <div className="text-text-secondary text-sm">
+          <div className="text-secondary text-sm">
             Cursos Completados
           </div>
         </div>
@@ -234,7 +234,7 @@ const LoyaltyManagement = () => {
           <div className="text-3xl font-bold text-blue-400 mb-2">
             100
           </div>
-          <div className="text-text-secondary text-sm">
+          <div className="text-secondary text-sm">
             Puntos por Curso
           </div>
         </div>
@@ -242,7 +242,7 @@ const LoyaltyManagement = () => {
           <div className="text-3xl font-bold text-yellow-400 mb-2">
             {totalUsers}
           </div>
-          <div className="text-text-secondary text-sm">
+          <div className="text-secondary text-sm">
             Estudiantes Activos
           </div>
         </div>
@@ -250,7 +250,7 @@ const LoyaltyManagement = () => {
           <div className="text-3xl font-bold text-orange-400 mb-2">
             4
           </div>
-          <div className="text-text-secondary text-sm">
+          <div className="text-secondary text-sm">
             Niveles de Beneficios
           </div>
         </div>
@@ -264,7 +264,7 @@ const LoyaltyManagement = () => {
             className={`px-4 py-2 rounded-lg font-medium transition-colors ${
               activeTab === 'overview'
                 ? 'bg-accent text-background'
-                : 'text-text-secondary hover:text-white'
+                : 'text-secondary hover:text-white'
             }`}
           >
             Vista General
@@ -274,7 +274,7 @@ const LoyaltyManagement = () => {
             className={`px-4 py-2 rounded-lg font-medium transition-colors ${
               activeTab === 'users'
                 ? 'bg-accent text-background'
-                : 'text-text-secondary hover:text-white'
+                : 'text-secondary hover:text-white'
             }`}
           >
             Usuarios
@@ -284,7 +284,7 @@ const LoyaltyManagement = () => {
             className={`px-4 py-2 rounded-lg font-medium transition-colors ${
               activeTab === 'levels'
                 ? 'bg-accent text-background'
-                : 'text-text-secondary hover:text-white'
+                : 'text-secondary hover:text-white'
             }`}
           >
             Niveles
@@ -294,7 +294,7 @@ const LoyaltyManagement = () => {
             className={`px-4 py-2 rounded-lg font-medium transition-colors ${
               activeTab === 'actions'
                 ? 'bg-accent text-background'
-                : 'text-text-secondary hover:text-white'
+                : 'text-secondary hover:text-white'
             }`}
           >
             Acciones de Puntos
@@ -304,7 +304,7 @@ const LoyaltyManagement = () => {
             className={`px-4 py-2 rounded-lg font-medium transition-colors ${
               activeTab === 'courses'
                 ? 'bg-accent text-background'
-                : 'text-text-secondary hover:text-white'
+                : 'text-secondary hover:text-white'
             }`}
           >
             Puntos por Curso
@@ -314,7 +314,7 @@ const LoyaltyManagement = () => {
             className={`px-4 py-2 rounded-lg font-medium transition-colors ${
               activeTab === 'rewards'
                 ? 'bg-accent text-background'
-                : 'text-text-secondary hover:text-white'
+                : 'text-secondary hover:text-white'
             }`}
           >
             Recompensas
@@ -412,12 +412,12 @@ const LoyaltyManagement = () => {
               <table className="w-full">
                 <thead>
                   <tr className="border-b border-gray-700">
-                    <th className="text-left py-3 px-4 font-medium text-text-secondary">Usuario</th>
-                    <th className="text-left py-3 px-4 font-medium text-text-secondary">Nivel</th>
-                    <th className="text-center py-3 px-4 font-medium text-text-secondary">Cursos</th>
-                    <th className="text-center py-3 px-4 font-medium text-text-secondary">Puntos</th>
-                    <th className="text-center py-3 px-4 font-medium text-text-secondary">Total Ganado</th>
-                    <th className="text-center py-3 px-4 font-medium text-text-secondary">Acciones</th>
+                    <th className="text-left py-3 px-4 font-medium text-secondary">Usuario</th>
+                    <th className="text-left py-3 px-4 font-medium text-secondary">Nivel</th>
+                    <th className="text-center py-3 px-4 font-medium text-secondary">Cursos</th>
+                    <th className="text-center py-3 px-4 font-medium text-secondary">Puntos</th>
+                    <th className="text-center py-3 px-4 font-medium text-secondary">Total Ganado</th>
+                    <th className="text-center py-3 px-4 font-medium text-secondary">Acciones</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -429,7 +429,7 @@ const LoyaltyManagement = () => {
                         <td className="py-4 px-4">
                           <div>
                             <p className="text-white font-medium">{user.name}</p>
-                            <p className="text-text-secondary text-sm">{user.email}</p>
+                            <p className="text-secondary text-sm">{user.email}</p>
                           </div>
                         </td>
                         <td className="py-4 px-4">

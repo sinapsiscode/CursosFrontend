@@ -9,7 +9,7 @@ const PreviewHeader = ({ course, onClose }) => {
           <h2 className="text-2xl font-bold text-white mb-2">
             {course?.title || 'Sin título'}
           </h2>
-          <div className="flex items-center space-x-4 text-sm text-text-secondary">
+          <div className="flex items-center space-x-4 text-sm text-secondary">
             <span>Por {course?.instructor || 'Sin instructor'}</span>
             <span>•</span>
             <span>{formatDuration(course?.duration)}</span>

@@ -29,7 +29,7 @@ const ExportsPage = () => {
   return (
     <PageLayout title="Exportar Datos">
       <div className="space-y-6">
-        <p className="text-text-secondary">
+        <p className="text-secondary">
           Exporta datos de la plataforma en formato Excel
         </p>
 
@@ -41,7 +41,7 @@ const ExportsPage = () => {
                   <span className="text-2xl">{option.icon}</span>
                   <div>
                     <h3 className="font-medium text-white">{option.name}</h3>
-                    <p className="text-sm text-text-secondary">{option.description}</p>
+                    <p className="text-sm text-secondary">{option.description}</p>
                   </div>
                 </div>
               </div>
@@ -59,7 +59,7 @@ const ExportsPage = () => {
 
         <div className="bg-surface p-4 rounded-lg">
           <h3 className="font-medium text-white mb-2">💡 Información</h3>
-          <ul className="text-sm text-text-secondary space-y-1">
+          <ul className="text-sm text-secondary space-y-1">
             <li>• Los archivos se descargan automáticamente</li>
             <li>• Formato: Excel (.xlsx)</li>
             <li>• Datos actualizados en tiempo real</li>

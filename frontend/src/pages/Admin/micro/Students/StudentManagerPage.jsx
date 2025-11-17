@@ -66,20 +66,20 @@ const StudentManagerPage = () => {
         {/* Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="bg-surface p-4 rounded-lg">
-            <p className="text-text-secondary text-sm">Total</p>
+            <p className="text-secondary text-sm">Total</p>
             <p className="text-2xl font-bold text-white">{stats.total}</p>
           </div>
           <div className="bg-surface p-4 rounded-lg">
-            <p className="text-text-secondary text-sm">Activos</p>
+            <p className="text-secondary text-sm">Activos</p>
             <p className="text-2xl font-bold text-green-400">{stats.active}</p>
           </div>
           <div className="bg-surface p-4 rounded-lg">
-            <p className="text-text-secondary text-sm">Suspendidos</p>
+            <p className="text-secondary text-sm">Suspendidos</p>
             <p className="text-2xl font-bold text-red-400">{stats.suspended}</p>
           </div>
           {stats.byArea.map(area => (
             <div key={area.value} className="bg-surface p-4 rounded-lg">
-              <p className="text-text-secondary text-sm">{area.label}</p>
+              <p className="text-secondary text-sm">{area.label}</p>
               <p className={`text-2xl font-bold ${area.value === 'metalurgia' ? 'text-blue-400' : area.value === 'mineria' ? 'text-green-400' : 'text-orange-400'}`}>
                 {area.count}
               </p>
@@ -93,11 +93,11 @@ const StudentManagerPage = () => {
             <table className="w-full">
               <thead className="bg-background">
                 <tr>
-                  <th className="text-left p-4 text-text-secondary font-medium">Estudiante</th>
-                  <th className="text-left p-4 text-text-secondary font-medium">Área</th>
-                  <th className="text-left p-4 text-text-secondary font-medium">Contacto</th>
-                  <th className="text-left p-4 text-text-secondary font-medium">Estado</th>
-                  <th className="text-left p-4 text-text-secondary font-medium">Acciones</th>
+                  <th className="text-left p-4 text-secondary font-medium">Estudiante</th>
+                  <th className="text-left p-4 text-secondary font-medium">Área</th>
+                  <th className="text-left p-4 text-secondary font-medium">Contacto</th>
+                  <th className="text-left p-4 text-secondary font-medium">Estado</th>
+                  <th className="text-left p-4 text-secondary font-medium">Acciones</th>
                 </tr>
               </thead>
               <tbody>
@@ -106,7 +106,7 @@ const StudentManagerPage = () => {
                     <td className="p-4">
                       <div>
                         <p className="text-white font-medium">{student.name}</p>
-                        <p className="text-text-secondary text-sm">{student.email}</p>
+                        <p className="text-secondary text-sm">{student.email}</p>
                       </div>
                     </td>
                     <td className="p-4">
@@ -119,7 +119,7 @@ const StudentManagerPage = () => {
                     <td className="p-4">
                       <div className="text-sm">
                         {student.phone && <p className="text-white">📱 {student.phone}</p>}
-                        {student.dni && <p className="text-text-secondary">DNI: {student.dni}</p>}
+                        {student.dni && <p className="text-secondary">DNI: {student.dni}</p>}
                       </div>
                     </td>
                     <td className="p-4">
@@ -159,7 +159,7 @@ const StudentManagerPage = () => {
         </div>
 
         {filteredStudents.length === 0 && (
-          <div className="text-center py-8 text-text-secondary">
+          <div className="text-center py-8 text-secondary">
             {students.length === 0 ? 'No hay estudiantes registrados' : 'No se encontraron estudiantes con ese criterio'}
           </div>
         )}

@@ -17,7 +17,7 @@ const ReviewModerationPage = () => {
   return (
     <PageLayout title="Moderación de Reseñas">
       <div className="space-y-6">
-        <p className="text-text-secondary">
+        <p className="text-secondary">
           Gestión y control de reseñas publicadas por estudiantes
         </p>
 
@@ -29,15 +29,15 @@ const ReviewModerationPage = () => {
             <h3 className="font-medium text-white mb-2">📊 Estadísticas</h3>
             <div className="space-y-2 text-sm">
               <div className="flex justify-between">
-                <span className="text-text-secondary">Reseñas pendientes:</span>
+                <span className="text-secondary">Reseñas pendientes:</span>
                 <span className="text-yellow-400">12</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-text-secondary">Aprobadas hoy:</span>
+                <span className="text-secondary">Aprobadas hoy:</span>
                 <span className="text-green-400">45</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-text-secondary">Rechazadas:</span>
+                <span className="text-secondary">Rechazadas:</span>
                 <span className="text-red-400">3</span>
               </div>
             </div>

@@ -155,7 +155,7 @@ const ReviewModeration = () => {
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-white mb-2">Gestión de Reseñas</h1>
-        <p className="text-text-secondary">
+        <p className="text-secondary">
           Controla qué reseñas se muestran públicamente en la plataforma
         </p>
       </div>
@@ -166,7 +166,7 @@ const ReviewModeration = () => {
           <div className="text-3xl font-bold text-yellow-400 mb-2">
             {pendingReviews.length}
           </div>
-          <div className="text-text-secondary text-sm">
+          <div className="text-secondary text-sm">
             Reseñas Pendientes
           </div>
         </div>
@@ -174,7 +174,7 @@ const ReviewModeration = () => {
           <div className="text-3xl font-bold text-green-400 mb-2">
             {pendingReviews.filter(r => r.rating >= 4).length}
           </div>
-          <div className="text-text-secondary text-sm">
+          <div className="text-secondary text-sm">
             Calificaciones Positivas
           </div>
         </div>
@@ -182,7 +182,7 @@ const ReviewModeration = () => {
           <div className="text-3xl font-bold text-red-400 mb-2">
             {pendingReviews.filter(r => r.rating <= 2).length}
           </div>
-          <div className="text-text-secondary text-sm">
+          <div className="text-secondary text-sm">
             Calificaciones Negativas
           </div>
         </div>
@@ -190,7 +190,7 @@ const ReviewModeration = () => {
           <div className="text-3xl font-bold text-blue-400 mb-2">
             {coursesWithReviews.length}
           </div>
-          <div className="text-text-secondary text-sm">
+          <div className="text-secondary text-sm">
             Cursos con Reseñas
           </div>
         </div>
@@ -244,7 +244,7 @@ const ReviewModeration = () => {
           <h3 className="text-xl font-semibold text-white mb-2">
             No hay reseñas pendientes
           </h3>
-          <p className="text-text-secondary">
+          <p className="text-secondary">
             Todas las reseñas han sido moderadas
           </p>
         </div>
@@ -272,7 +272,7 @@ const ReviewModeration = () => {
                         <div className="flex items-center space-x-1">
                           {renderStars(review.rating)}
                         </div>
-                        <span className="text-text-secondary text-sm">
+                        <span className="text-secondary text-sm">
                           {new Date(review.createdAt).toLocaleDateString('es-ES')}
                         </span>
                       </div>
@@ -286,7 +286,7 @@ const ReviewModeration = () => {
                       
                       {/* Review Comment */}
                       <div className="bg-gray-800 rounded-lg p-4">
-                        <p className="text-text-secondary leading-relaxed">
+                        <p className="text-secondary leading-relaxed">
                           {review.comment}
                         </p>
                       </div>

@@ -1,7 +1,7 @@
 const RegisterFooter = ({ onSwitchToLogin }) => {
   return (
     <div className="mt-6 text-center">
-      <p className="text-text-secondary">
+      <p className="text-secondary">
         ¿Ya tienes cuenta?{' '}
         <button
           onClick={onSwitchToLogin}

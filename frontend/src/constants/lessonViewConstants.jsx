@@ -62,15 +62,15 @@ export const LESSON_VIEW_STYLES = {
     content: 'text-center',
     icon: 'text-6xl mb-4',
     title: 'text-2xl font-bold text-white mb-2',
-    subtitle: 'text-text-secondary mb-4',
+    subtitle: 'text-secondary mb-4',
     button: 'bg-accent text-background px-6 py-3 rounded-lg font-semibold hover:bg-opacity-90'
   },
   header: {
     container: 'mb-6',
-    backButton: 'flex items-center space-x-2 text-text-secondary hover:text-white transition-colors mb-4',
+    backButton: 'flex items-center space-x-2 text-secondary hover:text-white transition-colors mb-4',
     backIcon: 'w-5 h-5',
     title: 'text-2xl font-bold text-white mb-2',
-    info: 'text-text-secondary'
+    info: 'text-secondary'
   },
   layout: {
     grid: 'grid lg:grid-cols-3 gap-8',
@@ -88,7 +88,7 @@ export const LESSON_VIEW_STYLES = {
   },
   description: {
     container: 'prose prose-invert max-w-none',
-    text: 'text-text-secondary'
+    text: 'text-secondary'
   },
   materials: {
     list: 'space-y-3',
@@ -102,7 +102,7 @@ export const LESSON_VIEW_STYLES = {
     download: 'text-accent group-hover:text-accent-light flex items-center space-x-2',
     downloadText: 'text-sm',
     downloadIcon: 'w-5 h-5',
-    empty: 'text-text-secondary text-center py-8'
+    empty: 'text-secondary text-center py-8'
   },
   notes: {
     textarea: 'w-full h-40 px-4 py-3 bg-surface border border-gray-600 rounded-lg text-white resize-none focus:outline-none focus:ring-2 focus:ring-accent',

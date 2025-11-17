@@ -42,7 +42,7 @@ const AreaSelection = () => {
 
         {/* Nota informativa */}
         <div className="text-center mt-8">
-          <p className="text-text-secondary text-sm">
+          <p className="text-secondary text-sm">
             {APP_CONFIG.infoNote}
           </p>
         </div>

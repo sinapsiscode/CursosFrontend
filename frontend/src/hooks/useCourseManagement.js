@@ -23,6 +23,7 @@ export const useCourseManagement = () => {
   const [modalState, setModalState] = useState(modalStateRef.current)
   const [previewCourse, setPreviewCourse] = useState(null)
   const [showPreviewModal, setShowPreviewModal] = useState(false)
+  const [deleteConfirmation, setDeleteConfirmation] = useState({ show: false, course: null })
 
   // Funciones de utilidad para colores
   const getAreaColor = useCallback((areaKey) => {
@@ -91,16 +92,24 @@ export const useCourseManagement = () => {
     setModalState(newState)
   }, [])
 
-  const handleDeleteCourse = useCallback(async (course) => {
-    if (window.confirm(COURSE_MANAGEMENT_CONFIRMATIONS.delete(course.title))) {
-      try {
-        await apiService.deleteCourse(course.id)
-        useAdminStore.getState().deleteCourse(course.id)
-        console.log(COURSE_MANAGEMENT_LOG_MESSAGES.COURSE_DELETED)
-      } catch (error) {
-        console.error(COURSE_MANAGEMENT_LOG_MESSAGES.COURSE_DELETE_ERROR, error)
-      }
+  const handleDeleteCourse = useCallback((course) => {
+    setDeleteConfirmation({ show: true, course })
+  }, [])
+
+  const confirmDelete = useCallback(async (course) => {
+    try {
+      await apiService.deleteCourse(course.id)
+      useAdminStore.getState().deleteCourse(course.id)
+      setDeleteConfirmation({ show: false, course: null })
+      console.log(COURSE_MANAGEMENT_LOG_MESSAGES.COURSE_DELETED)
+    } catch (error) {
+      console.error(COURSE_MANAGEMENT_LOG_MESSAGES.COURSE_DELETE_ERROR, error)
+      setDeleteConfirmation({ show: false, course: null })
     }
+  }, [])
+
+  const cancelDelete = useCallback(() => {
+    setDeleteConfirmation({ show: false, course: null })
   }, [])
 
   const handlePreviewCourse = useCallback((course) => {
@@ -133,6 +142,7 @@ export const useCourseManagement = () => {
     modalState,
     previewCourse,
     showPreviewModal,
+    deleteConfirmation,
     courses,
     areas,
     levels,
@@ -145,6 +155,8 @@ export const useCourseManagement = () => {
     handleSaveCourse,
     handleEditCourse,
     handleDeleteCourse,
+    confirmDelete,
+    cancelDelete,
     handlePreviewCourse,
     handleClosePreview,
 

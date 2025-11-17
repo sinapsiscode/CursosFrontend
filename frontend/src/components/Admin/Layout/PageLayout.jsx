@@ -5,7 +5,7 @@ const PageLayout = ({ title, action, children, loading = false }) => {
     return (
       <div className="flex items-center justify-center h-64">
         <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-accent"></div>
-        <span className="ml-2 text-text-secondary">Cargando...</span>
+        <span className="ml-2 text-secondary">Cargando...</span>
       </div>
     )
   }
@@ -35,7 +35,7 @@ const PageLayout = ({ title, action, children, loading = false }) => {
 PageLayout.Loading = () => (
   <div className="flex items-center justify-center h-64">
     <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-accent"></div>
-    <span className="ml-2 text-text-secondary">Cargando...</span>
+    <span className="ml-2 text-secondary">Cargando...</span>
   </div>
 )
 

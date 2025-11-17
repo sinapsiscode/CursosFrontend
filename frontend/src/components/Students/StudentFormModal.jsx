@@ -31,7 +31,7 @@ const StudentFormModal = ({
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-text-secondary text-sm font-medium mb-2">
+              <label className="block text-secondary text-sm font-medium mb-2">
                 Nombre Completo *
               </label>
               <input
@@ -51,7 +51,7 @@ const StudentFormModal = ({
             </div>
 
             <div>
-              <label className="block text-text-secondary text-sm font-medium mb-2">
+              <label className="block text-secondary text-sm font-medium mb-2">
                 Email *
               </label>
               <input
@@ -71,7 +71,7 @@ const StudentFormModal = ({
             </div>
 
             <div>
-              <label className="block text-text-secondary text-sm font-medium mb-2">
+              <label className="block text-secondary text-sm font-medium mb-2">
                 Teléfono <span className="text-xs text-gray-400">(9 dígitos, inicia con 9)</span>
               </label>
               <input
@@ -92,7 +92,7 @@ const StudentFormModal = ({
             </div>
 
             <div>
-              <label className="block text-text-secondary text-sm font-medium mb-2">
+              <label className="block text-secondary text-sm font-medium mb-2">
                 Área de Estudio *
               </label>
               <select
@@ -118,7 +118,7 @@ const StudentFormModal = ({
             </div>
 
             <div>
-              <label className="block text-text-secondary text-sm font-medium mb-2">
+              <label className="block text-secondary text-sm font-medium mb-2">
                 DNI <span className="text-xs text-gray-400">(8 dígitos)</span>
               </label>
               <input
@@ -139,7 +139,7 @@ const StudentFormModal = ({
             </div>
 
             <div>
-              <label className="block text-text-secondary text-sm font-medium mb-2">
+              <label className="block text-secondary text-sm font-medium mb-2">
                 Universidad
               </label>
               <input
@@ -151,7 +151,7 @@ const StudentFormModal = ({
             </div>
 
             <div className="md:col-span-2">
-              <label className="block text-text-secondary text-sm font-medium mb-2">
+              <label className="block text-secondary text-sm font-medium mb-2">
                 Carrera
               </label>
               <input

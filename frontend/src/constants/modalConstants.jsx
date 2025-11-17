@@ -26,7 +26,7 @@ export const CONFIRM_MODAL_VARIANTS = {
 
 export const CONFIRM_MODAL_STYLES = {
   container: 'space-y-3 sm:space-y-4',
-  message: 'text-text-secondary text-sm sm:text-base',
+  message: 'text-secondary text-sm sm:text-base',
   buttonContainer: 'flex flex-col-reverse sm:flex-row gap-2 sm:gap-3 sm:justify-end',
   cancelButton: 'px-3 sm:px-4 py-2 border border-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors text-sm sm:text-base w-full sm:w-auto',
   confirmButton: 'px-3 sm:px-4 py-2 text-white rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-surface text-sm sm:text-base w-full sm:w-auto'

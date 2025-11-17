@@ -14,7 +14,7 @@ const AreaSelectionHeader = () => {
         {APP_CONFIG.welcomeTitle}
       </h1>
 
-      <p className="text-xl text-text-secondary max-w-2xl mx-auto">
+      <p className="text-xl text-secondary max-w-2xl mx-auto">
         {APP_CONFIG.welcomeSubtitle}
       </p>
     </div>

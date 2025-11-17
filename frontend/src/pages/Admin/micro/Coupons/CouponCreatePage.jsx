@@ -184,7 +184,7 @@ const CouponCreatePage = () => {
                   max={formData.discountType === 'percentage' ? '100' : undefined}
                   required
                 />
-                <span className="absolute right-3 top-3 text-text-secondary">
+                <span className="absolute right-3 top-3 text-secondary">
                   {formData.discountType === 'percentage' ? '%' : '$'}
                 </span>
               </div>

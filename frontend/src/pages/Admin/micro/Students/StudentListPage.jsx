@@ -24,7 +24,7 @@ const StudentListPage = () => {
       }}
     >
       <div className="space-y-6">
-        <p className="text-text-secondary">
+        <p className="text-secondary">
           Gestión y registro de estudiantes de la plataforma
         </p>
 

@@ -17,7 +17,7 @@ const PhotosPage = () => {
   return (
     <PageLayout title="Gestión de Fotos">
       <div className="space-y-6">
-        <p className="text-text-secondary">
+        <p className="text-secondary">
           Administración de imágenes y recursos visuales de la plataforma
         </p>
 

@@ -4,7 +4,7 @@ const VerificationInfo = ({ navigate }) => {
   return (
     <div className="bg-surface rounded-xl p-6 text-center">
       <h3 className="text-lg font-bold text-white mb-2">{CERTIFICATE_VERIFY_CONFIG.labels.verificationInfo}</h3>
-      <p className="text-text-secondary mb-4">
+      <p className="text-secondary mb-4">
         {CERTIFICATE_VERIFY_CONFIG.messages.verificationInfo}
       </p>
       <div className="flex justify-center space-x-4">

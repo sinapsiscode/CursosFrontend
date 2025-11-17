@@ -33,7 +33,7 @@ const QuestionFormModal = ({
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Pregunta */}
           <div>
-            <label className="block text-text-secondary text-sm font-medium mb-2">
+            <label className="block text-secondary text-sm font-medium mb-2">
               Pregunta *
             </label>
             <textarea
@@ -55,7 +55,7 @@ const QuestionFormModal = ({
 
           {/* Imagen de la pregunta */}
           <div>
-            <label className="block text-text-secondary text-sm font-medium mb-2">
+            <label className="block text-secondary text-sm font-medium mb-2">
               URL de Imagen de la Pregunta (opcional)
             </label>
             <input
@@ -77,7 +77,7 @@ const QuestionFormModal = ({
 
           {/* Área */}
           <div>
-            <label className="block text-text-secondary text-sm font-medium mb-2">
+            <label className="block text-secondary text-sm font-medium mb-2">
               Área *
             </label>
             <select
@@ -103,7 +103,7 @@ const QuestionFormModal = ({
 
           {/* Opciones */}
           <div>
-            <label className="block text-text-secondary text-sm font-medium mb-2">
+            <label className="block text-secondary text-sm font-medium mb-2">
               Opciones de Respuesta *
             </label>
             <p className="text-xs text-gray-400 mb-4">

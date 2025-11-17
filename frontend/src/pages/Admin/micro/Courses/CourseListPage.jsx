@@ -20,7 +20,7 @@ const CourseListPage = () => {
       title="Gestión de Cursos"
     >
       <div className="space-y-6">
-        <p className="text-text-secondary">
+        <p className="text-secondary">
           Gestión y administración de cursos de la plataforma
         </p>
 

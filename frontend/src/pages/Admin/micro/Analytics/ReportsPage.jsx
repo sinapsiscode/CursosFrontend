@@ -125,7 +125,7 @@ const ReportsPage = () => {
                 <h3 className="mb-2 text-xl font-medium text-white">
                   Horarios de Mayor Actividad
                 </h3>
-                <p className="text-text-secondary">
+                <p className="text-secondary">
                   Distribución de estudiantes activos por hora del día
                 </p>
               </div>
@@ -159,7 +159,7 @@ const ReportsPage = () => {
                           </div>
                         </div>
                         {index % 3 === 0 && (
-                          <span className="text-xs text-text-secondary">
+                          <span className="text-xs text-secondary">
                             {data.hour}
                           </span>
                         )}
@@ -173,35 +173,35 @@ const ReportsPage = () => {
               <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
                 {/* Hora Pico */}
                 <div className="p-4 rounded-lg bg-background">
-                  <div className="mb-1 text-sm text-text-secondary">Hora Pico</div>
+                  <div className="mb-1 text-sm text-secondary">Hora Pico</div>
                   <div className="mb-1 text-2xl font-bold text-accent">
                     {reportData?.metrics?.peakHour?.label || 'N/A'}
                   </div>
-                  <div className="text-sm text-text-secondary">
+                  <div className="text-sm text-secondary">
                     {reportData?.metrics?.peakHour?.value || 0} {reportData?.metrics?.peakHour?.unit || ''}
                   </div>
                 </div>
 
                 {/* Promedio por Hora */}
                 <div className="p-4 rounded-lg bg-background">
-                  <div className="mb-1 text-sm text-text-secondary">
+                  <div className="mb-1 text-sm text-secondary">
                     {reportData.metrics.avgPerHour.label}
                   </div>
                   <div className="mb-1 text-2xl font-bold text-accent">
                     {reportData.metrics.avgPerHour.value}
                   </div>
-                  <div className="text-sm text-text-secondary">
+                  <div className="text-sm text-secondary">
                     {reportData.metrics.avgPerHour.unit}
                   </div>
                 </div>
 
                 {/* Horario Preferido */}
                 <div className="p-4 rounded-lg bg-background">
-                  <div className="mb-1 text-sm text-text-secondary">Horario Preferido</div>
+                  <div className="mb-1 text-sm text-secondary">Horario Preferido</div>
                   <div className="mb-1 text-2xl font-bold text-accent">
                     {reportData.metrics.preferredTime.value}
                   </div>
-                  <div className="text-sm text-text-secondary">
+                  <div className="text-sm text-secondary">
                     {reportData.metrics.preferredTime.percentage}% del tráfico
                   </div>
                 </div>
@@ -216,7 +216,7 @@ const ReportsPage = () => {
                 <h3 className="mb-2 text-xl font-medium text-white">
                   Top 10 Cursos Más Populares
                 </h3>
-                <p className="text-text-secondary">
+                <p className="text-secondary">
                   Ranking basado en vistas, inscripciones y tasa de completado
                 </p>
               </div>
@@ -227,10 +227,10 @@ const ReportsPage = () => {
                   <table className="w-full">
                     <thead>
                       <tr className="border-b border-gray-700">
-                        <th className="p-4 text-sm font-medium text-left text-text-secondary">#</th>
-                        <th className="p-4 text-sm font-medium text-left text-text-secondary">Curso</th>
-                        <th className="p-4 text-sm font-medium text-left text-text-secondary">Vistas</th>
-                        <th className="p-4 text-sm font-medium text-left text-text-secondary">Popularidad</th>
+                        <th className="p-4 text-sm font-medium text-left text-secondary">#</th>
+                        <th className="p-4 text-sm font-medium text-left text-secondary">Curso</th>
+                        <th className="p-4 text-sm font-medium text-left text-secondary">Vistas</th>
+                        <th className="p-4 text-sm font-medium text-left text-secondary">Popularidad</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -251,7 +251,7 @@ const ReportsPage = () => {
                           <tr key={course.rank} className="transition-colors border-b border-gray-700/50 hover:bg-surface/30">
                             <td className="p-4 font-medium text-white">{course.rank}</td>
                             <td className="p-4 font-medium text-white">{course.name}</td>
-                            <td className="p-4 text-text-secondary">{course.views}</td>
+                            <td className="p-4 text-secondary">{course.views}</td>
                             <td className="p-4">
                               <div className="w-full h-2 overflow-hidden rounded-full bg-surface">
                                 <div
@@ -277,7 +277,7 @@ const ReportsPage = () => {
                 <h3 className="mb-2 text-xl font-medium text-white">
                   Tiempo de Permanencia en la Plataforma
                 </h3>
-                <p className="text-text-secondary">
+                <p className="text-secondary">
                   Distribución del tiempo que los estudiantes pasan en la plataforma por sesión
                 </p>
               </div>
@@ -291,7 +291,7 @@ const ReportsPage = () => {
                       <div key={index} className="space-y-1">
                         <div className="flex items-center justify-between text-sm">
                           <span className="font-medium text-white">{item.range}</span>
-                          <span className="text-text-secondary">
+                          <span className="text-secondary">
                             {item.students} estudiantes ({item.percentage}%)
                           </span>
                         </div>
@@ -313,7 +313,7 @@ const ReportsPage = () => {
                   <div className="space-y-6">
                     {/* Tiempo Promedio por Sesión */}
                     <div>
-                      <div className="mb-1 text-sm text-text-secondary">
+                      <div className="mb-1 text-sm text-secondary">
                         Tiempo Promedio por Sesión
                       </div>
                       <div className="text-3xl font-bold text-accent">
@@ -323,7 +323,7 @@ const ReportsPage = () => {
 
                     {/* Estudiantes Activos Hoy */}
                     <div>
-                      <div className="mb-1 text-sm text-text-secondary">
+                      <div className="mb-1 text-sm text-secondary">
                         Estudiantes Activos Hoy
                       </div>
                       <div className="text-3xl font-bold text-white">
@@ -333,7 +333,7 @@ const ReportsPage = () => {
 
                     {/* Sesiones Largas */}
                     <div>
-                      <div className="mb-1 text-sm text-text-secondary">
+                      <div className="mb-1 text-sm text-secondary">
                         Sesiones Largas (+2h)
                       </div>
                       <div className="text-3xl font-bold text-accent">

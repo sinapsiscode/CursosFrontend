@@ -16,12 +16,12 @@ const CourseAbout = ({ course, isAuthenticated, navigate }) => {
     <div>
       <h3 className="text-xl font-bold text-white mb-6">{COURSE_DETAIL_CONFIG.labels.aboutCourse}</h3>
       <div className="prose prose-invert max-w-none">
-        <p className="text-text-secondary text-lg leading-relaxed mb-6">
+        <p className="text-secondary text-lg leading-relaxed mb-6">
           {course.description}
         </p>
 
         <h4 className="text-lg font-semibold text-white mb-4">{COURSE_DETAIL_CONFIG.labels.whatYouWillLearn}</h4>
-        <ul className="text-text-secondary space-y-2 mb-6">
+        <ul className="text-secondary space-y-2 mb-6">
           {COURSE_DETAIL_CONFIG.learningPoints.map((point, index) => (
             <li key={index}>• {point} {index === 0 ? course.area : ''}</li>
           ))}
@@ -36,7 +36,7 @@ const CourseAbout = ({ course, isAuthenticated, navigate }) => {
           </div>
           <div>
             <h5 className="text-white font-medium">{course.instructor}</h5>
-            <p className="text-text-secondary">Especialista en {course.area}</p>
+            <p className="text-secondary">Especialista en {course.area}</p>
           </div>
         </div>
 
@@ -87,7 +87,7 @@ const CourseAbout = ({ course, isAuthenticated, navigate }) => {
                 </svg>
               </div>
               <h5 className="text-white font-medium mb-2">{COURSE_DETAIL_CONFIG.labels.availableMaterials}</h5>
-              <p className="text-text-secondary text-sm mb-4">
+              <p className="text-secondary text-sm mb-4">
                 Este curso incluye {course.materials.length} {course.materials.length === 1 ? 'material adicional' : 'materiales adicionales'} que podrás descargar una vez que inicies sesión.
               </p>
               <button

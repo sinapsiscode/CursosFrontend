@@ -20,7 +20,7 @@ const ThankYouModal = ({ isOpen, onClose }) => {
           {COURSE_DETAIL_CONFIG.messages.thankYou}
         </h3>
 
-        <p className="text-text-secondary text-lg mb-6 leading-relaxed">
+        <p className="text-secondary text-lg mb-6 leading-relaxed">
           {COURSE_DETAIL_CONFIG.messages.reviewHelps}
         </p>
 

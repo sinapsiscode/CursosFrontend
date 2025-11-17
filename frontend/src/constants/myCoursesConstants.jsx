@@ -73,13 +73,13 @@ export const MY_COURSES_STYLES = {
   header: {
     container: 'mb-8',
     title: 'text-3xl md:text-4xl font-bold text-white mb-2',
-    subtitle: 'text-text-secondary text-lg'
+    subtitle: 'text-secondary text-lg'
   },
   stats: {
     grid: 'grid md:grid-cols-4 gap-6 mb-8',
     card: 'bg-surface rounded-xl p-6 text-center',
     number: 'text-2xl font-bold mb-1',
-    label: 'text-text-secondary text-sm',
+    label: 'text-secondary text-sm',
     totalColor: 'text-white',
     completedColor: 'text-green-500',
     inProgressColor: 'text-blue-500',
@@ -109,17 +109,17 @@ export const MY_COURSES_STYLES = {
     header: 'mb-4',
     headerTop: 'flex items-center justify-between mb-2',
     levelBadge: 'text-xs font-medium text-accent bg-accent bg-opacity-20 px-2 py-1 rounded',
-    duration: 'text-xs text-text-secondary',
+    duration: 'text-xs text-secondary',
     title: 'text-lg font-bold text-white mb-2 line-clamp-2',
-    description: 'text-text-secondary text-sm mb-3 line-clamp-2',
-    instructor: 'text-text-secondary text-xs',
+    description: 'text-secondary text-sm mb-3 line-clamp-2',
+    instructor: 'text-secondary text-xs',
     progressSection: 'mb-4',
     progressHeader: 'flex items-center justify-between mb-2',
     progressText: 'text-sm font-medium text-white',
-    progressPercentage: 'text-sm text-text-secondary',
+    progressPercentage: 'text-sm text-secondary',
     progressBar: 'w-full bg-gray-700 rounded-full h-2',
     progressFill: 'h-2 rounded-full transition-all duration-300',
-    timeSpent: 'text-xs text-text-secondary mt-2',
+    timeSpent: 'text-xs text-secondary mt-2',
     actions: 'flex space-x-2',
     continueButton: 'flex-1 bg-accent text-background py-2 px-4 rounded-lg font-medium hover:bg-opacity-90 transition-colors',
     certificateButton: 'bg-green-600 text-white py-2 px-4 rounded-lg font-medium hover:bg-green-700 transition-colors',
@@ -127,9 +127,9 @@ export const MY_COURSES_STYLES = {
   },
   empty: {
     container: 'text-center py-16',
-    icon: 'w-24 h-24 mx-auto text-text-secondary mb-6',
+    icon: 'w-24 h-24 mx-auto text-secondary mb-6',
     title: 'text-xl font-bold text-white mb-2',
-    subtitle: 'text-text-secondary mb-6',
+    subtitle: 'text-secondary mb-6',
     button: 'bg-accent text-background px-6 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-colors'
   }
 }

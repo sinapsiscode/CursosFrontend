@@ -587,7 +587,7 @@ const ExamListPage = () => {
                               {question.options.map((option, optIndex) => {
                                 const optionText = typeof option === 'string' ? option : option.text
                                 return (
-                                  <p key={optIndex} className="text-text-secondary">
+                                  <p key={optIndex} className="text-secondary">
                                     {String.fromCharCode(65 + optIndex)}. {optionText || '(vacío)'}
                                   </p>
                                 )
@@ -685,20 +685,20 @@ const ExamListPage = () => {
                   </div>
 
                   {/* Descripción */}
-                  <p className="text-text-secondary text-sm mb-4">{exam.description}</p>
+                  <p className="text-secondary text-sm mb-4">{exam.description}</p>
 
                   {/* Información del examen */}
                   <div className="flex items-center gap-4 text-sm">
-                    <span className="text-text-secondary flex items-center gap-1">
+                    <span className="text-secondary flex items-center gap-1">
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                       {exam.duration} minutos
                     </span>
-                    <span className="text-text-secondary">
+                    <span className="text-secondary">
                       Aprobación: {exam.passingScore}%
                     </span>
-                    <span className="text-text-secondary">
+                    <span className="text-secondary">
                       {exam.totalQuestions} preguntas
                     </span>
                     <span className="text-blue-400">
@@ -771,7 +771,7 @@ const ExamListPage = () => {
                 </h3>
                 <button
                   onClick={() => setShowQuestionModal(false)}
-                  className="text-text-secondary hover:text-white transition-colors"
+                  className="text-secondary hover:text-white transition-colors"
                 >
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -804,10 +804,10 @@ const ExamListPage = () => {
                       >
                         Seleccionar archivo
                       </button>
-                      <span className="text-text-secondary text-sm">Ningún archivo seleccionado</span>
+                      <span className="text-secondary text-sm">Ningún archivo seleccionado</span>
                     </div>
                     <div>
-                      <p className="text-text-secondary text-xs mb-2">O ingresar URL</p>
+                      <p className="text-secondary text-xs mb-2">O ingresar URL</p>
                       <input
                         type="url"
                         value={questionFormData.imageUrl}
@@ -919,7 +919,7 @@ const ExamListPage = () => {
           <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
             <div className="bg-surface rounded-lg p-6 max-w-md w-full mx-4">
               <h3 className="text-xl font-semibold text-white mb-4">Eliminar Examen</h3>
-              <p className="text-text-secondary mb-6">
+              <p className="text-secondary mb-6">
                 ¿Estás seguro de eliminar el examen <span className="text-white font-medium">"{examToDelete.title}"</span>? Esta acción no se puede deshacer.
               </p>
               <div className="flex justify-end gap-3">

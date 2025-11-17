@@ -67,8 +67,8 @@ export const HOME_STYLES = {
   section: {
     container: 'mb-8 sm:mb-10 md:mb-12',
     header: 'mb-4 sm:mb-6 md:mb-8 text-center px-2',
-    title: 'text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-text-primary mb-1.5 sm:mb-2',
-    subtitle: 'text-xs sm:text-sm md:text-base text-text-secondary'
+    title: 'text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-1.5 sm:mb-2',
+    subtitle: 'text-xs sm:text-sm md:text-base text-secondary'
   },
   areas: {
     grid: 'grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6',

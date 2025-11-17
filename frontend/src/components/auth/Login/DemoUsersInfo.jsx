@@ -11,7 +11,7 @@ const DemoUsersInfo = ({ users }) => {
             <div className={`w-3 h-3 rounded-full ${user.role === 'admin' ? 'bg-red-500' : 'bg-blue-500'}`}></div>
             <div className="flex-1">
               <span className="text-white font-medium">{user.name}</span>
-              <span className="text-text-secondary ml-2">({user.email})</span>
+              <span className="text-secondary ml-2">({user.email})</span>
             </div>
             <span className={`${getAreaColor(user.selectedArea)} font-medium`}>
               {capitalizeFirst(user.selectedArea)}
@@ -19,7 +19,7 @@ const DemoUsersInfo = ({ users }) => {
           </div>
         ))}
         <div className="mt-3 pt-3 border-t border-gray-600">
-          <p className="text-text-secondary text-xs">
+          <p className="text-secondary text-xs">
             <strong>Contraseña para todos:</strong> {DEMO_PASSWORD}
           </p>
         </div>

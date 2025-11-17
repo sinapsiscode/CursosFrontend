@@ -226,7 +226,7 @@ const StudentManagement = () => {
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-white mb-2">Gestión de Estudiantes</h1>
-        <p className="text-text-secondary">
+        <p className="text-secondary">
           Administra todos los estudiantes, sus cursos y progreso
         </p>
       </div>
@@ -332,7 +332,7 @@ const StudentManagement = () => {
               <h3 className="text-xl font-semibold text-white mb-2">
                 {searchTerm ? 'No se encontraron estudiantes' : 'No hay estudiantes inscritos'}
               </h3>
-              <p className="text-text-secondary">
+              <p className="text-secondary">
                 {searchTerm 
                   ? 'Intenta con otros términos de búsqueda' 
                   : 'Este curso no tiene estudiantes inscritos aún'
@@ -358,7 +358,7 @@ const StudentManagement = () => {
                       </div>
                       
                       <div className="space-y-2">
-                        <div className="flex items-center space-x-4 text-sm text-text-secondary">
+                        <div className="flex items-center space-x-4 text-sm text-secondary">
                           {student.email && (
                             <span>
                               📧 {student.email || student.userEmail}
@@ -390,7 +390,7 @@ const StudentManagement = () => {
                         )}
                         
                         {viewMode === 'course' && (
-                          <div className="flex items-center space-x-4 text-sm text-text-secondary">
+                          <div className="flex items-center space-x-4 text-sm text-secondary">
                             <span>
                               📅 Inscrito: {student.enrolledAt ? new Date(student.enrolledAt).toLocaleDateString('es-ES') : 'N/A'}
                             </span>

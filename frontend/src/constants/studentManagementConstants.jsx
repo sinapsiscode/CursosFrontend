@@ -31,7 +31,7 @@ export const STUDENT_STYLES = {
   // Header
   header: 'mb-8',
   title: 'text-3xl font-bold text-white mb-2',
-  subtitle: 'text-text-secondary',
+  subtitle: 'text-secondary',
 
   // View Mode Section
   viewModeCard: 'bg-surface rounded-lg p-6 mb-8',
@@ -61,11 +61,11 @@ export const STUDENT_STYLES = {
   studentHeader: 'flex items-center space-x-4 mb-2',
   studentName: 'font-medium text-white',
   studentDetails: 'space-y-2',
-  studentContactInfo: 'flex items-center space-x-4 text-sm text-text-secondary',
+  studentContactInfo: 'flex items-center space-x-4 text-sm text-secondary',
   studentCourses: 'flex flex-wrap gap-2 mt-2',
   courseTag: 'text-xs bg-gray-600 text-gray-300 px-2 py-1 rounded',
   courseMore: 'text-xs text-gray-400',
-  studentEnrollmentInfo: 'flex items-center space-x-4 text-sm text-text-secondary',
+  studentEnrollmentInfo: 'flex items-center space-x-4 text-sm text-secondary',
 
   // Status badges
   statusBadge: 'px-3 py-1 rounded-full text-xs font-medium border',
@@ -88,7 +88,7 @@ export const STUDENT_STYLES = {
   emptyState: 'text-center py-12',
   emptyStateIcon: 'w-16 h-16 text-gray-600 mx-auto mb-4',
   emptyStateTitle: 'text-xl font-semibold text-white mb-2',
-  emptyStateText: 'text-text-secondary',
+  emptyStateText: 'text-secondary',
 
   // Loading
   loadingCenter: 'flex justify-center py-12'

@@ -17,7 +17,7 @@ const NotificationsPage = () => {
   return (
     <PageLayout title="Centro de Notificaciones">
       <div className="space-y-6">
-        <p className="text-text-secondary">
+        <p className="text-secondary">
           Gestión de notificaciones push, email y sistema de mensajería
         </p>
 

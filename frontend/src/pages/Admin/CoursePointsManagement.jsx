@@ -171,7 +171,7 @@ const CoursePointsManagement = () => {
       {/* Header */}
       <div className="mb-8">
         <h2 className="text-2xl font-bold text-white mb-2">Gestión de Puntos por Curso</h2>
-        <p className="text-text-secondary">
+        <p className="text-secondary">
           Asigna y gestiona los puntos (créditos) que los estudiantes ganan al completar cada curso
         </p>
       </div>
@@ -182,25 +182,25 @@ const CoursePointsManagement = () => {
           <div className="text-2xl font-bold text-purple-400 mb-1">
             {filteredCourses.length}
           </div>
-          <div className="text-text-secondary text-sm">Cursos Totales</div>
+          <div className="text-secondary text-sm">Cursos Totales</div>
         </div>
         <div className="bg-surface rounded-lg p-4 text-center">
           <div className="text-2xl font-bold text-green-400 mb-1">
             {averagePoints}
           </div>
-          <div className="text-text-secondary text-sm">Puntos Promedio</div>
+          <div className="text-secondary text-sm">Puntos Promedio</div>
         </div>
         <div className="bg-surface rounded-lg p-4 text-center">
           <div className="text-2xl font-bold text-blue-400 mb-1">
             {filteredCourses.filter(c => (c.points || 10) > 10).length}
           </div>
-          <div className="text-text-secondary text-sm">Cursos Premium</div>
+          <div className="text-secondary text-sm">Cursos Premium</div>
         </div>
         <div className="bg-surface rounded-lg p-4 text-center">
           <div className="text-2xl font-bold text-yellow-400 mb-1">
             {totalPoints.toLocaleString()}
           </div>
-          <div className="text-text-secondary text-sm">Puntos Totales</div>
+          <div className="text-secondary text-sm">Puntos Totales</div>
         </div>
       </div>
 
@@ -253,12 +253,12 @@ const CoursePointsManagement = () => {
           <table className="w-full">
             <thead>
               <tr className="border-b border-gray-700">
-                <th className="text-left py-4 px-6 font-medium text-text-secondary">Curso</th>
-                <th className="text-center py-4 px-6 font-medium text-text-secondary">Área</th>
-                <th className="text-center py-4 px-6 font-medium text-text-secondary">Nivel</th>
-                <th className="text-center py-4 px-6 font-medium text-text-secondary">Duración</th>
-                <th className="text-center py-4 px-6 font-medium text-text-secondary">Puntos Actuales</th>
-                <th className="text-center py-4 px-6 font-medium text-text-secondary">Acciones</th>
+                <th className="text-left py-4 px-6 font-medium text-secondary">Curso</th>
+                <th className="text-center py-4 px-6 font-medium text-secondary">Área</th>
+                <th className="text-center py-4 px-6 font-medium text-secondary">Nivel</th>
+                <th className="text-center py-4 px-6 font-medium text-secondary">Duración</th>
+                <th className="text-center py-4 px-6 font-medium text-secondary">Puntos Actuales</th>
+                <th className="text-center py-4 px-6 font-medium text-secondary">Acciones</th>
               </tr>
             </thead>
             <tbody>
@@ -273,7 +273,7 @@ const CoursePointsManagement = () => {
                       />
                       <div>
                         <p className="text-white font-medium">{course.title}</p>
-                        <p className="text-text-secondary text-sm">{course.instructor}</p>
+                        <p className="text-secondary text-sm">{course.instructor}</p>
                       </div>
                     </div>
                   </td>
@@ -295,7 +295,7 @@ const CoursePointsManagement = () => {
                       {course.level.charAt(0).toUpperCase() + course.level.slice(1)}
                     </span>
                   </td>
-                  <td className="py-4 px-6 text-center text-text-secondary">
+                  <td className="py-4 px-6 text-center text-secondary">
                     {Math.floor(course.duration / 60)}h {course.duration % 60}m
                   </td>
                   <td className="py-4 px-6 text-center">
@@ -313,7 +313,7 @@ const CoursePointsManagement = () => {
                       <div className="flex items-center justify-center gap-2">
                         <span className="text-purple-400 text-lg">🏆</span>
                         <span className="text-white font-bold text-lg">{course.points || 10}</span>
-                        <span className="text-text-secondary text-sm">pts</span>
+                        <span className="text-secondary text-sm">pts</span>
                       </div>
                     )}
                   </td>

@@ -76,7 +76,7 @@ export const PROFILE_STYLES = {
     logoBadge: 'absolute -bottom-2 -right-2 w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm',
     infoSection: 'flex-1 text-center md:text-left',
     name: 'text-3xl font-bold text-white mb-2',
-    email: 'text-text-secondary mb-4',
+    email: 'text-secondary mb-4',
     badges: 'flex flex-wrap justify-center md:justify-start gap-4 mb-4',
     areaBadge: 'text-white px-4 py-2 rounded-full text-sm font-medium',
     proButton: 'bg-gradient-to-r from-yellow-600 to-yellow-500 hover:from-yellow-700 hover:to-yellow-600 text-white px-4 py-2 rounded-full text-sm font-bold transition-all duration-300 hover:scale-105 flex items-center space-x-2',
@@ -93,7 +93,7 @@ export const PROFILE_STYLES = {
     iconEmoji: 'text-accent',
     textSection: '',
     title: 'text-white font-medium',
-    subtitle: 'text-text-secondary text-sm',
+    subtitle: 'text-secondary text-sm',
     button: 'bg-accent text-background px-4 py-2 rounded-lg text-sm font-medium hover:bg-opacity-90 transition-colors'
   },
 
@@ -122,7 +122,7 @@ export const PROFILE_STYLES = {
       container: 'text-center py-16 bg-surface rounded-xl',
       icon: 'text-6xl mb-4',
       title: 'text-xl font-semibold text-white mb-2',
-      subtitle: 'text-text-secondary mb-6'
+      subtitle: 'text-secondary mb-6'
     }
   },
 

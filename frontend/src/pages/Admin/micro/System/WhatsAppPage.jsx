@@ -17,7 +17,7 @@ const WhatsAppPage = () => {
   return (
     <PageLayout title="Configuración WhatsApp">
       <div className="space-y-6">
-        <p className="text-text-secondary">
+        <p className="text-secondary">
           Configuración de WhatsApp Business para lead generation y comunicaciones
         </p>
 

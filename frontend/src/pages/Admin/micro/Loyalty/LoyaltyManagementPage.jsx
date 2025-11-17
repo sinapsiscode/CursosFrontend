@@ -17,7 +17,7 @@ const LoyaltyManagementPage = () => {
   return (
     <PageLayout title="Programa de Fidelización">
       <div className="space-y-6">
-        <p className="text-text-secondary">
+        <p className="text-secondary">
           Gestión del programa de fidelización y recompensas para estudiantes
         </p>
 
@@ -29,15 +29,15 @@ const LoyaltyManagementPage = () => {
             <h3 className="font-medium text-white mb-2">🎯 Estadísticas</h3>
             <div className="space-y-2 text-sm">
               <div className="flex justify-between">
-                <span className="text-text-secondary">Puntos canjeados:</span>
+                <span className="text-secondary">Puntos canjeados:</span>
                 <span className="text-green-400">8,524</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-text-secondary">Miembros activos:</span>
+                <span className="text-secondary">Miembros activos:</span>
                 <span className="text-blue-400">234</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-text-secondary">Recompensas disponibles:</span>
+                <span className="text-secondary">Recompensas disponibles:</span>
                 <span className="text-yellow-400">15</span>
               </div>
             </div>

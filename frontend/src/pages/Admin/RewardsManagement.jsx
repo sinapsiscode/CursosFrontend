@@ -198,7 +198,7 @@ const RewardsManagement = () => {
       {/* Header */}
       <div className="mb-8">
         <h2 className="text-2xl font-bold text-white mb-2">Gestión de Recompensas</h2>
-        <p className="text-text-secondary">
+        <p className="text-secondary">
           Administra las recompensas que los estudiantes pueden canjear con sus puntos
         </p>
       </div>
@@ -209,25 +209,25 @@ const RewardsManagement = () => {
           <div className="text-2xl font-bold text-purple-400 mb-1">
             {rewards.length}
           </div>
-          <div className="text-text-secondary text-sm">Recompensas Totales</div>
+          <div className="text-secondary text-sm">Recompensas Totales</div>
         </div>
         <div className="bg-surface rounded-lg p-4 text-center">
           <div className="text-2xl font-bold text-green-400 mb-1">
             {activeRewards}
           </div>
-          <div className="text-text-secondary text-sm">Activas</div>
+          <div className="text-secondary text-sm">Activas</div>
         </div>
         <div className="bg-surface rounded-lg p-4 text-center">
           <div className="text-2xl font-bold text-blue-400 mb-1">
             {totalRedemptions}
           </div>
-          <div className="text-text-secondary text-sm">Canjes Totales</div>
+          <div className="text-secondary text-sm">Canjes Totales</div>
         </div>
         <div className="bg-surface rounded-lg p-4 text-center">
           <div className="text-2xl font-bold text-yellow-400 mb-1">
             {Math.round(totalPointsRequired / rewards.length || 0)}
           </div>
-          <div className="text-text-secondary text-sm">Puntos Promedio</div>
+          <div className="text-secondary text-sm">Puntos Promedio</div>
         </div>
       </div>
 
@@ -431,7 +431,7 @@ const RewardsManagement = () => {
                   </button>
                 </div>
                 
-                <p className="text-text-secondary text-sm mb-4">
+                <p className="text-secondary text-sm mb-4">
                   {reward.description}
                 </p>
                 
@@ -439,7 +439,7 @@ const RewardsManagement = () => {
                   <div className="flex items-center gap-2">
                     <span className="text-purple-400">🏆</span>
                     <span className="text-white font-bold text-lg">{reward.points}</span>
-                    <span className="text-text-secondary text-sm">puntos</span>
+                    <span className="text-secondary text-sm">puntos</span>
                   </div>
                   {reward.stock && (
                     <span className="text-sm text-gray-400">

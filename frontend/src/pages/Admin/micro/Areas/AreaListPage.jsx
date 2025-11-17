@@ -287,7 +287,7 @@ const AreaListPage = () => {
                     <span className="text-4xl">{area.icon}</span>
                     <div>
                       <h3 className="text-lg font-medium text-white">{area.name}</h3>
-                      <p className="text-sm text-text-secondary">{area.key}</p>
+                      <p className="text-sm text-secondary">{area.key}</p>
                     </div>
                   </div>
                   <span
@@ -302,7 +302,7 @@ const AreaListPage = () => {
                 </div>
 
                 {/* Descripción */}
-                <p className="text-sm text-text-secondary leading-relaxed">
+                <p className="text-sm text-secondary leading-relaxed">
                   {area.description}
                 </p>
 

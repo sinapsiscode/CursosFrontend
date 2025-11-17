@@ -121,7 +121,7 @@ const AdminLayout = () => {
                   transition-all duration-200 flex-shrink-0
                   ${currentTabId === tab.id
                     ? 'bg-accent text-background'
-                    : 'text-text-secondary hover:text-text-primary hover:bg-surface-hover'
+                    : 'text-secondary hover:text-primary hover:bg-surface-hover'
                   }
                 `}
               >

@@ -32,7 +32,7 @@ const EventFormModal = ({
           {/* Información básica */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-text-secondary text-sm font-medium mb-2">
+              <label className="block text-secondary text-sm font-medium mb-2">
                 Título del Evento *
               </label>
               <input
@@ -53,7 +53,7 @@ const EventFormModal = ({
             </div>
 
             <div>
-              <label className="block text-text-secondary text-sm font-medium mb-2">
+              <label className="block text-secondary text-sm font-medium mb-2">
                 Tipo de Evento *
               </label>
               <select
@@ -71,7 +71,7 @@ const EventFormModal = ({
             </div>
 
             <div className="md:col-span-2">
-              <label className="block text-text-secondary text-sm font-medium mb-2">
+              <label className="block text-secondary text-sm font-medium mb-2">
                 Descripción *
               </label>
               <textarea
@@ -95,7 +95,7 @@ const EventFormModal = ({
           {/* Fecha y hora */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
-              <label className="block text-text-secondary text-sm font-medium mb-2">
+              <label className="block text-secondary text-sm font-medium mb-2">
                 Fecha *
               </label>
               <input
@@ -115,7 +115,7 @@ const EventFormModal = ({
             </div>
 
             <div>
-              <label className="block text-text-secondary text-sm font-medium mb-2">
+              <label className="block text-secondary text-sm font-medium mb-2">
                 Hora *
               </label>
               <input
@@ -135,7 +135,7 @@ const EventFormModal = ({
             </div>
 
             <div>
-              <label className="block text-text-secondary text-sm font-medium mb-2">
+              <label className="block text-secondary text-sm font-medium mb-2">
                 Duración
               </label>
               <select
@@ -155,7 +155,7 @@ const EventFormModal = ({
           {/* Configuración del evento */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
-              <label className="block text-text-secondary text-sm font-medium mb-2">
+              <label className="block text-secondary text-sm font-medium mb-2">
                 Área
               </label>
               <select
@@ -172,7 +172,7 @@ const EventFormModal = ({
             </div>
 
             <div>
-              <label className="block text-text-secondary text-sm font-medium mb-2">
+              <label className="block text-secondary text-sm font-medium mb-2">
                 Capacidad *
               </label>
               <input
@@ -194,7 +194,7 @@ const EventFormModal = ({
             </div>
 
             <div>
-              <label className="block text-text-secondary text-sm font-medium mb-2">
+              <label className="block text-secondary text-sm font-medium mb-2">
                 Gratis
               </label>
               <input
@@ -219,7 +219,7 @@ const EventFormModal = ({
           {/* URLs */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-text-secondary text-sm font-medium mb-2">
+              <label className="block text-secondary text-sm font-medium mb-2">
                 URL de Inscripción
               </label>
               <input
@@ -232,7 +232,7 @@ const EventFormModal = ({
             </div>
 
             <div>
-              <label className="block text-text-secondary text-sm font-medium mb-2">
+              <label className="block text-secondary text-sm font-medium mb-2">
                 URL de Imagen
               </label>
               <input
@@ -245,7 +245,7 @@ const EventFormModal = ({
             </div>
 
             <div>
-              <label className="block text-text-secondary text-sm font-medium mb-2">
+              <label className="block text-secondary text-sm font-medium mb-2">
                 PDF Descargable
               </label>
               <input
@@ -258,7 +258,7 @@ const EventFormModal = ({
             </div>
 
             <div>
-              <label className="block text-text-secondary text-sm font-medium mb-2">
+              <label className="block text-secondary text-sm font-medium mb-2">
                 Video de YouTube
               </label>
               <input

@@ -5,12 +5,15 @@ import StatCard from './StatCard'
 import UserChart from './UserChart'
 import PopularCourses from './PopularCourses'
 import RecentUsers from './RecentUsers'
+import TimeRangeFilter from './TimeRangeFilter'
 
 const DashboardStats = () => {
   const {
     loading,
     metrics,
-    userChartData
+    userChartData,
+    timeRange,
+    changeTimeRange
   } = useAdminAnalytics()
 
   if (loading) {
@@ -19,6 +22,12 @@ const DashboardStats = () => {
 
   return (
     <>
+      {/* Time Range Filter */}
+      <TimeRangeFilter
+        currentRange={timeRange}
+        onChangeRange={changeTimeRange}
+      />
+
       {/* Stats Cards Grid */}
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         {STAT_CARDS_CONFIG.map((config) => (
@@ -38,13 +47,14 @@ const DashboardStats = () => {
         <UserChart
           newUsersThisWeek={metrics.newUsersThisWeek}
           chartData={userChartData}
+          timeRange={timeRange}
         />
       </div>
 
       {/* Tablas */}
       <div className="grid lg:grid-cols-2 gap-8">
-        <PopularCourses topCourses={metrics.topCourses} />
-        <RecentUsers recentUsers={metrics.recentUsers} />
+        <PopularCourses topCourses={metrics?.topCourses || []} />
+        <RecentUsers recentUsers={metrics?.recentUsers || []} />
       </div>
     </>
   )

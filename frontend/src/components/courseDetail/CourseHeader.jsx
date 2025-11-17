@@ -49,7 +49,7 @@ const CourseHeader = ({
               {course.title}
             </h1>
 
-            <p className="text-text-secondary text-sm sm:text-base md:text-lg mb-4 sm:mb-6">
+            <p className="text-secondary text-sm sm:text-base md:text-lg mb-4 sm:mb-6">
               {course.description}
             </p>
 
@@ -59,13 +59,13 @@ const CourseHeader = ({
                   <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
                 </svg>
                 <span className="text-white font-medium">{course.rating}</span>
-                <span className="text-text-secondary hidden sm:inline">({course.students?.toLocaleString()} {COURSE_DETAIL_CONFIG.labels.students})</span>
-                <span className="text-text-secondary sm:hidden">({course.students?.toLocaleString()})</span>
+                <span className="text-secondary hidden sm:inline">({course.students?.toLocaleString()} {COURSE_DETAIL_CONFIG.labels.students})</span>
+                <span className="text-secondary sm:hidden">({course.students?.toLocaleString()})</span>
               </div>
-              <div className="text-text-secondary">
+              <div className="text-secondary">
                 {formatDuration(course.duration)}
               </div>
-              <div className="text-text-secondary">
+              <div className="text-secondary">
                 {course.lessons?.length} {COURSE_DETAIL_CONFIG.labels.classes}
               </div>
             </div>
@@ -168,7 +168,7 @@ const CourseHeader = ({
             {safeProgress.percentage > 0 && (
               <div className="mt-4 sm:mt-6">
                 <div className="flex justify-between text-xs sm:text-sm mb-2">
-                  <span className="text-text-secondary">Tu progreso</span>
+                  <span className="text-secondary">Tu progreso</span>
                   <span className="text-accent font-medium">{safeProgress.percentage}%</span>
                 </div>
                 <div className="w-full bg-gray-700 rounded-full h-2 sm:h-3">

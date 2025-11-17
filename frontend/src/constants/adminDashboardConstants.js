@@ -1,7 +1,22 @@
 export const TIME_RANGES = {
   WEEK: 'week',
   MONTH: 'month',
+  SEMESTER: 'semester',
   YEAR: 'year'
+}
+
+export const TIME_RANGE_LABELS = {
+  week: 'Semana',
+  month: 'Mes',
+  semester: 'Semestre',
+  year: 'Año'
+}
+
+export const TIME_RANGE_DAYS = {
+  week: 7,
+  month: 30,
+  semester: 180,
+  year: 365
 }
 
 export const ANALYTICS_CONFIG = {

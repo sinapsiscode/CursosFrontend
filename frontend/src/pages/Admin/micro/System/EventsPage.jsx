@@ -235,22 +235,22 @@ const EventsPage = () => {
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <div className="bg-surface rounded-lg p-6">
-            <p className="text-text-secondary text-sm mb-1">Total Eventos</p>
+            <p className="text-secondary text-sm mb-1">Total Eventos</p>
             <p className="text-4xl font-bold text-white">{stats.total}</p>
           </div>
 
           <div className="bg-surface rounded-lg p-6">
-            <p className="text-text-secondary text-sm mb-1">Webinars</p>
+            <p className="text-secondary text-sm mb-1">Webinars</p>
             <p className="text-4xl font-bold text-blue-400">{stats.webinars}</p>
           </div>
 
           <div className="bg-surface rounded-lg p-6">
-            <p className="text-text-secondary text-sm mb-1">Promociones</p>
+            <p className="text-secondary text-sm mb-1">Promociones</p>
             <p className="text-4xl font-bold text-green-400">{stats.promotions}</p>
           </div>
 
           <div className="bg-surface rounded-lg p-6">
-            <p className="text-text-secondary text-sm mb-1">Registros Totales</p>
+            <p className="text-secondary text-sm mb-1">Registros Totales</p>
             <p className="text-4xl font-bold text-purple-400">{stats.totalRegistrations}</p>
           </div>
         </div>
@@ -550,7 +550,7 @@ const EventsPage = () => {
                       <div className={`w-4 h-4 rounded-full ${type.color}`} />
                       <div>
                         <h5 className="text-white font-medium">{type.name}</h5>
-                        <p className="text-text-secondary text-sm">Valor: {type.value}</p>
+                        <p className="text-secondary text-sm">Valor: {type.value}</p>
                       </div>
                     </div>
                     <button
@@ -650,7 +650,7 @@ const EventsPage = () => {
                     {/* Evento */}
                     <td className="p-4">
                       <h3 className="text-white font-medium mb-1">{event.title}</h3>
-                      <p className="text-text-secondary text-sm">{event.description}</p>
+                      <p className="text-secondary text-sm">{event.description}</p>
                     </td>
 
                     {/* Tipo */}
@@ -667,7 +667,7 @@ const EventsPage = () => {
 
                     {/* Fecha */}
                     <td className="p-4">
-                      <span className="text-text-secondary">{event.date}</span>
+                      <span className="text-secondary">{event.date}</span>
                     </td>
 
                     {/* Registros */}
@@ -685,7 +685,7 @@ const EventsPage = () => {
                           </div>
                         </div>
                       ) : (
-                        <span className="text-text-secondary">N/A</span>
+                        <span className="text-secondary">N/A</span>
                       )}
                     </td>
 
@@ -718,7 +718,7 @@ const EventsPage = () => {
           <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
             <div className="bg-surface rounded-lg p-6 max-w-md w-full mx-4">
               <h3 className="text-xl font-semibold text-white mb-4">Enviar Notificación</h3>
-              <p className="text-text-secondary mb-6">
+              <p className="text-secondary mb-6">
                 ¿Deseas notificar a los usuarios interesados en <span className="text-white font-medium">{selectedEvent.area}</span> sobre el evento <span className="text-white font-medium">"{selectedEvent.title}"</span>?
               </p>
               <div className="flex justify-end gap-3">

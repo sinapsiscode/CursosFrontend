@@ -370,7 +370,7 @@ const AdminPhotos = () => {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold text-white">📸 Gestión de Fotos</h1>
-          <p className="text-text-secondary mt-2">
+          <p className="text-secondary mt-2">
             Administra las fotos que aparecen en el perfil de los estudiantes
           </p>
         </div>
@@ -424,7 +424,7 @@ const AdminPhotos = () => {
               </svg>
             </div>
             <div className="ml-4">
-              <p className="text-text-secondary text-sm">Total de Fotos</p>
+              <p className="text-secondary text-sm">Total de Fotos</p>
               <p className="text-2xl font-bold text-white">{profilePhotos.length}</p>
             </div>
           </div>
@@ -438,7 +438,7 @@ const AdminPhotos = () => {
               </svg>
             </div>
             <div className="ml-4">
-              <p className="text-text-secondary text-sm">Fotos Activas</p>
+              <p className="text-secondary text-sm">Fotos Activas</p>
               <p className="text-2xl font-bold text-white">
                 {profilePhotos.filter(photo => photo.active !== false).length}
               </p>
@@ -454,7 +454,7 @@ const AdminPhotos = () => {
               </svg>
             </div>
             <div className="ml-4">
-              <p className="text-text-secondary text-sm">Fotos Inactivas</p>
+              <p className="text-secondary text-sm">Fotos Inactivas</p>
               <p className="text-2xl font-bold text-white">
                 {profilePhotos.filter(photo => photo.active === false).length}
               </p>
@@ -516,13 +516,13 @@ const AdminPhotos = () => {
                 <h3 className="font-semibold text-white mb-2">{photo.title}</h3>
                 
                 {photo.description && (
-                  <p className="text-text-secondary text-sm mb-3 line-clamp-2">
+                  <p className="text-secondary text-sm mb-3 line-clamp-2">
                     {photo.description}
                   </p>
                 )}
                 
                 {photo.date && (
-                  <p className="text-text-secondary text-xs mb-3">
+                  <p className="text-secondary text-xs mb-3">
                     📅 {new Date(photo.date).toLocaleDateString('es-ES', {
                       year: 'numeric',
                       month: 'long',
@@ -531,7 +531,7 @@ const AdminPhotos = () => {
                   </p>
                 )}
                 
-                <div className="text-text-secondary text-xs mb-4">
+                <div className="text-secondary text-xs mb-4">
                   Creada: {new Date(photo.createdAt).toLocaleDateString('es-ES')}
                 </div>
                 
@@ -565,7 +565,7 @@ const AdminPhotos = () => {
         <div className="text-center py-16 bg-surface rounded-xl">
           <div className="text-6xl mb-4">📷</div>
           <h3 className="text-xl font-semibold text-white mb-2">No hay fotos configuradas</h3>
-          <p className="text-text-secondary mb-6">
+          <p className="text-secondary mb-6">
             Comienza agregando fotos que aparecerán en el perfil de los estudiantes
           </p>
           <button
@@ -600,7 +600,7 @@ const AdminPhotos = () => {
             <form onSubmit={handleSubmit} className="p-6 space-y-6">
               {/* Title */}
               <div>
-                <label className="block text-sm font-medium text-text-secondary mb-2">
+                <label className="block text-sm font-medium text-secondary mb-2">
                   Título *
                 </label>
                 <input
@@ -615,7 +615,7 @@ const AdminPhotos = () => {
 
               {/* Description */}
               <div>
-                <label className="block text-sm font-medium text-text-secondary mb-2">
+                <label className="block text-sm font-medium text-secondary mb-2">
                   Descripción
                 </label>
                 <textarea
@@ -629,7 +629,7 @@ const AdminPhotos = () => {
 
               {/* Image URL */}
               <div>
-                <label className="block text-sm font-medium text-text-secondary mb-2">
+                <label className="block text-sm font-medium text-secondary mb-2">
                   URL de la Imagen *
                 </label>
                 <input
@@ -644,7 +644,7 @@ const AdminPhotos = () => {
                 {/* Preview */}
                 {formData.imageUrl && (
                   <div className="mt-3">
-                    <p className="text-sm text-text-secondary mb-2">Vista previa:</p>
+                    <p className="text-sm text-secondary mb-2">Vista previa:</p>
                     <img
                       src={formData.imageUrl}
                       alt="Preview"
@@ -659,7 +659,7 @@ const AdminPhotos = () => {
 
               {/* Date */}
               <div>
-                <label className="block text-sm font-medium text-text-secondary mb-2">
+                <label className="block text-sm font-medium text-secondary mb-2">
                   Fecha (opcional)
                 </label>
                 <input
@@ -726,7 +726,7 @@ const AdminPhotos = () => {
             <form onSubmit={handleSaveLinks} className="p-6 space-y-6">
               {/* Pro Upgrade URL */}
               <div>
-                <label className="block text-sm font-medium text-text-secondary mb-2">
+                <label className="block text-sm font-medium text-secondary mb-2">
                   👑 URL para Subir a Pro
                 </label>
                 <input
@@ -743,7 +743,7 @@ const AdminPhotos = () => {
 
               {/* WhatsApp Channel URL */}
               <div>
-                <label className="block text-sm font-medium text-text-secondary mb-2">
+                <label className="block text-sm font-medium text-secondary mb-2">
                   💬 URL del Canal de WhatsApp
                 </label>
                 <input
@@ -876,7 +876,7 @@ const AdminPhotos = () => {
               {/* Textos de Botones */}
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-text-secondary mb-2">
+                  <label className="block text-sm font-medium text-secondary mb-2">
                     👑 Texto del Botón Pro
                   </label>
                   <input
@@ -890,7 +890,7 @@ const AdminPhotos = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-text-secondary mb-2">
+                  <label className="block text-sm font-medium text-secondary mb-2">
                     💬 Texto del Botón WhatsApp
                   </label>
                   <input
@@ -904,7 +904,7 @@ const AdminPhotos = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-text-secondary mb-2">
+                  <label className="block text-sm font-medium text-secondary mb-2">
                     🎓 Texto del Botón del Banner
                   </label>
                   <input

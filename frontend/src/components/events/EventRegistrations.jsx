@@ -15,7 +15,7 @@ const EventRegistrations = ({ show, event, registrations, onClose }) => {
             <h3 className="text-xl font-bold text-white">
               Inscripciones - {event.title}
             </h3>
-            <p className="text-text-secondary">
+            <p className="text-secondary">
               {registrations.length} inscritos de {event.capacity} disponibles
             </p>
           </div>
@@ -43,24 +43,24 @@ const EventRegistrations = ({ show, event, registrations, onClose }) => {
               <table className="w-full">
                 <thead className="bg-background">
                   <tr>
-                    <th className="text-left p-4 text-text-secondary font-medium">#</th>
-                    <th className="text-left p-4 text-text-secondary font-medium">Participante</th>
-                    <th className="text-left p-4 text-text-secondary font-medium">Contacto</th>
-                    <th className="text-left p-4 text-text-secondary font-medium">Área de Interés</th>
-                    <th className="text-left p-4 text-text-secondary font-medium">Fecha de Inscripción</th>
-                    <th className="text-left p-4 text-text-secondary font-medium">Estado</th>
+                    <th className="text-left p-4 text-secondary font-medium">#</th>
+                    <th className="text-left p-4 text-secondary font-medium">Participante</th>
+                    <th className="text-left p-4 text-secondary font-medium">Contacto</th>
+                    <th className="text-left p-4 text-secondary font-medium">Área de Interés</th>
+                    <th className="text-left p-4 text-secondary font-medium">Fecha de Inscripción</th>
+                    <th className="text-left p-4 text-secondary font-medium">Estado</th>
                   </tr>
                 </thead>
                 <tbody>
                   {registrations.map((registration, index) => (
                     <tr key={registration.id} className="border-t border-gray-700">
-                      <td className="p-4 text-text-secondary">
+                      <td className="p-4 text-secondary">
                         {index + 1}
                       </td>
                       <td className="p-4">
                         <div>
                           <p className="text-white font-medium">{registration.name}</p>
-                          <p className="text-text-secondary text-sm">{registration.email}</p>
+                          <p className="text-secondary text-sm">{registration.email}</p>
                         </div>
                       </td>
                       <td className="p-4">
@@ -69,7 +69,7 @@ const EventRegistrations = ({ show, event, registrations, onClose }) => {
                             <p className="text-white">📱 {registration.phone}</p>
                           )}
                           {registration.email && (
-                            <p className="text-text-secondary">✉️ {registration.email}</p>
+                            <p className="text-secondary">✉️ {registration.email}</p>
                           )}
                         </div>
                       </td>
@@ -91,7 +91,7 @@ const EventRegistrations = ({ show, event, registrations, onClose }) => {
                           <p className="text-white">
                             {new Date(registration.registeredAt).toLocaleDateString('es-PE')}
                           </p>
-                          <p className="text-text-secondary">
+                          <p className="text-secondary">
                             {new Date(registration.registeredAt).toLocaleTimeString('es-PE', {
                               hour: '2-digit',
                               minute: '2-digit'
@@ -124,7 +124,7 @@ const EventRegistrations = ({ show, event, registrations, onClose }) => {
             <h4 className="text-lg font-medium text-white mb-2">
               Sin inscripciones aún
             </h4>
-            <p className="text-text-secondary">
+            <p className="text-secondary">
               Este evento aún no tiene participantes inscritos.
             </p>
           </div>
@@ -134,23 +134,23 @@ const EventRegistrations = ({ show, event, registrations, onClose }) => {
         {registrations.length > 0 && (
           <div className="mt-6 grid grid-cols-1 md:grid-cols-4 gap-4">
             <div className="bg-background p-4 rounded-lg">
-              <p className="text-text-secondary text-sm">Total Inscritos</p>
+              <p className="text-secondary text-sm">Total Inscritos</p>
               <p className="text-2xl font-bold text-white">{registrations.length}</p>
             </div>
             <div className="bg-background p-4 rounded-lg">
-              <p className="text-text-secondary text-sm">Confirmados</p>
+              <p className="text-secondary text-sm">Confirmados</p>
               <p className="text-2xl font-bold text-green-400">
                 {registrations.filter(r => r.status === 'confirmed' || !r.status).length}
               </p>
             </div>
             <div className="bg-background p-4 rounded-lg">
-              <p className="text-text-secondary text-sm">Disponibles</p>
+              <p className="text-secondary text-sm">Disponibles</p>
               <p className="text-2xl font-bold text-blue-400">
                 {event.capacity - registrations.length}
               </p>
             </div>
             <div className="bg-background p-4 rounded-lg">
-              <p className="text-text-secondary text-sm">% Ocupación</p>
+              <p className="text-secondary text-sm">% Ocupación</p>
               <p className="text-2xl font-bold text-accent">
                 {Math.round((registrations.length / event.capacity) * 100)}%
               </p>

@@ -93,22 +93,22 @@ const EventManagementPage = () => {
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <div className="bg-surface rounded-lg p-6">
-            <p className="text-text-secondary text-sm mb-1">Total Eventos</p>
+            <p className="text-secondary text-sm mb-1">Total Eventos</p>
             <p className="text-4xl font-bold text-white">{stats.total}</p>
           </div>
 
           <div className="bg-surface rounded-lg p-6">
-            <p className="text-text-secondary text-sm mb-1">Webinars</p>
+            <p className="text-secondary text-sm mb-1">Webinars</p>
             <p className="text-4xl font-bold text-blue-400">{stats.webinars}</p>
           </div>
 
           <div className="bg-surface rounded-lg p-6">
-            <p className="text-text-secondary text-sm mb-1">Promociones</p>
+            <p className="text-secondary text-sm mb-1">Promociones</p>
             <p className="text-4xl font-bold text-green-400">{stats.promotions}</p>
           </div>
 
           <div className="bg-surface rounded-lg p-6">
-            <p className="text-text-secondary text-sm mb-1">Registros Totales</p>
+            <p className="text-secondary text-sm mb-1">Registros Totales</p>
             <p className="text-4xl font-bold text-purple-400">{stats.totalRegistrations}</p>
           </div>
         </div>
@@ -152,7 +152,7 @@ const EventManagementPage = () => {
                     {/* Evento */}
                     <td className="p-4">
                       <h3 className="text-white font-medium mb-1">{event.title}</h3>
-                      <p className="text-text-secondary text-sm">{event.description}</p>
+                      <p className="text-secondary text-sm">{event.description}</p>
                     </td>
 
                     {/* Tipo */}
@@ -169,7 +169,7 @@ const EventManagementPage = () => {
 
                     {/* Fecha */}
                     <td className="p-4">
-                      <span className="text-text-secondary">{event.date}</span>
+                      <span className="text-secondary">{event.date}</span>
                     </td>
 
                     {/* Registros */}
@@ -187,7 +187,7 @@ const EventManagementPage = () => {
                           </div>
                         </div>
                       ) : (
-                        <span className="text-text-secondary">N/A</span>
+                        <span className="text-secondary">N/A</span>
                       )}
                     </td>
 

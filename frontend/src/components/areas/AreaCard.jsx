@@ -30,7 +30,7 @@ const AreaCard = ({ area, isSelected, onSelect }) => {
       {/* Descripción */}
       <p className={`
         text-center leading-relaxed transition-colors duration-300
-        ${isSelected ? 'text-white text-opacity-90' : 'text-text-secondary'}
+        ${isSelected ? 'text-white text-opacity-90' : 'text-secondary'}
       `}>
         {area.description}
       </p>
