@@ -165,6 +165,10 @@ export const EVENTS_STYLES = {
     checkmark: 'text-green-400 mr-1 text-xs sm:text-sm flex-shrink-0'
   },
 
+  eventsList: {
+    grid: 'grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6'
+  },
+
   emptyState: {
     container: 'text-center py-12',
     text: 'text-gray-400 text-lg'
