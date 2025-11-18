@@ -18,7 +18,8 @@
       "Bash(netstat:*)",
       "Bash(findstr:*)",
       "Bash(if not exist \"src\\assets\" mkdir srcassets)",
-      "Bash(timeout:*)"
+      "Bash(timeout:*)",
+      "Bash(do wc -l \"$file\")"
     ],
     "deny": [],
     "ask": []
