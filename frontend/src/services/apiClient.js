@@ -72,6 +72,11 @@ apiClient.interceptors.response.use(
       // Log del error
       console.error(`[API Error] ${status}:`, data)
 
+      // Mostrar detalles de validación si existen
+      if (status === 400 && data.details) {
+        console.error('❌ Errores de validación:', data.details)
+      }
+
       // Manejo específico por código de estado
       switch (status) {
         case 401:

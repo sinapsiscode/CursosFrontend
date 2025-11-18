@@ -252,8 +252,8 @@
       "telefono": "812-910-0722",
       "fechaCreacion": "2024-11-17T00:05:42.355Z",
       "ultimoAcceso": "2025-09-28T19:09:36.519Z",
-      "totalUsageTime": 3067067,
-      "lastActive": "2025-11-17T23:08:04.916Z"
+      "totalUsageTime": 29935,
+      "lastActive": "2025-11-18T01:58:58.869Z"
     },
     {
       "id": 2,
@@ -888,14 +888,6 @@
       "activo": true
     },
     {
-      "id": 3,
-      "nombre": "Geología",
-      "codigo": "geologia",
-      "descripcion": "Cursos de geología y ciencias de la tierra",
-      "color": "#F59E0B",
-      "activo": true
-    },
-    {
       "id": 4,
       "nombre": "Ingeniería Civil",
       "codigo": "ingenieria-civil",
@@ -910,6 +902,22 @@
       "descripcion": "Cursos de seguridad y salud ocupacional",
       "color": "#8B5CF6",
       "activo": true
+    },
+    {
+      "nombre": "Test Area",
+      "codigo": "test-area",
+      "descripcion": "Area de prueba",
+      "color": "#FF5733",
+      "activo": true,
+      "id": 6
+    },
+    {
+      "nombre": "DevFullStack",
+      "codigo": "fsww",
+      "descripcion": "asfasfasfasfasf",
+      "color": "#3B82F6",
+      "activo": true,
+      "id": 7
     }
   ],
   "cursos": [
@@ -997,23 +1005,6 @@
       "calificacion": 4,
       "estudiantesInscritos": 107,
       "fechaCreacion": "2025-09-19T09:23:22.085Z"
-    },
-    {
-      "id": 6,
-      "titulo": "implement bleeding-edge mindshare en Geología",
-      "descripcion": "Coaegresco cognatus necessitatibus. Cena alter tersus somnus praesentium textor. Viduo aduro non deleniti verbum pectus basium argentum pel damno.",
-      "areaId": 3,
-      "nivel": "Avanzado",
-      "duracion": 120,
-      "precio": 265,
-      "descuento": 30,
-      "instructor": "Sr. Juan Ramón Alicea Tejada",
-      "imagen": "https://picsum.photos/seed/6/400/300",
-      "activo": true,
-      "destacado": false,
-      "calificacion": 4.9,
-      "estudiantesInscritos": 372,
-      "fechaCreacion": "2025-02-26T05:31:27.991Z"
     },
     {
       "id": 7,
@@ -1135,40 +1126,6 @@
       "fechaCreacion": "2025-03-14T23:21:54.990Z"
     },
     {
-      "id": 15,
-      "titulo": "transition seamless niches en Geología",
-      "descripcion": "Amor desolo volaticus curiositas vero curatio ratione cinis. Eum conscendo communis debitis volaticus. Audacia conqueror sumptus voluptas amo capitulus autus amet natus.",
-      "areaId": 3,
-      "nivel": "Intermedio",
-      "duracion": 32,
-      "precio": 182,
-      "descuento": 20,
-      "instructor": "Maica Paredes Maestas",
-      "imagen": "https://picsum.photos/seed/15/400/300",
-      "activo": false,
-      "destacado": true,
-      "calificacion": 4.9,
-      "estudiantesInscritos": 159,
-      "fechaCreacion": "2025-02-17T08:06:35.350Z"
-    },
-    {
-      "id": 16,
-      "titulo": "target e-business communities en Geología",
-      "descripcion": "Virga curiositas aeternus vindico coniecto. Bestia contra consequuntur voco dolor tantum acer tolero. Cetera stultus tego benigne ambitus autus consectetur super alii varius.",
-      "areaId": 3,
-      "nivel": "Intermedio",
-      "duracion": 91,
-      "precio": 59,
-      "descuento": 20,
-      "instructor": "Pablo Peralta Fonseca",
-      "imagen": "https://picsum.photos/seed/16/400/300",
-      "activo": true,
-      "destacado": false,
-      "calificacion": 4.1,
-      "estudiantesInscritos": 329,
-      "fechaCreacion": "2024-11-04T00:47:26.622Z"
-    },
-    {
       "id": 17,
       "titulo": "reinvent integrated schemas en Ingeniería Civil",
       "descripcion": "Cui confero confero curia compono solio conspergo utrimque cupio. Votum stillicidium curatio distinctio decipio porro aveho vomica cubo. Uter infit voluptatum cubicularis canto.",
@@ -1271,40 +1228,6 @@
       "fechaCreacion": "2024-12-10T18:18:27.367Z"
     },
     {
-      "id": 24,
-      "titulo": "productize user-centric e-commerce en Geología",
-      "descripcion": "Accusantium tondeo ver venia. Sum solvo contego tubineus cresco videlicet. Venustas toties cetera armarium.",
-      "areaId": 3,
-      "nivel": "Básico",
-      "duracion": 24,
-      "precio": 286,
-      "descuento": 10,
-      "instructor": "Sra. Lorena Palacios Sáenz",
-      "imagen": "https://picsum.photos/seed/24/400/300",
-      "activo": false,
-      "destacado": false,
-      "calificacion": 4.2,
-      "estudiantesInscritos": 487,
-      "fechaCreacion": "2025-02-09T06:28:19.238Z"
-    },
-    {
-      "id": 25,
-      "titulo": "reintermediate 24/365 solutions en Geología",
-      "descripcion": "Tibi careo explicabo quae tondeo sequi aequitas sunt velut. Aut comparo urbs demergo testimonium valeo sperno. Asperiores suppono nihil adipiscor officiis deinde tubineus adficio creber.",
-      "areaId": 3,
-      "nivel": "Intermedio",
-      "duracion": 64,
-      "precio": 248,
-      "descuento": 20,
-      "instructor": "Matilde Luevano Solís",
-      "imagen": "https://picsum.photos/seed/25/400/300",
-      "activo": true,
-      "destacado": false,
-      "calificacion": 3.8,
-      "estudiantesInscritos": 110,
-      "fechaCreacion": "2024-10-15T06:46:40.216Z"
-    },
-    {
       "id": 27,
       "titulo": "benchmark vertical relationships en Metalurgia",
       "descripcion": "Iure dedecor totidem sumo totidem amor adversus conscendo depulso. Natus blandior absorbeo ter alienus. Fugit tutamen pax ambitus aequitas.",
@@ -1354,23 +1277,6 @@
       "calificacion": 4.6,
       "estudiantesInscritos": 469,
       "fechaCreacion": "2025-01-27T23:12:17.485Z"
-    },
-    {
-      "id": 30,
-      "titulo": "matrix cross-platform web services en Geología",
-      "descripcion": "Necessitatibus allatus admoveo cruciamentum somniculosus triumphus accedo acceptus. Arbitro bonus audentia advenio socius recusandae apud aliqua toties velut. Ante verto aliquid adinventitias acervus unde arbustum.",
-      "areaId": 3,
-      "nivel": "Básico",
-      "duracion": 63,
-      "precio": 53,
-      "descuento": 10,
-      "instructor": "Sergi Gil Villalpando",
-      "imagen": "https://picsum.photos/seed/30/400/300",
-      "activo": true,
-      "destacado": true,
-      "calificacion": 4.3,
-      "estudiantesInscritos": 270,
-      "fechaCreacion": "2025-08-05T17:06:18.046Z"
     }
   ],
   "eventos": [
@@ -1394,25 +1300,6 @@
       "instructor": "Ángel Arteaga Farías",
       "urlTransmision": "https://stable-briefly.cat/",
       "fechaCreacion": "2025-09-06T11:56:24.868Z"
-    },
-    {
-      "id": 2,
-      "titulo": "enhance 24/365 applications - Geología",
-      "descripcion": "Audeo iusto sulum explicabo acer. Advenio repudiandae ratione. Trucido caste terminatio audentia necessitatibus.",
-      "tipo": "bundle",
-      "areaId": 3,
-      "fecha": "2025-12-17T08:41:57.815Z",
-      "duracion": 112,
-      "maxRegistros": null,
-      "registros": null,
-      "activo": true,
-      "tags": [
-        "certificado",
-        "gratuito"
-      ],
-      "instructor": "Miguel Montañez Batista",
-      "urlTransmision": null,
-      "fechaCreacion": "2025-05-25T17:04:58.752Z"
     },
     {
       "id": 3,
@@ -1475,26 +1362,6 @@
       "instructor": "Jennifer Prado Munguía",
       "urlTransmision": "https://admired-tapioca.com.es/",
       "fechaCreacion": "2025-06-07T09:55:08.992Z"
-    },
-    {
-      "id": 6,
-      "titulo": "syndicate dynamic methodologies - Geología",
-      "descripcion": "Laborum pauci theca. Bellum utroque clamo comitatus crinis sonitus vivo amplitudo. Laboriosam capio patruus tempora.",
-      "tipo": "webinar",
-      "areaId": 3,
-      "fecha": "2025-10-09T11:35:21.539Z",
-      "duracion": 155,
-      "maxRegistros": 70,
-      "registros": 45,
-      "activo": true,
-      "tags": [
-        "certificado",
-        "nuevo",
-        "gratuito"
-      ],
-      "instructor": "María de los Ángeles Pulido Garza",
-      "urlTransmision": "https://old-fashioned-cornmeal.eus/",
-      "fechaCreacion": "2025-05-17T05:25:19.808Z"
     },
     {
       "id": 7,
@@ -1617,26 +1484,6 @@
       "fechaCreacion": "2025-04-05T20:54:56.636Z"
     },
     {
-      "id": 13,
-      "titulo": "deploy back-end interfaces - Geología",
-      "descripcion": "Vulnero denique texo turba vorago corpus compello minima solio. Subseco sulum vulnero delectus dapifer theca amor terror clam. Tum centum dignissimos credo thorax decens theologus ulterius.",
-      "tipo": "bundle",
-      "areaId": 3,
-      "fecha": "2025-11-11T03:45:20.894Z",
-      "duracion": 121,
-      "maxRegistros": null,
-      "registros": null,
-      "activo": true,
-      "tags": [
-        "online",
-        "nuevo",
-        "premium"
-      ],
-      "instructor": "Daniel Camarillo Gálvez",
-      "urlTransmision": null,
-      "fechaCreacion": "2025-07-11T20:24:14.311Z"
-    },
-    {
       "id": 14,
       "titulo": "whiteboard integrated e-markets - Minería",
       "descripcion": "Suadeo arcesso absque tremo compello aptus. Textor deputo absens spiritus culpo utique quaerat coniecto. Abutor terror vulnero cupiditate adulescens cultura cervus angulus dedico ultra.",
@@ -1656,26 +1503,6 @@
       "instructor": "Juan Ramón Santiago Orozco",
       "urlTransmision": null,
       "fechaCreacion": "2025-07-06T08:07:38.286Z"
-    },
-    {
-      "id": 15,
-      "titulo": "cultivate revolutionary e-business - Geología",
-      "descripcion": "Comburo assumenda bene abduco summa. Sui tabernus validus. Aqua antiquus suus tero colo pauper.",
-      "tipo": "masterclass",
-      "areaId": 3,
-      "fecha": "2025-12-12T22:31:08.649Z",
-      "duracion": 138,
-      "maxRegistros": null,
-      "registros": null,
-      "activo": true,
-      "tags": [
-        "premium",
-        "nuevo",
-        "gratuito"
-      ],
-      "instructor": "Laura Rosales Treviño",
-      "urlTransmision": null,
-      "fechaCreacion": "2025-07-22T09:46:01.382Z"
     },
     {
       "id": 16,

@@ -17,8 +17,23 @@ const AreaListPage = () => {
     clave: '',
     icono: '📚',
     descripcion: '',
-    color: 'border-blue-500'
+    color: '#3B82F6'  // Color hexadecimal por defecto
   })
+
+  // Función helper para convertir color hex a clase de Tailwind
+  const getColorClass = (hexColor) => {
+    const colorMap = {
+      '#3B82F6': 'border-blue-500',
+      '#EF4444': 'border-red-500',
+      '#10B981': 'border-green-500',
+      '#F59E0B': 'border-yellow-500',
+      '#8B5CF6': 'border-purple-500',
+      '#EC4899': 'border-pink-500',
+      '#06B6D4': 'border-cyan-500',
+      '#F97316': 'border-orange-500'
+    }
+    return colorMap[hexColor] || 'border-blue-500'
+  }
 
   useEffect(() => {
     loadAreas()
@@ -33,12 +48,13 @@ const AreaListPage = () => {
       // Normalizar datos del backend al formato que usa el componente
       const normalizedAreas = data.map(area => ({
         id: area.id,
-        key: area.clave || area.key || '',
+        key: area.codigo || area.clave || area.key || '',  // Backend usa "codigo"
         name: area.nombre || area.name || '',
         icon: area.icono || area.icon || '📚',
         description: area.descripcion || area.description || '',
         active: area.activo !== undefined ? area.activo : true,
-        borderColor: area.color || area.borderColor || 'border-blue-500'
+        borderColor: getColorClass(area.color),  // Convertir hex a clase Tailwind
+        hexColor: area.color  // Guardar el color hex original
       }))
 
       setAreas(normalizedAreas)
@@ -62,7 +78,7 @@ const AreaListPage = () => {
       clave: area.key,
       icono: area.icon,
       descripcion: area.description,
-      color: area.borderColor
+      color: area.hexColor || '#3B82F6'  // Usar color hex
     })
     setShowCreateSection(true)
   }
@@ -74,7 +90,7 @@ const AreaListPage = () => {
       clave: '',
       icono: '📚',
       descripcion: '',
-      color: 'border-blue-500'
+      color: '#3B82F6'  // Color hexadecimal por defecto
     })
     setShowCreateSection(false)
   }
@@ -87,12 +103,14 @@ const AreaListPage = () => {
 
       const areaData = {
         nombre: formData.nombre,
-        clave: formData.clave,
-        icono: formData.icono,
+        codigo: formData.clave,  // Backend usa "codigo" en lugar de "clave"
+        // El backend no tiene campo "icono", solo guardarlo en localStorage o frontend
         descripcion: formData.descripcion,
         color: formData.color,
         activo: true
       }
+
+      console.log('📤 Enviando al backend:', areaData)
 
       if (editingArea) {
         // Actualizar área existente
@@ -107,7 +125,16 @@ const AreaListPage = () => {
 
     } catch (err) {
       console.error('Error guardando área:', err)
-      alert(err.message || 'Error al guardar área')
+
+      // Mostrar errores de validación específicos
+      if (err.data?.details && Array.isArray(err.data.details)) {
+        const errorMessages = err.data.details
+          .map(detail => `• ${detail.field}: ${detail.message}`)
+          .join('\n')
+        alert(`Errores de validación:\n\n${errorMessages}`)
+      } else {
+        alert(err.message || err.data?.error || 'Error al guardar área')
+      }
     } finally {
       setLoading(false)
     }
@@ -135,15 +162,16 @@ const AreaListPage = () => {
     }
   }
 
+  // Opciones de colores disponibles
   const colorOptions = [
-    { label: 'Azul', value: 'border-blue-500' },
-    { label: 'Rojo', value: 'border-red-500' },
-    { label: 'Verde', value: 'border-green-500' },
-    { label: 'Amarillo', value: 'border-yellow-500' },
-    { label: 'Morado', value: 'border-purple-500' },
-    { label: 'Rosa', value: 'border-pink-500' },
-    { label: 'Cyan', value: 'border-cyan-500' },
-    { label: 'Naranja', value: 'border-orange-500' }
+    { label: 'Azul', value: '#3B82F6', borderClass: 'border-blue-500' },
+    { label: 'Rojo', value: '#EF4444', borderClass: 'border-red-500' },
+    { label: 'Verde', value: '#10B981', borderClass: 'border-green-500' },
+    { label: 'Amarillo', value: '#F59E0B', borderClass: 'border-yellow-500' },
+    { label: 'Morado', value: '#8B5CF6', borderClass: 'border-purple-500' },
+    { label: 'Rosa', value: '#EC4899', borderClass: 'border-pink-500' },
+    { label: 'Cyan', value: '#06B6D4', borderClass: 'border-cyan-500' },
+    { label: 'Naranja', value: '#F97316', borderClass: 'border-orange-500' }
   ]
 
   if (loading) {
@@ -193,16 +221,24 @@ const AreaListPage = () => {
                 </div>
 
                 <div>
-                  <label className="block text-white text-sm mb-2">Clave (slug)</label>
+                  <label className="block text-white text-sm mb-2">
+                    Clave (slug) <span className="text-gray-400">(minúsculas, números y guiones)</span>
+                  </label>
                   <input
                     type="text"
                     name="clave"
                     value={formData.clave}
                     onChange={handleChange}
                     placeholder="metalurgia"
+                    pattern="[a-z0-9-]+"
+                    minLength={3}
+                    maxLength={50}
                     className="w-full p-3 bg-background border border-gray-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-accent"
                     required
                   />
+                  <p className="text-xs text-gray-400 mt-1">
+                    Solo letras minúsculas, números y guiones (-)
+                  </p>
                 </div>
               </div>
 
@@ -241,16 +277,23 @@ const AreaListPage = () => {
 
               {/* Descripción */}
               <div>
-                <label className="block text-white text-sm mb-2">Descripción</label>
+                <label className="block text-white text-sm mb-2">
+                  Descripción <span className="text-gray-400">(mínimo 10 caracteres)</span>
+                </label>
                 <textarea
                   name="descripcion"
                   value={formData.descripcion}
                   onChange={handleChange}
-                  placeholder="Descripción breve del área de estudio..."
+                  placeholder="Descripción del área de estudio (mínimo 10 caracteres)..."
                   rows={4}
+                  minLength={10}
+                  maxLength={500}
                   className="w-full p-3 bg-background border border-gray-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-accent resize-none"
                   required
                 />
+                <p className="text-xs text-gray-400 mt-1">
+                  {formData.descripcion.length}/500 caracteres
+                </p>
               </div>
 
               {/* Botones */}

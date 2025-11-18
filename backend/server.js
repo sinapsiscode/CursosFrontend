@@ -177,8 +177,22 @@ server.use((req, res, next) => {
 // Middleware para agregar metadatos a las respuestas
 server.use((req, res, next) => {
   const oldJson = res.json.bind(res)
+  const oldStatus = res.status.bind(res)
+
+  // Interceptar status para saber si es error
+  let statusCode = 200
+  res.status = (code) => {
+    statusCode = code
+    return oldStatus(code)
+  }
 
   res.json = (data) => {
+    // No envolver errores de validación (400) con success:true
+    if (statusCode >= 400) {
+      return oldJson(data)
+    }
+
+    // Solo envolver respuestas exitosas
     if (req.userData && req.method !== 'GET') {
       return oldJson({
         success: true,

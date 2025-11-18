@@ -5,7 +5,8 @@
       "Bash(cat:*)",
       "Bash(curl:*)",
       "Bash(find:*)",
-      "Bash(npm run dev:*)"
+      "Bash(npm run dev:*)",
+      "Bash(dir:*)"
     ],
     "deny": [],
     "ask": []

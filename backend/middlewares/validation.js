@@ -40,6 +40,7 @@ const schemas = {
       nombre: { type: 'string', minLength: 3, maxLength: 100 },
       codigo: { type: 'string', minLength: 3, maxLength: 50, pattern: /^[a-z0-9-]+$/ },
       descripcion: { type: 'string', minLength: 10, maxLength: 500, optional: true },
+      color: { type: 'string', pattern: /^#[0-9A-Fa-f]{6}$/, optional: true },
       icono: { type: 'string', optional: true },
       activo: { type: 'boolean', optional: true }
     }
