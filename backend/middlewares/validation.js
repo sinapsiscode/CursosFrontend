@@ -22,15 +22,20 @@ const schemas = {
     fields: {
       titulo: { type: 'string', minLength: 5, maxLength: 200 },
       descripcion: { type: 'string', minLength: 20, maxLength: 2000 },
-      areaId: { type: 'string' },
+      areaId: { type: 'number', min: 1 },
       nivel: { type: 'string', enum: ['Básico', 'Intermedio', 'Avanzado'] },
       duracion: { type: 'number', min: 1, max: 500 },
       precio: { type: 'number', min: 0 },
-      precioDescuento: { type: 'number', min: 0, optional: true },
-      instructor: { type: 'string', minLength: 5, maxLength: 200 },
-      rating: { type: 'number', min: 0, max: 5, optional: true },
+      descuento: { type: 'number', min: 0, optional: true },
+      instructor: { type: 'string', minLength: 1, maxLength: 200 },
+      imagen: { type: 'string', optional: true },
+      calificacion: { type: 'number', min: 0, max: 5, optional: true },
+      estudiantesInscritos: { type: 'number', min: 0, optional: true },
       destacado: { type: 'boolean', optional: true },
-      activo: { type: 'boolean', optional: true }
+      activo: { type: 'boolean', optional: true },
+      fechaCreacion: { type: 'string', optional: true },
+      lecciones: { type: 'array', optional: true },
+      materiales: { type: 'array', optional: true }
     }
   },
 

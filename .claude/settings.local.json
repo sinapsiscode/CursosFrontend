@@ -17,7 +17,8 @@
       "Bash(del fix-user56.js)",
       "Bash(netstat:*)",
       "Bash(findstr:*)",
-      "Bash(if not exist \"src\\assets\" mkdir srcassets)"
+      "Bash(if not exist \"src\\assets\" mkdir srcassets)",
+      "Bash(timeout:*)"
     ],
     "deny": [],
     "ask": []

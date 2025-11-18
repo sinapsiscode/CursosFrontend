@@ -75,6 +75,10 @@ apiClient.interceptors.response.use(
       // Mostrar detalles de validación si existen
       if (status === 400 && data.details) {
         console.error('❌ Errores de validación:', data.details)
+        // Mostrar cada error de forma detallada
+        data.details.forEach(err => {
+          console.error(`  - Campo "${err.field}": ${err.message}`)
+        })
       }
 
       // Manejo específico por código de estado

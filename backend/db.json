@@ -252,8 +252,8 @@
       "telefono": "812-910-0722",
       "fechaCreacion": "2024-11-17T00:05:42.355Z",
       "ultimoAcceso": "2025-09-28T19:09:36.519Z",
-      "totalUsageTime": 1679980,
-      "lastActive": "2025-11-18T02:34:52.427Z"
+      "totalUsageTime": 1198723,
+      "lastActive": "2025-11-18T05:04:10.436Z"
     },
     {
       "id": 2,
@@ -854,8 +854,8 @@
       "telefono": "987654456",
       "fechaCreacion": "2025-10-08T19:04:10.818Z",
       "ultimoAcceso": "2025-10-08T19:04:10.819Z",
-      "totalUsageTime": 1199864,
-      "lastActive": "2025-11-18T03:36:51.970Z"
+      "totalUsageTime": 1229909,
+      "lastActive": "2025-11-18T03:37:22.015Z"
     },
     {
       "id": 55,
@@ -1279,6 +1279,36 @@
       "calificacion": 4.6,
       "estudiantesInscritos": 469,
       "fechaCreacion": "2025-01-27T23:12:17.485Z"
+    },
+    {
+      "titulo": "adezx",
+      "descripcion": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1200px-Node.js_logo.svg.png",
+      "areaId": 1,
+      "nivel": "Básico",
+      "duracion": 180,
+      "precio": 323,
+      "descuento": 0,
+      "instructor": "eren",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1200px-Node.js_logo.svg.png",
+      "activo": true,
+      "destacado": false,
+      "calificacion": 0,
+      "estudiantesInscritos": 0,
+      "fechaCreacion": "2025-11-18T04:45:21.019Z",
+      "lecciones": [
+        {
+          "id": 1763441100898,
+          "title": "js",
+          "duration": 15,
+          "videoUrl": "https://www.youtube.com/watch?time_continue=19&v=e8n_9N-ZyFE&embeds_referring_euri=https%3A%2F%2Fwww.google.com%2Fsearch%3Fsca_esv%3Dfdcf620e6fdd6b42%26sxsrf%3DAE3TifOllszrpHj6ctbV8Fend-MNpqvUNQ%3A1763437095006%26udm%3D7%26fbs%3DAIIjpHx4&source_ve_path=Mjg2NTgsMjg2NjY",
+          "videoFileId": "",
+          "isFree": false,
+          "description": "sdgfdgsdgsdg",
+          "materials": []
+        }
+      ],
+      "materiales": [],
+      "id": 30
     }
   ],
   "eventos": [

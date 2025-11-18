@@ -29,6 +29,46 @@ const transformCourse = (curso) => {
 }
 
 /**
+ * Transform frontend course format to backend format
+ */
+const transformCourseToBackend = (courseData) => {
+  // Area key to ID mapping
+  const AREA_KEY_TO_ID = {
+    'metalurgia': '1',
+    'mineria': '2',
+    'geologia': '3'
+  }
+
+  // Level mapping
+  const levelMap = {
+    'básico': 'Básico',
+    'basico': 'Básico',
+    'intermedio': 'Intermedio',
+    'avanzado': 'Avanzado'
+  }
+
+  return {
+    titulo: courseData.title || courseData.titulo || '',
+    descripcion: courseData.description || courseData.descripcion || '',
+    areaId: Number(courseData.areaId || AREA_KEY_TO_ID[courseData.area] || 1),
+    nivel: levelMap[courseData.level] || courseData.nivel || 'Básico',
+    duracion: Number(courseData.duration || courseData.duracion || 0),
+    precio: Number(courseData.price !== undefined ? courseData.price : (courseData.precio || 0)),
+    descuento: Number(courseData.discount || courseData.descuento || 0),
+    instructor: courseData.instructor || '',
+    imagen: courseData.thumbnail || courseData.imagen || '',
+    activo: courseData.status === 'published' || courseData.activo !== false,
+    destacado: courseData.featured || courseData.destacado || false,
+    calificacion: Number(courseData.rating || courseData.calificacion || 0),
+    estudiantesInscritos: Number(courseData.students || courseData.estudiantesInscritos || 0),
+    fechaCreacion: courseData.createdAt || courseData.fechaCreacion || new Date().toISOString(),
+    // Campos adicionales del formulario
+    lecciones: courseData.lessons || courseData.lecciones || [],
+    materiales: courseData.materials || courseData.materiales || []
+  }
+}
+
+/**
  * Servicio para gestión de cursos
  */
 class CoursesService {
@@ -77,9 +117,19 @@ class CoursesService {
    */
   async create(courseData) {
     try {
-      const response = await apiClient.post('/cursos', courseData)
-      console.log('✅ Curso creado:', response.data)
-      return response.data
+      // Transform frontend format to backend format
+      const backendData = transformCourseToBackend(courseData)
+      console.log('📤 Enviando curso al backend:', backendData)
+
+      const response = await apiClient.post('/cursos', backendData)
+      console.log('✅ Respuesta del servidor:', response.data)
+
+      // Extract data from server response wrapper
+      const cursoCreado = response.data.data || response.data
+      console.log('✅ Curso creado:', cursoCreado)
+
+      // Transform response back to frontend format
+      return transformCourse(cursoCreado)
     } catch (error) {
       console.error('Error creando curso:', error)
       throw error
@@ -91,9 +141,19 @@ class CoursesService {
    */
   async update(id, courseData) {
     try {
-      const response = await apiClient.put(`/cursos/${id}`, courseData)
-      console.log('✅ Curso actualizado:', response.data)
-      return response.data
+      // Transform frontend format to backend format
+      const backendData = transformCourseToBackend(courseData)
+      console.log('📤 Actualizando curso en backend:', backendData)
+
+      const response = await apiClient.put(`/cursos/${id}`, backendData)
+      console.log('✅ Respuesta del servidor:', response.data)
+
+      // Extract data from server response wrapper
+      const cursoActualizado = response.data.data || response.data
+      console.log('✅ Curso actualizado:', cursoActualizado)
+
+      // Transform response back to frontend format
+      return transformCourse(cursoActualizado)
     } catch (error) {
       console.error(`Error actualizando curso ${id}:`, error)
       throw error

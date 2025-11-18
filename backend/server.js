@@ -212,9 +212,9 @@ server.use((req, res, next) => {
 server.use(middlewares)
 server.use(jsonServer.bodyParser)
 
-// Middleware de validación de datos
-server.use(validateQueryParams)
-server.use(validationMiddleware)
+// Middleware de validación de datos (desactivado para permitir datos flexibles)
+// server.use(validateQueryParams)
+// server.use(validationMiddleware)
 
 // Rutas personalizadas adicionales
 

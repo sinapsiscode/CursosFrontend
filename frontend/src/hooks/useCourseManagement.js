@@ -68,18 +68,20 @@ export const useCourseManagement = () => {
 
       if (modalStateRef.current.editingCourse) {
         console.log(COURSE_MANAGEMENT_LOG_MESSAGES.UPDATING_COURSE)
-        await apiService.updateCourse(modalStateRef.current.editingCourse.id, courseData)
-        useAdminStore.getState().updateCourse(modalStateRef.current.editingCourse.id, courseData)
+        const updatedCourse = await apiService.updateCourse(modalStateRef.current.editingCourse.id, courseData)
+        useAdminStore.getState().updateCourse(modalStateRef.current.editingCourse.id, updatedCourse)
       } else {
         console.log(COURSE_MANAGEMENT_LOG_MESSAGES.CREATING_COURSE)
-        const result = await apiService.createCourse(courseData)
-        useAdminStore.getState().addCourse(courseData)
+        const newCourse = await apiService.createCourse(courseData)
+        console.log('📚 Curso creado con ID:', newCourse.id)
+        useAdminStore.getState().addCourse(newCourse)
       }
 
       handleCloseForm()
       console.log(COURSE_MANAGEMENT_LOG_MESSAGES.COURSE_SAVED)
     } catch (error) {
       console.error(COURSE_MANAGEMENT_LOG_MESSAGES.COURSE_SAVE_ERROR, error)
+      alert('Error al guardar el curso: ' + (error.message || 'Error desconocido'))
     }
   }, [handleCloseForm])
 
