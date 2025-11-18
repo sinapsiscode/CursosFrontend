@@ -8,6 +8,14 @@ export const useProfile = () => {
   const [loading, setLoading] = useState(true)
   const [selectedPhoto, setSelectedPhoto] = useState(null)
 
+  // Debug: verificar qué usuario obtiene del store
+  console.log('🔍 useProfile - Usuario del authStore:', {
+    id: user?.id,
+    nombre: user?.nombre,
+    avatar: user?.avatar,
+    completo: user
+  })
+
   const loadProfileData = useCallback(async () => {
     try {
       setLoading(true)

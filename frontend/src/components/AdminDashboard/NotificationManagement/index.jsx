@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { notificacionesService } from '../../../services/notificacionesService'
+import { usuariosService } from '../../../services/usuariosService'
 
 const NotificationManagement = () => {
   const [formData, setFormData] = useState({
@@ -9,11 +11,79 @@ const NotificationManagement = () => {
     action: 'none',
     persistent: false
   })
+  const [sending, setSending] = useState(false)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log('Enviar notificación:', formData)
-    // TODO: Conectar con API
+
+    if (!formData.title.trim() || !formData.message.trim()) {
+      alert('Por favor complete el título y el mensaje')
+      return
+    }
+
+    setSending(true)
+    try {
+      // Obtener usuarios según audiencia
+      let targetUsers = []
+
+      switch (formData.audience) {
+        case 'all':
+          targetUsers = await usuariosService.getAll()
+          break
+        case 'area':
+          // Por ahora enviar a todos los estudiantes (rolId 5)
+          targetUsers = await usuariosService.getByRole(5)
+          break
+        case 'course':
+          // Por ahora enviar a todos los estudiantes (rolId 5)
+          targetUsers = await usuariosService.getByRole(5)
+          break
+        default:
+          targetUsers = await usuariosService.getAll()
+      }
+
+      // Filtrar solo usuarios activos
+      const activeUsers = targetUsers.filter(u => u.activo)
+
+      if (activeUsers.length === 0) {
+        alert('No hay usuarios activos para enviar la notificación')
+        setSending(false)
+        return
+      }
+
+      // Preparar datos de la notificación
+      const notificationData = {
+        tipo: formData.type, // info | success | warning | error
+        categoria: 'sistema', // sistema | curso | examen | evento
+        titulo: formData.title,
+        mensaje: formData.message,
+        metadata: {
+          action: formData.action,
+          persistent: formData.persistent
+        }
+      }
+
+      // Enviar notificación a todos los usuarios seleccionados
+      const userIds = activeUsers.map(u => u.id.toString())
+      await notificacionesService.broadcast(notificationData, userIds)
+
+      alert(`✅ Notificación enviada exitosamente a ${userIds.length} usuarios`)
+
+      // Limpiar formulario
+      setFormData({
+        type: 'info',
+        title: '',
+        message: '',
+        audience: 'all',
+        action: 'none',
+        persistent: false
+      })
+    } catch (error) {
+      console.error('Error enviando notificación:', error)
+      alert('Error al enviar notificación: ' + (error.message || 'Error desconocido'))
+    } finally {
+      setSending(false)
+    }
   }
 
   const updateField = (field, value) => {
@@ -161,9 +231,10 @@ const NotificationManagement = () => {
             {/* Botón Enviar */}
             <button
               type="submit"
-              className="w-full bg-accent hover:bg-accent/90 text-background font-medium py-2.5 rounded-lg transition-colors"
+              disabled={sending}
+              className="w-full bg-accent hover:bg-accent/90 text-background font-medium py-2.5 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Enviar Notificación
+              {sending ? 'Enviando...' : 'Enviar Notificación'}
             </button>
           </form>
         </div>

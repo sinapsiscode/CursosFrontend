@@ -49,7 +49,7 @@ export const PROFILE_MESSAGES = {
 export const DEFAULT_URLS = {
   proUpgrade: 'https://ejemplo.com/upgrade-pro',
   whatsappChannel: 'https://chat.whatsapp.com/ejemplo123',
-  logoImage: '/vite.svg'
+  logoImage: '/logo.png?v=1' // Agregar versión para evitar caché
 }
 
 export const PROFILE_STYLES = {

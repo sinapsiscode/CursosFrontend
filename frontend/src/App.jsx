@@ -13,6 +13,7 @@ import CourseExam from './pages/CourseExam'
 import LessonView from './pages/LessonView'
 import LearningPaths from './pages/LearningPaths'
 import Profile from './pages/Profile'
+import ProfileSettings from './pages/ProfileSettings'
 import MyCourses from './pages/MyCourses'
 import MyFavorites from './pages/MyFavorites'
 import Certificates from './pages/Certificates'
@@ -92,6 +93,7 @@ function App() {
             <Route path="/course/:courseId/lesson/:lessonId" element={<LessonView />} />
             <Route path="/learning-paths" element={<LearningPaths />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/profile/settings" element={<ProfileSettings />} />
             <Route path="/my-courses" element={<MyCourses />} />
             <Route path="/favorites" element={<MyFavorites />} />
             <Route path="/certificates" element={<Certificates />} />

@@ -252,8 +252,8 @@
       "telefono": "812-910-0722",
       "fechaCreacion": "2024-11-17T00:05:42.355Z",
       "ultimoAcceso": "2025-09-28T19:09:36.519Z",
-      "totalUsageTime": 29935,
-      "lastActive": "2025-11-18T01:58:58.869Z"
+      "totalUsageTime": 1679980,
+      "lastActive": "2025-11-18T02:34:52.427Z"
     },
     {
       "id": 2,
@@ -845,15 +845,17 @@
     },
     {
       "id": 54,
-      "nombre": "Carlos Mendoza",
+      "nombre": "Masashi Kishimoto",
       "email": "carlos@email.com",
       "password": "123456",
       "rolId": 5,
       "activo": true,
-      "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100",
-      "telefono": "+57 300 123 4567",
+      "avatar": "https://images.unsplash.com/photo-1600357077527-930ccbaf7773?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Z2F0aXRvc3xlbnwwfHwwfHx8MA%3D%3D",
+      "telefono": "987654456",
       "fechaCreacion": "2025-10-08T19:04:10.818Z",
-      "ultimoAcceso": "2025-10-08T19:04:10.819Z"
+      "ultimoAcceso": "2025-10-08T19:04:10.819Z",
+      "totalUsageTime": 1199864,
+      "lastActive": "2025-11-18T03:36:51.970Z"
     },
     {
       "id": 55,
@@ -7549,6 +7551,748 @@
       "mensaje": "Inventore depereo ustulo quod auctus vestigium decerno totus ullus coruscus administratio denuo.",
       "leida": false,
       "fecha": "2025-09-29T19:37:56.223Z"
+    },
+    {
+      "usuarioId": "1",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.661Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 101
+    },
+    {
+      "usuarioId": "2",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.662Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 102
+    },
+    {
+      "usuarioId": "3",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.662Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 103
+    },
+    {
+      "usuarioId": "4",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.662Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 104
+    },
+    {
+      "usuarioId": "5",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.662Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 105
+    },
+    {
+      "usuarioId": "6",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.662Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 106
+    },
+    {
+      "usuarioId": "7",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.662Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 107
+    },
+    {
+      "usuarioId": "8",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.662Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 108
+    },
+    {
+      "usuarioId": "9",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.662Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 109
+    },
+    {
+      "usuarioId": "10",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.662Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 110
+    },
+    {
+      "usuarioId": "11",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.662Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 111
+    },
+    {
+      "usuarioId": "12",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.663Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 112
+    },
+    {
+      "usuarioId": "13",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.663Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 113
+    },
+    {
+      "usuarioId": "14",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.663Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 114
+    },
+    {
+      "usuarioId": "21",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.663Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 115
+    },
+    {
+      "usuarioId": "24",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.664Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 116
+    },
+    {
+      "usuarioId": "23",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.663Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 117
+    },
+    {
+      "usuarioId": "22",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.663Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 118
+    },
+    {
+      "usuarioId": "26",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.664Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 119
+    },
+    {
+      "usuarioId": "25",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.664Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 120
+    },
+    {
+      "usuarioId": "27",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.664Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 121
+    },
+    {
+      "usuarioId": "28",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.664Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 122
+    },
+    {
+      "usuarioId": "29",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.664Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 123
+    },
+    {
+      "usuarioId": "30",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.664Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 124
+    },
+    {
+      "usuarioId": "31",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.664Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 125
+    },
+    {
+      "usuarioId": "38",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.665Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 126
+    },
+    {
+      "usuarioId": "37",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.665Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 127
+    },
+    {
+      "usuarioId": "42",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.666Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 128
+    },
+    {
+      "usuarioId": "39",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.665Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 129
+    },
+    {
+      "usuarioId": "40",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.666Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 130
+    },
+    {
+      "usuarioId": "41",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.666Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 131
+    },
+    {
+      "usuarioId": "43",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.666Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 132
+    },
+    {
+      "usuarioId": "44",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.666Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 133
+    },
+    {
+      "usuarioId": "45",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.666Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 134
+    },
+    {
+      "usuarioId": "46",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.666Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 135
+    },
+    {
+      "usuarioId": "47",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.666Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 136
+    },
+    {
+      "usuarioId": "48",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.666Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 137
+    },
+    {
+      "usuarioId": "49",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.666Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 138
+    },
+    {
+      "usuarioId": "50",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.667Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 139
+    },
+    {
+      "usuarioId": "54",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.667Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 140
+    },
+    {
+      "usuarioId": "20",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.663Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 141
+    },
+    {
+      "usuarioId": "32",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.664Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 142
+    },
+    {
+      "usuarioId": "31",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.664Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 143
+    },
+    {
+      "usuarioId": "36",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.665Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 144
+    },
+    {
+      "usuarioId": "34",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.664Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 145
+    },
+    {
+      "usuarioId": "35",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.665Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 146
+    },
+    {
+      "usuarioId": "33",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.664Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 147
+    },
+    {
+      "usuarioId": "16",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.663Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 148
+    },
+    {
+      "usuarioId": "19",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.663Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 149
+    },
+    {
+      "usuarioId": "15",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.663Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 150
+    },
+    {
+      "usuarioId": "17",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.663Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 151
+    },
+    {
+      "usuarioId": "55",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.667Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 152
+    },
+    {
+      "usuarioId": "18",
+      "tipo": "success",
+      "categoria": "sistema",
+      "titulo": "prueba",
+      "mensaje": "asfafasfasf",
+      "leida": false,
+      "fecha": "2025-11-18T02:33:57.663Z",
+      "metadata": {
+        "action": "event",
+        "persistent": false
+      },
+      "id": 153
     }
   ],
   "cupones": [],
